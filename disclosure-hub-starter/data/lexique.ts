@@ -57,7 +57,7 @@ export const LEXIQUE: LexiqueEntry[] = [
   },
   {
     id: 'crash-retrieval',
-    terme: 'Programme de récupération d'épave',
+    terme: "Programme de récupération d'épave",
     acronyme: 'Crash Retrieval Program',
     definition:
       "Programme secret allégué par plusieurs témoins sous serment devant le Congrès américain, consistant en la récupération, l'analyse et la rétro-ingénierie d'engins d'origine non-humaine. David Grusch affirme que des programmes de ce type sont gérés hors du système de supervision classique du Congrès.",
