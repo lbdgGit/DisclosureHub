@@ -144,7 +144,7 @@ body {
   @apply text-body leading-relaxed;
 }
 .prose-disclosure h2 {
-  @apply font-display text-bright text-2xl font-700 mt-10 mb-4;
+  @apply font-display text-bright text-2xl font-bold mt-10 mb-4;
 }
 .prose-disclosure p {
   @apply mb-4 text-body;
