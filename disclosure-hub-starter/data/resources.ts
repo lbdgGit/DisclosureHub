@@ -26,7 +26,7 @@ export const TOOLKITS: Toolkit[] = [
   },
   {
     id: 'rh-communication-interne',
-    titre: 'Kit RH — Gérer l'incertitude organisationnelle',
+    titre: "Kit RH — Gérer l'incertitude organisationnelle",
     description: "Protocole de communication interne pour les RH et managers. Anticiper les questions des collaborateurs, maintenir la cohésion d'équipe et préserver la productivité dans un contexte d'information instable.",
     secteur: 'entreprise',
     taille: 'pme',
@@ -70,7 +70,7 @@ export const TOOLKITS: Toolkit[] = [
   },
   {
     id: 'admin-continuité',
-    titre: 'Kit Administration — Plan de continuité d'activité',
+    titre: "Kit Administration — Plan de continuité d'activité",
     description: "Modèle de PCA pour les collectivités et administrations. Anticiper les perturbations d'ordre public, gérer la communication institutionnelle et maintenir les services essentiels.",
     secteur: 'administration',
     taille: 'eti',
