@@ -338,7 +338,7 @@ export default function HomePage() {
                 ['Probability 5Y', '2 / 5 — Credible risk'],
                 ['Impact', 'Market disruption · Institutional trust · Science domain'],
               ].map(([k, v]) => (
-                <div key={k} style={{ contents: 'true' }}>
+                <div key={k} style={{ display: 'contents' }}>
                   <div style={{ background: 'rgba(255,255,255,0.06)', padding: '8px 12px', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{k}</div>
                   <div style={{ background: 'rgba(255,255,255,0.04)', padding: '8px 12px', fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.8)' }}>{v}</div>
                 </div>
