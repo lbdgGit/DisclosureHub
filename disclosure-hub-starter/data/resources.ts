@@ -59,7 +59,7 @@ export const TOOLKITS: Toolkit[] = [
   },
   {
     id: 'sante-psychologie',
-    titre: 'Kit Santé mentale — Accompagner l'impact psychologique',
+    titre: "Kit Santé mentale — Accompagner l'impact psychologique",
     description: "Ressources pour les professionnels de santé mentale. Cadre théorique sur la rupture épistémique, outils d'évaluation de la résilience et protocoles d'écoute adaptés à une annonce de cette nature.",
     secteur: 'sante',
     taille: 'independant',
@@ -69,7 +69,7 @@ export const TOOLKITS: Toolkit[] = [
     tags: ['psychologie', 'résilience', 'rupture épistémique', 'thérapeute'],
   },
   {
-    id: 'admin-continuité',
+    id: 'admin-continuite',
     titre: "Kit Administration — Plan de continuité d'activité",
     description: "Modèle de PCA pour les collectivités et administrations. Anticiper les perturbations d'ordre public, gérer la communication institutionnelle et maintenir les services essentiels.",
     secteur: 'administration',
@@ -111,7 +111,7 @@ export interface Report {
   prix_eur: number;
   gratuit: boolean;
   tags: string[];
-  achat_url: string; // Lien Stripe Checkout ou Gumroad
+  achat_url: string;
   preview_url?: string;
   badge?: string;
 }
@@ -120,9 +120,8 @@ export const REPORTS: Report[] = [
   {
     id: 'rapport-gratuit-intro',
     titre: 'Introduction à la Disclosure',
-    sous_titre: 'Rapport d'introduction gratuit',
-    description:
-      "Un rapport de 15 pages pour comprendre les enjeux fondamentaux, les acteurs clés et le calendrier probable d'une annonce officielle. Offert sans inscription.",
+    sous_titre: "Rapport d'introduction gratuit",
+    description: "Un rapport de 15 pages pour comprendre les enjeux fondamentaux, les acteurs clés et le calendrier probable d'une annonce officielle. Offert sans inscription.",
     date: '2025-01-15',
     pages: 15,
     prix_eur: 0,
@@ -135,22 +134,20 @@ export const REPORTS: Report[] = [
     id: 'rapport-geopolitique',
     titre: 'Géopolitique de la Disclosure',
     sous_titre: 'Qui annoncera en premier, et pourquoi ?',
-    description:
-      "Analyse comparative des positions de 15 gouvernements face à la divulgation. Scénarios d'annonce par acteur (USA, Chine, Europe, ONU) avec probabilités pondérées et implications stratégiques.",
+    description: "Analyse comparative des positions de 15 gouvernements face à la divulgation. Scénarios d'annonce par acteur (USA, Chine, Europe, ONU) avec probabilités pondérées et implications stratégiques.",
     date: '2025-02-10',
     pages: 48,
     prix_eur: 29,
     gratuit: false,
     tags: ['géopolitique', 'USA', 'Chine', 'ONU', 'scénarios'],
-    achat_url: 'https://buy.stripe.com/xxx', // À remplacer
+    achat_url: 'https://buy.stripe.com/xxx',
     badge: 'Populaire',
   },
   {
     id: 'rapport-impact-economique',
     titre: 'Impact Économique : Scénarios 2025–2030',
     sous_titre: 'Secteurs gagnants et perdants post-annonce',
-    description:
-      "Modélisation de l'impact économique selon 3 scénarios de disclosure (partielle, technologique, totale). Analyse sectorielle détaillée : énergie, défense, pharma, espace, tourisme.",
+    description: "Modélisation de l'impact économique selon 3 scénarios de disclosure (partielle, technologique, totale). Analyse sectorielle détaillée : énergie, défense, pharma, espace, tourisme.",
     date: '2025-03-05',
     pages: 64,
     prix_eur: 49,
@@ -163,8 +160,7 @@ export const REPORTS: Report[] = [
     id: 'rapport-technologique',
     titre: 'Rétro-ingénierie & Technologies NHI',
     sous_titre: 'Ce que la science dit des capabilities observées',
-    description:
-      "Analyse physique des 5 observables UAP documentés. État de l'art des recherches en propulsion avancée, matériaux métamorphiques et manipulation du champ gravitationnel.",
+    description: "Analyse physique des 5 observables UAP documentés. État de l'art des recherches en propulsion avancée, matériaux métamorphiques et manipulation du champ gravitationnel.",
     date: '2025-04-01',
     pages: 72,
     prix_eur: 59,
