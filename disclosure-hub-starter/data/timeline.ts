@@ -1,0 +1,155 @@
+export interface TimelineEvent {
+  id: string;
+  date: string;          // Format : "YYYY" ou "YYYY-MM" ou "YYYY-MM-DD"
+  titre: string;
+  description: string;
+  importance: 'majeur' | 'significatif' | 'notable';
+  categorie: 'militaire' | 'scientifique' | 'juridique' | 'temoignage' | 'media';
+  source?: string;
+  lienSource?: string;
+}
+
+export const TIMELINE: TimelineEvent[] = [
+  {
+    id: '1947-roswell',
+    date: '1947-07',
+    titre: "Incident de Roswell",
+    description: "Un objet s'écrase près de Roswell, Nouveau-Mexique. L'USAF annonce d'abord la récupération d'une « soucoupe volante », puis se rétracte en parlant de ballon météo. Restera le cas fondateur de la culture OVNI.",
+    importance: 'majeur',
+    categorie: 'militaire',
+    source: 'USAF Rapport 1994',
+  },
+  {
+    id: '1952-washington',
+    date: '1952-07',
+    titre: "Survol de Washington D.C.",
+    description: "Plusieurs UAP détectés sur les radars de l'aéroport national de Washington et de la base Andrews. Des avions de chasse sont scramblés. Le général Samford tient une conférence de presse historique pour désamorcer la situation.",
+    importance: 'majeur',
+    categorie: 'militaire',
+  },
+  {
+    id: '1968-condon',
+    date: '1968',
+    titre: "Rapport Condon (Université du Colorado)",
+    description: "Financé par l'USAF, ce rapport de 1 000 pages conclut que l'étude des OVNI n'apporte pas de valeur scientifique. Il entraîne la fermeture du Projet Blue Book. Critiqué pour ses biais méthodologiques.",
+    importance: 'significatif',
+    categorie: 'scientifique',
+  },
+  {
+    id: '2004-nimitz',
+    date: '2004-11',
+    titre: "Incident du USS Nimitz",
+    description: "Le commandant David Fravor et d'autres pilotes de la marine observent un objet en forme de Tic-Tac sans ailes ni signature thermique lors d'un entraînement au large des côtes californiennes. La vidéo FLIR sera déclassifiée en 2020.",
+    importance: 'majeur',
+    categorie: 'militaire',
+  },
+  {
+    id: '2007-aatip',
+    date: '2007',
+    titre: "Création de l'AATIP",
+    description: "Le sénateur Harry Reid obtient 22 millions de dollars pour financer l'Advanced Aerospace Threat Identification Program, programme secret de la DIA dirigé par Luis Elizondo. Son existence ne sera révélée qu'en 2017.",
+    importance: 'majeur',
+    categorie: 'militaire',
+  },
+  {
+    id: '2017-nyt',
+    date: '2017-12',
+    titre: "Le New York Times révèle l'AATIP",
+    description: "Article fondateur publié par les journalistes Helene Cooper, Ralph Blumenthal et Leslie Kean. La première vidéo UAP déclassifiée (FLIR1) est rendue publique. Point de bascule médiatique et institutionnel.",
+    importance: 'majeur',
+    categorie: 'media',
+    lienSource: 'https://www.nytimes.com/2017/12/16/us/politics/pentagon-program-ufo-harry-reid.html',
+  },
+  {
+    id: '2020-pentagone-videos',
+    date: '2020-04',
+    titre: "Déclassification des trois vidéos Navy",
+    description: "Le Pentagone déclassifie officiellement les vidéos FLIR1, Gimbal et GoFast, confirmant leur authenticité. C'est la première fois que le DoD reconnaît officiellement l'existence de phénomènes aériens non-identifiés.",
+    importance: 'majeur',
+    categorie: 'militaire',
+  },
+  {
+    id: '2021-rapport-dni',
+    date: '2021-06',
+    titre: "Rapport DNI au Congrès",
+    description: "Le Bureau du Directeur du Renseignement National publie un rapport de 9 pages sur 144 incidents UAP. 143 restent inexpliqués. Le rapport reconnaît 5 catégories d'observations et demande des ressources supplémentaires pour l'analyse.",
+    importance: 'majeur',
+    categorie: 'juridique',
+    source: 'DNI Rapport UAPTF 2021',
+  },
+  {
+    id: '2021-loeb-oumuamua',
+    date: '2021-01',
+    titre: "Avi Loeb publie « Extraterrestrial »",
+    description: "Le professeur de Harvard Avi Loeb publie un livre défendant l'hypothèse d'une origine artificielle pour 'Oumuamua. L'ouvrage provoque un débat académique majeur et légitime la recherche scientifique sur les UAP.",
+    importance: 'significatif',
+    categorie: 'scientifique',
+  },
+  {
+    id: '2022-aaro-creation',
+    date: '2022-07',
+    titre: "Création de l'AARO",
+    description: "Le Pentagone crée l'All-domain Anomaly Resolution Office (AARO), première agence officielle permanente dédiée aux UAP. Elle est chargée de synchroniser la collecte de données entre toutes les branches militaires et les agences de renseignement.",
+    importance: 'majeur',
+    categorie: 'juridique',
+    lienSource: 'https://www.aaro.mil',
+  },
+  {
+    id: '2022-nasa-uap',
+    date: '2022-10',
+    titre: "La NASA lance une étude indépendante UAP",
+    description: "La NASA annonce la formation d'un groupe d'étude indépendant sur les UAP, présidé par l'astrophysicien David Spergel. C'est la première fois que l'agence spatiale s'implique officiellement dans l'étude de ces phénomènes.",
+    importance: 'significatif',
+    categorie: 'scientifique',
+  },
+  {
+    id: '2023-grusch-audition',
+    date: '2023-07',
+    titre: "Audition historique de David Grusch au Congrès",
+    description: "Sous serment devant la Chambre des représentants, l'ex-officier du renseignement David Grusch affirme l'existence de programmes secrets de récupération de craft non-humains et de matériaux biologiques. Première déclaration de ce type sous serment dans l'histoire américaine.",
+    importance: 'majeur',
+    categorie: 'temoignage',
+  },
+  {
+    id: '2023-uap-disclosure-act',
+    date: '2023-07',
+    titre: "UAP Disclosure Act proposé au Sénat",
+    description: "Les sénateurs Schumer et Rounds proposent un amendement bipartisan exigeant la déclassification de tous les documents UAP sous 25 ans. L'amendement est intégré au NDAA 2024 mais avec des pouvoirs de veto exécutifs élargis.",
+    importance: 'majeur',
+    categorie: 'juridique',
+  },
+  {
+    id: '2023-nasa-rapport',
+    date: '2023-09',
+    titre: "Publication du rapport NASA UAP",
+    description: "La NASA publie son rapport final : les UAP sont un problème de sécurité nationale et scientifique légitime. Elle nomme un coordinateur UAP permanent et recommande d'intégrer les données civiles à l'analyse gouvernementale.",
+    importance: 'significatif',
+    categorie: 'scientifique',
+    lienSource: 'https://science.nasa.gov/uap',
+  },
+  {
+    id: '2024-aaro-rapport-historique',
+    date: '2024-03',
+    titre: "Rapport historique AARO : pas de programme secret prouvé",
+    description: "L'AARO publie son rapport Volume I sur les programmes historiques UAP. Il conteste les allégations de Grusch, ne trouvant aucune preuve d'un programme de récupération de craft extraterrestres. Les critiques soulignent les limites d'accès aux archives.",
+    importance: 'majeur',
+    categorie: 'juridique',
+    lienSource: 'https://www.aaro.mil',
+  },
+  {
+    id: '2024-galileo-resultats',
+    date: '2024-09',
+    titre: "Premières publications du Projet Galilée",
+    description: "L'équipe du professeur Loeb publie ses premières analyses de données issues de ses observatoires terrestres. Des sphères métalliques récupérées dans l'océan Pacifique sont analysées — leur composition est jugée anormale par rapport aux météorites connues.",
+    importance: 'significatif',
+    categorie: 'scientifique',
+  },
+  {
+    id: '2025-oncoming',
+    date: '2025',
+    titre: "Pression croissante pour une annonce officielle",
+    description: "Plusieurs membres du Congrès, des lanceurs d'alerte et des personnalités scientifiques convergent vers l'idée qu'une annonce majeure est imminente. Les débats sur la nature de cette annonce — partielle ou totale — s'intensifient dans les cercles institutionnels.",
+    importance: 'majeur',
+    categorie: 'temoignage',
+  },
+];

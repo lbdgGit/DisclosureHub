@@ -1,0 +1,132 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Radio } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const NAV_LINKS = [
+  { href: '/lexique',   label: 'Lexique'    },
+  { href: '/frise',     label: 'Timeline'   },
+  { href: '/faq',       label: 'FAQ'        },
+  { href: '/toolkits',  label: 'Boîtes à outils' },
+  { href: '/rapports',  label: 'Rapports'   },
+  { href: '/chatbot',   label: 'IA Signal'  },
+];
+
+export default function Navbar() {
+  const [open, setOpen]       = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname              = usePathname();
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
+
+  useEffect(() => { setOpen(false); }, [pathname]);
+
+  return (
+    <header
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        scrolled
+          ? 'glass border-b border-border/80 py-3'
+          : 'bg-transparent py-5',
+      )}
+    >
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="relative">
+            <Radio
+              size={20}
+              className="text-signal group-hover:text-signal/80 transition-colors"
+            />
+            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+          </div>
+          <span
+            className="font-display font-700 text-bright text-sm tracking-[0.15em] uppercase"
+            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+          >
+            Disclosure
+            <span className="text-signal ml-1">Hub</span>
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden lg:flex items-center gap-6">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                'text-xs font-mono font-500 tracking-widest uppercase transition-colors',
+                pathname === link.href
+                  ? 'text-signal'
+                  : 'text-muted hover:text-bright',
+              )}
+              style={{ fontFamily: 'JetBrains Mono, monospace' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Desktop CTA */}
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            href="/rapports"
+            className="px-4 py-2 rounded border border-signal/40 text-signal text-xs font-mono font-500 tracking-wider uppercase hover:bg-signal/10 hover:border-signal transition-all"
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+          >
+            Accéder aux rapports
+          </Link>
+        </div>
+
+        {/* Mobile burger */}
+        <button
+          className="lg:hidden p-2 rounded text-muted hover:text-bright transition-colors"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="lg:hidden glass border-t border-border/60 mt-0">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  'px-3 py-2.5 rounded text-sm font-mono tracking-wider uppercase transition-colors',
+                  pathname === link.href
+                    ? 'text-signal bg-signal/10'
+                    : 'text-muted hover:text-bright hover:bg-white/5',
+                )}
+                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="mt-2 pt-2 border-t border-border/50">
+              <Link
+                href="/rapports"
+                className="block px-3 py-2.5 rounded border border-signal/40 text-signal text-sm font-mono text-center hover:bg-signal/10 transition-all"
+                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              >
+                Accéder aux rapports →
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
