@@ -15,7 +15,7 @@ export interface Toolkit {
 export const TOOLKITS: Toolkit[] = [
   {
     id: 'media-communication',
-    titre: 'Kit Communication — Médias & Journalisme',
+    titre: "Kit Communication — Médias & Journalisme",
     description: "Cadre de traitement éditorial pour couvrir une annonce disclosure sans tomber dans la sensationnalisation ni le rejet. Inclut des guides de vérification des sources, des templates d'articles et un lexique validé.",
     secteur: 'media',
     taille: 'independant',
@@ -37,7 +37,7 @@ export const TOOLKITS: Toolkit[] = [
   },
   {
     id: 'finance-risque',
-    titre: 'Kit Gestion des risques — Secteur financier',
+    titre: "Kit Gestion des risques — Secteur financier",
     description: "Analyse de scénarios prospectifs et matrices de risque pour les équipes compliance et risk management. Inclut 3 scénarios d'impact marché (soft, hard, partiel disclosure) avec indicateurs de suivi.",
     secteur: 'finance',
     taille: 'eti',
@@ -48,7 +48,7 @@ export const TOOLKITS: Toolkit[] = [
   },
   {
     id: 'education-lycee',
-    titre: 'Kit Pédagogique — Lycée & Enseignement supérieur',
+    titre: "Kit Pédagogique — Lycée & Enseignement supérieur",
     description: "Séquences pédagogiques clé-en-main pour aborder les UAP, l'astrobiologie et les implications éthiques de la disclosure. Approche interdisciplinaire : SVT, philosophie, histoire-géo, SES.",
     secteur: 'education',
     taille: 'independant',
@@ -92,10 +92,10 @@ export const TOOLKIT_SECTEURS = [
 ] as const;
 
 export const TOOLKIT_TAILLES = [
-  { id: 'all',          label: 'Toutes tailles' },
-  { id: 'independant',  label: 'Indépendant / Auto'  },
+  { id: 'all',          label: 'Toutes tailles'       },
+  { id: 'independant',  label: 'Indépendant / Auto'   },
   { id: 'pme',          label: 'PME (< 250 salariés)' },
-  { id: 'eti',          label: 'ETI (250–5 000)'      },
+  { id: 'eti',          label: 'ETI (250-5 000)'       },
   { id: 'grand-groupe', label: 'Grand groupe'          },
 ] as const;
 
@@ -119,7 +119,7 @@ export interface Report {
 export const REPORTS: Report[] = [
   {
     id: 'rapport-gratuit-intro',
-    titre: 'Introduction à la Disclosure',
+    titre: "Introduction à la Disclosure",
     sous_titre: "Rapport d'introduction gratuit",
     description: "Un rapport de 15 pages pour comprendre les enjeux fondamentaux, les acteurs clés et le calendrier probable d'une annonce officielle. Offert sans inscription.",
     date: '2025-01-15',
@@ -132,8 +132,8 @@ export const REPORTS: Report[] = [
   },
   {
     id: 'rapport-geopolitique',
-    titre: 'Géopolitique de la Disclosure',
-    sous_titre: 'Qui annoncera en premier, et pourquoi ?',
+    titre: "Géopolitique de la Disclosure",
+    sous_titre: "Qui annoncera en premier, et pourquoi ?",
     description: "Analyse comparative des positions de 15 gouvernements face à la divulgation. Scénarios d'annonce par acteur (USA, Chine, Europe, ONU) avec probabilités pondérées et implications stratégiques.",
     date: '2025-02-10',
     pages: 48,
@@ -145,8 +145,8 @@ export const REPORTS: Report[] = [
   },
   {
     id: 'rapport-impact-economique',
-    titre: 'Impact Économique : Scénarios 2025–2030',
-    sous_titre: 'Secteurs gagnants et perdants post-annonce',
+    titre: "Impact Économique : Scénarios 2025-2030",
+    sous_titre: "Secteurs gagnants et perdants post-annonce",
     description: "Modélisation de l'impact économique selon 3 scénarios de disclosure (partielle, technologique, totale). Analyse sectorielle détaillée : énergie, défense, pharma, espace, tourisme.",
     date: '2025-03-05',
     pages: 64,
@@ -158,8 +158,8 @@ export const REPORTS: Report[] = [
   },
   {
     id: 'rapport-technologique',
-    titre: 'Rétro-ingénierie & Technologies NHI',
-    sous_titre: 'Ce que la science dit des capabilities observées',
+    titre: "Rétro-ingénierie & Technologies NHI",
+    sous_titre: "Ce que la science dit des capabilities observées",
     description: "Analyse physique des 5 observables UAP documentés. État de l'art des recherches en propulsion avancée, matériaux métamorphiques et manipulation du champ gravitationnel.",
     date: '2025-04-01',
     pages: 72,
