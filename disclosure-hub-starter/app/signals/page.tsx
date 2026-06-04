@@ -466,5 +466,3 @@ export default function SignalsPage() {
     </div>
   );
 }
-ENDTSX
-echo "Page created"
