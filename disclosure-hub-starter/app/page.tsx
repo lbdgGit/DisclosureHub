@@ -1,470 +1,383 @@
-'use client';
+import Link from 'next/link';
+import { ArrowRight, Radio, AlertTriangle, BookOpen, Wrench, FileText, Zap } from 'lucide-react';
+import type { Metadata } from 'next';
 
-import { useState, useMemo, useEffect } from 'react';
-import { ExternalLink, Radio, AlertTriangle } from 'lucide-react';
-import {
-  SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, STRENGTH_CONFIG,
-  getOverallSignalLevel, type SignalCategory, type SignalStrength
-} from '@/data/signals';
-
-// ─── Constants ────────────────────────────────────────────
-const DVI = 6.2;
-const ISS = 64;
-
-const PHASES = [
-  { label: 'Whistleblower\nFilings',    sub: 'Grusch 2023\nProtected disclosures',       done: true,  current: false, parallel: false },
-  { label: 'Closed-Door\nBriefings',    sub: 'Congressional Intel\nCommittee briefings', done: true,  current: false, parallel: false },
-  { label: 'Official\nInvestigation',   sub: 'AARO created\nNASA study 2022-23',          done: true,  current: false, parallel: false },
-  { label: 'Amnesty\nLegislation',      sub: 'UAPDA blocked\nFY2024-2025-2026',           done: false, current: true,  parallel: false },
-  { label: 'Mass\nDeclassification',    sub: 'PURSUE launched\nMay 2026 (parallel)',      done: false, current: false, parallel: true  },
-  { label: 'Multi-Nation\nAlignment',   sub: 'Japan, EU, Canada\ngaining momentum',       done: false, current: false, parallel: false },
-  { label: 'Official\nConfirmation',    sub: 'Executive / multi-gov\nannouncement',       done: false, current: false, parallel: false },
-];
-
-const SECTORS = [
-  { name: 'Defense — circle of trust',    risk: 10, dir: 'opportunity', scenario: 'B1/B2/C'       },
-  { name: 'Cybersecurity / EW',           risk: 8,  dir: 'opportunity', scenario: 'All'            },
-  { name: 'Gold / Safe havens',           risk: 7,  dir: 'opportunity', scenario: 'All'            },
-  { name: 'Rare earths / Materials',      risk: 6,  dir: 'opportunity', scenario: 'B2'             },
-  { name: 'Consumer staples',             risk: 5,  dir: 'watch',       scenario: 'C rotation'     },
-  { name: 'Defense — legacy exposure',    risk: 5,  dir: 'watch',       scenario: 'B2/C legal'     },
-  { name: 'Media / Information',          risk: 4,  dir: 'watch',       scenario: 'A/B1'           },
-  { name: 'Financials / Banks',           risk: 7,  dir: 'risk',        scenario: 'B1/C'           },
-  { name: 'Airlines / Travel',            risk: 8,  dir: 'risk',        scenario: 'A/B1/C'         },
-  { name: 'Energy (conventional)',        risk: 3,  dir: 'risk',        scenario: 'B2 20-30y only' },
-];
-
-const TRIGGERS = [
-  { label: 'PURSUE active',              status: 'HIT',   note: '162 files released May 2026'  },
-  { label: 'UAPDA amnesty blocked',      status: 'HIT',   note: 'FY2026 — third year'          },
-  { label: 'Presidential EO issued',     status: 'HIT',   note: 'Feb 20, 2026'                 },
-  { label: 'Financial ETF launched',     status: 'HIT',   note: 'UFOD on CBOE Feb 2026'        },
-  { label: 'Central bank warning',       status: 'HIT',   note: 'Bank of England Jan 2026'     },
-  { label: 'Amnesty bill signed',        status: 'WATCH', note: 'Not yet — key gate'           },
-  { label: 'Defense contractor CDS',     status: 'WATCH', note: 'Monitor quarterly'            },
-  { label: 'Multi-gov coordination',     status: 'WATCH', note: 'Japan signals aligning'       },
-];
-
-const ACTIONS = [
-  { role: 'All organizations',  action: 'Complete Executive Starter Pack readiness check',      toolkit: 'Starter Pack',  href: '/toolkits' },
-  { role: 'HR Directors',       action: 'Distribute Manager Action Guide to all team leads',    toolkit: 'HR Toolkit',    href: '/toolkits' },
-  { role: 'CFOs / Risk',        action: 'Run sector exposure audit and pre-define triggers',    toolkit: 'Finance Toolkit', href: '/toolkits' },
-  { role: 'Legal / Compliance', action: 'Review Reg FD / AMF obligations with outside counsel', toolkit: 'Finance Tool 5', href: '/toolkits' },
-];
-
-const VELOCITY_DATA = {
-  labels: ['2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'],
-  institutional: [2, 2, 3, 4, 4, 5, 7, 7, 7, 9],
-  media:         [3, 2, 2, 3, 2, 2, 4, 3, 3, 4],
+export const metadata: Metadata = {
+  title: 'Disclosure Hub — Le Dossier Alien',
+  description:
+    "Le portail de référence pour comprendre, anticiper et décrypter l'annonce imminente de l'existence de vie extraterrestre.",
 };
 
-// ─── Helpers ──────────────────────────────────────────────
-function formatDate(d: string): string {
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const parts = d.split('-');
-  if (parts.length === 1) return parts[0];
-  if (parts.length === 2) return `${months[parseInt(parts[1])-1]} ${parts[0]}`;
-  return `${months[parseInt(parts[1])-1]} ${parseInt(parts[2])}, ${parts[0]}`;
-}
+const PILLARS = [
+  {
+    icon: BookOpen,
+    numero: '01',
+    titre: 'Pôle Éducatif',
+    label: 'Comprendre',
+    description:
+      "Lexique, timeline historique, FAQ et IA documentaire. Tout ce qu'il faut pour naviguer dans le complexe dossier UAP sans a priori.",
+    liens: [
+      { href: '/lexique',  label: 'Lexique UAP'       },
+      { href: '/frise',    label: 'Timeline'           },
+      { href: '/faq',      label: 'FAQ'                },
+      { href: '/chatbot',  label: 'IA Signal'          },
+    ],
+    color: 'cold',
+    gradient: 'from-cold/20 to-transparent',
+  },
+  {
+    icon: Wrench,
+    numero: '02',
+    titre: 'Boîtes à Outils',
+    label: 'Se préparer',
+    description:
+      "Des kits méthodologiques téléchargeables, filtrés par secteur et taille d'organisation. Pour anticiper concrètement une annonce officielle.",
+    liens: [
+      { href: '/toolkits',              label: 'Tous les kits'     },
+      { href: '/toolkits?secteur=media', label: 'Kit Médias'       },
+      { href: '/toolkits?secteur=entreprise', label: 'Kit Entreprise' },
+    ],
+    color: 'classified',
+    gradient: 'from-classified/20 to-transparent',
+  },
+  {
+    icon: FileText,
+    numero: '03',
+    titre: 'Rapports Prospectifs',
+    label: 'Analyser',
+    description:
+      "Des analyses approfondies sur les enjeux géopolitiques, économiques et technologiques d'une disclosure. Achat à l'acte, accès immédiat.",
+    liens: [
+      { href: '/rapports',              label: 'Voir les rapports'    },
+      { href: '/rapports#gratuit',      label: 'Rapport gratuit ↓'   },
+    ],
+    color: 'signal',
+    gradient: 'from-signal/20 to-transparent',
+  },
+];
 
-const dirColors = { opportunity: '#4ADE80', watch: '#FCD34D', risk: '#F87171' };
+const STATS = [
+  { valeur: '144+', label: 'Cas UAP non résolus (DoD 2021)' },
+  { valeur: '2023', label: 'Année du témoignage Grusch sous serment' },
+  { valeur: '22M$', label: 'Budget secret AATIP 2007–2012' },
+  { valeur: '100M+', label: 'Exoplanètes dans la zone habitable' },
+];
 
-// ─── Chart component ──────────────────────────────────────
-function VelocityChart() {
-  useEffect(() => {
-    let chart: any = null;
-    import('chart.js/auto').then(({ Chart }) => {
-      const canvas = document.getElementById('vel-chart') as HTMLCanvasElement;
-      if (!canvas) return;
-      chart = new Chart(canvas, {
-        type: 'line',
-        data: {
-          labels: VELOCITY_DATA.labels,
-          datasets: [
-            {
-              label: 'Institutional action',
-              data: VELOCITY_DATA.institutional,
-              borderColor: '#38BDF8',
-              backgroundColor: 'rgba(56,189,248,0.05)',
-              fill: true, tension: 0.4, borderWidth: 2, pointRadius: 3,
-            },
-            {
-              label: 'Media coverage',
-              data: VELOCITY_DATA.media,
-              borderColor: '#4A5D78',
-              borderDash: [4, 4],
-              fill: false, tension: 0.4, borderWidth: 1.5, pointRadius: 2,
-            },
-          ],
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-          scales: {
-            y: { min: 0, max: 10, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#4A5D78', font: { size: 10 }, stepSize: 2 } },
-            x: { grid: { display: false }, ticks: { color: '#4A5D78', font: { size: 10 } } },
-          },
-        },
-      });
-    });
-    return () => { if (chart) chart.destroy(); };
-  }, []);
-
+export default function HomePage() {
   return (
-    <div style={{ position: 'relative', height: '180px' }}>
-      <canvas id="vel-chart" role="img" aria-label="Line chart comparing institutional signal velocity vs media coverage 2017-2026. Institutional signals spike sharply in 2026 while media attention remains low." />
-    </div>
-  );
-}
+    <>
+      {/* ─── HERO ─────────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-24 pb-16">
+        {/* Orbe central */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse, rgba(255,107,53,0.06) 0%, rgba(56,189,248,0.04) 40%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+          aria-hidden
+        />
 
-// ─── Main component ───────────────────────────────────────
-export default function SignalsPage() {
-  const [activeCat, setActiveCat] = useState<string>('all');
-  const [activeStr, setActiveStr] = useState<string>('all');
+        <div className="max-w-7xl mx-auto w-full relative">
+          {/* Badge alerte */}
+          <div className="animate-fade-in flex items-center gap-2.5 mb-8">
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+              <span
+                className="text-2xs font-mono font-600 text-signal tracking-[0.2em] uppercase"
+                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              >
+                Signal actif — Dossier en cours
+              </span>
+            </span>
+          </div>
 
-  const filtered = useMemo(() =>
-    SIGNALS
-      .filter(s => activeCat === 'all' || s.category === activeCat)
-      .filter(s => activeStr === 'all' || s.strength === activeStr)
-      .sort((a, b) => b.date.localeCompare(a.date)),
-    [activeCat, activeStr]
-  );
+          {/* Titre principal */}
+          <h1
+            className="animate-fade-in-up delay-100 font-display text-5xl sm:text-6xl lg:text-8xl font-800 text-bright leading-[0.95] tracking-tight mb-4"
+            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
+          >
+            Ce n&apos;est pas
+            <br />
+            <span className="text-gradient-signal">une question</span>
+            <br />
+            <span className="text-bright">de croire.</span>
+          </h1>
 
-  const counts = useMemo(() => ({
-    critical: SIGNALS.filter(s => s.strength === 'critical').length,
-    high:     SIGNALS.filter(s => s.strength === 'high').length,
-    total:    SIGNALS.length,
-  }), []);
+          {/* Sous-titre */}
+          <p
+            className="animate-fade-in-up delay-200 font-serif text-xl sm:text-2xl text-body/80 max-w-2xl mt-6 mb-10 leading-relaxed"
+            style={{ fontFamily: 'Instrument Serif, Georgia, serif', fontStyle: 'italic' }}
+          >
+            C&apos;est une question d&apos;être prêt quand les gouvernements
+            cesseront enfin de ne pas répondre.
+          </p>
 
-  const navy = '#1B2A4A';
-  const gold = '#C9A84C';
-  const light = '#F1F5F9';
-  const border = '#E2E8F0';
-  const body = '#4A5D78';
-  const muted = '#8A9BB5';
+          {/* CTAs */}
+          <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/faq"
+              className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-signal text-void font-display font-700 text-sm tracking-wide hover:bg-signal/90 transition-all glow-signal"
+              style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+            >
+              Commencer ici
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/rapports"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded border border-border hover:border-signal/40 text-bright font-display font-600 text-sm tracking-wide hover:bg-signal/5 transition-all"
+              style={{ fontFamily: 'Syne, sans-serif', fontWeight: 600 }}
+            >
+              Voir les rapports →
+            </Link>
+          </div>
 
-  return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '112px 24px 80px', fontFamily: 'DM Sans, sans-serif' }}>
+          {/* Avertissement */}
+          <div className="animate-fade-in delay-500 mt-12 flex items-start gap-3 max-w-xl">
+            <AlertTriangle size={14} className="text-muted mt-0.5 shrink-0" />
+            <p
+              className="text-xs text-muted leading-relaxed"
+              style={{ fontFamily: 'JetBrains Mono, monospace' }}
+            >
+              Ce site compile exclusivement des sources institutionnelles vérifiables
+              (Congrès américain, NASA, DoD, CNES). Aucune spéculation non étayée.
+            </p>
+          </div>
+        </div>
 
-      {/* Header */}
-      <div style={{ marginBottom: '32px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444', animation: 'pulse 2s infinite' }} />
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, letterSpacing: '0.15em' }}>
-            LBDG · INSTITUTIONAL DISCLOSURE TRACKER · LAST UPDATED MAY 2026
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
+          <div className="w-px h-8 bg-gradient-to-b from-transparent to-border" />
+          <span
+            className="text-2xs font-mono text-muted/50 tracking-widest"
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+          >
+            SCROLL
           </span>
         </div>
-        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(32px,5vw,52px)', fontWeight: 700, color: navy, marginBottom: '8px', lineHeight: 1.1 }}>
-          Disclosure Signal Board
-        </h1>
-        <p style={{ fontSize: '15px', color: body, maxWidth: '600px', lineHeight: 1.7 }}>
-          Verified institutional signals tracking the bureaucratic, legislative, and financial velocity of the disclosure process. Sources: DoD, NASA, CNES, Deloitte AG, Bank of England, CBOE, U.S. Congress, Japan Diet. No unverified speculation.
-        </p>
-      </div>
+      </section>
 
-      {/* ROW 1: DVI + ISS + Counts */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '12px', marginBottom: '14px' }}>
-
-        {/* DVI */}
-        <div style={{ background: navy, borderRadius: '8px', padding: '24px', color: 'white', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', right: '-40px', top: '-40px', width: '180px', height: '180px', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.1)', pointerEvents: 'none' }} />
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(201,168,76,0.8)', letterSpacing: '0.18em', marginBottom: '12px' }}>
-            DISCLOSURE VELOCITY INDEX (DVI)
-          </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '14px' }}>
-            <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '56px', fontWeight: 700, color: gold, lineHeight: 1 }}>{DVI}</span>
-            <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.4)' }}>/10</span>
-            <span style={{ padding: '3px 10px', borderRadius: '3px', background: 'rgba(239,68,68,0.2)', color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em' }}>ELEVATED</span>
-          </div>
-          <div style={{ position: 'relative', height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '10px' }}>
-            <div style={{ width: `${DVI * 10}%`, height: '100%', borderRadius: '4px', background: 'linear-gradient(90deg, #4ADE80, #C9A84C, #EF4444)' }} />
-            <div style={{ position: 'absolute', left: `${DVI * 10}%`, top: '-4px', width: '2px', height: '16px', background: 'white', borderRadius: '1px' }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.3)', marginBottom: '12px' }}>
-            <span>1 — Denial</span><span>4 — Leaks</span><span>7 — Pre-Disclosure</span><span>10 — Confirmed</span>
-          </div>
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
-            Active declassification (PURSUE), presidential directive, financial sector pricing (UFOD ETF). System jammed at amnesty legislation — the last institutional gate before open confirmation.
-          </p>
-        </div>
-
-        {/* ISS */}
-        <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '24px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '12px' }}>
-            SINCERITY SCORE (ISS)
-          </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '12px' }}>
-            <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '46px', fontWeight: 700, color: navy, lineHeight: 1 }}>{ISS}</span>
-            <span style={{ fontSize: '18px', color: muted }}>%</span>
-          </div>
-          <div style={{ height: '6px', background: border, borderRadius: '3px', marginBottom: '10px' }}>
-            <div style={{ width: `${ISS}%`, height: '100%', borderRadius: '3px', background: '#C9A84C' }} />
-          </div>
-          <p style={{ fontSize: '12px', color: body, lineHeight: 1.6 }}>
-            PURSUE files, sworn testimony, bipartisan hearings. Offset by pre-reviewed documents and UAPDA blocked twice. Improving but not yet audited military telemetry.
-          </p>
-        </div>
-
-        {/* Counts */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {[
-            { label: 'Critical', value: counts.critical, color: '#EF4444' },
-            { label: 'High',     value: counts.high,     color: '#F97316' },
-            { label: 'Total',    value: counts.total,    color: muted     },
-          ].map(({ label, value, color }) => (
-            <div key={label} style={{ flex: 1, background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '14px 16px' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color, letterSpacing: '0.12em', marginBottom: '4px' }}>{label.toUpperCase()} SIGNALS</div>
-              <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '34px', fontWeight: 700, color: navy, lineHeight: 1 }}>{value}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* HORIZON TIMELINE */}
-      <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '24px', marginBottom: '14px' }}>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.18em', marginBottom: '16px' }}>
-          DISCLOSURE HORIZON — INSTITUTIONAL PHASE TRACKER
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>
-          {PHASES.map((phase, i) => {
-            const bg     = phase.done ? navy : phase.current ? '#92600A' : phase.parallel ? 'rgba(83,74,183,0.15)' : 'white';
-            const textC  = phase.done ? '#B5D4F4' : phase.current ? '#FCD34D' : phase.parallel ? '#7F77DD' : muted;
-            const subC   = phase.done ? 'rgba(181,212,244,0.7)' : phase.current ? 'rgba(252,211,77,0.7)' : phase.parallel ? 'rgba(127,119,221,0.7)' : '#CBD5E1';
-            const borderC = phase.done ? navy : phase.current ? '#C9A84C' : phase.parallel ? '#534AB7' : border;
-            return (
-              <div key={i} style={{ background: bg, border: `1px solid ${borderC}`, borderRadius: '4px', padding: '10px 8px', position: 'relative' }}>
-                {phase.current && (
-                  <div style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#C9A84C', color: '#1B2A4A', fontSize: '9px', padding: '1px 6px', borderRadius: '2px', whiteSpace: 'nowrap', fontFamily: 'DM Mono, monospace', fontWeight: 700 }}>
-                    CURRENT
-                  </div>
-                )}
-                {phase.parallel && (
-                  <div style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#534AB7', color: 'white', fontSize: '9px', padding: '1px 6px', borderRadius: '2px', whiteSpace: 'nowrap', fontFamily: 'DM Mono, monospace', fontWeight: 700 }}>
-                    PARALLEL
-                  </div>
-                )}
-                <div style={{ fontSize: '11px', fontWeight: 500, color: textC, lineHeight: 1.35, whiteSpace: 'pre-line' }}>{phase.label}</div>
-                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: subC, lineHeight: 1.35, marginTop: '4px', whiteSpace: 'pre-line' }}>{phase.sub}</div>
+      {/* ─── STATS ────────────────────────────────────────────── */}
+      <section className="py-16 border-y border-border/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {STATS.map((stat) => (
+              <div key={stat.valeur} className="text-center">
+                <div
+                  className="font-display text-3xl sm:text-4xl font-800 text-gradient-signal mb-1"
+                  style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
+                >
+                  {stat.valeur}
+                </div>
+                <div
+                  className="text-xs font-mono text-muted leading-snug"
+                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                >
+                  {stat.label}
+                </div>
               </div>
-            );
-          })}
-        </div>
-        <p style={{ fontSize: '12px', color: body, marginTop: '12px', lineHeight: 1.6 }}>
-          <span style={{ padding: '2px 8px', borderRadius: '3px', background: 'rgba(201,168,76,0.15)', color: '#92600A', fontFamily: 'DM Mono, monospace', fontSize: '10px', marginRight: '8px' }}>CURRENT BOTTLENECK</span>
-          System cleared phases 1–3. Phase 4 (amnesty legislation) blocked from NDAA FY2024, FY2025, FY2026. PURSUE (phase 5) running in parallel via executive order — signaling pressure to bypass the legislative gate.
-        </p>
-      </div>
-
-      {/* ROW 3: Heatmap + Velocity */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '14px' }}>
-
-        {/* Sector Heatmap */}
-        <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '14px' }}>
-            SECTOR RISK HEATMAP — DVI {DVI}
+            ))}
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
-            {SECTORS.map(s => {
-              const c = s.dir === 'opportunity' ? '#4ADE80' : s.dir === 'watch' ? '#FCD34D' : '#F87171';
-              const bg = s.dir === 'opportunity' ? 'rgba(74,222,128,0.12)' : s.dir === 'watch' ? 'rgba(252,211,77,0.12)' : 'rgba(248,113,113,0.12)';
+        </div>
+      </section>
+
+      {/* ─── 3 PILIERS ────────────────────────────────────────── */}
+      <section className="py-24 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Header section */}
+          <div className="mb-16">
+            <span
+              className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-3"
+              style={{ fontFamily: 'JetBrains Mono, monospace' }}
+            >
+              Architecture du portail
+            </span>
+            <h2
+              className="font-display text-3xl sm:text-4xl font-700 text-bright"
+              style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+            >
+              Trois niveaux d&apos;engagement
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {PILLARS.map((pillar) => {
+              const Icon = pillar.icon;
+              const colorMap: Record<string, string> = {
+                cold:       'text-cold border-cold/30 bg-cold/10',
+                classified: 'text-classified border-classified/30 bg-classified/10',
+                signal:     'text-signal border-signal/30 bg-signal/10',
+              };
+              const iconColor: Record<string, string> = {
+                cold:       'text-cold',
+                classified: 'text-classified',
+                signal:     'text-signal',
+              };
+
               return (
-                <div key={s.name} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <div style={{ fontSize: '12px', color: navy, width: '185px', flexShrink: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.name}</div>
-                  <div style={{ flex: 1, height: '14px', background: border, borderRadius: '2px', overflow: 'hidden' }}>
-                    <div style={{ height: '100%', width: `${s.risk * 10}%`, background: c, borderRadius: '2px' }} />
+                <div
+                  key={pillar.numero}
+                  className="group relative p-7 rounded-lg border border-border hover:border-border/80 bg-surface/50 hover:bg-surface transition-all duration-300"
+                >
+                  {/* Gradient fond */}
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-32 rounded-t-lg bg-gradient-to-b ${pillar.gradient} opacity-50`}
+                    aria-hidden
+                  />
+
+                  <div className="relative">
+                    {/* Numéro + badge */}
+                    <div className="flex items-center justify-between mb-5">
+                      <span
+                        className="font-mono text-xs text-muted/50 tracking-widest"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        {pillar.numero}
+                      </span>
+                      <span
+                        className={`px-2.5 py-1 rounded-full text-2xs font-mono font-600 tracking-widest uppercase border ${colorMap[pillar.color]}`}
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        {pillar.label}
+                      </span>
+                    </div>
+
+                    {/* Icône */}
+                    <Icon
+                      size={28}
+                      className={`mb-4 ${iconColor[pillar.color]}`}
+                    />
+
+                    {/* Titre */}
+                    <h3
+                      className="font-display text-xl font-700 text-bright mb-3"
+                      style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+                    >
+                      {pillar.titre}
+                    </h3>
+
+                    {/* Description */}
+                    <p
+                      className="text-sm text-body/80 leading-relaxed mb-6"
+                      style={{ fontFamily: 'Syne, sans-serif' }}
+                    >
+                      {pillar.description}
+                    </p>
+
+                    {/* Liens */}
+                    <ul className="space-y-2 border-t border-border/50 pt-4">
+                      {pillar.liens.map((lien) => (
+                        <li key={lien.href}>
+                          <Link
+                            href={lien.href}
+                            className="flex items-center justify-between text-xs font-mono text-muted hover:text-bright group/link transition-colors"
+                            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                          >
+                            <span>{lien.label}</span>
+                            <ArrowRight
+                              size={12}
+                              className="opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all"
+                            />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: c === '#4ADE80' ? '#166534' : c === '#FCD34D' ? '#92600A' : '#991B1B', width: '80px', flexShrink: 0 }}>{s.scenario}</div>
                 </div>
               );
             })}
           </div>
-          <div style={{ display: 'flex', gap: '12px', marginTop: '12px', flexWrap: 'wrap' }}>
-            {[{ label: 'Opportunity', c: '#4ADE80' }, { label: 'Watch', c: '#FCD34D' }, { label: 'High risk', c: '#F87171' }].map(({ label, c }) => (
-              <span key={label} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
-                <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: c }} />
-                {label}
-              </span>
-            ))}
-          </div>
         </div>
+      </section>
 
-        {/* Velocity Chart */}
-        <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '14px' }}>
-            SIGNAL VELOCITY — INSTITUTIONAL VS MEDIA ATTENTION
-          </div>
-          <VelocityChart />
-          <div style={{ display: 'flex', gap: '16px', marginTop: '10px', flexWrap: 'wrap' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
-              <span style={{ width: '16px', height: '2px', background: '#38BDF8', display: 'inline-block' }} />
-              Institutional action
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
-              <span style={{ width: '16px', height: '0', borderTop: '2px dashed #4A5D78', display: 'inline-block' }} />
-              Media coverage
-            </span>
-          </div>
-          <p style={{ fontSize: '12px', color: body, marginTop: '10px', lineHeight: 1.6 }}>
-            The gap between institutional action and public awareness is the preparation window. When lines converge, it will be too late to prepare.
-          </p>
-        </div>
-      </div>
-
-      {/* TRIGGER ALERT BOX */}
-      <div style={{ borderLeft: '3px solid #EF4444', borderTop: '1px solid rgba(239,68,68,0.25)', borderRight: '1px solid rgba(239,68,68,0.25)', borderBottom: '1px solid rgba(239,68,68,0.25)', borderRadius: '0 8px 8px 0', padding: '20px 24px', marginBottom: '16px', background: 'rgba(239,68,68,0.03)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444' }} />
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#EF4444', letterSpacing: '0.18em' }}>SYSTEM ALERT — TRIGGER STATUS</span>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
-          {TRIGGERS.map(t => {
-            const isHit = t.status === 'HIT';
-            const c = isHit ? '#EF4444' : '#F97316';
-            return (
-              <div key={t.label} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', padding: '10px 12px', background: isHit ? 'rgba(239,68,68,0.04)' : 'rgba(249,115,22,0.04)', borderRadius: '6px', border: `0.5px solid ${c}30` }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: c, marginTop: '4px', flexShrink: 0 }} />
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '13px', fontWeight: 500, color: navy }}>{t.label}</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted }}>{t.note}</div>
-                </div>
-                <span style={{ padding: '2px 8px', borderRadius: '3px', background: `${c}18`, color: c, fontFamily: 'DM Mono, monospace', fontSize: '10px', fontWeight: 600, letterSpacing: '0.08em', flexShrink: 0 }}>
-                  {t.status}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-        <div style={{ borderTop: `1px solid ${border}`, paddingTop: '14px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em', marginBottom: '10px' }}>
-            RECOMMENDED ACTIONS AT CURRENT DVI {DVI}
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-            {ACTIONS.map(a => (
-              <a key={a.role} href={a.href} style={{ padding: '12px 14px', background: 'white', borderRadius: '6px', border: `1px solid ${border}`, textDecoration: 'none', display: 'block' }}>
-                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#C9A84C', letterSpacing: '0.08em', marginBottom: '4px' }}>
-                  {a.role} · {a.toolkit}
-                </div>
-                <div style={{ fontSize: '13px', color: navy, lineHeight: 1.4 }}>{a.action} →</div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* FILTERS */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px', alignItems: 'center' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>CATEGORY</span>
-          {SIGNAL_CATEGORIES.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCat(cat.id)}
-              style={{
-                padding: '4px 10px', borderRadius: '4px', cursor: 'pointer',
-                fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.05em',
-                border: `1px solid ${activeCat === cat.id ? '#1B2A4A' : border}`,
-                background: activeCat === cat.id ? '#1B2A4A' : 'white',
-                color: activeCat === cat.id ? 'white' : muted,
-                transition: 'all 0.15s',
-              }}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>STRENGTH</span>
-          {(['all', 'critical', 'high', 'medium', 'low'] as const).map(s => {
-            const c = s === 'all' ? navy : STRENGTH_CONFIG[s as SignalStrength]?.color || navy;
-            return (
-              <button
-                key={s}
-                onClick={() => setActiveStr(s)}
-                style={{
-                  padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', textTransform: 'uppercase',
-                  fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.06em',
-                  border: `1px solid ${activeStr === s ? c : border}`,
-                  background: activeStr === s ? `${c}18` : 'white',
-                  color: activeStr === s ? c : muted,
-                  transition: 'all 0.15s',
-                }}
-              >
-                {s}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, marginBottom: '14px', letterSpacing: '0.1em' }}>
-        {filtered.length} SIGNAL{filtered.length !== 1 ? 'S' : ''} — MOST RECENT FIRST
-      </div>
-
-      {/* SIGNAL CARDS */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {filtered.map(signal => {
-          const catCfg = CATEGORY_CONFIG[signal.category];
-          const strCfg = STRENGTH_CONFIG[signal.strength];
-          return (
+      {/* ─── CTA CHATBOT ──────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative p-8 sm:p-12 rounded-xl border border-cold/20 bg-surface/50 overflow-hidden">
+            {/* Fond atmosphérique */}
             <div
-              key={signal.id}
+              className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'white', borderRadius: '0 6px 6px 0',
-                border: `1px solid ${border}`, borderLeft: `3px solid ${strCfg.dot}`,
-                padding: '16px 20px',
+                background: 'radial-gradient(ellipse at 30% 50%, rgba(56,189,248,0.06) 0%, transparent 60%)',
               }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                  <span style={{ padding: '2px 8px', borderRadius: '3px', fontSize: '10px', fontFamily: 'DM Mono, monospace', fontWeight: 600, letterSpacing: '0.08em', color: strCfg.color, background: `${strCfg.dot}18`, border: `0.5px solid ${strCfg.dot}40`, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: strCfg.dot }} />
-                    {strCfg.label}
-                  </span>
-                  <span style={{ padding: '2px 8px', borderRadius: '3px', fontSize: '10px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.08em', textTransform: 'uppercase', color: catCfg.color, background: catCfg.bg, border: `0.5px solid ${catCfg.border}` }}>
-                    {signal.category}
-                  </span>
-                  {signal.isNew && (
-                    <span style={{ padding: '2px 8px', borderRadius: '3px', fontSize: '10px', fontFamily: 'DM Mono, monospace', fontWeight: 700, color: 'white', background: '#EF4444', letterSpacing: '0.08em' }}>NEW</span>
-                  )}
-                  <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted }}>{signal.country}</span>
-                </div>
-                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted }}>{formatDate(signal.date)}</span>
-              </div>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '4px' }}>
-                {signal.institution}
-              </div>
-              <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '17px', fontWeight: 600, color: navy, marginBottom: '6px', lineHeight: 1.3 }}>
-                {signal.title}
-              </h3>
-              <p style={{ fontSize: '13px', color: body, lineHeight: 1.7, marginBottom: signal.sourceUrl ? '10px' : '0' }}>
-                {signal.description}
-              </p>
-              {(signal.sourceUrl || signal.sourceLabel) && (
-                signal.sourceUrl ? (
-                  <a href={signal.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#C9A84C', textDecoration: 'none' }}>
-                    <ExternalLink size={10} />
-                    {signal.sourceLabel}
-                  </a>
-                ) : (
-                  <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted }}>{signal.sourceLabel}</span>
-                )
-              )}
-            </div>
-          );
-        })}
-      </div>
+              aria-hidden
+            />
 
-      {/* Disclaimer */}
-      <div style={{ marginTop: '48px', padding: '16px 20px', background: '#F8F9FA', borderRadius: '6px', border: `1px solid ${border}` }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-          <AlertTriangle size={13} style={{ color: muted, marginTop: '2px', flexShrink: 0 }} />
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, lineHeight: 1.6 }}>
-            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Sector heatmap reflects inference from documented market precedents. This page does not constitute financial, legal, or investment advice.
-          </p>
+            <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-8">
+              <div className="shrink-0">
+                <div className="w-16 h-16 rounded-full border border-cold/30 bg-cold/10 flex items-center justify-center">
+                  <Zap size={28} className="text-cold" />
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <Radio size={12} className="text-cold animate-pulse" />
+                  <span
+                    className="text-2xs font-mono text-cold tracking-widest uppercase"
+                    style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                  >
+                    IA Documentaire — Signal
+                  </span>
+                </div>
+                <h2
+                  className="font-display text-2xl sm:text-3xl font-700 text-bright mb-2"
+                  style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+                >
+                  Des questions ? Interrogez Signal.
+                </h2>
+                <p
+                  className="text-sm text-body/80 mb-6"
+                  style={{ fontFamily: 'Syne, sans-serif' }}
+                >
+                  Notre assistant documentaire répond sur les concepts, personnalités, événements et enjeux du dossier UAP. Basé sur des sources institutionnelles vérifiées — sans hallucinations.
+                </p>
+                <Link
+                  href="/chatbot"
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 rounded border border-cold/40 text-cold font-mono font-500 text-sm hover:bg-cold/10 hover:border-cold transition-all"
+                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                >
+                  Ouvrir le terminal
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* ─── CTA RAPPORT GRATUIT ──────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 border-t border-border/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <span
+            className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-4"
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+          >
+            Rapport d&apos;introduction
+          </span>
+          <h2
+            className="font-display text-3xl sm:text-4xl font-700 text-bright mb-4"
+            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+          >
+            Téléchargez le rapport gratuit
+          </h2>
+          <p
+            className="text-body/80 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
+            15 pages pour comprendre les enjeux fondamentaux, les acteurs clés et le calendrier probable d&apos;une annonce officielle. Sans inscription.
+          </p>
+          <Link
+            href="/rapports#gratuit"
+            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded bg-signal/10 border border-signal/40 text-signal font-mono font-500 text-sm hover:bg-signal/20 hover:border-signal transition-all"
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+          >
+            Télécharger gratuitement
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
-ENDTSX
-echo "Page created"
