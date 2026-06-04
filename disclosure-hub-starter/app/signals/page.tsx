@@ -180,7 +180,7 @@ export default function SignalsPage() {
       </div>
 
       {/* ROW 1: DVI + ISS + Counts */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '12px', marginBottom: '14px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px', marginBottom: '14px' }}>
 
         {/* DVI */}
         <div style={{ background: navy, borderRadius: '8px', padding: '24px', color: 'white', position: 'relative', overflow: 'hidden' }}>
@@ -223,7 +223,7 @@ export default function SignalsPage() {
         </div>
 
         {/* Counts */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '10px' }}>
           {[
             { label: 'Critical', value: counts.critical, color: '#EF4444' },
             { label: 'High',     value: counts.high,     color: '#F97316' },
@@ -242,7 +242,8 @@ export default function SignalsPage() {
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.18em', marginBottom: '16px' }}>
           DISCLOSURE HORIZON — INSTITUTIONAL PHASE TRACKER
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>
+        <div style={{ overflowX: 'auto', marginLeft: '-4px', marginRight: '-4px', paddingLeft: '4px', paddingRight: '4px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(120px, 1fr))', gap: '4px', minWidth: '700px' }}>
           {PHASES.map((phase, i) => {
             const bg     = phase.done ? navy : phase.current ? '#92600A' : phase.parallel ? 'rgba(83,74,183,0.15)' : 'white';
             const textC  = phase.done ? '#B5D4F4' : phase.current ? '#FCD34D' : phase.parallel ? '#7F77DD' : muted;
@@ -266,6 +267,7 @@ export default function SignalsPage() {
             );
           })}
         </div>
+        </div>
         <p style={{ fontSize: '12px', color: body, marginTop: '12px', lineHeight: 1.6 }}>
           <span style={{ padding: '2px 8px', borderRadius: '3px', background: 'rgba(201,168,76,0.15)', color: '#92600A', fontFamily: 'DM Mono, monospace', fontSize: '10px', marginRight: '8px' }}>CURRENT BOTTLENECK</span>
           System cleared phases 1–3. Phase 4 (amnesty legislation) blocked from NDAA FY2024, FY2025, FY2026. PURSUE (phase 5) running in parallel via executive order — signaling pressure to bypass the legislative gate.
@@ -273,7 +275,7 @@ export default function SignalsPage() {
       </div>
 
       {/* ROW 3: Heatmap + Velocity */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '14px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px', marginBottom: '14px' }}>
 
         {/* Sector Heatmap */}
         <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
@@ -333,7 +335,7 @@ export default function SignalsPage() {
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444' }} />
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#EF4444', letterSpacing: '0.18em' }}>SYSTEM ALERT — TRIGGER STATUS</span>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '8px', marginBottom: '16px' }}>
           {TRIGGERS.map(t => {
             const isHit = t.status === 'HIT';
             const c = isHit ? '#EF4444' : '#F97316';
@@ -355,7 +357,7 @@ export default function SignalsPage() {
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em', marginBottom: '10px' }}>
             RECOMMENDED ACTIONS AT CURRENT DVI {DVI}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
             {ACTIONS.map(a => (
               <a key={a.role} href={a.href} style={{ padding: '12px 14px', background: 'white', borderRadius: '6px', border: `1px solid ${border}`, textDecoration: 'none', display: 'block' }}>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#C9A84C', letterSpacing: '0.08em', marginBottom: '4px' }}>
