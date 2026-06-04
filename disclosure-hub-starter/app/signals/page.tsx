@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { ExternalLink, Radio, AlertTriangle } from 'lucide-react';
 import {
   SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, STRENGTH_CONFIG,
@@ -71,48 +71,65 @@ const dirColors = { opportunity: '#4ADE80', watch: '#FCD34D', risk: '#F87171' };
 
 // ─── Chart component ──────────────────────────────────────
 function VelocityChart() {
-  useEffect(() => {
-    let chart: any = null;
-    import('chart.js/auto').then(({ Chart }) => {
-      const canvas = document.getElementById('vel-chart') as HTMLCanvasElement;
-      if (!canvas) return;
-      chart = new Chart(canvas, {
-        type: 'line',
-        data: {
-          labels: VELOCITY_DATA.labels,
-          datasets: [
-            {
-              label: 'Institutional action',
-              data: VELOCITY_DATA.institutional,
-              borderColor: '#38BDF8',
-              backgroundColor: 'rgba(56,189,248,0.05)',
-              fill: true, tension: 0.4, borderWidth: 2, pointRadius: 3,
-            },
-            {
-              label: 'Media coverage',
-              data: VELOCITY_DATA.media,
-              borderColor: '#4A5D78',
-              borderDash: [4, 4],
-              fill: false, tension: 0.4, borderWidth: 1.5, pointRadius: 2,
-            },
-          ],
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-          scales: {
-            y: { min: 0, max: 10, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#4A5D78', font: { size: 10 }, stepSize: 2 } },
-            x: { grid: { display: false }, ticks: { color: '#4A5D78', font: { size: 10 } } },
-          },
-        },
-      });
-    });
-    return () => { if (chart) chart.destroy(); };
-  }, []);
+  const inst  = VELOCITY_DATA.institutional;
+  const media = VELOCITY_DATA.media;
+  const labels = VELOCITY_DATA.labels;
+  const max = 10;
+  const W = 560, H = 160, padL = 24, padR = 8, padT = 8, padB = 24;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+
+  const px = (i: number) => padL + (i / (labels.length - 1)) * chartW;
+  const py = (v: number) => padT + chartH - (v / max) * chartH;
+
+  const instPath = inst.map((v, i) => `${i === 0 ? 'M' : 'L'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
+  const mediaPath = media.map((v, i) => `${i === 0 ? 'M' : 'L'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
+  const areaPath = `${instPath} L${px(inst.length-1).toFixed(1)},${py(0).toFixed(1)} L${px(0).toFixed(1)},${py(0).toFixed(1)} Z`;
 
   return (
-    <div style={{ position: 'relative', height: '180px' }}>
-      <canvas id="vel-chart" role="img" aria-label="Line chart comparing institutional signal velocity vs media coverage 2017-2026. Institutional signals spike sharply in 2026 while media attention remains low." />
+    <div style={{ position: 'relative', height: '180px', width: '100%' }}>
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none"
+           style={{ width: '100%', height: '100%' }}
+           role="img" aria-label="Institutional signals accelerating sharply in 2026 while media coverage remains low">
+        <defs>
+          <linearGradient id="instGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.15"/>
+            <stop offset="100%" stopColor="#38BDF8" stopOpacity="0"/>
+          </linearGradient>
+        </defs>
+        {/* Grid lines */}
+        {[2,4,6,8,10].map(v => (
+          <line key={v} x1={padL} x2={W-padR} y1={py(v)} y2={py(v)}
+                stroke="#E2E8F0" strokeWidth="0.5" />
+        ))}
+        {/* Y axis labels */}
+        {[0,5,10].map(v => (
+          <text key={v} x={padL - 4} y={py(v) + 3} textAnchor="end"
+                fontSize="8" fill="#8A9BB5">{v}</text>
+        ))}
+        {/* X axis labels */}
+        {labels.filter((_, i) => i % 2 === 0).map((l, idx) => {
+          const i = idx * 2;
+          return <text key={l} x={px(i)} y={H - 6} textAnchor="middle"
+                       fontSize="8" fill="#8A9BB5">{l}</text>;
+        })}
+        {/* Area fill */}
+        <path d={areaPath} fill="url(#instGrad)" />
+        {/* Institutional line */}
+        <path d={instPath} fill="none" stroke="#38BDF8" strokeWidth="2"
+              strokeLinecap="round" strokeLinejoin="round" />
+        {/* Media dashed line */}
+        <path d={mediaPath} fill="none" stroke="#4A5D78" strokeWidth="1.5"
+              strokeDasharray="4 3" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Data points - institutional */}
+        {inst.map((v, i) => (
+          <circle key={i} cx={px(i)} cy={py(v)} r="2.5" fill="#38BDF8" />
+        ))}
+        {/* Data points - media */}
+        {media.map((v, i) => (
+          <circle key={i} cx={px(i)} cy={py(v)} r="2" fill="#4A5D78" />
+        ))}
+      </svg>
     </div>
   );
 }
