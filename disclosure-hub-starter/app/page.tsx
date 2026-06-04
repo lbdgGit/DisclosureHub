@@ -1,179 +1,138 @@
 import Link from 'next/link';
-import { ArrowRight, Radio, AlertTriangle, BookOpen, Wrench, FileText, Zap } from 'lucide-react';
+import { ArrowRight, Radio, AlertTriangle, Wrench, FileText, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Disclosure Hub — Le Dossier Alien',
+  title: 'LBDG — Leadership Bureau for Disclosure Guidance',
   description:
-    "Le portail de référence pour comprendre, anticiper et décrypter l'annonce imminente de l'existence de vie extraterrestre.",
+    'Operational toolkits and institutional signal tracking for organizations preparing for a paradigm-shifting government announcement.',
 };
+
+const STATS = [
+  { value: '2,000+', label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
+  { value: '34',     label: 'Senior officials on record — The Age of Disclosure (Amazon Prime)' },
+  { value: '7.0',    label: 'Current DVI — Disclosure Velocity Index (LBDG, May 2026)' },
+  { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
+];
 
 const PILLARS = [
   {
-    icon: BookOpen,
-    numero: '01',
-    titre: 'Pôle Éducatif',
-    label: 'Comprendre',
-    description:
-      "Lexique, timeline historique, FAQ et IA documentaire. Tout ce qu'il faut pour naviguer dans le complexe dossier UAP sans a priori.",
-    liens: [
-      { href: '/lexique',  label: 'Lexique UAP'       },
-      { href: '/frise',    label: 'Timeline'           },
-      { href: '/faq',      label: 'FAQ'                },
-      { href: '/chatbot',  label: 'IA Signal'          },
+    icon: TrendingUp,
+    number: '01',
+    title: 'Signal Monitor',
+    badge: 'Live',
+    description: 'Real-time tracking of institutional disclosure signals — government actions, financial instruments, legislative developments. DVI 7.0 — pre-disclosure threshold crossed.',
+    links: [
+      { href: '/signals', label: 'Open Signal Board' },
+      { href: '/frise',   label: 'Historical Timeline' },
     ],
-    color: 'cold',
-    gradient: 'from-cold/20 to-transparent',
+    color: 'signal',
   },
   {
     icon: Wrench,
-    numero: '02',
-    titre: 'Boîtes à Outils',
-    label: 'Se préparer',
-    description:
-      "Des kits méthodologiques téléchargeables, filtrés par secteur et taille d'organisation. Pour anticiper concrètement une annonce officielle.",
-    liens: [
-      { href: '/toolkits',              label: 'Tous les kits'     },
-      { href: '/toolkits?secteur=media', label: 'Kit Médias'       },
-      { href: '/toolkits?secteur=entreprise', label: 'Kit Entreprise' },
+    number: '02',
+    title: 'Operational Toolkits',
+    badge: 'Action',
+    description: 'Five-tool kits for HR, Finance, Communications, and Leadership. Scorecards, checklists, decision trees, and templates — designed to be used, not read.',
+    links: [
+      { href: '/toolkits',         label: 'All Toolkits'          },
+      { href: '/toolkits#hr',      label: 'HR Toolkit'            },
+      { href: '/toolkits#finance', label: 'Finance Toolkit'       },
+      { href: '/toolkits#comms',   label: 'Communications Toolkit'},
     ],
     color: 'classified',
-    gradient: 'from-classified/20 to-transparent',
   },
   {
     icon: FileText,
-    numero: '03',
-    titre: 'Rapports Prospectifs',
-    label: 'Analyser',
-    description:
-      "Des analyses approfondies sur les enjeux géopolitiques, économiques et technologiques d'une disclosure. Achat à l'acte, accès immédiat.",
-    liens: [
-      { href: '/rapports',              label: 'Voir les rapports'    },
-      { href: '/rapports#gratuit',      label: 'Rapport gratuit ↓'   },
+    number: '03',
+    title: 'Reports & Analysis',
+    badge: 'Insight',
+    description: 'In-depth analytical reports on the geopolitical, financial, and organizational implications of disclosure. Nuclear technology analogy. Scenario A through C frameworks.',
+    links: [
+      { href: '/rapports',      label: 'View Reports'      },
+      { href: '/rapports#free', label: 'Free Intro Report' },
     ],
-    color: 'signal',
-    gradient: 'from-signal/20 to-transparent',
+    color: 'cold',
   },
 ];
 
-const STATS = [
-  { valeur: '144+', label: 'Cas UAP non résolus (DoD 2021)' },
-  { valeur: '2023', label: 'Année du témoignage Grusch sous serment' },
-  { valeur: '22M$', label: 'Budget secret AATIP 2007–2012' },
-  { valeur: '100M+', label: 'Exoplanètes dans la zone habitable' },
+const SIGNALS_PREVIEW = [
+  { date: 'May 2026',  text: 'Pentagon PURSUE: 162 classified UAP files released at war.gov/ufo. Secretary Hegseth confirms 2,000+ AARO cases.', strength: 'critical' },
+  { date: 'Mar 2026',  text: 'Marco Rubio, U.S. Secretary of State: "We\'ve had repeated instances of something operating over restricted nuclear facilities — and it\'s not ours."', strength: 'critical' },
+  { date: 'Feb 2026',  text: 'UFOD ETF launches on CBOE. Bank of England analyst urges central bank preparedness. Trump executive order issued.', strength: 'critical' },
+  { date: 'Nov 2025',  text: 'Jay Stratton, former UAP Task Force Director: "I have seen, with my own eyes, non-human craft and non-human beings." (The Age of Disclosure, Amazon Prime)', strength: 'critical' },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-24 pb-16">
-        {/* Orbe central */}
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 pb-16">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse, rgba(255,107,53,0.06) 0%, rgba(56,189,248,0.04) 40%, transparent 70%)',
-            filter: 'blur(40px)',
-          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] sm:w-[600px] sm:h-[600px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse, rgba(201,168,76,0.05) 0%, rgba(27,42,74,0.04) 40%, transparent 70%)', filter: 'blur(40px)' }}
           aria-hidden
         />
+        <div className="max-w-5xl mx-auto w-full relative">
 
-        <div className="max-w-7xl mx-auto w-full relative">
-          {/* Badge alerte */}
-          <div className="animate-fade-in flex items-center gap-2.5 mb-8">
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/10">
+          {/* Badge */}
+          <div className="flex items-center gap-2.5 mb-6">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/10">
               <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-              <span
-                className="text-2xs font-mono font-600 text-signal tracking-[0.2em] uppercase"
-                style={{ fontFamily: 'JetBrains Mono, monospace' }}
-              >
-                Signal actif — Dossier en cours
+              <span className="text-2xs font-mono font-600 text-signal tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                Signal active — DVI 7.0 — Pre-Disclosure
               </span>
             </span>
           </div>
 
-          {/* Titre principal */}
-          <h1
-            className="animate-fade-in-up delay-100 font-display text-5xl sm:text-6xl lg:text-8xl font-800 text-bright leading-[0.95] tracking-tight mb-4"
-            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
-          >
-            Ce n&apos;est pas
+          {/* Headline */}
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-800 leading-[1.05] tracking-tight mb-5" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}>
+            <span className="text-bright">It is not a question</span>
             <br />
-            <span className="text-gradient-signal">une question</span>
+            <span className="text-bright">of belief.</span>
             <br />
-            <span className="text-bright">de croire.</span>
+            <span className="text-gradient-signal">It is a question</span>
+            <br />
+            <span className="text-gradient-signal">of being ready.</span>
           </h1>
 
-          {/* Sous-titre */}
-          <p
-            className="animate-fade-in-up delay-200 font-serif text-xl sm:text-2xl text-body/80 max-w-2xl mt-6 mb-10 leading-relaxed"
-            style={{ fontFamily: 'Instrument Serif, Georgia, serif', fontStyle: 'italic' }}
-          >
-            C&apos;est une question d&apos;être prêt quand les gouvernements
-            cesseront enfin de ne pas répondre.
+          {/* Sub */}
+          <p className="text-base sm:text-xl text-body/80 max-w-2xl mb-8 leading-relaxed" style={{ fontFamily: 'Syne, sans-serif', fontStyle: 'italic' }}>
+            The sitting U.S. Secretary of State is on record. The former UAP Task Force Director has personally seen non-human craft. 34 senior officials are on Amazon Prime. The Pentagon is releasing classified files. Your organization is not prepared.
           </p>
 
           {/* CTAs */}
-          <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/faq"
-              className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-signal text-void font-display font-700 text-sm tracking-wide hover:bg-signal/90 transition-all glow-signal"
-              style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
-            >
-              Commencer ici
+          <div className="flex flex-col sm:flex-row gap-3 mb-10">
+            <Link href="/toolkits" className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-signal text-void font-display font-700 text-sm tracking-wide hover:bg-signal/90 transition-all glow-signal" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+              Get the Toolkits
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link
-              href="/rapports"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded border border-border hover:border-signal/40 text-bright font-display font-600 text-sm tracking-wide hover:bg-signal/5 transition-all"
-              style={{ fontFamily: 'Syne, sans-serif', fontWeight: 600 }}
-            >
-              Voir les rapports →
+            <Link href="/signals" className="flex items-center justify-center gap-2 px-6 py-3.5 rounded border border-border hover:border-signal/40 text-bright font-display font-600 text-sm tracking-wide hover:bg-signal/5 transition-all" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 600 }}>
+              <Radio size={14} className="text-signal" />
+              Signal Board →
             </Link>
           </div>
 
-          {/* Avertissement */}
-          <div className="animate-fade-in delay-500 mt-12 flex items-start gap-3 max-w-xl">
-            <AlertTriangle size={14} className="text-muted mt-0.5 shrink-0" />
-            <p
-              className="text-xs text-muted leading-relaxed"
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}
-            >
-              Ce site compile exclusivement des sources institutionnelles vérifiables
-              (Congrès américain, NASA, DoD, CNES). Aucune spéculation non étayée.
+          {/* Disclaimer */}
+          <div className="flex items-start gap-3 max-w-xl">
+            <AlertTriangle size={13} className="text-muted mt-0.5 shrink-0" />
+            <p className="text-xs text-muted leading-relaxed" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              LBDG compiles exclusively verifiable institutional sources: U.S. Congress, DoD/AARO, NASA, CNES/GEIPAN, Deloitte AG, Bank of England, CBOE. No unverified speculation.
             </p>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
-          <div className="w-px h-8 bg-gradient-to-b from-transparent to-border" />
-          <span
-            className="text-2xs font-mono text-muted/50 tracking-widest"
-            style={{ fontFamily: 'JetBrains Mono, monospace' }}
-          >
-            SCROLL
-          </span>
-        </div>
       </section>
 
-      {/* ─── STATS ────────────────────────────────────────────── */}
-      <section className="py-16 border-y border-border/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* STATS */}
+      <section className="py-12 sm:py-16 border-y border-border/40">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {STATS.map((stat) => (
-              <div key={stat.valeur} className="text-center">
-                <div
-                  className="font-display text-3xl sm:text-4xl font-800 text-gradient-signal mb-1"
-                  style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
-                >
-                  {stat.valeur}
+              <div key={stat.value} className="text-center">
+                <div className="font-display text-2xl sm:text-4xl font-800 text-gradient-signal mb-1" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}>
+                  {stat.value}
                 </div>
-                <div
-                  className="text-xs font-mono text-muted leading-snug"
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                >
+                <div className="text-xs font-mono text-muted leading-snug" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
                   {stat.label}
                 </div>
               </div>
@@ -182,108 +141,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 3 PILIERS ────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Header section */}
-          <div className="mb-16">
-            <span
-              className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-3"
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}
-            >
-              Architecture du portail
-            </span>
-            <h2
-              className="font-display text-3xl sm:text-4xl font-700 text-bright"
-              style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
-            >
-              Trois niveaux d&apos;engagement
+      {/* SIGNAL PREVIEW */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+                <span className="text-2xs font-mono text-signal tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Latest Critical Signals</span>
+              </div>
+              <h2 className="font-display text-xl sm:text-3xl font-700 text-bright" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+                The disclosure process is already underway.
+              </h2>
+            </div>
+            <Link href="/signals" className="text-xs font-mono text-signal hover:text-signal/80 transition-colors shrink-0" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              View all signals →
+            </Link>
+          </div>
+          <div className="flex flex-col gap-3">
+            {SIGNALS_PREVIEW.map((s, i) => (
+              <div key={i} className="flex gap-3 sm:gap-4 p-4 rounded border border-border/60 bg-surface/30 hover:bg-surface/60 transition-colors" style={{ borderLeft: '3px solid #EF4444' }}>
+                <span className="font-mono text-xs text-muted whitespace-nowrap pt-0.5 shrink-0" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{s.date}</span>
+                <p className="text-sm text-body/90 leading-relaxed" style={{ fontFamily: 'Syne, sans-serif' }}>{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3 PILLARS */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-10 sm:mb-14">
+            <span className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-3" style={{ fontFamily: 'JetBrains Mono, monospace' }}>What LBDG provides</span>
+            <h2 className="font-display text-2xl sm:text-4xl font-700 text-bright" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+              Three ways to prepare your organization
             </h2>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {PILLARS.map((pillar) => {
               const Icon = pillar.icon;
               const colorMap: Record<string, string> = {
-                cold:       'text-cold border-cold/30 bg-cold/10',
-                classified: 'text-classified border-classified/30 bg-classified/10',
                 signal:     'text-signal border-signal/30 bg-signal/10',
+                classified: 'text-classified border-classified/30 bg-classified/10',
+                cold:       'text-cold border-cold/30 bg-cold/10',
               };
               const iconColor: Record<string, string> = {
-                cold:       'text-cold',
-                classified: 'text-classified',
-                signal:     'text-signal',
+                signal: 'text-signal', classified: 'text-classified', cold: 'text-cold',
               };
-
               return (
-                <div
-                  key={pillar.numero}
-                  className="group relative p-7 rounded-lg border border-border hover:border-border/80 bg-surface/50 hover:bg-surface transition-all duration-300"
-                >
-                  {/* Gradient fond */}
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-32 rounded-t-lg bg-gradient-to-b ${pillar.gradient} opacity-50`}
-                    aria-hidden
-                  />
-
-                  <div className="relative">
-                    {/* Numéro + badge */}
-                    <div className="flex items-center justify-between mb-5">
-                      <span
-                        className="font-mono text-xs text-muted/50 tracking-widest"
-                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                      >
-                        {pillar.numero}
-                      </span>
-                      <span
-                        className={`px-2.5 py-1 rounded-full text-2xs font-mono font-600 tracking-widest uppercase border ${colorMap[pillar.color]}`}
-                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                      >
-                        {pillar.label}
-                      </span>
-                    </div>
-
-                    {/* Icône */}
-                    <Icon
-                      size={28}
-                      className={`mb-4 ${iconColor[pillar.color]}`}
-                    />
-
-                    {/* Titre */}
-                    <h3
-                      className="font-display text-xl font-700 text-bright mb-3"
-                      style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
-                    >
-                      {pillar.titre}
-                    </h3>
-
-                    {/* Description */}
-                    <p
-                      className="text-sm text-body/80 leading-relaxed mb-6"
-                      style={{ fontFamily: 'Syne, sans-serif' }}
-                    >
-                      {pillar.description}
-                    </p>
-
-                    {/* Liens */}
-                    <ul className="space-y-2 border-t border-border/50 pt-4">
-                      {pillar.liens.map((lien) => (
-                        <li key={lien.href}>
-                          <Link
-                            href={lien.href}
-                            className="flex items-center justify-between text-xs font-mono text-muted hover:text-bright group/link transition-colors"
-                            style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                          >
-                            <span>{lien.label}</span>
-                            <ArrowRight
-                              size={12}
-                              className="opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all"
-                            />
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                <div key={pillar.number} className="group p-6 rounded-lg border border-border hover:border-border/80 bg-surface/50 hover:bg-surface transition-all duration-300">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="font-mono text-xs text-muted/50 tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{pillar.number}</span>
+                    <span className={`px-2.5 py-1 rounded-full text-2xs font-mono font-600 tracking-widest uppercase border ${colorMap[pillar.color]}`} style={{ fontFamily: 'JetBrains Mono, monospace' }}>{pillar.badge}</span>
                   </div>
+                  <Icon size={26} className={`mb-4 ${iconColor[pillar.color]}`} />
+                  <h3 className="font-display text-lg font-700 text-bright mb-3" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>{pillar.title}</h3>
+                  <p className="text-sm text-body/80 leading-relaxed mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>{pillar.description}</p>
+                  <ul className="space-y-2 border-t border-border/50 pt-4">
+                    {pillar.links.map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href} className="flex items-center justify-between text-xs font-mono text-muted hover:text-bright group/link transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                          <span>{link.label}</span>
+                          <ArrowRight size={12} className="opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               );
             })}
@@ -291,91 +215,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── CTA CHATBOT ──────────────────────────────────────── */}
-      <section className="py-20 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative p-8 sm:p-12 rounded-xl border border-cold/20 bg-surface/50 overflow-hidden">
-            {/* Fond atmosphérique */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'radial-gradient(ellipse at 30% 50%, rgba(56,189,248,0.06) 0%, transparent 60%)',
-              }}
-              aria-hidden
-            />
-
-            <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-8">
-              <div className="shrink-0">
-                <div className="w-16 h-16 rounded-full border border-cold/30 bg-cold/10 flex items-center justify-center">
-                  <Zap size={28} className="text-cold" />
-                </div>
-              </div>
-
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <Radio size={12} className="text-cold animate-pulse" />
-                  <span
-                    className="text-2xs font-mono text-cold tracking-widest uppercase"
-                    style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                  >
-                    IA Documentaire — Signal
-                  </span>
-                </div>
-                <h2
-                  className="font-display text-2xl sm:text-3xl font-700 text-bright mb-2"
-                  style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
-                >
-                  Des questions ? Interrogez Signal.
-                </h2>
-                <p
-                  className="text-sm text-body/80 mb-6"
-                  style={{ fontFamily: 'Syne, sans-serif' }}
-                >
-                  Notre assistant documentaire répond sur les concepts, personnalités, événements et enjeux du dossier UAP. Basé sur des sources institutionnelles vérifiées — sans hallucinations.
-                </p>
-                <Link
-                  href="/chatbot"
-                  className="group inline-flex items-center gap-2 px-5 py-2.5 rounded border border-cold/40 text-cold font-mono font-500 text-sm hover:bg-cold/10 hover:border-cold transition-all"
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                >
-                  Ouvrir le terminal
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
+      {/* STARTER PACK CTA */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 border-t border-border/30">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-4" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Free — Start here</span>
+          <h2 className="font-display text-2xl sm:text-4xl font-700 text-bright mb-4" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+            Download the Executive Starter Pack
+          </h2>
+          <p className="text-body/80 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed" style={{ fontFamily: 'Syne, sans-serif' }}>
+            A 10-minute organizational readiness check. Full institutional signal timeline. Decision tree to identify which toolkit your organization needs. 3 pages. Free.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/rapports#starter" className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded bg-signal/10 border border-signal/40 text-signal font-mono font-500 text-sm hover:bg-signal/20 hover:border-signal transition-all" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              Download free
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link href="/toolkits" className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded border border-border hover:border-border/80 text-muted hover:text-bright font-mono font-500 text-sm transition-all" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              View all toolkits →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── CTA RAPPORT GRATUIT ──────────────────────────────── */}
-      <section className="py-20 px-4 sm:px-6 border-t border-border/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <span
-            className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-4"
-            style={{ fontFamily: 'JetBrains Mono, monospace' }}
-          >
-            Rapport d&apos;introduction
-          </span>
-          <h2
-            className="font-display text-3xl sm:text-4xl font-700 text-bright mb-4"
-            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
-          >
-            Téléchargez le rapport gratuit
-          </h2>
-          <p
-            className="text-body/80 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed"
-            style={{ fontFamily: 'Syne, sans-serif' }}
-          >
-            15 pages pour comprendre les enjeux fondamentaux, les acteurs clés et le calendrier probable d&apos;une annonce officielle. Sans inscription.
+      {/* SOURCES */}
+      <section className="py-8 px-4 sm:px-6 border-t border-border/20">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-xs text-muted/60 leading-relaxed" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            Sources: DoD/AARO · NASA · CNES/GEIPAN · Deloitte AG 2026 · Bank of England · Tuttle Capital (CBOE: UFOD) · U.S. Congress · The Age of Disclosure (Dan Farah, 2025) · Pentagon PURSUE (war.gov/ufo, 2026) · Col. Karl Nell (US Army ret.)
           </p>
-          <Link
-            href="/rapports#gratuit"
-            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded bg-signal/10 border border-signal/40 text-signal font-mono font-500 text-sm hover:bg-signal/20 hover:border-signal transition-all"
-            style={{ fontFamily: 'JetBrains Mono, monospace' }}
-          >
-            Télécharger gratuitement
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
         </div>
       </section>
     </>
