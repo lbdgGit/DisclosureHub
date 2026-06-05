@@ -88,7 +88,7 @@ function EmailGate({ toolkit, onClose }: EmailGateProps) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !email.includes('@')) {
       setError('Please enter a valid email address.');
@@ -96,11 +96,17 @@ function EmailGate({ toolkit, onClose }: EmailGateProps) {
     }
     setLoading(true);
     try {
-      const stored = JSON.parse(localStorage.getItem('lbdg_leads') || '[]');
-      stored.push({ email, kitId: toolkit.id, date: new Date().toISOString() });
-      localStorage.setItem('lbdg_leads', JSON.stringify(stored));
-    } catch { /* ignore */ }
-    setTimeout(() => { setLoading(false); setSuccess(true); }, 600);
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, kitId: toolkit.id }),
+      });
+    } catch {
+      // API failed — still give access
+    } finally {
+      setLoading(false);
+      setSuccess(true);
+    }
   };
 
   return (
