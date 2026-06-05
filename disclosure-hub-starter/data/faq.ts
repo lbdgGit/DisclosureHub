@@ -7,81 +7,81 @@ export interface FAQItem {
 
 export const FAQ: FAQItem[] = [
   {
-    id: 'qu-est-ce-disclosure',
-    question: "Qu'est-ce que la « Disclosure » exactement ?",
+    id: 'what-is-disclosure',
+    question: 'What exactly is "Disclosure"?',
     reponse:
-      "La Disclosure désigne une divulgation officielle et publique par un gouvernement de l'existence avérée de phénomènes ou d'entités d'origine non-humaine. On distingue la « soft disclosure » — une stratégie de divulgation progressive via des fuites orchestrées, des déclassifications partielles et des déclarations sous-entendues — de la « hard disclosure », c'est-à-dire une déclaration directe et sans équivoque d'un chef d'État ou d'une institution internationale. Actuellement, nous serions dans une phase avancée de soft disclosure.",
+      'Disclosure refers to the official, public acknowledgment by a government of the confirmed existence of non-human phenomena or entities. A distinction is made between "soft disclosure" — a strategy of progressive release through orchestrated leaks, partial declassifications, and implied statements — and "hard disclosure," meaning a direct and unambiguous declaration by a head of state or international institution. Based on current signals, we are in an advanced phase of soft disclosure.',
     categorie: 'general',
   },
   {
-    id: 'pourquoi-maintenant',
-    question: "Pourquoi parle-t-on de plus en plus de ce sujet maintenant ?",
+    id: 'why-now',
+    question: 'Why is this subject receiving so much attention now?',
     reponse:
-      "Plusieurs facteurs convergent : (1) Des témoignages sous serment au Congrès américain en 2023 de la part d'anciens officiers du renseignement. (2) La déclassification progressive de vidéos et de rapports par le Pentagone depuis 2017. (3) L'implication officielle de la NASA avec un rapport publié en 2023. (4) Une pression législative bipartisane via l'UAP Disclosure Act. (5) Des avancées en astronomie — notamment avec le télescope James Webb — qui renforcent la probabilité statistique de vie intelligente. Le sujet est passé du tabou au débat institutionnel en moins d'une décennie.",
+      'Several factors are converging: (1) Sworn congressional testimony in 2023 from former U.S. intelligence officers. (2) The progressive declassification of videos and reports by the Pentagon since 2017. (3) Official NASA engagement with a report published in September 2023. (4) Bipartisan legislative pressure via the UAP Disclosure Act. (5) A presidential executive order in February 2026 directing all federal agencies to release UAP files. (6) Pentagon PURSUE program launching rolling declassification at war.gov/ufo in May 2026. The subject has moved from taboo to institutional debate in under a decade.',
     categorie: 'politique',
   },
   {
-    id: 'uap-vs-ovni',
-    question: "Quelle est la différence entre UAP et OVNI ?",
+    id: 'uap-vs-ufo',
+    question: 'What is the difference between UAP and UFO?',
     reponse:
-      "OVNI (Objet Volant Non Identifié) est le terme populaire apparu dans les années 1950, souvent associé à la culture science-fiction. UAP (Unidentified Aerial Phenomenon ou, dans sa version élargie, Unidentified Anomalous Phenomenon) est le terme officiel adopté par les gouvernements depuis 2020. Ce changement terminologique est délibéré : il permet de traiter le sujet sans les connotations culturelles de l'OVNI et d'élargir le périmètre aux phénomènes sous-marins et spatiaux.",
+      'UFO (Unidentified Flying Object) is the popular term that emerged in the 1950s, often associated with science fiction culture. UAP (Unidentified Aerial Phenomenon, or in its expanded form, Unidentified Anomalous Phenomenon) is the official term adopted by governments since 2020. The terminological shift is deliberate: it allows the subject to be treated without the cultural connotations of "UFO" and broadens the scope to include underwater and space-based phenomena.',
     categorie: 'general',
   },
   {
-    id: 'qui-est-grusch',
-    question: "Qui est David Grusch et pourquoi est-il important ?",
+    id: 'who-is-grusch',
+    question: 'Who is David Grusch and why does he matter?',
     reponse:
-      "David Grusch est un ancien officier du renseignement américain qui a travaillé pour l'AARO et le National Geospatial-Intelligence Agency (NGA). En 2023, il a témoigné sous serment devant le Congrès affirmant que les États-Unis disposent de programmes secrets de récupération et d'analyse de craft d'origine non-humaine, ainsi que de matériaux biologiques. C'est la première fois qu'une telle déclaration est faite sous serment dans un cadre institutionnel officiel. Il est protégé par les lois whistleblower. Ses allégations restent contestées par l'AARO dans son rapport de mars 2024.",
+      'David Grusch is a former U.S. intelligence officer who worked for AARO and the National Geospatial-Intelligence Agency (NGA). In July 2023, he testified under oath before Congress claiming that the United States operates secret programs for recovery and analysis of non-human craft and biological materials. This was the first such statement made under oath in an official institutional setting. He is protected under whistleblower statutes. In November 2025, his claims were corroborated by Jay Stratton, former UAP Task Force Director, who stated on record: "I have seen, with my own eyes, non-human craft and non-human beings."',
     categorie: 'politique',
   },
   {
     id: 'nasa-position',
-    question: "Quelle est la position officielle de la NASA ?",
+    question: 'What is NASA\'s official position?',
     reponse:
-      "Depuis 2023, la NASA considère les UAP comme un problème scientifique légitime. Son rapport de septembre 2023 recommande d'utiliser les outils de la science pour l'étude des UAP, d'améliorer la collecte de données, et de déstigmatiser le sujet dans la communauté scientifique. La NASA a nommé un coordinateur UAP permanent, Mark McInerney. L'agence ne confirme pas l'origine extraterrestre des UAP mais refuse d'écarter cette possibilité.",
+      'Since 2023, NASA considers UAP a legitimate scientific problem. Its September 2023 report recommends using scientific tools to study UAP, improving data collection, and destigmatizing the subject within the scientific community. NASA appointed a permanent UAP coordinator, Mark McInerney. The agency does not confirm extraterrestrial origin for UAP but refuses to rule it out.',
     categorie: 'scientifique',
   },
   {
     id: 'james-webb',
-    question: "Le télescope James Webb peut-il détecter des signes de vie ?",
+    question: 'Can the James Webb Space Telescope detect signs of life?',
     reponse:
-      "James Webb est conçu pour analyser la composition atmosphérique des exoplanètes via la spectroscopie de transit. Il peut théoriquement détecter des biosignatures comme l'oxygène, le méthane ou la vapeur d'eau dans des proportions anormales. En 2023, des données sur l'exoplanète K2-18b ont montré la présence possible de diméthylsulfure (DMS), produit sur Terre exclusivement par des organismes vivants. Ces résultats demandent confirmation mais illustrent la capacité croissante de détection.",
+      'James Webb is designed to analyze the atmospheric composition of exoplanets via transit spectroscopy. It can theoretically detect biosignatures such as oxygen, methane, or water vapor in anomalous proportions. In 2023, data on exoplanet K2-18b showed the possible presence of dimethyl sulfide (DMS), a compound produced on Earth exclusively by living organisms. These results require confirmation but illustrate our rapidly growing detection capabilities.',
     categorie: 'scientifique',
   },
   {
-    id: 'paradoxe-fermi',
-    question: "Qu'est-ce que le paradoxe de Fermi et comment le disclosure l'affecte-t-il ?",
+    id: 'fermi-paradox',
+    question: "What is the Fermi Paradox and how does disclosure affect it?",
     reponse:
-      "Le paradoxe de Fermi (1950) souligne la contradiction entre la haute probabilité statistique de l'existence de civilisations extraterrestres et l'absence de tout contact détectable. Si les témoignages de disclosure se révèlent fondés, ce paradoxe serait en partie résolu : des intelligences non-humaines existent et ont été détectées, mais les gouvernements ont choisi de ne pas divulguer cette information. Cela déplacerait le paradoxe vers la question de la dissimulation plutôt que de l'absence.",
+      "The Fermi Paradox (1950) highlights the contradiction between the high statistical probability of extraterrestrial civilizations existing and the absence of any detectable contact. If disclosure testimony proves founded, this paradox would be partly resolved: non-human intelligences exist and have been detected, but governments chose not to disclose this information. The paradox would shift from the question of absence to the question of concealment.",
     categorie: 'scientifique',
   },
   {
-    id: 'impact-economique',
-    question: "Quel serait l'impact économique d'une annonce officielle ?",
+    id: 'economic-impact',
+    question: 'What would be the economic impact of an official announcement?',
     reponse:
-      "Les analyses prospectives suggèrent plusieurs effets : une disruption à court terme des marchés financiers (volatilité accrue, secteurs aéronautique et défense impactés), une course technologique si des matériaux ou technologies sont divulgués, une transformation des secteurs de l'énergie si de nouvelles sources propulsives sont révélées, et un essor massif des industries culturelles, éducatives et scientifiques. Des économistes comme Tyler Cowen estiment que l'impact dépendra entièrement de la nature et des modalités de l'annonce.",
+      'Prospective analysis identifies several effects: short-term financial market disruption (increased volatility, aerospace and defense sectors impacted), a technology race if materials or propulsion systems are disclosed, transformation of the energy sector if new propulsion sources are revealed, and a massive expansion of cultural, educational, and scientific industries. Deloitte AG (2026) classified this as a credible Black Swan with 2/5 probability within 5 years. The LBDG Finance Toolkit provides a detailed sector risk map and 72-hour crisis protocol.',
     categorie: 'pratique',
   },
   {
-    id: 'comment-se-preparer',
-    question: "Comment se préparer personnellement à cette annonce ?",
+    id: 'how-to-prepare',
+    question: 'How can an organization prepare?',
     reponse:
-      "Les experts en résilience et en communication de crise recommandent : (1) S'informer via des sources institutionnelles (AARO, NASA) pour distinguer les faits vérifiés des spéculations. (2) Maintenir un cadre critique face aux informations virales. (3) Anticiper des impacts psychologiques potentiels (remise en question des croyances, sentiment d'insécurité) et en parler ouvertement. (4) Surveiller les décisions de politique publique qui pourraient précéder une annonce. Nos boîtes à outils sectorielles proposent des cadres d'analyse adaptés.",
+      'LBDG recommends four steps: (1) Complete the Executive Starter Pack readiness check — 10 minutes, free. (2) Identify your weakest dimension (HR, Finance, Communications, or Board Governance) and download the corresponding operational toolkit. (3) Run a tabletop drill with your leadership team using the Leadership Workshop Guide. (4) Activate leading indicator monitoring via the LBDG Signal Monitor at readyfordisclosure.com/signals — DVI is currently at 7.0, pre-disclosure threshold.',
     categorie: 'pratique',
   },
   {
     id: 'france-position',
-    question: "Quelle est la position de la France sur ce sujet ?",
+    question: 'What is France\'s position on this subject?',
     reponse:
-      "La France dispose depuis 1977 du GEIPAN (Groupe d'Études et d'Informations sur les Phénomènes Aérospatiaux Non-identifiés), rattaché au CNES. C'est l'une des rares agences gouvernementales au monde à étudier et publier ouvertement des rapports sur les OVNI/UAP. En 2007, une partie des archives du GEIPAN a été rendue publique. Le SGDSN et la DRM n'ont pas exprimé de position publique sur les récentes révélations américaines, mais des contacts institutionnels entre alliés sont vraisemblables.",
+      "France has operated GEIPAN (Groupe d'Études et d'Informations sur les Phénomènes Aérospatiaux Non-identifiés) since 1977, under the CNES national space agency. It is one of the few government agencies in the world that openly studies and publishes reports on UAP. Over 3,200 cases are archived, with 3% remaining unexplained after full investigation. In 2025, the European Commission cited GEIPAN as the model for EU member state UAP programs. France is arguably better institutionally positioned than most on this topic.",
     categorie: 'politique',
   },
 ];
 
 export const FAQ_CATEGORIES = [
-  { id: 'all',          label: 'Toutes les questions' },
-  { id: 'general',      label: 'Général' },
-  { id: 'scientifique', label: 'Science' },
-  { id: 'politique',    label: 'Politique & institutions' },
-  { id: 'pratique',     label: 'Pratique' },
+  { id: 'all',          label: 'All questions'          },
+  { id: 'general',      label: 'General'                },
+  { id: 'scientifique', label: 'Science'                },
+  { id: 'politique',    label: 'Policy & institutions'  },
+  { id: 'pratique',     label: 'Practical'              },
 ] as const;
