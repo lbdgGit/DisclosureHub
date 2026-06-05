@@ -1,49 +1,107 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const TOOLKIT_NAMES: Record<string, { name: string; path: string }> = {
+  hr:      { name: 'HR Operational Toolkit',             path: '/downloads/LBDG-HR-Toolkit-Operational-2025.pdf'             },
+  finance: { name: 'Finance Operational Toolkit',        path: '/downloads/LBDG-Finance-Toolkit-Operational-2025.pdf'        },
+  comms:   { name: 'Communications Operational Toolkit', path: '/downloads/LBDG-Communications-Toolkit-Operational-2025.pdf' },
+  board:   { name: 'Leadership & Board Toolkit',         path: '/downloads/LBDG-Leadership-Board-Toolkit-2025.pdf'           },
+};
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { email, kitId } = body;
+    const { email, kitId } = await req.json();
 
-    // Validation basique
     if (!email || !email.includes('@')) {
-      return NextResponse.json({ error: 'Email invalide' }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
 
-    // TODO : intégrer ici votre solution d'email
-    // Options : Resend, SendGrid, Brevo (Sendinblue), Mailchimp, ConvertKit
-    //
-    // Exemple avec Resend :
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'disclosure-hub@votre-domaine.fr',
-    //   to: email,
-    //   subject: `Votre kit "${kitId}" est disponible`,
-    //   html: `<p>Bonjour,<br/>Voici votre kit...</p>`,
-    // });
-    //
-    // Exemple avec Brevo :
-    // await fetch('https://api.brevo.com/v3/smtp/email', {
-    //   method: 'POST',
-    //   headers: {
-    //     'api-key': process.env.BREVO_API_KEY!,
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     sender: { name: 'Disclosure Hub', email: 'noreply@disclosure-hub.fr' },
-    //     to: [{ email }],
-    //     subject: `Votre kit "${kitId}"`,
-    //     htmlContent: '<p>...</p>',
-    //   }),
-    // });
+    const toolkit = TOOLKIT_NAMES[kitId];
+    const downloadUrl = `https://readyfordisclosure.com${toolkit?.path ?? ''}`;
+    const kitName = toolkit?.name ?? 'LBDG Toolkit';
 
-    // Pour l'instant : log et réponse OK
-    console.log(`[subscribe] email=${email} kit=${kitId}`);
+    // 1. Send download email to the user
+    await resend.emails.send({
+      from: 'LBDG <contact@readyfordisclosure.com>',
+      to: email,
+      subject: `Your LBDG toolkit: ${kitName}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 24px; background: #ffffff;">
+          
+          <div style="border-bottom: 2px solid #C9A84C; padding-bottom: 20px; margin-bottom: 32px;">
+            <p style="font-family: 'Courier New', monospace; font-size: 12px; color: #8A9BB5; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 6px 0;">
+              LBDG · Leadership Bureau for Disclosure Guidance
+            </p>
+          </div>
 
-    return NextResponse.json({ success: true, message: 'Email enregistré' }, { status: 200 });
+          <h1 style="font-size: 24px; font-weight: 700; color: #1B2A4A; margin: 0 0 16px 0;">
+            Your toolkit is ready.
+          </h1>
 
-  } catch (err) {
-    console.error('[subscribe] error:', err);
-    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
+          <p style="font-size: 15px; color: #4A5D78; line-height: 1.7; margin: 0 0 24px 0;">
+            Thank you for accessing the <strong>${kitName}</strong>. 
+            Your PDF is available at the link below.
+          </p>
+
+          <div style="text-align: center; margin: 32px 0;">
+            <a href="${downloadUrl}"
+               style="display: inline-block; padding: 14px 32px; background: #1B2A4A; color: #C9A84C; 
+                      text-decoration: none; font-family: 'Courier New', monospace; font-size: 13px; 
+                      font-weight: 600; letter-spacing: 0.1em; border-radius: 4px;">
+              Download ${kitName} PDF →
+            </a>
+          </div>
+
+          <div style="background: #F1F5F9; border-left: 3px solid #C9A84C; padding: 16px 20px; margin: 32px 0; border-radius: 0 4px 4px 0;">
+            <p style="font-size: 13px; color: #4A5D78; margin: 0 0 8px 0; font-weight: 600;">
+              Current signal level: DVI 7.0 — Pre-Disclosure
+            </p>
+            <p style="font-size: 13px; color: #4A5D78; margin: 0;">
+              The disclosure process is underway. Secretary of State Rubio, former UAP Task Force Director Stratton, and 32 other senior officials are on record. Pentagon PURSUE program is live at war.gov/ufo.
+            </p>
+          </div>
+
+          <p style="font-size: 13px; color: #4A5D78; line-height: 1.7; margin: 0 0 8px 0;">
+            You will receive LBDG signal alerts when new toolkits are released or when the DVI level changes significantly. No spam — only updates that matter.
+          </p>
+
+          <p style="font-size: 13px; color: #8A9BB5; margin: 0 0 24px 0;">
+            <a href="https://readyfordisclosure.com/signals" style="color: #C9A84C; text-decoration: none;">
+              View the Signal Monitor →
+            </a>
+          </p>
+
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 20px; margin-top: 32px;">
+            <p style="font-family: 'Courier New', monospace; font-size: 11px; color: #8A9BB5; margin: 0;">
+              © 2025 LBDG — readyfordisclosure.com<br/>
+              To unsubscribe: reply with "unsubscribe" in the subject line.
+            </p>
+          </div>
+
+        </div>
+      `,
+    });
+
+    // 2. Notify Laurent (lead notification)
+    await resend.emails.send({
+      from: 'LBDG Leads <contact@readyfordisclosure.com>',
+      to: 'contact@readyfordisclosure.com',
+      subject: `New lead: ${kitName}`,
+      html: `
+        <p><strong>New toolkit download</strong></p>
+        <p>Email: <strong>${email}</strong></p>
+        <p>Toolkit: ${kitName}</p>
+        <p>Time: ${new Date().toISOString()}</p>
+      `,
+    });
+
+    return NextResponse.json({ success: true });
+
+  } catch (error) {
+    console.error('Resend error:', error);
+    // Still return success — don't block the download on email failure
+    return NextResponse.json({ success: true });
   }
 }
