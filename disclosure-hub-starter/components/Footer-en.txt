@@ -1,0 +1,113 @@
+import Link from 'next/link';
+import { Radio, ExternalLink } from 'lucide-react';
+
+const COLUMNS = [
+  {
+    title: 'Learn',
+    links: [
+      { href: '/lexique',   label: 'UAP Glossary'   },
+      { href: '/frise',     label: 'Timeline'        },
+      { href: '/faq',       label: 'FAQ'             },
+      { href: '/chatbot',   label: 'Signal Q&A'      },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { href: '/toolkits',           label: 'Operational Toolkits' },
+      { href: '/rapports',           label: 'Reports'              },
+      { href: '/rapports#starter',   label: 'Free Starter Pack'    },
+      { href: '/signals',            label: 'Signal Monitor'       },
+    ],
+  },
+  {
+    title: 'Official Sources',
+    links: [
+      { href: 'https://www.aaro.mil',                label: 'AARO (Pentagon)',    external: true },
+      { href: 'https://science.nasa.gov/uap',        label: 'NASA UAP Study',     external: true },
+      { href: 'https://www.war.gov/ufo',             label: 'PURSUE (war.gov)',   external: true },
+      { href: 'https://www.cnes-geipan.fr',          label: 'GEIPAN (France)',    external: true },
+    ],
+  },
+];
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-border/50 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-3">
+              <Radio size={16} className="text-signal" />
+              <span
+                className="font-display font-700 text-bright text-sm tracking-widest uppercase"
+                style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+              >
+                LBDG
+              </span>
+            </Link>
+            <p className="text-muted text-xs leading-relaxed mb-4" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              Leadership Bureau for Disclosure Guidance. Operational toolkits and signal tracking for organizations preparing for a paradigm-shifting announcement.
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+              <span className="text-2xs font-mono text-signal tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                SIGNAL ACTIVE — DVI 7.0
+              </span>
+            </div>
+          </div>
+
+          {/* Nav columns */}
+          {COLUMNS.map((col) => (
+            <div key={col.title}>
+              <h3
+                className="text-2xs font-mono font-600 text-muted tracking-widest uppercase mb-4"
+                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              >
+                {col.title}
+              </h3>
+              <ul className="space-y-2">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    {'external' in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-muted hover:text-bright transition-colors"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        {link.label}
+                        <ExternalLink size={9} className="opacity-50" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-xs text-muted hover:text-bright transition-colors"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/30">
+          <p className="text-2xs font-mono text-muted/50" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            © 2025 LBDG — readyfordisclosure.com
+          </p>
+          <p className="text-2xs font-mono text-muted/40 text-center sm:text-right max-w-sm" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            Sources: DoD/AARO · NASA · CNES/GEIPAN · Deloitte AG 2026 · Bank of England · CBOE · U.S. Congress
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
