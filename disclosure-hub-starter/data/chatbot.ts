@@ -12,97 +12,96 @@ export interface ChatNode {
   followups?: string[];
 }
 
-// Arbre de décision local — pas d'appel API externe
-// Matching par mots-clés dans le message utilisateur
 export const CHAT_NODES: ChatNode[] = [
   {
-    id: 'bonjour',
-    message: 'Bonjour',
-    keywords: ['bonjour', 'salut', 'hello', 'bonsoir', 'coucou', 'hey'],
+    id: 'greeting',
+    message: 'Hello',
+    keywords: ['hello', 'hi', 'hey', 'good morning', 'good evening', 'greetings'],
     response:
-      "Bienvenue sur **Signal**, votre terminal d'information sur la disclosure. Je suis un assistant documentaire — je peux vous aider à comprendre les concepts clés, les acteurs institutionnels, les événements historiques ou les enjeux prospectifs.\n\nQuel aspect vous intéresse le plus ?",
+      "Welcome to **Signal**, LBDG's information terminal on the disclosure process.\n\nI am a documentary assistant based on verified institutional sources. I can help you understand key concepts, institutional actors, historical events, and organizational risk frameworks.\n\nWhat would you like to explore?",
     followups: [
-      "C'est quoi exactement la Disclosure ?",
-      "Quels sont les témoignages officiels ?",
-      "Qu'est-ce que l'AARO ?",
+      'What exactly is Disclosure?',
+      'What official testimonies exist?',
+      'What is AARO?',
     ],
   },
   {
     id: 'disclosure-definition',
-    message: "C'est quoi la Disclosure",
-    keywords: ['disclosure', 'divulgation', 'annonce', "qu'est-ce que"],
+    message: 'What is Disclosure',
+    keywords: ['disclosure', 'what is', 'define', 'meaning', 'announcement'],
     response:
-      "La **Disclosure** désigne la divulgation officielle et publique par un gouvernement de l'existence de phénomènes ou d'entités d'origine non-humaine.\n\nOn distingue :\n- **Soft disclosure** : fuites orchestrées, déclassifications progressives (là où nous en sommes)\n- **Hard disclosure** : déclaration directe d'un chef d'État\n\nDepuis 2017, une séquence de soft disclosure est clairement observable : déclassification des vidéos Navy, auditions au Congrès, rapport NASA 2023.",
+      "**Disclosure** refers to the official, public acknowledgment by a government of the confirmed existence of non-human phenomena or entities.\n\nTwo types are distinguished:\n- **Soft disclosure**: orchestrated leaks, progressive declassifications, implied statements — where we currently are\n- **Hard disclosure**: a direct statement from a head of state or multi-government announcement\n\nSince 2017, a clear soft disclosure sequence has been underway: Navy video declassifications (2020), congressional hearings (2023), NASA report (2023), Trump executive order (Feb 2026), Pentagon PURSUE program (May 2026).",
     followups: [
-      "Qui sont les lanceurs d'alerte ?",
-      "Quand pourrait arriver l'annonce officielle ?",
-      "Que dit le rapport NASA ?",
+      'Who are the key whistleblowers?',
+      'What did Secretary Rubio say?',
+      'What is the PURSUE program?',
     ],
   },
   {
     id: 'aaro',
-    message: "Qu'est-ce que l'AARO",
-    keywords: ['aaro', 'pentagone', 'department of defense', 'dod'],
+    message: 'What is AARO',
+    keywords: ['aaro', 'pentagon', 'department of defense', 'dod', 'all-domain'],
     response:
-      "L'**AARO** (All-domain Anomaly Resolution Office) est le bureau officiel du Pentagone créé en juillet 2022 pour centraliser l'analyse des UAP.\n\nSes missions :\n- Collecter les signalements militaires et civils\n- Coordonner avec la CIA, NSA et autres agences\n- Publier des rapports semestriels au Congrès\n- Gérer un portail de signalement confidentiel\n\nSon rapport de mars 2024 a contesté les allégations de David Grusch, ce qui a alimenté une controverse sur son indépendance réelle.",
+      "**AARO** (All-domain Anomaly Resolution Office) is the official Pentagon office created in July 2022 to centralize UAP analysis.\n\nKey facts:\n- Caseload exceeds **2,000 reports** dating to 1945 (confirmed by Sec. Hegseth, 2026)\n- Collects military and civilian reports across air, sea, space, and underwater domains\n- Publishes semi-annual reports to Congress\n- Operates a confidential reporting portal\n\nAAROʼs March 2024 historical report contested Grusch's allegations — a controversy that continues.",
     followups: [
-      "Qui est David Grusch ?",
-      "Que contient le rapport AARO 2024 ?",
+      'Who is David Grusch?',
+      'What is in the AARO 2024 report?',
     ],
   },
   {
     id: 'grusch',
-    message: 'Qui est David Grusch',
-    keywords: ['grusch', 'lanceur alerte', 'whistleblower', 'témoignage congrès'],
+    message: 'Who is David Grusch',
+    keywords: ['grusch', 'whistleblower', 'congressional testimony', 'sworn testimony'],
     response:
-      "**David Grusch** est un ancien officier du renseignement américain (NGA & AARO). En juillet 2023, il a témoigné **sous serment** devant le Congrès :\n\n• Des programmes secrets de récupération de *craft* non-humains existeraient\n• Des matériaux biologiques auraient été récupérés\n• Ces programmes sont gérés hors supervision du Congrès\n\nC'est la première déclaration de ce type sous serment dans l'histoire institutionnelle américaine. Il est protégé par la loi sur les lanceurs d'alerte. Ses affirmations restent non-confirmées officiellement.",
+      "**David Grusch** is a former U.S. intelligence officer (NGA & AARO). In July 2023, he testified **under oath** before Congress:\n\n• Secret programs for recovery of non-human craft exist\n• Biological materials have been recovered\n• These programs are operated outside standard congressional oversight\n\nThis was the first statement of this type made under oath in U.S. institutional history. He is protected under whistleblower statutes.\n\nIn November 2025, former UAP Task Force Director **Jay Stratton** independently stated on record: *\"I have seen, with my own eyes, non-human craft and non-human beings.\"*",
     followups: [
-      "L'AARO a-t-il vérifié ses allégations ?",
-      "Y a-t-il d'autres témoins ?",
+      'Who is Jay Stratton?',
+      'What did Marco Rubio say?',
+      'What is The Age of Disclosure?',
     ],
   },
   {
-    id: 'uap-vs-ovni',
-    message: 'Différence UAP OVNI',
-    keywords: ['uap', 'ovni', 'différence', 'terminologie', 'terme officiel'],
+    id: 'rubio',
+    message: 'What did Rubio say',
+    keywords: ['rubio', 'secretary of state', 'nuclear', 'age of disclosure'],
     response:
-      "**OVNI** (Objet Volant Non Identifié) est le terme populaire des années 1950, chargé culturellement.\n\n**UAP** (Unidentified Anomalous Phenomenon) est le terme officiel adopté par les gouvernements depuis 2020. Ce glissement est délibéré :\n- Il déstigmatise le sujet dans les milieux institutionnels\n- Il élargit le périmètre (sous-marin, spatial, pas seulement aérien)\n- Il permet un traitement sérieux sans association science-fiction\n\nAujourd'hui, les militaires, la NASA et le Congrès utilisent exclusivement UAP.",
+      "**Marco Rubio**, U.S. Secretary of State and former Vice-Chairman of the Senate Intelligence Committee, stated in *The Age of Disclosure* (Amazon Prime, 2025):\n\n*\"We've had repeated instances of something operating in the airspace over restricted nuclear facilities — and it's not ours.\"*\n\nAnd: *\"Even presidents have been operating on a need-to-know basis, but that begins to ramp out of control.\"*\n\nThe sitting U.S. Secretary of State making these statements on record is without precedent in the history of disclosure. The documentary features **34 senior officials** from across the U.S. government and intelligence community.",
     followups: [
-      "Quelles vidéos UAP ont été déclassifiées ?",
-      "Qu'est-ce que le cas Nimitz ?",
+      'What is The Age of Disclosure documentary?',
+      'What is the LBDG signal level?',
     ],
   },
   {
     id: 'nimitz',
-    message: 'Cas Nimitz',
+    message: 'USS Nimitz incident',
     keywords: ['nimitz', 'tic-tac', 'fravor', 'navy', '2004', 'flir'],
     response:
-      "L'incident du **USS Nimitz** (novembre 2004) est l'un des cas les mieux documentés :\n\n- Le commandant **David Fravor** et 3 autres pilotes F/A-18 observent un objet en forme de Tic-Tac\n- Pas d'ailes, pas de signature thermique, accélérations impossibles\n- La vidéo **FLIR1** a été déclassifiée par le Pentagone en avril 2020\n- L'AARO classe ce cas comme **non-résolu**\n\nFravor a témoigné au Congrès en 2023 : *« Je n'ai jamais rien vu se comporter de cette façon dans tout l'espace aérien mondial. »*",
+      "The **USS Nimitz incident** (November 2004) is one of the best-documented cases:\n\n- Commander **David Fravor** and 3 other F/A-18 pilots observe a wingless Tic-Tac shaped object\n- No wings, no thermal signature, impossible accelerations\n- The **FLIR1 video** was declassified by the Pentagon in April 2020\n- Pentagon confirmed authenticity *\"to clear up any misconception on whether the footage was real\"*\n- AARO classifies this case as **unresolved**\n\nFravor testified to Congress in 2023: *\"I have never seen anything in my life, in the air, that could do what that thing did.\"*",
     followups: [
-      "Y a-t-il d'autres vidéos déclassifiées ?",
-      "Qu'est-ce que les 5 Observables ?",
+      'What other videos have been declassified?',
+      'What are the Five Observables?',
     ],
   },
   {
-    id: 'cinq-observables',
-    message: 'Les 5 observables',
-    keywords: ['5 observables', 'cinq observables', 'elizondo', 'physique', 'antigravité'],
+    id: 'five-observables',
+    message: 'The Five Observables',
+    keywords: ['five observables', '5 observables', 'elizondo', 'physics', 'anti-gravity', 'transmedium'],
     response:
-      "Le framework des **5 Observables** a été défini par Lue Elizondo (ex-directeur AATIP) pour caractériser les UAP :\n\n1. **Résistance anti-gravité** — vol sans portance apparente\n2. **Accélération hypersonique** — sans signature acoustique ni traînée thermique\n3. **Faible observabilité radar** — furtivité multi-spectre\n4. **Interférence électromagnétique** — perturbation des systèmes avioniques\n5. **Transmédiativité** — transition air / eau / espace sans changement de vitesse\n\nAucune technologie humaine connue ne combine ces 5 propriétés simultanément.",
+      "The **Five Observables** framework was defined by Lue Elizondo (former AATIP director) to characterize UAP:\n\n1. **Anti-gravity lift** — flight without apparent lift mechanisms\n2. **Hypersonic velocity** — no acoustic signature or thermal trail\n3. **Low observability** — multi-spectrum stealth\n4. **Trans-medium travel** — air / water / space transition without speed change\n5. **Positive lift** — apparent manipulation of inertia\n\nNo known human technology combines all five properties simultaneously. This framework is now referenced in congressional testimony and official analyses.",
     followups: [
-      "Qui est Lue Elizondo ?",
-      "Comment la physique explique-t-elle ces comportements ?",
+      'Who is Lue Elizondo?',
+      'What is the LBDG Finance Toolkit?',
     ],
   },
   {
-    id: 'james-webb',
-    message: 'James Webb télescope',
-    keywords: ['james webb', 'jwst', 'télescope', 'exoplanète', 'biosignature'],
+    id: 'pursue',
+    message: 'What is PURSUE',
+    keywords: ['pursue', 'war.gov', 'declassification', 'files released', 'trump executive order'],
     response:
-      "Le **télescope James Webb** (lancé décembre 2021) change la donne :\n\n- Analyse la composition atmosphérique des exoplanètes par **spectroscopie de transit**\n- Peut détecter des **biosignatures** : oxygène, méthane, vapeur d'eau, DMS\n- En 2023 : détection possible de **diméthylsulfure** sur K2-18b (produit uniquement par des organismes vivants sur Terre)\n- Ces données demandent confirmation mais illustrent notre capacité croissante\n\nSi des biosignatures sont confirmées, ce serait la première preuve de vie extraterrestre — même microbienne.",
+      "**PURSUE** is the Pentagon's rolling declassification program launched in May 2026 at war.gov/ufo, following President Trump's executive order of February 20, 2026.\n\nKey facts:\n- **162 files** released in the initial batch (FBI, DoD, NASA, State Department)\n- Rolling release ongoing — more files expected\n- Defense Secretary Hegseth confirmed the goal: *\"maximum transparency\"*\n- Japan immediately confirmed analyzing files relating to UAP near Japan\n- The archive received over 1 billion views within days of launch\n\nThis is the most significant official declassification in the history of UAP disclosure.",
     followups: [
-      "Qu'est-ce que le Projet Galilée ?",
-      "Quelle est la probabilité statistique de vie intelligente ?",
+      'What was Trump\'s executive order?',
+      'What is the current LBDG signal level?',
     ],
   },
   {
@@ -110,25 +109,22 @@ export const CHAT_NODES: ChatNode[] = [
     message: '',
     keywords: [],
     response:
-      "Je n'ai pas de réponse précise dans ma base documentaire pour cette question. Je vous recommande de :\n\n- Consulter notre **Lexique** pour les définitions officielles\n- Parcourir la **Timeline** pour les événements historiques\n- Lire notre **FAQ** pour les questions fréquentes\n\nPour des analyses approfondies, nos **rapports prospectifs** couvrent les enjeux géopolitiques, économiques et technologiques en détail.",
+      "I don't have a specific answer in my knowledge base for that question. I recommend:\n\n- Checking our **Glossary** for official definitions\n- Browsing the **Timeline** for historical events\n- Reading our **FAQ** for common questions\n- Visiting the **Signal Board** for current institutional signals\n\nFor in-depth analysis, our operational **toolkits** cover the organizational, financial, and communications dimensions of the disclosure scenario.",
     followups: [
-      "Voir le lexique",
-      "Voir la timeline",
-      "Voir les rapports",
+      'View the Glossary',
+      'View the Timeline',
+      'View the Signal Board',
     ],
   },
 ];
 
 export function findResponse(userMessage: string): ChatNode {
   const lower = userMessage.toLowerCase();
-
   for (const node of CHAT_NODES) {
     if (node.id === 'default') continue;
     if (node.keywords.some((kw) => lower.includes(kw))) {
       return node;
     }
   }
-
-  // Fallback : default node
   return CHAT_NODES.find((n) => n.id === 'default')!;
 }
