@@ -9,9 +9,9 @@ import {
 
 // ─── Methodology constants ────────────────────────────────
 const DVI_METHODOLOGY = [
-  { dimension: 'Executive action',       score: 2.0, max: 2, note: 'Trump EO (Feb 2026) + PURSUE active declassification program' },
-  { dimension: 'Legislative action',     score: 0.5, max: 2, note: 'UAPDA blocked 3× but bypassed by executive order' },
-  { dimension: 'Witness testimony',      score: 1.8, max: 2, note: 'Stratton firsthand on record + Grusch sworn congressional testimony' },
+  { dimension: 'Executive action',       score: 1.5, max: 2, note: 'Presidential directive (Truth Social, Feb 2026) + PURSUE launched — NOT a formal EO. No NDA releases, no amnesty, no official press conference yet.' },
+  { dimension: 'Legislative action',     score: 0.5, max: 2, note: 'UAPDA blocked 3× (FY2024-2025-2026). Multiple hearings on record: Gillibrand Senate Armed Services (2022+), House Intelligence (2022), House Oversight (2023 — Grusch/Graves/Fravor). AARO created by NDAA 2022 — but accused of catch-and-kill. AARO Historical Record Vol.1 widely condemned: unsourced, factual errors, conclusions contested by members who had SCIF access to actual programs.' },
+  { dimension: 'Witness testimony',      score: 1.3, max: 2, note: 'Grusch sworn to Congress but secondhand. Fravor sworn but craft only (not NHI beings). Stratton firsthand but in documentary — not under oath. Critical gap: no firsthand congressional sworn testimony of NHI beings.' },
   { dimension: 'Financial / institutional', score: 1.5, max: 2, note: 'UFOD ETF on CBOE + Deloitte Black Swan + Bank of England warning' },
   { dimension: 'International alignment', score: 1.0, max: 2, note: 'Japan Cabinet proposal + GEIPAN + EU — active but not coordinated' },
 ];
@@ -95,7 +95,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
             CURRENT {isDVI ? 'DVI' : 'ISS'} SCORE
           </span>
           <span style={{ fontFamily: 'Syne, sans-serif', fontSize: '24px', fontWeight: 700, color: gold }}>
-            {isDVI ? '6.8 / 10' : '63%'}
+            {isDVI ? '5.8 / 10' : '63%'}
           </span>
         </div>
 
@@ -108,7 +108,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
 }
 
 // ─── Constants ────────────────────────────────────────────
-const DVI = 6.8;
+const DVI = 5.8;
 const ISS = 63;
 
 const PHASES = [
