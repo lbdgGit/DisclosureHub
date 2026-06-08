@@ -36,7 +36,7 @@ const SECTIONS = [
   },
   {
     title: '8. Governing law',
-    content: `These terms are governed by French law. Any disputes arising from the use of this website shall be subject to the exclusive jurisdiction of the competent courts of France.`
+    content: `LBDG is a French legal entity. These terms are governed by French law, consistent with standard practice for European businesses serving a global audience. While we welcome users from all countries, disputes arising from the use of this website are subject to the jurisdiction of the competent courts of France. Nothing in these terms affects any mandatory rights you may have under the laws of your own country.`
   },
   {
     title: '9. Contact',
