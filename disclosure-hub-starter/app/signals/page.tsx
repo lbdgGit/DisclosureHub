@@ -52,10 +52,19 @@ const ACTIONS = [
   { role: 'Legal / Compliance', action: 'Review Reg FD / AMF obligations with outside counsel', toolkit: 'Finance Tool 5', href: '/toolkits' },
 ];
 
+// ─── Velocity data methodology ───────────────────────────
+// Institutional: LBDG weighted scoring of verified institutional events
+//   per year (Presidential action=3, sworn testimony=2.5, body created=2,
+//   official report/hearing=1.5, intl signal=1). Normalized: 10 = confirmed
+//   official multi-government NHI announcement (not yet reached).
+// Media: Google Trends 'UAP'/'UFO' worldwide web + US news search,
+//   normalized to 2026 all-time peak, then × 0.7 "hedging discount"
+//   (10 = mainstream coverage without systematic debunking — not yet reached).
+// Source: Google Trends screenshots captured June 2026.
 const VELOCITY_DATA = {
   labels: ['2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'],
-  institutional: [2, 2, 3, 4, 4, 5, 7, 7, 7, 9],
-  media:         [3, 2, 2, 3, 2, 2, 4, 3, 3, 4],
+  institutional: [2,   1,   2,   3.5, 3,   4.5, 6,   4.5, 5,   8  ],
+  media:         [0.7, 0.4, 0.5, 1,   1.8, 1.5, 3,   1.5, 2,   7  ],
 };
 
 // ─── Helpers ──────────────────────────────────────────────
@@ -316,15 +325,15 @@ export default function SignalsPage() {
           <div style={{ display: 'flex', gap: '16px', marginTop: '10px', flexWrap: 'wrap' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
               <span style={{ width: '16px', height: '2px', background: '#38BDF8', display: 'inline-block' }} />
-              Institutional action
+              Institutional action (LBDG weighted scoring)
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
               <span style={{ width: '16px', height: '0', borderTop: '2px dashed #4A5D78', display: 'inline-block' }} />
-              Media coverage
+              Media coverage (Google Trends ×0.7 hedging discount)
             </span>
           </div>
           <p style={{ fontSize: '12px', color: body, marginTop: '10px', lineHeight: 1.6 }}>
-            The gap between institutional action and public awareness is the preparation window. When lines converge, it will be too late to prepare.
+            <strong>2026: the lines are converging for the first time.</strong> Institutional action (8/10) now nearly matches media coverage (7/10) — the highest media score ever, driven by PURSUE. But "10" on both axes means something that has not happened yet: official confirmation treated without hedging, no debunkers invited, NHI as established fact. The preparation window is closing, not closed.
           </p>
         </div>
       </div>
