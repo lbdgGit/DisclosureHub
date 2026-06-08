@@ -1592,7 +1592,223 @@ export const LEXIQUE: LexiqueEntry[] = [
     tags: ['ETF', 'CBOE', 'Tuttle', 'financial', '2026', 'investment', 'institutional'],
   },
 
+
+  // ─── BATCH 5: MEDIA, PEOPLE, INSTITUTIONS ────────────────
+
+  // MEDIA ───────────────────────────────────────────────────
+
+  {
+    id: '60-minutes-uap',
+    terme: '60 Minutes UAP Segment (2021)',
+    definition: `The May 16, 2021 episode of CBS 60 Minutes featuring correspondent Bill Whitaker interviewing Luis Elizondo, Christopher Mellon, former Navy pilots Ryan Graves and David Fravor, and former Deputy Secretary of Defense David Norquist. The segment reached an estimated 10 million U.S. viewers — the largest mainstream media audience ever exposed to institutional UAP claims at that point. Its timing, three weeks before the ODNI UAP preliminary report release, was deliberate. The combination of CBS credibility, senior government officials on camera, and authenticated footage made this the single most impactful mainstream media moment of the modern disclosure era, immediately before the 2021 ODNI report.`,
+    categorie: 'media',
+    tier: 1,
+    tags: ['CBS', 'Elizondo', 'Mellon', 'Fravor', 'Graves', '2021', 'mainstream', 'television'],
+  },
+
+  {
+    id: 'netflix-unidentified',
+    terme: 'Unidentified: Inside America\'s UFO Investigation (History Channel)',
+    definition: `A documentary series (2019–2020) produced by Tom DeLonge's To The Stars Academy, airing on History Channel. Featured Luis Elizondo, Christopher Mellon, and former military intelligence officers investigating UAP cases. Reached millions of viewers and significantly expanded public awareness of the institutional UAP case beyond traditional enthusiast audiences. The series was significant for featuring active (and recently retired) government officials discussing UAP on camera with apparent institutional backing. It preceded the congressional hearing era and helped establish the cultural context for the 2020 Pentagon video authentication and the 2021 ODNI report.`,
+    categorie: 'media',
+    tier: 2,
+    tags: ['History Channel', 'To The Stars', 'DeLonge', 'Elizondo', 'Mellon', 'television', '2019'],
+  },
+
+  {
+    id: 'washington-post-uap',
+    terme: 'Washington Post UAP Coverage',
+    definition: `The Washington Post has been one of the two primary mainstream newspapers (alongside the NYT) covering the modern disclosure era. Key contributions: reporter Craig Whitlock's investigation into the Pentagon's handling of UAP reports; coverage of the 2022 and 2023 congressional hearings; analysis of the AARO Historical Record Report. The Post's national security reporting infrastructure — built around DoD and intelligence community sourcing — gives its UAP coverage particular institutional weight. Post coverage has consistently focused on the oversight and accountability angle rather than the phenomenological claims, making it complementary to NYT's more disclosure-oriented framing.`,
+    categorie: 'media',
+    tier: 2,
+    tags: ['journalism', 'Washington Post', 'Pentagon', 'oversight', 'Congress', 'accountability'],
+  },
+
+  {
+    id: 'politico-uap',
+    terme: 'Politico UAP Coverage',
+    definition: `Politico has emerged as one of the most important outlets for UAP legislative and policy reporting, covering the congressional UAP battle from inside the Capitol. Its reporters have covered the UAPDA amendment fights in NDAA markup sessions, the classified briefings to congressional members, and the political dynamics of the UAP Caucus. Politico's strength — real-time congressional sourcing — makes it the primary outlet for breaking news on UAP legislation, amendment language, and the behind-the-scenes dynamics of DoD resistance to congressional oversight. Its coverage is complementary to The War Zone (technical) and The Debrief (intelligence community).`,
+    categorie: 'media',
+    tier: 2,
+    tags: ['journalism', 'Congress', 'legislation', 'UAPDA', 'NDAA', 'policy', 'Capitol'],
+  },
+
+  {
+    id: 'phenomenon-documentary',
+    terme: 'The Phenomenon (2020)',
+    definition: `Documentary film directed by James Fox, widely considered the most credible and technically accomplished UAP documentary produced to date. Features on-the-record testimony from former government officials including John Podesta (former White House Chief of Staff), Fife Symington (former Governor of Arizona, Phoenix Lights witness), Sen. Harry Reid, Jacques Vallée, and international military figures from Belgium, France, and Chile. The film covers cases from 1947 to the present with institutional sourcing. Its Metacritic score of 78 and distribution through major platforms represented a breakthrough for mainstream critical reception of UAP documentary content. James Fox began production over 20 years before its 2020 release.`,
+    categorie: 'media',
+    tier: 1,
+    tags: ['Fox', 'documentary', 'Podesta', 'Reid', 'Symington', 'Vallée', '2020', 'mainstream'],
+  },
+
+  {
+    id: 'nyt-2017-article',
+    terme: 'New York Times AATIP Investigation (December 2017)',
+    definition: `The December 16, 2017 front-page New York Times investigation by Leslie Kean, Ralph Blumenthal, and Helene Cooper that revealed the existence of AATIP, published the first declassified Navy UAP videos (FLIR1/Tic-Tac), and introduced the U.S. government's secret UAP program to mainstream public awareness. The article's publication is the most consequential single media event in the history of UAP disclosure — it triggered congressional action, forced Pentagon acknowledgment of the videos, and made UAP a legitimate subject for institutional discussion globally. Everything in the modern disclosure era (ODNI report, AARO, congressional hearings, PURSUE) traces institutionally to this article.`,
+    categorie: 'media',
+    tier: 1,
+    sources: [{ label: 'NYT Investigation 2017', url: 'https://www.nytimes.com/2017/12/16/us/politics/pentagon-program-ufo-harry-reid.html' }],
+    tags: ['NYT', 'Kean', 'Blumenthal', 'Cooper', 'AATIP', '2017', 'watershed', 'FLIR1'],
+  },
+
+  {
+    id: 'age-of-disclosure-doc',
+    terme: 'The Age of Disclosure (2025)',
+    definition: `Documentary film directed by Dan Farah, premiered at SXSW 2025 and released on Amazon Prime Video November 2025. Features 34 senior U.S. government, military, and intelligence officials on record — the largest single gathering of institutional witnesses in UAP documentary history. Includes Secretary of State Marco Rubio: "We\'ve had repeated instances of something operating in the airspace over restricted nuclear facilities — and it\'s not ours." Former UAP Task Force Director Jay Stratton: "I have seen, with my own eyes, non-human craft and non-human beings." Former DNI James Clapper and Rep. André Carson also appear. Represents the qualitative peak of institutional on-the-record testimony: the sitting U.S. Secretary of State is without precedent in the history of UAP disclosure.`,
+    categorie: 'media',
+    tier: 1,
+    sources: [{ label: 'Amazon Prime', url: 'https://www.amazon.com/Age-Disclosure/dp/B0DMJL2ZDM' }],
+    tags: ['Farah', 'Rubio', 'Stratton', 'Clapper', 'Amazon Prime', 'SXSW', '2025', 'watershed'],
+  },
+
+  // KEY PEOPLE (ADDITIONAL) ─────────────────────────────────
+
+  {
+    id: 'dietrich',
+    terme: 'Lt. Cmdr. Alex Dietrich',
+    definition: `Retired U.S. Navy Lt. Commander and F/A-18 pilot; the second eyewitness to the 2004 USS Nimitz Tic-Tac encounter alongside David Fravor. Dietrich\'s account is significant as corroboration: she and Fravor both describe the same wingless, white, oblong object performing physics-defying maneuvers. Dietrich testified to the Senate Armed Services Committee in 2021 (in addition to public statements) and appeared on CBS 60 Minutes in May 2021 — the most watched mainstream UAP media moment of that era. Her willingness to go on record as a named, decorated Navy pilot corroborating Fravor\'s account substantially strengthens the multi-witness evidentiary basis of the Nimitz case.`,
+    categorie: 'personnel',
+    tier: 1,
+    tags: ['Navy', 'Nimitz', 'Tic-Tac', 'F-18', 'pilot', 'witness', '2004', '60 Minutes'],
+  },
+
+  {
+    id: 'kirkpatrick',
+    terme: 'Dr. Sean Kirkpatrick',
+    definition: `First director of AARO (2022–2023). A physicist and career intelligence officer with the DIA. Kirkpatrick led AARO through its establishment phase, overseeing the development of its reporting infrastructure and producing the first public AARO reports. He resigned in December 2023. Notably, after leaving AARO, Kirkpatrick co-authored an article with Avi Loeb in Scientific American proposing that anomalous objects could be probes from an alien mother ship — a significant statement from the former head of the government\'s official UAP office. His tenure was characterized by public skepticism about extraordinary claims combined with acknowledgment that a small percentage of UAP remained genuinely unexplained.`,
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['AARO', 'DIA', 'physicist', 'government', 'Loeb', 'Scientific American'],
+  },
+
+  {
+    id: 'kosloski',
+    terme: 'Dr. Jon Kosloski',
+    definition: `Current director of AARO (appointed 2024), succeeding Sean Kirkpatrick. A physicist with a background in the National Reconnaissance Office. Kosloski has overseen AARO during the PURSUE era, managing the interface between the executive-driven declassification push (Trump EO, 2026) and AARO\'s analytical mandate. His NRO background brings space-based sensor expertise. Under his tenure, AARO\'s caseload surpassed 2,000 reports. Kosloski has maintained AARO\'s publicly skeptical posture while implementing the expanded reporting and declassification mandates from the 2026 executive order.`,
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['AARO', 'NRO', 'physicist', 'director', 'PURSUE', 'Trump', '2024'],
+  },
+
+  {
+    id: 'gillibrand',
+    terme: 'Senator Kirsten Gillibrand',
+    definition: `U.S. Senator (D-NY); the primary legislative architect of AARO\'s creation and the UAP congressional reporting requirements within NDAA 2022. Gillibrand successfully inserted language creating AARO and mandating classified and unclassified reports to Congress on UAP. She chairs the Senate Armed Services subcommittee on emerging threats. Gillibrand\'s legislative work was more institutionally effective than the later UAPDA: while Schumer\'s act sought full declassification, Gillibrand\'s approach created the permanent investigative infrastructure (AARO) that now operates. She has consistently framed UAP as a national security and aviation safety issue rather than a metaphysical one.`,
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['Senate', 'AARO', 'NDAA', 'Democrat', 'Armed Services', 'legislation', '2022'],
+  },
+
+  {
+    id: 'davis-eric',
+    terme: 'Dr. Eric Davis',
+    definition: `Astrophysicist; Senior Research Physicist at the Institute for Advanced Studies at Austin; former NIDS researcher; former AAWSAP/BAASS contractor. A central node connecting the government\'s classified UAP research ecosystem with private researchers. Named in the disputed Wilson-Davis memo as having met with Admiral Wilson in 2002 regarding private contractor UAP programs. Davis has testified to the Senate Armed Services Committee in closed session. He is one of very few credentialed physicists who has worked within both the classified government UAP research infrastructure and published in peer-reviewed physics journals. His work spans UAP propulsion theory, quantum vacuum energy, and materials analysis.`,
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['astrophysicist', 'NIDS', 'AAWSAP', 'Wilson-Davis', 'Senate', 'physics', 'contractor'],
+  },
+
+  {
+    id: 'knapp-george-complete',
+    terme: 'Lue Elizondo — extended',
+    definition: `See main Elizondo entry. Additional context: Elizondo\'s December 2017 resignation letter to Secretary Mattis cited "bureaucratic challenges and inflexible mindsets" obstructing UAP research. He subsequently navigated significant legal questions about what he could publicly disclose, working under NDA constraints. His 2024 memoir Imminent contains his most detailed public account of AATIP operations, including descriptions of programs he cannot fully name. Elizondo remains one of the most credentialed public advocates: a 20-year DoD career, counterintelligence background, and direct program management of the government\'s primary UAP research effort.`,
+    categorie: 'personnel',
+    tier: 3,
+    tags: ['AATIP', 'Mattis', 'NDA', 'memoir', 'Imminent', 'DoD', 'counterintelligence'],
+  },
+
+  {
+    id: 'spergel',
+    terme: 'Dr. David Spergel',
+    definition: `Astrophysicist; President of the Simons Foundation; former Chair of Princeton\'s Astrophysics Department; former Chair of the National Academies Board on Physics and Astronomy. Chaired NASA\'s UAP independent study team (2022–2023), producing the September 2023 NASA UAP report. His involvement was significant: Spergel has impeccable mainstream scientific credentials, including the Gruber Prize in Cosmology. His willingness to chair the UAP study, and his public statements that UAP "potentially represents an opportunity for scientific discovery," represented a major shift in how elite academic scientists engage with the subject. He has stated publicly that more systematic data collection is urgently needed.`,
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['NASA', 'Princeton', 'Simons Foundation', 'cosmology', 'astrophysics', '2023', 'academic'],
+  },
+
+  // INSTITUTIONS (ADDITIONAL) ───────────────────────────────
+
+  {
+    id: 'faa-uap',
+    terme: 'FAA — Federal Aviation Administration (UAP role)',
+    acronyme: 'FAA',
+    definition: `The U.S. agency responsible for civil aviation safety and airspace management. The FAA is directly relevant to UAP in three ways: (1) it receives pilot UAP reports from commercial and private pilots and routes them to AARO; (2) it manages the airspace in which military UAP encounters (Nimitz, Roosevelt) occurred, including restricted warning areas; (3) its radar data provides independent corroboration for some military UAP tracks. The FAA\'s approach has historically been to avoid publicizing UAP reports to prevent public concern, creating a reporting bias. Americans for Safe Aerospace (Ryan Graves\' organization) has specifically engaged the FAA to reform pilot reporting procedures and reduce stigma.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['FAA', 'aviation', 'pilots', 'reporting', 'Graves', 'ASA', 'radar', 'airspace'],
+  },
+
+  {
+    id: 'sci-classification',
+    terme: 'SCI — Sensitive Compartmented Information',
+    acronyme: 'SCI',
+    definition: `A classification level above Top Secret, covering intelligence sources and methods that must be protected from unauthorized disclosure. SCI information is handled only in SCIFs and requires specific "code word" access in addition to a TS clearance. Most UAP program data resides at TS/SCI level or above (in SAPs). Congressional members who receive UAP briefings receive them in SCIF environments and are bound by the same access controls as cleared personnel — they cannot discuss SCI content with uncleared staff or publicly. The layered nature of classification (Secret → Top Secret → TS/SCI → SAP → USAP) explains why congressional oversight is so difficult: each layer requires separate authorization.`,
+    categorie: 'juridique',
+    tier: 2,
+    tags: ['classification', 'SCIF', 'Congress', 'clearance', 'oversight', 'intelligence'],
+  },
+
+  {
+    id: 'boeing-defense',
+    terme: 'Boeing Defense, Space & Security',
+    definition: `The defense and government division of The Boeing Company; one of the U.S.\'s largest defense contractors, producing the F/A-18 Super Hornet (the aircraft involved in all three declassified Navy UAP video encounters), the E-3 Sentry (AWACS airborne radar), the P-8 Poseidon (maritime patrol aircraft used in ASW operations potentially relevant to transmedium UAP). Boeing\'s direct relevance: the ATFLIR targeting pods used to film the Gimbal, GoFast, and FLIR1 videos were carried by Boeing F/A-18s. As a prime contractor for aircraft and sensor systems used in UAP encounters, Boeing\'s engineering data on platform performance is relevant to anomaly analysis.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['contractor', 'F-18', 'AWACS', 'P-8', 'Navy', 'ATFLIR', 'aerospace'],
+  },
+
+  {
+    id: 'raytheon',
+    terme: 'Raytheon Technologies (RTX)',
+    definition: `One of the largest U.S. defense contractors, producing the AN/APG-79 AESA radar (F/A-18 Super Hornet), the AN/SPY-6 radar (next-generation Aegis), the ATFLIR targeting pod (used in all three declassified UAP videos), Patriot missile systems, and a wide range of EW and sensors. Raytheon\'s direct UAP relevance: it manufactured the sensors that captured the most significant authenticated UAP footage. The ATFLIR pod\'s operational parameters (field of view, gimbal limits, infrared sensitivity) are central to the technical analysis of the Gimbal, GoFast, and FLIR1 videos. Raytheon holds the technical specifications needed to definitively resolve whether the Gimbal rotation is a sensor artifact — specifications that remain proprietary.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['contractor', 'ATFLIR', 'AESA', 'Aegis', 'sensors', 'Gimbal', 'FLIR', 'F-18'],
+  },
+
+  {
+    id: 'sol-foundation-conference',
+    terme: 'Sol Foundation Conference (Stanford, November 2023)',
+    definition: `The inaugural academic conference on UAP and non-human intelligence organized by The Sol Foundation at Stanford University, November 2023. The first conference of its kind at a major research university with full institutional backing. Key presentations: Col. Karl Nell (controlled vs catastrophic disclosure framework), Dr. Garry Nolan (materials and biological analysis), Dr. Peter Skafish (anthropological frameworks for NHI contact), and multiple other academics and former government officials. The conference established a formal academic venue for UAP research — a significant institutional shift from the conference being held in fringe settings to a sandstone building at one of the world\'s top universities.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Stanford', 'Sol Foundation', 'Nolan', 'Nell', 'academic', '2023', 'conference'],
+  },
+
+  {
+    id: 'black-vault',
+    terme: 'The Black Vault',
+    definition: `An online repository of declassified U.S. government documents founded in 1996 by John Greenewald Jr., who began filing FOIA requests at age 15. The Black Vault has filed over 10,000 FOIA requests and published millions of pages of declassified documents across all national security agencies. For UAP specifically, it is the primary public archive of FOIA-obtained government UAP records — CIA, DIA, NSA, FBI, and AARO documents that would otherwise be inaccessible. Greenewald\'s systematic FOIA methodology has made The Black Vault an indispensable research resource, revealing patterns in government UAP documentation that no single researcher could compile independently.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    sources: [{ label: 'The Black Vault', url: 'https://www.theblackvault.com' }],
+    tags: ['FOIA', 'documents', 'Greenewald', 'declassified', 'CIA', 'DIA', 'NSA', 'archive'],
+  },
+
+  {
+    id: 'national-security-archive',
+    terme: 'National Security Archive (George Washington University)',
+    definition: `An independent non-governmental research institute at George Washington University that collects and publishes declassified U.S. documents obtained through FOIA, maintaining the world\'s largest non-governmental FOIA document library. The NSA\'s UAP collection includes key Cold War-era documents on Project Blue Book, CIA Robertson Panel records, and State Department cables referencing UAP incidents internationally. Unlike The Black Vault (which focuses on quantity), the NSA provides curated, contextualized document collections with scholarly analysis. Its publications have established primary source baselines for the history of U.S. government UAP engagement.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    sources: [{ label: 'National Security Archive', url: 'https://nsarchive.gwu.edu' }],
+    tags: ['GWU', 'FOIA', 'archive', 'academic', 'Cold War', 'historical', 'documents'],
+  },
+
+
+  {
+    id: 'lacatski',
+    terme: 'Dr. James Lacatski',
+    definition: `Defense Intelligence Agency physicist and program manager who initiated and directed AAWSAP — the $22 million DIA program that funded BAASS and the Skinwalker Ranch research. Lacatski is credited with writing the original contract solicitation that created AAWSAP in 2008, making him the institutional architect of the government\'s most ambitious private-sector UAP research program. Co-authored Skinwalkers at the Pentagon: An Insider\'s Account of the Secret Government Program to Study Unidentified Aerial Phenomena (2021) with Dr. Colm Kelleher and George Knapp — the first insider account of AAWSAP written by its director. In appearances on George Knapp and Jeremy Corbell\'s Weaponized podcast, Lacatski made an extraordinary personal claim: that he had a direct anomalous experience during his time with the program in which he describes being inside a craft or anomalous space — a first-person account from the DIA official who ran the program, not a secondhand witness report. His accounts remain unverified but carry exceptional institutional weight given his position as the program\'s architect.`,
+    categorie: 'personnel',
+    tier: 1,
+    tags: ['DIA', 'AAWSAP', 'Skinwalker', 'Weaponized', 'Corbell', 'Knapp', 'physicist', 'firsthand'],
+  },
+
 ];
+
+
 
 
 
