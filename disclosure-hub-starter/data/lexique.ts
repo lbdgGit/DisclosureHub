@@ -563,7 +563,340 @@ export const LEXIQUE: LexiqueEntry[] = [
     tags: ['Bigelow', 'contractor', 'AAWSAP', 'DIA', 'private research'],
   },
 
+
+  // ─── BATCH 2: KEY FIGURES (LEGISLATORS & ADVOCATES) ────
+
+  {
+    id: 'schumer',
+    terme: 'Senator Chuck Schumer',
+    definition: 'U.S. Senate Majority Leader (D-NY); primary legislative architect of the UAP Disclosure Act, co-introduced with Senator Mike Rounds in 2023. Schumer explicitly modeled the act on the JFK Records Act and stated publicly that UAP programs have been "hidden from Congress" in violation of oversight obligations. His political weight behind UAP legislation represented a major institutional shift — the subject moved from fringe committees to Senate leadership. The UAPDA's repeated blocking despite his sponsorship illustrates the degree of executive resistance.',
+    categorie: 'personnel',
+    tier: 1,
+    tags: ['Senate', 'UAPDA', 'legislation', 'disclosure', 'Democrat'],
+  },
+
+  {
+    id: 'rounds',
+    terme: 'Senator Mike Rounds',
+    definition: 'U.S. Senator (R-SD); co-author with Schumer of the UAP Disclosure Act (2023). Member of the Senate Armed Services Committee. His bipartisan sponsorship of UAPDA was significant — it prevented the legislation from being dismissed as a partisan issue. Rounds has stated he was briefed in classified settings and believes the UAP phenomenon warrants serious government attention. His continued advocacy following UAPDA's repeated blocking signals sustained Republican-side institutional concern.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['Senate', 'UAPDA', 'Republican', 'bipartisan', 'Armed Services'],
+  },
+
+  {
+    id: 'burchett',
+    terme: 'Representative Tim Burchett',
+    definition: 'U.S. Congressman (R-TN); the most vocal House member demanding UAP transparency. Organized the July 2023 House Oversight hearing featuring Grusch, Graves, and Fravor. Has conducted multiple interviews with UAP witnesses and pushed for unclassified briefings to all members of Congress rather than only select committee members. Burchett's approach has been combative with DoD — he publicly accused Pentagon officials of stonewalling Congress and lying in testimony. A central figure in the House UAP Caucus.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['House', 'Republican', 'Oversight', '2023 hearing', 'UAP Caucus'],
+  },
+
+  {
+    id: 'luna',
+    terme: 'Representative Anna Paulina Luna',
+    definition: 'U.S. Congresswoman (R-FL); co-chair of the House UAP Caucus alongside Jared Moskowitz. One of the primary organizers of the 2023 congressional UAP hearings. Has pushed for a formal investigation into alleged government secrecy, including subpoena authority over classified programs. Luna has stated publicly she believes the government is hiding information from Congress and supports full declassification. Her combative posture toward Pentagon officials on UAP has been consistent across multiple hearings.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['House', 'Republican', 'UAP Caucus', 'Florida', 'transparency'],
+  },
+
+  {
+    id: 'moskowitz',
+    terme: 'Representative Jared Moskowitz',
+    definition: 'U.S. Congressman (D-FL); co-chair of the House UAP Caucus alongside Anna Paulina Luna. Provides the Democratic co-leadership of the bipartisan UAP Caucus in the House. Has questioned DoD witnesses on UAP in multiple hearings and supported the legislative effort for greater transparency. His involvement ensures the UAP issue maintains bipartisan framing in the House, making it harder for either party to dismiss as politically motivated.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['House', 'Democrat', 'UAP Caucus', 'Florida', 'bipartisan'],
+  },
+
+  {
+    id: 'podesta',
+    terme: 'John Podesta',
+    definition: 'Former White House Chief of Staff (Clinton), former Counselor to President Obama, former Biden campaign chair, and former U.S. Special Presidential Envoy for Climate. Has publicly stated his interest in UAP transparency and regrets not having declassified UAP files during his government service. Appeared in James Fox's The Phenomenon. His repeated engagement with the UAP subject across decades of senior government service signals the issue's persistence at the highest levels of Democratic politics. In 2014, tweeted that his "biggest failure" was not achieving UFO disclosure.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['Clinton', 'Obama', 'White House', 'disclosure', 'Democrat', 'Fox'],
+  },
+
+  {
+    id: 'bigelow',
+    terme: 'Robert Bigelow',
+    definition: 'American aerospace entrepreneur; founder of Bigelow Aerospace, Budget Suites of America. Funded the National Institute for Discovery Science (NIDS, 1995–2004) and Bigelow Aerospace Advanced Space Studies (BAASS), the contractor that received the DIA's AAWSAP program. Bigelow purchased Skinwalker Ranch in 1996 for paranormal research. In a 2017 60 Minutes interview, stated: "I'm absolutely convinced. That's all there is to it." His private funding of institutional UAP research predated government programs by decades. His properties and research archives contain potentially significant unreleased data.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['BAASS', 'NIDS', 'AAWSAP', 'Skinwalker', 'private research'],
+  },
+
+  {
+    id: 'reid',
+    terme: 'Senator Harry Reid',
+    definition: 'Former U.S. Senate Majority Leader (D-NV, 1987–2021). Secured the $22 million in classified funding for AATIP in 2007, working with Senators Ted Stevens (R-AK) and Daniel Inouye (D-HI). Reid was a close friend of Robert Bigelow and had a longstanding personal interest in UAP. Shortly before his death in December 2021, Reid stated: "I was told for decades that Lockheed had some of these retrieved materials" — a claim he said he could not verify. He consistently advocated for scientific investigation and congressional oversight of UAP programs.',
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['Senate', 'AATIP', 'Nevada', 'Bigelow', 'Democrat', 'deceased'],
+  },
+
+  {
+    id: 'blumenthal-cooper',
+    terme: 'Ralph Blumenthal & Helene Cooper',
+    definition: 'New York Times journalists who, with Leslie Kean, co-authored the December 16, 2017 investigation revealing AATIP and publishing the first Pentagon-authenticated UAP videos. Blumenthal was a veteran investigative journalist who covered the story for years before publication. Cooper is a national security correspondent. Their institutional credibility as NYT bylines was essential in legitimizing the story — the same information from a less credible outlet might not have triggered the same governmental and cultural response. The article is widely considered the starting gun of the modern disclosure era.',
+    categorie: 'media',
+    tier: 1,
+    tags: ['NYT', 'AATIP', '2017', 'journalism', 'disclosure', 'Kean'],
+  },
+
+  {
+    id: 'war-zone',
+    terme: 'The War Zone',
+    definition: 'Defense and aerospace analysis publication (part of The Drive media group), edited by Tyler Rogoway. Consistently the most technically rigorous media outlet covering UAP from an aerospace and national security perspective. First outlet to extensively analyze the declassified Navy UAP videos from a sensor and engineering standpoint. Has obtained multiple FOIA documents before official releases. The War Zone is the reference outlet for defense professionals seeking technically grounded UAP analysis, distinct from more advocacy-oriented UAP media.',
+    categorie: 'media',
+    tier: 1,
+    sources: [{ label: 'The War Zone', url: 'https://www.thedrive.com/the-war-zone' }],
+    tags: ['journalism', 'defense', 'FOIA', 'analysis', 'Navy', 'sensors'],
+  },
+
+  {
+    id: 'debrief',
+    terme: 'The Debrief',
+    definition: 'American independent media outlet covering national security, intelligence, and advanced technology, co-founded by journalist Marik von Rennenkampff. Broke major UAP stories including aspects of the Grusch disclosure ecosystem and the Immaculate Constellation reporting. The Debrief has cultivated sources within the intelligence community and has published stories subsequently corroborated by congressional testimony. Occupies a space between mainstream journalism and specialized UAP reporting, with emphasis on institutional sourcing over speculation.',
+    categorie: 'media',
+    tier: 2,
+    sources: [{ label: 'The Debrief', url: 'https://thedebrief.org' }],
+    tags: ['journalism', 'intelligence', 'Grusch', 'national security', 'institutional'],
+  },
+
+  // ─── INTELLIGENCE ARCHITECTURE ───────────────────────────
+
+  {
+    id: 'usap',
+    terme: 'Unacknowledged Special Access Program',
+    acronyme: 'USAP',
+    definition: 'The most sensitive tier of U.S. classified programs. A USAP does not have to be reported to Congress under standard oversight procedures — program existence itself is classified. Personnel assigned to USAPs are not permitted to confirm or deny program existence even to members of Congress who lack specific authorization. Grusch's core allegation is that UAP crash retrieval programs operate as USAPs, outside the congressional awareness that normal SAPs would require. If accurate, this structure would legally prevent congressional oversight — which Schumer's UAPDA was designed to pierce.',
+    categorie: 'juridique',
+    tier: 1,
+    tags: ['SAP', 'classification', 'Congress', 'oversight', 'Grusch', 'secrecy'],
+  },
+
+  {
+    id: 'icig',
+    terme: 'Intelligence Community Inspector General',
+    acronyme: 'ICIG',
+    definition: 'Presidentially appointed inspector general who oversees the 18 agencies of the U.S. Intelligence Community. The ICIG's office is the legally designated channel for intelligence community whistleblower complaints under the ICWPA. Grusch filed his complaint with the ICIG before going public — a legally required step. The ICIG determined his complaint was "credible and urgent" in classified findings, triggering mandatory congressional notification. The ICIG process provides legal protection to filers and is the primary mechanism for structured UAP disclosure through official channels.',
+    categorie: 'juridique',
+    tier: 1,
+    tags: ['whistleblower', 'Grusch', 'oversight', 'classified', 'Congress', 'legal'],
+  },
+
+  {
+    id: 'scif',
+    terme: 'Sensitive Compartmented Information Facility',
+    acronyme: 'SCIF',
+    definition: 'A specially accredited room or facility used to process, store, and discuss classified information above Secret level. Designed to prevent electronic eavesdropping and unauthorized access. Congressional UAP briefings occur in SCIFs — which means members present cannot take notes out, discuss content with uncleared staff, or speak publicly about what they heard. This structure is one reason why congressional members who receive UAP briefings often cannot explain publicly why they are concerned. Multiple senators and representatives have stated that what they heard in SCIF briefings motivated their UAP legislative activity.',
+    categorie: 'juridique',
+    tier: 2,
+    tags: ['classification', 'Congress', 'briefings', 'security', 'oversight'],
+  },
+
+  {
+    id: 'dia',
+    terme: 'Defense Intelligence Agency',
+    acronyme: 'DIA',
+    definition: 'U.S. combat support agency responsible for military intelligence. The DIA administered AATIP/AAWSAP funding and contracted BAASS. Has produced classified assessments of UAP encounters going back decades. Several key figures in the UAP ecosystem (Elizondo, Stratton, Eric Davis) have DIA connections. The DIA's role in managing classified UAP-related research makes it a central node in the institutional secrecy architecture. Multiple FOIA requests to the DIA on UAP have produced partially redacted documents confirming interest in UAP propulsion and materials.',
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Pentagon', 'intelligence', 'AATIP', 'AAWSAP', 'classified'],
+  },
+
+  {
+    id: 'nro',
+    terme: 'National Reconnaissance Office',
+    acronyme: 'NRO',
+    definition: 'U.S. intelligence agency responsible for designing, building, launching, and maintaining America's intelligence satellites. Manages the most capable space-based intelligence collection systems in the world. Jay Stratton directed an NRO UAP analysis cell before leading the UAPTF. The NRO's relevance to UAP: its assets (imagery satellites, signals collection platforms) are among the sensors most capable of tracking anomalous objects in near-space. NRO involvement in UAP analysis is referenced in protected disclosures but not officially confirmed.',
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['satellites', 'space', 'intelligence', 'Stratton', 'classified'],
+  },
+
+  {
+    id: 'nga',
+    terme: 'National Geospatial-Intelligence Agency',
+    acronyme: 'NGA',
+    definition: 'U.S. intelligence agency producing geospatial intelligence from imagery and geospatial data. David Grusch worked at the NGA before his AARO assignment. The NGA's imagery analysis capabilities — processing satellite and aerial imagery — are directly relevant to UAP analysis. Grusch's NGA background gave him access to geospatial data about specific locations relevant to his crash retrieval claims. The NGA is one of the agencies that contributed to AARO's analytical resources.',
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Grusch', 'imagery', 'intelligence', 'geospatial', 'satellite'],
+  },
+
+  // ─── MORE HISTORICAL CASES ───────────────────────────────
+
+  {
+    id: 'washington-1952',
+    terme: 'Washington D.C. UFO Incident (1952)',
+    definition: 'A series of UAP detections over restricted airspace above Washington D.C. in July 1952, tracked simultaneously on radar at Washington National Airport (now Reagan) and Andrews Air Force Base. F-94 interceptors were scrambled multiple times. The event triggered the largest Pentagon press conference since WWII, led by Air Force General John Samford. The official explanation — temperature inversion causing radar anomalies — was contested by Air Force and CAA radar operators. This remains the most significant UAP event over the U.S. capital and directly influenced the CIA's Robertson Panel (1953) to recommend UAP debunking.',
+    categorie: 'historique',
+    tier: 2,
+    tags: ['USAF', 'radar', 'Washington', '1952', 'CIA', 'Robertson Panel'],
+  },
+
+  {
+    id: 'tehran-1976',
+    terme: 'Tehran UAP Incident (1976)',
+    definition: 'A documented military UAP encounter on September 19, 1976 over Tehran, Iran, involving two Imperial Iranian Air Force F-4 Phantom jets scrambled to intercept a highly luminous object. Both aircraft experienced instrumentation failures when attempting to fire missiles — weapons systems failed to engage as the aircraft approached. A U.S. Defense Intelligence Agency report on the incident, subsequently declassified via FOIA, described it as "an outstanding report" with "all the elements necessary for a valid study of the UFO phenomenon." The DIA documentation makes this one of the most officially validated military UAP encounters on record.',
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Iran', 'IIAF', 'F-4', 'DIA', 'FOIA', '1976', 'weapons failure'],
+  },
+
+  {
+    id: 'varginha',
+    terme: 'Varginha Incident (1996)',
+    definition: 'A series of events in January 1996 in Varginha, Minas Gerais, Brazil, in which multiple civilian witnesses reported seeing a creature with large red eyes and oily brownish skin in distress in a park. Brazilian military and fire brigade reportedly captured or recovered entities. Witnesses include nurses from a local hospital who reportedly encountered a creature. The Brazilian Army's 6th Military Fire Department has never officially acknowledged involvement. James Fox documented the case extensively in Moment of Contact (2022), including on-the-record military witnesses who broke their silence. Widely considered the most significant alleged NHI biological encounter in South American history.',
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Brazil', 'biologics', 'Fox', 'military', 'witnesses', '1996'],
+  },
+
+  {
+    id: 'uss-omaha',
+    terme: 'USS Omaha Sphere Incident (2019)',
+    definition: 'UAP encounter involving the USS Omaha (LCS-12) in which a spherical object was observed and filmed by the ship's electro-optical/infrared sensors flying around the vessel before entering the ocean. The video was released by Jeremy Corbell in 2021 and subsequently authenticated by the U.S. Navy and Pentagon. The object's entry into the ocean without splash, at speed, is a documented example of transmedium behavior. AARO classified this as an active unresolved case. Combined with the USS Russell "pyramid UAP" incident from the same period, these 2019 encounters represent the most recent confirmed military UAP video evidence.',
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Navy', 'transmedium', 'Corbell', 'sphere', '2019', 'authenticated'],
+  },
+
+  {
+    id: 'skinwalker',
+    terme: 'Skinwalker Ranch',
+    definition: 'A 512-acre property in the Uinta Basin, Utah, with a documented history of anomalous phenomena reports including UAP sightings, cattle mutilations, poltergeist-like activity, and unusual electromagnetic effects. Purchased by Robert Bigelow in 1996 for NIDS research. Subsequently became the primary research site for AAWSAP/BAASS during the DIA contract period. Colm Kelleher (NIDS senior scientist) and George Knapp documented research in Hunt for the Skinwalker (2005). Now owned by Brandon Fugal and the subject of a History Channel documentary series. The ranch's connection to AAWSAP means government-funded research occurred there — the scope and findings remain classified.',
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Bigelow', 'NIDS', 'AAWSAP', 'Utah', 'anomalous phenomena', 'BAASS'],
+  },
+
+  // ─── PROGRAMS (ALLEGED & HISTORICAL) ─────────────────────
+
+  {
+    id: 'project-sign-grudge',
+    terme: 'Projects Sign & Grudge (1948–1952)',
+    definition: 'The first two official U.S. Air Force UFO investigation programs, preceding Project Blue Book. Project Sign (1948) produced the classified "Estimate of the Situation" concluding that many UAP were likely interplanetary craft — a conclusion immediately rejected by Air Force Chief of Staff Gen. Hoyt Vandenberg, who ordered the document burned. Project Grudge (1949–1951) replaced Sign with an explicitly debunking mandate. The destruction of Sign's key document is cited by researchers as evidence that early conclusions were suppressed rather than refuted. Both projects' existence and some findings were declassified post-Blue Book.',
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Air Force', 'historical', 'classified', '1948', 'Vandenberg', 'burned'],
+  },
+
+  {
+    id: 'project-moon-dust',
+    terme: 'Project Moon Dust',
+    definition: 'Declassified (via FOIA) U.S. Air Force Cold War program tasked with recovering foreign space debris and objects of unknown origin that landed on foreign territory, collecting intelligence before the Soviets could. Moon Dust teams were deployed globally. FOIA documents confirm the program collected and analyzed material from UAP-related crash sites on at least one occasion (Bolivia, 1978). The program demonstrates that a formal U.S. government "crash recovery" infrastructure existed independent of UFO-specific programs — a fact relevant to Grusch's crash retrieval allegations.',
+    categorie: 'historique',
+    tier: 3,
+    tags: ['Air Force', 'Cold War', 'FOIA', 'recovery', 'foreign material', 'declassified'],
+  },
+
+  {
+    id: 'mj-12',
+    terme: 'Majestic-12 (MJ-12)',
+    definition: 'A set of documents surfacing in the mid-1980s purporting to describe a secret U.S. government committee established by President Truman in 1947 to investigate and manage UAP crash retrieval, including Roswell. The FBI and most serious researchers consider the documents to be forgeries — the FBI's internal 1988 investigation concluded they were fabricated. No independent provenance has been established. MJ-12 documents are cited here for completeness: they significantly shaped 1980s–1990s UAP discourse and disinformation debates. They should not be used as evidence of government programs.',
+    categorie: 'conteste',
+    tier: 3,
+    isDisputed: true,
+    disputedNote: 'FBI concluded these are forgeries (1988). No independent verification exists. Listed for historical completeness only. Do not cite as evidence.',
+    tags: ['alleged', 'forged', 'FBI', 'Roswell', 'disinformation', 'disputed'],
+  },
+
+  {
+    id: 'to-the-stars',
+    terme: 'To The Stars Academy',
+    definition: 'A U.S. public benefit corporation founded in 2017 by musician Tom DeLonge with Luis Elizondo, former CIA officer Jim Semivan, and aerospace engineer Steve Justice. Acted as a vehicle for releasing declassified UAP materials (including facilitating the NYT 2017 story) and conducting research. To The Stars licensed the UAP video footage that was later officially authenticated by the Pentagon. Controversial in the UAP community for its mixed commercial-research model. Effectively wound down its active operations by 2021 but served as the primary vehicle for institutionalizing the 2017 disclosure moment.',
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Elizondo', 'DeLonge', 'CIA', '2017', 'declassification', 'media'],
+  },
+
+  // ─── SCIENTIFIC & TECHNICAL ──────────────────────────────
+
+  {
+    id: 'metamaterials',
+    terme: 'Metamaterials (UAP context)',
+    definition: 'Engineered composite materials with electromagnetic properties not found in nature, designed at sub-wavelength scale to achieve effects like negative refraction, near-zero permeability, or cloaking properties. In the UAP context: multiple witnesses including Elizondo and Eric Davis have referenced alleged recovered materials with isotopic ratios and layered structures inconsistent with known manufacturing processes. Garry Nolan has analyzed alleged UAP-related material samples. The Defense Intelligence Agency commissioned a 2009 study on metamaterials specifically in the context of UAP propulsion hypotheses. Confirmed metamaterials exist as an engineering field; alleged recovered UAP metamaterials are unverified.',
+    categorie: 'technologie',
+    tier: 2,
+    tags: ['DIA', 'Nolan', 'materials', 'propulsion', 'engineering', 'isotopic'],
+  },
+
+  {
+    id: 'biologics',
+    terme: 'Biological Materials (UAP context)',
+    definition: 'In UAP disclosure testimony, refers to alleged organic or biological matter recovered alongside non-human craft. David Grusch testified under oath: "Biologics came with some of these recoveries, yeah" in response to Rep. Nancy Mace's question "Were they human or non-human?" — Grusch: "Non-human... that was the assessment of people with direct knowledge of the program." This exchange represents the most explicit public congressional testimony about alleged non-human biological recovery. The claims are disputed by the DoD and AARO. No physical evidence has been presented publicly.',
+    categorie: 'phenomenologie',
+    tier: 1,
+    isDisputed: true,
+    disputedNote: 'Based solely on Grusch's sworn testimony citing second-hand accounts from other witnesses. No physical evidence presented publicly. DoD denies the claims.',
+    tags: ['Grusch', 'sworn testimony', 'Congress', 'alleged', 'non-human', '2023'],
+  },
+
+  {
+    id: 'nolan-brain-study',
+    terme: 'Nolan Brain Study',
+    definition: 'A series of peer-reviewed neurological studies by Dr. Garry Nolan (Stanford) analyzing MRI brain scans of individuals reporting close-range UAP encounters, many referred by U.S. intelligence community members. Published in Entropy (2023) and other journals. Key finding: some subjects showed structural changes in the caudate-putamen region of the brain, an area associated with pattern recognition, intuition, and information processing. Subjects with these anomalies included military intelligence officers. Nolan has stated the changes appear consistent across a population of witnesses. The study does not prove UAP causation but identifies a physiological correlate worth scientific investigation.',
+    categorie: 'scientifique',
+    tier: 2,
+    sources: [{ label: 'Stanford Medicine', url: 'https://med.stanford.edu' }],
+    tags: ['Nolan', 'Stanford', 'peer-reviewed', 'neurology', 'MRI', 'brain', 'witnesses'],
+  },
+
+  {
+    id: 'cryptoterrestrial',
+    terme: 'Cryptoterrestrial Hypothesis',
+    definition: 'A hypothesis proposing that UAP and alleged NHI have terrestrial rather than extraterrestrial origins — representing a hidden civilization on Earth, potentially underground, underwater, or in isolated regions. First formally articulated as an academic hypothesis in a 2024 paper by scholar Michael P. Masters. Variants include: (1) remnant ancient human civilization, (2) parallel evolutionary branch, (3) far-future humans navigating time. The hypothesis attempts to explain why detected NHI behavior appears familiar with Earth geography and biology. It remains highly speculative with no empirical support but is gaining traction as a serious alternative framing among some researchers.',
+    categorie: 'conceptuel',
+    tier: 3,
+    tags: ['hypothesis', 'terrestrial', 'alternative', 'Masters', 'speculative'],
+  },
+
+  {
+    id: 'sixth-observable',
+    terme: 'Sixth Observable — Biological Effects',
+    definition: 'An extension of Elizondo's Five Observables framework, proposed by multiple researchers and referenced in DIA-commissioned studies. Refers to documented physiological effects on human witnesses following close-range UAP encounters: skin burns, eye damage, neurological symptoms, radiation-consistent injuries, and long-term health effects. The 1995 Brazilian Varginha military witnesses reported health deterioration; multiple Nimitz strike group personnel reported anomalous medical symptoms. The DIA's 2009 AAWSAP reports documented biological effects across a database of cases. This observable is rarely discussed publicly due to sensitivity around witness privacy and medical liability.',
+    categorie: 'technologie',
+    tier: 2,
+    tags: ['Five Observables', 'biological', 'witnesses', 'DIA', 'AAWSAP', 'medical'],
+  },
+
+  {
+    id: 'americans-safe-aerospace',
+    terme: 'Americans for Safe Aerospace',
+    acronyme: 'ASA',
+    definition: 'Non-profit organization founded by Ryan Graves in 2022, dedicated to aerospace safety and UAP transparency advocacy. ASA's primary argument: UAP in restricted military airspace represent an aviation safety hazard regardless of origin, and the stigma around reporting creates dangerous underreporting. ASA has briefed members of Congress, met with FAA officials, and collected testimony from civilian pilots reporting UAP encounters. By framing UAP as a safety issue rather than a metaphysical one, ASA has made significant inroads with safety-focused regulators and legislators who might otherwise be dismissive.',
+    categorie: 'institutionnel',
+    tier: 2,
+    sources: [{ label: 'ASA', url: 'https://www.americansforsafeaerospace.org' }],
+    tags: ['Graves', 'aviation safety', 'FAA', 'Congress', 'non-profit', 'pilots'],
+  },
+
+  {
+    id: 'uap-caucus',
+    terme: 'Congressional UAP Caucus',
+    definition: 'An informal bipartisan group of U.S. House members organized around UAP transparency, co-chaired by Representatives Anna Paulina Luna (R-FL) and Jared Moskowitz (D-FL). The caucus organizes member briefings, facilitates witness testimony, and coordinates legislative strategy on UAP disclosure. It has provided a formal institutional home for congressional UAP activity beyond the specific committee jurisdictions (Armed Services, Intelligence, Oversight). Similar caucus structures have emerged in the Japanese Diet (80+ members) and are developing in European parliamentary bodies.',
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Luna', 'Moskowitz', 'Congress', 'House', 'bipartisan', 'transparency'],
+  },
+
+  {
+    id: 'stigma',
+    terme: 'UAP Reporting Stigma',
+    definition: 'The institutional and cultural disincentive for military personnel, pilots, and government employees to report UAP encounters, driven by fear of professional repercussions, ridicule, mental fitness evaluations, and career impact. The NASA 2023 UAP report identified stigma as the single largest barrier to quality data collection. Ryan Graves testified that Navy pilots routinely do not report encounters to avoid career risk. AARO's classified reporting portal was partially designed to reduce stigma by providing a secure, confidential channel. The persistence of stigma across decades is cited as a key reason why the institutional data gap exists.',
+    categorie: 'conceptuel',
+    tier: 1,
+    tags: ['NASA', 'Graves', 'Navy', 'pilots', 'culture', 'reporting', 'data gap'],
+  },
+
 ];
+
 
 export const CATEGORIES = [
   { id: 'all',            label: 'All terms'            },
