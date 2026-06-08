@@ -59,7 +59,7 @@ const PILLARS = [
 const SIGNALS_PREVIEW = [
   { date: 'May 2026',  text: 'Pentagon PURSUE: 162 classified UAP files released at war.gov/ufo. Secretary Hegseth confirms 2,000+ AARO cases.', strength: 'critical' },
   { date: 'Mar 2026',  text: 'Marco Rubio, U.S. Secretary of State: "We\'ve had repeated instances of something operating over restricted nuclear facilities — and it\'s not ours."', strength: 'critical' },
-  { date: 'Feb 2026',  text: 'UFOD ETF launches on CBOE. Bank of England analyst urges central bank preparedness. Trump executive order issued.', strength: 'critical' },
+  { date: 'Feb 2026',  text: 'UFOD ETF launches on CBOE. Bank of England analyst urges central bank preparedness. Trump presidential directive issued (Truth Social).', strength: 'critical' },
   { date: 'Nov 2025',  text: 'Jay Stratton, former UAP Task Force Director: "I have seen, with my own eyes, non-human craft and non-human beings." (The Age of Disclosure, Amazon Prime)', strength: 'critical' },
 ];
 
