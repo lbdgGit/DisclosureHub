@@ -174,7 +174,7 @@ export const TIMELINE: TimelineEvent[] = [
     id: '2026-pursue',
     date: '2026-05',
     titre: 'Pentagon PURSUE: 162 classified files released',
-    description: 'Department of War launches PURSUE at war.gov/ufo — rolling declassification program. 162 files released from FBI, DoD, NASA, and State Department. Defense Secretary Hegseth confirms AARO caseload exceeds 2,000 reports dating to 1945. Japan analyzes Pentagon files near Japan "with great interest."',
+    description: 'Department of War launches PURSUE at war.gov/ufo — rolling declassification program. 222 files released across two tranches from FBI, DoD, NASA, and State Department. Defense Secretary Hegseth confirms AARO caseload exceeds 2,000 reports dating to 1945. Japan analyzes Pentagon files near Japan "with great interest."',
     importance: 'majeur',
     categorie: 'militaire',
     lienSource: 'https://www.war.gov/ufo',
