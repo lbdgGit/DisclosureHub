@@ -1177,7 +1177,423 @@ export const LEXIQUE: LexiqueEntry[] = [
     tags: ['classified', 'budget', 'intelligence', 'Congress', 'AATIP', 'Snowden'],
   },
 
+
+  // ─── BATCH 4: CONTRACTORS, TECHNICAL, INTERNATIONAL, REMAINING ──
+
+  // DEFENSE CONTRACTORS & LABS ─────────────────────────────
+
+  {
+    id: 'lockheed-skunkworks',
+    terme: 'Lockheed Martin / Skunk Works',
+    definition: `Lockheed Martin is the world's largest defense contractor by revenue. Its Advanced Development Programs division — "Skunk Works" — based in Palmdale, California, is the most secretive aerospace R&D operation in the world, responsible for the U-2, SR-71 Blackbird, F-117 Nighthawk, and F-22. In UAP discourse, Skunk Works is frequently cited in alleged crash retrieval and reverse engineering contexts. Former Senate Majority Leader Harry Reid stated before his death that he had been told Lockheed held recovered UAP materials — a claim he said he could not verify. Skunk Works' culture of extreme compartmentalization and plausible deniability makes external verification structurally impossible.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    isDisputed: true,
+    disputedNote: `Reid's statement about Lockheed holding recovered materials is unverified and disputed by Lockheed. Cited here because of its source credibility (Senate Majority Leader) not as confirmed fact.`,
+    tags: ['contractor', 'Reid', 'classified', 'aerospace', 'alleged', 'reverse engineering'],
+  },
+
+  {
+    id: 'northrop-grumman',
+    terme: 'Northrop Grumman',
+    definition: `Second-largest U.S. defense contractor; designer of the B-2 Spirit stealth bomber, B-21 Raider, and multiple classified space and ISR platforms. In the UAP disclosure ecosystem, Northrop Grumman is frequently cited alongside Lockheed as a potential contractor involved in classified UAP-related research, given its expertise in advanced materials, stealth, and exotic propulsion concepts. No verified evidence links Northrop to UAP programs beyond standard defense contracting. The company operates multiple classified facilities and holds numerous SAPs. Its aerospace engineering capabilities make it a plausible candidate in alleged reverse engineering scenarios — emphasis on alleged.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    isDisputed: true,
+    disputedNote: `No verified evidence of UAP-specific programs at Northrop. Listed for completeness given its repeated appearance in UAP researcher analysis. Treat as speculative.`,
+    tags: ['contractor', 'stealth', 'aerospace', 'classified', 'alleged'],
+  },
+
+  {
+    id: 'saic',
+    terme: 'SAIC — Science Applications International Corporation',
+    acronyme: 'SAIC',
+    definition: `A major U.S. defense and intelligence contractor providing IT, engineering, and research services to the DoD and intelligence community. SAIC is relevant to UAP discourse for two reasons: (1) it provides analytical and IT support to AARO and predecessor organizations; (2) several key UAP-adjacent figures (including Eric Davis) have had SAIC affiliations. SAIC managed classified programs during the AATIP era. As with all large defense IT contractors, its involvement in UAP analysis is structural rather than program-specific — it provides the analytical infrastructure that any large classified program would use.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['contractor', 'IT', 'intelligence', 'DoD', 'AARO', 'analytical'],
+  },
+
+  {
+    id: 'mitre',
+    terme: 'MITRE Corporation',
+    definition: `A federally funded research and development center (FFRDC) that operates multiple research centers for U.S. government sponsors including DoD, FAA, and intelligence community. MITRE is unique: it has no profit motive, cannot hold patents for competitive gain, and exists solely to serve government research needs. In the UAP context, MITRE has conducted analysis of sensor data and anomalous detection methodologies for DoD sponsors. FFRDCs like MITRE are often used for the most sensitive analytical work precisely because their FFRDC status allows deeper integration with government systems than commercial contractors.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['FFRDC', 'DoD', 'research', 'sensors', 'analytical', 'non-profit'],
+  },
+
+  {
+    id: 'los-alamos-sandia',
+    terme: 'Los Alamos & Sandia National Laboratories',
+    definition: `The two premier U.S. national security laboratories, managed by the Department of Energy. Los Alamos (New Mexico) designed the first nuclear weapons and continues advanced materials, physics, and computational research. Sandia (New Mexico/California) focuses on nuclear weapons engineering, advanced sensors, and emerging technologies. Both labs have appeared in UAP researcher analyses as potential sites for materials analysis of alleged recovered UAP components, given their capabilities in exotic materials characterization, nuclear forensics, and advanced physics. Their involvement in classified UAP programs is alleged but unverified.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    isDisputed: true,
+    disputedNote: `No verified evidence of UAP-specific programs at either laboratory. Their materials analysis capabilities make them logical candidates in hypothetical crash retrieval scenarios, but this remains speculative.`,
+    tags: ['DOE', 'nuclear', 'materials', 'New Mexico', 'classified', 'alleged'],
+  },
+
+  {
+    id: 'battelle',
+    terme: 'Battelle Memorial Institute',
+    definition: `An independent non-profit research and development organization, the world's largest, with over $6 billion in annual revenue. Battelle manages Oak Ridge, Brookhaven, Pacific Northwest, and Idaho national laboratories for the DOE. In the UAP context, Battelle is historically significant: the Battelle Institute was commissioned by Project Blue Book to conduct a statistical analysis of UFO sightings (Special Report 14, 1955), which found that the best cases — those with the most witness reliability and data quality — were the LEAST explainable by conventional means. This finding was suppressed in the Blue Book era but has been cited repeatedly in the scientific case for UAP study.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['non-profit', 'DOE', 'Blue Book', 'Special Report 14', 'statistics', 'historical'],
+  },
+
+  {
+    id: 'darpa',
+    terme: 'DARPA — Defense Advanced Research Projects Agency',
+    acronyme: 'DARPA',
+    definition: `The DoD agency responsible for developing emerging technologies for military use. DARPA created the internet (ARPANET), stealth technology, GPS, and numerous other transformative innovations. In the UAP context, DARPA is relevant as the institutional home for research into exotic propulsion, advanced materials, and anomalous physics that could inform UAP understanding. DARPA's Tactical Technology Office and Defense Sciences Office have funded research adjacent to UAP-related physics. DARPA's structure — short-term program managers with high risk tolerance — is designed precisely for problems that conventional DoD research avoids.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['DoD', 'research', 'emerging technology', 'propulsion', 'materials', 'physics'],
+  },
+
+  // TECHNICAL / SENSOR ADVANCED ─────────────────────────────
+
+  {
+    id: 'aesa-radar',
+    terme: 'AESA Radar — Active Electronically Scanned Array',
+    acronyme: 'AESA',
+    definition: `Advanced radar technology used in modern military aircraft (F-22, F-35, F/A-18 Super Hornet) and naval vessels. AESA systems can simultaneously perform multiple functions: air-to-air tracking, ground mapping, electronic warfare, and communications. Unlike mechanically scanned radar, AESA can shift its beam electronically in microseconds. The F/A-18 squadrons that encountered UAP in the 2014-2015 Roosevelt incidents were equipped with AESA radar, providing high-confidence tracking data. AESA's ability to classify objects by their radar signature makes its inability to identify UAP more significant — not a sensor limitation but a genuine anomaly.`,
+    categorie: 'technologie',
+    tier: 2,
+    tags: ['radar', 'F-18', 'F-22', 'F-35', 'Navy', 'sensors', 'tracking'],
+  },
+
+  {
+    id: 'spy-1-radar',
+    terme: 'AN/SPY-1 Aegis Radar',
+    definition: `The primary radar system of U.S. Navy Aegis-equipped cruisers and destroyers, including the USS Princeton (Ticonderoga-class) involved in the 2004 Nimitz encounter. AN/SPY-1 is a passive phased-array radar capable of simultaneously tracking hundreds of targets across all elevation angles. During the Nimitz encounter, the Princeton's SPY-1 tracked objects descending from 80,000 feet to sea level in approximately 0.78 seconds — an acceleration of roughly 5,000 g-forces, exceeding by orders of magnitude what any known material or biological system can withstand. This radar data, combined with visual and FLIR confirmation, is the strongest multi-sensor UAP evidence in the public record.`,
+    categorie: 'technologie',
+    tier: 2,
+    tags: ['Navy', 'Nimitz', 'Princeton', 'radar', 'tracking', 'acceleration', 'sensor'],
+  },
+
+  {
+    id: 'irst',
+    terme: 'IRST — Infrared Search and Track',
+    acronyme: 'IRST',
+    definition: `A passive sensor system that detects and tracks airborne objects by their infrared (heat) signature without emitting radar waves. Because IRST is passive, it cannot be detected by the target. Unlike radar, IRST is not affected by electronic countermeasures or stealth coatings. Relevant to UAP analysis: objects showing near-zero radar cross-section (stealthy) while simultaneously showing no infrared signature from propulsion would be doubly anomalous — invisible to both active (radar) and passive (IR) detection. Some Navy UAP encounters involved objects detected visually but showing anomalously low or absent infrared signatures despite apparent high-speed flight.`,
+    categorie: 'technologie',
+    tier: 3,
+    tags: ['infrared', 'passive', 'sensors', 'Navy', 'stealth', 'detection'],
+  },
+
+  {
+    id: 'sonobuoy',
+    terme: 'Sonobuoy Detection Systems',
+    definition: `Expendable underwater acoustic sensors deployed by aircraft or ships to detect and track submarines and other submerged objects. Sonobuoys are directly relevant to transmedium UAP incidents: the USS Omaha 2019 sphere incident occurred in an area with active ASW (anti-submarine warfare) operations, potentially including sonobuoy deployment. If a transmedium UAP entering the ocean were detected by sonobuoy arrays, that acoustic data would be classified and routed through the Navy's undersea surveillance network (SOSUS). Sonobuoy data from UAP transmedium incidents is referenced in protected disclosures but has not been officially released.`,
+    categorie: 'technologie',
+    tier: 3,
+    tags: ['acoustic', 'underwater', 'Navy', 'transmedium', 'USS Omaha', 'classified'],
+  },
+
+  {
+    id: 'sbirs',
+    terme: 'SBIRS — Space-Based Infrared System',
+    acronyme: 'SBIRS',
+    definition: `A constellation of U.S. military satellites in geosynchronous and highly elliptical orbits providing persistent global infrared surveillance, primarily designed for missile launch detection. SBIRS sensors can detect any sufficiently hot object from space — including rocket launches, nuclear detonations, and potentially anomalous phenomena. In the UAP context: SBIRS data is among the most classified sensor data in the U.S. inventory. Multiple UAP researchers and congressional members have referenced the potential role of space-based infrared sensors in tracking UAP. Whether SBIRS has captured anomalous detections attributed to UAP remains classified.`,
+    categorie: 'technologie',
+    tier: 3,
+    tags: ['satellite', 'infrared', 'space', 'classified', 'surveillance', 'NRO'],
+  },
+
+  {
+    id: 'multi-domain-ops',
+    terme: 'All-Domain Awareness',
+    definition: `The military concept of integrating sensor data across all physical domains — air, land, sea, space, and cyberspace — into a unified operational picture. AARO's full name ("All-domain Anomaly Resolution Office") reflects this concept: UAP must be tracked across all domains because they transition between them. All-domain awareness is the sensor fusion framework within which military UAP detection operates. The challenge: each domain's sensor data is managed by different commands with different classification architectures, making cross-domain UAP tracking structurally difficult even with AARO's mandate to synchronize across agencies.`,
+    categorie: 'technologie',
+    tier: 2,
+    tags: ['AARO', 'sensor fusion', 'military', 'transmedium', 'DoD', 'integration'],
+  },
+
+  // GOVERNMENT BODIES (DETAILED) ────────────────────────────
+
+  {
+    id: 'hasc-sasc',
+    terme: 'HASC / SASC — Armed Services Committees',
+    definition: `The House Armed Services Committee (HASC) and Senate Armed Services Committee (SASC) are the primary congressional bodies overseeing DoD programs and funding. Both committees have held classified UAP briefings and have included UAP provisions in the National Defense Authorization Act (NDAA) — the annual legislation that funds the U.S. military. The repeated blocking of the UAP Disclosure Act from NDAA through HASC and SASC markup processes represents the primary legislative battlefield for disclosure advocates. Committee members with SCIF access to UAP briefings have stated publicly that what they heard motivated their advocacy.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Congress', 'DoD', 'NDAA', 'oversight', 'legislation', 'SASC', 'HASC'],
+  },
+
+  {
+    id: 'ssci-hpsci',
+    terme: 'Senate & House Intelligence Committees',
+    definition: `The Senate Select Committee on Intelligence (SSCI) and House Permanent Select Committee on Intelligence (HPSCI) provide congressional oversight of the 18 agencies of the U.S. Intelligence Community. These committees receive classified UAP briefings through the ODNI and AARO pipelines. Their members operate under strict SCIF confidentiality — they cannot publicly disclose classified content. Multiple SSCI and HPSCI members have made public statements expressing significant concern about UAP after classified briefings, without being able to specify what they heard. The intelligence committees are the primary recipients of AARO's classified annual reports to Congress.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Congress', 'intelligence', 'classified', 'oversight', 'ODNI', 'SCIF'],
+  },
+
+  {
+    id: 'oni',
+    terme: 'Office of Naval Intelligence',
+    acronyme: 'ONI',
+    definition: `The U.S. Navy's intelligence arm and one of the oldest intelligence agencies in the country (est. 1882). The UAP Task Force (UAPTF) was established within ONI in 2020, making ONI the institutional home of the first official modern UAP investigation program. ONI's particular relevance: Navy pilots and ships have generated a disproportionate share of the most credible UAP encounters (Nimitz, Roosevelt, Omaha), making naval intelligence data the richest single-service UAP dataset. ONI's classified encounter reports fed into AARO's caseload and inform the most sensitive UAP analyses.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Navy', 'UAPTF', 'intelligence', 'historical', 'Nimitz', 'Roosevelt'],
+  },
+
+  {
+    id: 'afrl',
+    terme: 'Air Force Research Laboratory',
+    acronyme: 'AFRL',
+    definition: `The primary research organization of the U.S. Air Force and Space Force, managing a $2.9B annual research portfolio across 10 technical directorates. AFRL's Aerospace Systems, Materials, and Directed Energy directorates conduct research directly relevant to UAP-related physics: advanced propulsion, exotic materials, high-energy sensing. The Air Force's historical role in UAP investigation (Projects Sign, Grudge, Blue Book) has transitioned to AARO, but AFRL's technical expertise in aerospace anomalies continues. AFRL also manages the Foreign Technology Division (now NASIC), which analyzes adversary aerospace technology — the framework relevant to crash retrieval claims.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['Air Force', 'research', 'propulsion', 'materials', 'FTD', 'NASIC'],
+  },
+
+  // MORE HISTORICAL CASES ───────────────────────────────────
+
+  {
+    id: 'lakenheath-bentwaters',
+    terme: 'Lakenheath-Bentwaters Incident (1956)',
+    definition: `A multi-sensor, multi-witness UAP encounter on August 13–14, 1956, over Suffolk, England, involving two USAF bases and RAF stations. Multiple ground radar stations tracked objects simultaneously performing maneuvers beyond any known aircraft — including sharp turns at high speed. RAF Venom interceptors were scrambled; one pilot reported a UFO "locking onto" his aircraft. The encounter was documented in a classified USAF report. The Condon Report (1968), which generally minimized UAP, acknowledged that this case — given its multi-radar confirmation and pilot visual contact — "in the judgement of this project...remains unexplained." One of the most thoroughly documented Cold War-era military UAP cases.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['UK', 'USAF', 'RAF', 'radar', 'Cold War', '1956', 'Condon Report', 'unexplained'],
+  },
+
+  {
+    id: 'kecksburg',
+    terme: 'Kecksburg Incident (1965)',
+    definition: `On December 9, 1965, a fireball was observed across multiple U.S. states and Canada, ultimately appearing to land near Kecksburg, Pennsylvania. Civilian witnesses described a bronze, acorn-shaped object the size of a Volkswagen with hieroglyphic-like markings near a ridge. The U.S. Army arrived and removed something on a flatbed truck. NASA's official explanation (2005): it was a Soviet satellite (Cosmos 96). Critics note Cosmos 96 had already reentered over Canada earlier. A FOIA request by investigative journalist Leslie Kean resulted in NASA acknowledging it had lost the relevant files. The case remains officially explained (Soviet satellite) and practically unresolved.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Pennsylvania', '1965', 'crash', 'Army', 'NASA', 'FOIA', 'Kean', 'Cold War'],
+  },
+
+  {
+    id: 'ariel-school',
+    terme: 'Ariel School Incident (1994)',
+    definition: `On September 16, 1994, approximately 62 schoolchildren aged 5–12 at Ariel School in Ruwa, Zimbabwe, reported witnessing craft land on the school grounds during recess and observed beings approaching them. Harvard psychiatrist Dr. John Mack interviewed the children and concluded they were not fabricating the account. The children's descriptions were remarkably consistent. Documentary filmmaker Randall Nickell produced Ariel Phenomenon (2022) interviewing the now-adult witnesses, who maintain their accounts decades later. The incident is distinctive for the number of child witnesses, the independent consistency of accounts, and the subsequent professional psychiatric investigation by Mack.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['Zimbabwe', 'Africa', 'children', 'John Mack', 'Harvard', '1994', 'witnesses', 'landing'],
+  },
+
+  // INTERNATIONAL REMAINING ─────────────────────────────────
+
+  {
+    id: 'project-magnet',
+    terme: 'Project Magnet (Canada)',
+    definition: `Canada's official government UAP investigation, established in 1950 by the Department of Transport under radio engineer Wilbert Smith. Project Magnet was unusually candid — Smith obtained classified confirmation from U.S. officials that UAP were real and classified at a higher level than the hydrogen bomb. Project Magnet operated a monitoring station at Shirley Bay, Ontario, and made a significant detection in August 1954 before equipment failure. The project was officially terminated in 1954 but Smith continued privately. Canada's early official engagement with UAP, and Smith's recorded intelligence contacts, makes Project Magnet a key Cold War-era institutional data point.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Canada', 'Cold War', 'Smith', '1950', 'government', 'historical', 'classified'],
+  },
+
+  {
+    id: 'norway-hessdalen',
+    terme: 'Norway — Hessdalen Lights / Armed Forces Observations',
+    definition: `Hessdalen Valley in central Norway has been the site of persistent, recurring anomalous light phenomena since at least the 1930s, peaking in 1981–1984 with 15–20 observations per week. The Norwegian military and civilian scientists have monitored the valley. Project Hessdalen (est. 1983) is one of the few long-term scientific monitoring programs for recurring UAP specifically. The Norwegian Armed Forces have separately documented radar returns of anomalous objects. Some Hessdalen phenomena have been attributed to geological piezoelectric effects; a residual unexplained fraction remains. Norway's systematic scientific approach to a specific recurring phenomenon is a unique methodological contribution.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Norway', 'Hessdalen', 'scientific monitoring', 'lights', 'recurring', 'geology'],
+  },
+
+  {
+    id: 'russia-cold-war',
+    terme: 'Soviet / Russian UAP Programs',
+    definition: `The Soviet Union conducted extensive classified UAP research throughout the Cold War, driven by concern that UAP might represent advanced U.S. technology — mirroring U.S. concern that UAP might be Soviet. The KGB maintained a classified UAP file known as "File 13." Soviet military pilots reported UAP encounters at rates comparable to U.S. counterparts. Post-Soviet declassified materials revealed a 1978 directive from Soviet Chief of Staff ordering systematic UAP reporting. Russian research program "SETKA-MO" (military) and "SETKA-AN" (Academy of Sciences) operated in parallel. The mutual Cold War UAP investigation dynamic — each superpower fearing the other was responsible — adds a significant layer to the institutional history.`,
+    categorie: 'institutionnel',
+    tier: 2,
+    tags: ['Russia', 'Soviet', 'Cold War', 'KGB', 'military', 'declassified', 'historical'],
+  },
+
+  {
+    id: 'john-mack',
+    terme: 'Dr. John Mack',
+    definition: `Harvard Medical School professor of psychiatry (1929–2004); Pulitzer Prize winner (A Prince of Our Lives, 1977). Beginning in the early 1990s, Mack investigated hundreds of individuals reporting alien abduction experiences, publishing Abduction: Human Encounters with Aliens (1994) and Passport to the Cosmos (1999). His conclusion: the experiences were real events to the witnesses, not psychopathology. His Harvard position triggered a formal university investigation of his academic methodology — ultimately dismissed. Mack died in 2004 after being struck by a drunk driver in London. His work represents the most credentialed psychiatric engagement with anomalous contact experience, relevant to the NHI witness testimony ecosystem.`,
+    categorie: 'personnel',
+    tier: 2,
+    tags: ['Harvard', 'psychiatry', 'Pulitzer', 'abduction', 'witnesses', 'deceased', 'academic'],
+  },
+
+  // SCIENTIFIC / CONCEPTUAL REMAINING ──────────────────────
+
+  {
+    id: 'zero-point-energy',
+    terme: 'Zero-Point Energy (ZPE)',
+    definition: `The lowest possible energy state of a quantum mechanical system — the energy that remains when all thermal energy has been removed (absolute zero). Quantum field theory predicts a non-zero ZPE throughout all of space (the quantum vacuum). In the UAP context, ZPE has been proposed as a theoretical basis for seemingly "reactionless" propulsion — drawing energy from the vacuum rather than expelling reaction mass. The DIA-funded AATIP program commissioned a report on ZPE as a potential UAP propulsion mechanism. ZPE extraction remains theoretically contested and practically undemonstrated. It is scientifically legitimate as a hypothesis, not a demonstrated technology.`,
+    categorie: 'scientifique',
+    tier: 3,
+    tags: ['physics', 'quantum', 'propulsion', 'AATIP', 'DIA', 'theoretical', 'vacuum'],
+  },
+
+  {
+    id: 'warp-field',
+    terme: 'Spacetime Metric Engineering / Warp Field',
+    definition: `A theoretical propulsion concept based on the Alcubierre metric (1994), which mathematically describes a spacetime "bubble" that contracts space ahead of a vessel and expands it behind, enabling faster-than-light travel without the vessel itself exceeding c locally. The Alcubierre drive requires exotic matter with negative energy density — not currently known to exist in stable form, though Casimir effect experiments show negative energy densities are not excluded by physics. AATIP commissioned research on metric engineering as a potential UAP propulsion mechanism. The concept is mathematically consistent with general relativity. The energy requirements at current understanding are prohibitive (Jupiter mass-energy equivalent).`,
+    categorie: 'scientifique',
+    tier: 3,
+    tags: ['physics', 'Alcubierre', 'propulsion', 'AATIP', 'theoretical', 'relativity', 'FTL'],
+  },
+
+  {
+    id: 'simulation-hypothesis',
+    terme: 'Simulation Hypothesis (UAP application)',
+    definition: `The philosophical proposition that physical reality is a computational simulation, proposed most prominently by philosopher Nick Bostrom (2003). In the UAP context: some researchers have noted that UAP behavior — apparently violating conservation laws, appearing and disappearing, manipulating witnesses' perception and memory — would be consistent with deliberate "rendering" exceptions in a simulated environment. This is a fringe application of an already speculative hypothesis. It is included here because it appears in serious academic UAP literature (including Sol Foundation discussions) as a conceptual framework, not because it has any empirical support. It is the least falsifiable of all UAP origin hypotheses.`,
+    categorie: 'conceptuel',
+    tier: 3,
+    tags: ['Bostrom', 'philosophy', 'speculative', 'simulation', 'hypothesis', 'consciousness'],
+  },
+
+  {
+    id: 'condon-cover',
+    terme: 'Robertson Panel (1953)',
+    definition: `A secret CIA-sponsored scientific panel convened January 1953, chaired by physicist H.P. Robertson, charged with assessing whether UAP posed a national security threat. Conclusion: UAP did not pose a direct threat, but mass public interest in them did — creating a potential channel for enemy psychological warfare and clogging military communication networks. The panel recommended a public education campaign to "debunk" UAP and reduce public reporting. Critically: the Robertson Panel was explicitly about managing public perception, not resolving the scientific question. It established the institutional template for UAP debunking as official policy — a posture maintained until 2017.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['CIA', 'Robertson', '1953', 'Cold War', 'debunking', 'policy', 'historical', 'psychological'],
+  },
+
+  {
+    id: 'radar-spoofing',
+    terme: 'Radar Spoofing / Electronic Deception',
+    definition: `A skeptical framework proposing that some military UAP radar detections represent adversary electronic warfare — deliberately injecting false tracks into radar systems to probe detection and response capabilities. Russia and China both possess sophisticated electronic warfare capabilities. The radar spoofing hypothesis is most applicable to radar-only detections without corroborating visual or FLIR confirmation. It is specifically NOT applicable to cases like Nimitz (multi-sensor, multi-witness, visual plus radar plus FLIR plus pilot intercept) or Roosevelt (similarly multi-confirmed). AARO's analytic protocol screens for electronic warfare signatures as a priority alternative explanation.`,
+    categorie: 'conceptuel',
+    tier: 2,
+    tags: ['skeptical', 'electronic warfare', 'Russia', 'China', 'AARO', 'methodology', 'adversary'],
+  },
+
+  {
+    id: 'parallax-errors',
+    terme: 'Parallax and Tracking Errors',
+    definition: `A technical skeptical explanation for some UAP footage anomalies. Parallax occurs when an object at distance appears to move faster or in unexpected directions relative to a closer reference point. Tracking errors occur when a sensor's gimbal system loses lock and the apparent motion of the tracked object is actually the motion of the sensor. The Gimbal video has been specifically analyzed for this effect: some researchers argue the object's apparent rotation is a gimbal derotation artifact of the ATFLIR pod. Others argue the tracking data is inconsistent with a pure sensor artifact. This debate remains unresolved and illustrates why raw sensor footage without full telemetry data is analytically limited.`,
+    categorie: 'conceptuel',
+    tier: 2,
+    tags: ['skeptical', 'Gimbal', 'FLIR', 'sensors', 'methodology', 'analysis', 'artifact'],
+  },
+
+  {
+    id: 'psychological-bias',
+    terme: 'Perception Bias and Witness Psychology',
+    definition: `A collection of cognitive and psychological mechanisms that can cause individuals to misidentify conventional phenomena as anomalous: pareidolia (pattern recognition in noise), expectation bias (seeing what one expects), memory confabulation (unconscious reconstruction), social contagion (adopting the observations of others), and stress-induced perceptual distortion. Legitimate UAP analysis must account for these factors — which is why multi-sensor, multi-independent-witness cases are considered far more significant than single-witness testimonies. The U.S. Air Force used psychological explanations extensively to dismiss UAP reports during the Blue Book era, often without examining the underlying evidence.`,
+    categorie: 'conceptuel',
+    tier: 2,
+    tags: ['psychology', 'skeptical', 'methodology', 'cognitive bias', 'witnesses', 'Blue Book'],
+  },
+
+  // LEGISLATION DETAIL ──────────────────────────────────────
+
+  {
+    id: 'foia-exemptions',
+    terme: 'FOIA Exemptions b(1) through b(9)',
+    definition: `The nine exemptions to the U.S. Freedom of Information Act that allow agencies to withhold requested documents. The most relevant to UAP: b(1) — classified national security information (the primary exemption used for UAP records); b(3) — information specifically exempted by statute (covers NSA and CIA materials); b(5) — deliberative process privilege (internal agency deliberations). UAP FOIA responses routinely cite b(1) and b(3). The existence of a document can be withheld entirely under a "Glomar response" — neither confirming nor denying existence — when even acknowledging a document would reveal classified information. The Black Vault's John Greenewald has documented extensive Glomar responses on UAP requests.`,
+    categorie: 'juridique',
+    tier: 2,
+    tags: ['FOIA', 'classification', 'Glomar', 'national security', 'legal', 'Black Vault'],
+  },
+
+  {
+    id: 'executive-privilege',
+    terme: 'Executive Privilege and Presidential Declassification',
+    definition: `The constitutional doctrine allowing the President and executive branch officials to withhold information from Congress and courts to protect national security and executive deliberations. Critically: the President has inherent authority to declassify any information at any time — a power exercised by Trump's February 2026 executive order directing UAP file release. Congressional oversight authority is in tension with executive privilege on classified UAP matters: Congress can demand records, but classification review provides significant delay leverage. The UAP Disclosure Act attempted to pierce this through a presidentially appointed review board modeled on the JFK Records Act — which was specifically designed to overcome executive privilege on historical secrets.`,
+    categorie: 'juridique',
+    tier: 2,
+    tags: ['classification', 'Trump', 'Congress', 'UAPDA', 'JFK Records Act', 'legal', 'constitutional'],
+  },
+
+  // TIMELINE ERAS ───────────────────────────────────────────
+
+  {
+    id: 'era-blue-book',
+    terme: 'Blue Book Era (1947–1969)',
+    definition: `The first institutional phase of U.S. government UAP engagement, characterized by official investigation combined with systematic debunking. Projects Sign (1948), Grudge (1949), and Blue Book (1952–1969) investigated 12,618 reports. Key events: the Estimate of the Situation (1948) concluded UAP were likely extraterrestrial — immediately suppressed; the Robertson Panel (1953) established debunking as official policy; J. Allen Hynek shifted from skeptic to serious researcher; the Condon Report (1968) provided cover for Blue Book closure. The era established the institutional template for UAP management: acknowledge investigation, suppress significant findings, apply alternative explanations regardless of evidence quality.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['historical', 'Blue Book', 'Air Force', 'CIA', 'Hynek', 'Cold War', 'institutional'],
+  },
+
+  {
+    id: 'era-stagnation',
+    terme: 'Stagnation Era (1970–2004)',
+    definition: `Following Blue Book's closure, official U.S. government UAP investigation essentially ceased for 35 years. No open program existed. Military encounters continued — pilots were instructed not to report them through official channels. AATIP was secretly funded from 2007 but its public existence was unknown. The CIA, DIA, and NSA continued classified monitoring. This era created the institutional data gap: thousands of military encounters went unreported or were filed in inaccessible classified archives. The Nimitz encounter (2004) — the event that eventually broke the stagnation — occurred precisely during this period of official inaction.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['historical', 'post-Blue Book', 'gap', 'military', 'classified', 'unreported'],
+  },
+
+  {
+    id: 'era-disclosure',
+    terme: 'Modern Disclosure Era (2017–present)',
+    definition: `The current phase of institutional UAP engagement, initiated by the New York Times revelation of AATIP in December 2017. Key milestones: Pentagon video authentication (2020), ODNI UAP report (2021), AARO creation (2022), congressional hearings (2022–2023), Grusch sworn testimony (2023), NASA UAP report (2023), Trump executive order (Feb 2026), PURSUE launch (May 2026). The era is characterized by progressive official acknowledgment without full disclosure — each step reveals more while the core question (what are they?) remains officially unresolved. This era is the context within which all LBDG organizational preparedness work operates.`,
+    categorie: 'historique',
+    tier: 1,
+    tags: ['NYT', '2017', 'AARO', 'Grusch', 'NASA', 'PURSUE', 'Trump', 'LBDG'],
+  },
+
+  // ADDITIONAL CONCEPTS ─────────────────────────────────────
+
+  {
+    id: 'aoimsg',
+    terme: 'AOIMSG — Airborne Object Identification and Management Synchronization Group',
+    acronyme: 'AOIMSG',
+    definition: `A short-lived DoD UAP body that briefly replaced the UAPTF in November 2021 before being superseded by AARO in July 2022. Created following Senator Gillibrand's successful insertion of UAP provisions into NDAA 2022 requiring a more formal DoD structure. The AOIMSG's brief existence illustrates the bureaucratic evolution: each organizational form reflected congressional pressure and DoD resistance. AOIMSG → AARO represents the institutionalization of UAP investigation within a permanent, presidentially confirmed structure with broader authority than its predecessors.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['DoD', 'UAP', 'Congress', 'Gillibrand', 'NDAA', 'historical', 'bureaucratic'],
+  },
+
+  {
+    id: 'ufo-stigma-military',
+    terme: '"Foo Fighters" — WWII UAP Reports',
+    definition: `Allied and Axis pilots during World War II reported anomalous objects they called "foo fighters" — small, fast, luminous spheres or discs that appeared to follow aircraft without attacking. Reported independently by American, British, German, and Japanese pilots, suggesting the phenomena were not attributable to any single nation's secret weapon program. Post-war investigation found no conventional explanation. The foo fighter reports are the earliest documented mass military UAP encounters from the modern era and establish that the phenomenon predates Cold War politics and was observed symmetrically by opposing sides — a significant data point against the adversary technology hypothesis.`,
+    categorie: 'historique',
+    tier: 2,
+    tags: ['WWII', 'historical', 'military', 'spheres', 'Allied', 'Axis', '1944', 'pilots'],
+  },
+
+  {
+    id: 'uap-latin-america',
+    terme: 'Latin American UAP Programs',
+    definition: `Several Latin American countries have developed official UAP investigation frameworks beyond Brazil and Chile. Argentina: the National Commission for the Investigation of Aerospace Phenomena (CNDVNI) operates under the Air Force. Uruguay: CRIDOVNI (Commission for the Reception and Investigation of UFO Denunciations) has operated since 1979. Peru: DIFAA (Anomalous Aerial Phenomena Investigation Department) was established in 2013 under the Air Force. Ecuador, Colombia, and Venezuela have documented military encounter files. The relatively high institutional transparency of Latin American programs — compared to the U.S. and UK — reflects different political and cultural attitudes toward UAP acknowledgment.`,
+    categorie: 'institutionnel',
+    tier: 3,
+    tags: ['Latin America', 'Argentina', 'Uruguay', 'Peru', 'Air Force', 'international', 'official'],
+  },
+
+  {
+    id: 'deloitte-blackswan',
+    terme: 'Deloitte AG 2026 Black Swan Classification',
+    definition: `In the 2026 GPMESII (Geopolitical, Military, Economic, Social, Infrastructure, Information Space) Risk Intelligence Report, Deloitte AG classified NHI disclosure as a credible Black Swan event in the Social domain. Key parameters: probability 2/5 within 5 years; impact tags include Ontological Shock, Institutional Trust erosion, and Narrative Polarisation. This classification represents a watershed moment: when a Big Four professional services firm with 457,000 employees and major corporate clients includes NHI disclosure in its formal risk taxonomy, the subject has definitively crossed from fringe speculation into institutional risk management. The LBDG toolkit suite exists specifically in response to this institutional signal.`,
+    categorie: 'institutionnel',
+    tier: 1,
+    tags: ['Deloitte', 'Black Swan', 'risk', 'institutional', '2026', 'LBDG', 'GPMESII'],
+  },
+
+  {
+    id: 'bank-of-england-warning',
+    terme: 'Bank of England UAP Warning (2026)',
+    definition: `In January 2026, Helen McCaw, former senior analyst at the Bank of England, publicly urged central banks to begin preparedness planning for the potential market instability that could follow UAP/NHI disclosure. Her warning cited "ontological shock" as a potential trigger for systemic financial disruption — consumer confidence collapse, market volatility, and institutional trust erosion. The Bank of England's institutional weight as one of the world's most respected central banks made this the highest-credibility financial institution to engage with disclosure risk to date. Her warning preceded the UFOD ETF launch by two weeks, suggesting coordinated awareness in financial circles. LBDG's Finance Toolkit is partly designed in response to this signal.`,
+    categorie: 'institutionnel',
+    tier: 1,
+    tags: ['Bank of England', 'McCaw', 'financial', 'systemic risk', '2026', 'LBDG', 'UFOD'],
+  },
+
+  {
+    id: 'ufod-etf',
+    terme: 'UFOD ETF — UFO Disclosure Fund',
+    acronyme: 'UFOD',
+    definition: `The first investment fund explicitly designed to capitalize on UAP/NHI disclosure, launched February 5, 2026 on CBOE (Chicago Board Options Exchange) by Tuttle Capital Management. Ticker: UFOD. The fund invests in aerospace, defense, advanced materials, and energy companies positioned to benefit from the release of non-human technology. $2.9M AUM at launch; rapidly grew as institutional interest increased following Trump's executive order. UFOD's existence on a regulated major exchange is one of the most significant financial signals in the modern disclosure era — it demonstrates that sophisticated market participants are pricing disclosure risk into investable instruments, not merely discussing it.`,
+    categorie: 'institutionnel',
+    tier: 1,
+    sources: [{ label: 'CBOE: UFOD', url: 'https://finance.yahoo.com/quote/UFOD/' }],
+    tags: ['ETF', 'CBOE', 'Tuttle', 'financial', '2026', 'investment', 'institutional'],
+  },
+
 ];
+
 
 
 
