@@ -43,7 +43,7 @@ export const SIGNALS: Signal[] = [
     institution: 'Department of War (formerly DoD)',
     country: 'USA',
     title: 'Pentagon launches PURSUE — 162 UAP files released',
-    description: 'Trump executive order triggers mass declassification. PURSUE (war.gov/ufo) launches with 162 files from FBI, DoD, NASA, State Dept. Rolling release ongoing. Secretary Hegseth confirms AARO caseload exceeds 2,000 reports dating to 1945.',
+    description: 'Trump presidential directive (Truth Social, Feb 19 2026) triggers mass declassification. PURSUE (war.gov/ufo) launches with 222 files across two releases from FBI, DoD, NASA, State Dept. Rolling release ongoing. Secretary Hegseth confirms AARO caseload exceeds 2,000 reports dating to 1945.',
     category: 'government',
     strength: 'critical',
     sourceLabel: 'DoD / war.gov/ufo',
