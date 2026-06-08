@@ -1,79 +1,93 @@
 import Link from 'next/link';
+import { Radio, ExternalLink } from 'lucide-react';
 
-const COLS = [
+const COLUMNS = [
   {
-    title: 'Education',
+    title: 'Learn',
     links: [
-      { href: '/lexique',  label: 'UAP Lexicon'         },
-      { href: '/frise',    label: 'Historical Timeline'  },
-      { href: '/faq',      label: 'FAQ Disclosure'       },
-      { href: '/chatbot',  label: 'AI Signal'            },
+      { href: '/lexique',   label: 'UAP Glossary'   },
+      { href: '/frise',     label: 'Timeline'        },
+      { href: '/faq',       label: 'FAQ'             },
+      { href: '/chatbot',   label: 'Signal Q&A'      },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { href: '/toolkits',             label: 'Toolkits'         },
-      { href: '/rapports',             label: 'Reports'          },
-      { href: '/rapports#gratuit',     label: 'Free Report'      },
+      { href: '/toolkits',           label: 'Operational Toolkits' },
+      { href: '/rapports',           label: 'Reports'              },
+      { href: '/rapports#starter',   label: 'Free Starter Pack'    },
+      { href: '/signals',            label: 'Signal Monitor'       },
     ],
   },
   {
     title: 'Official Sources',
     links: [
-      { href: 'https://www.aaro.mil',              label: 'AARO — DoD',      ext: true },
-      { href: 'https://science.nasa.gov/uap',      label: 'NASA UAP',        ext: true },
-      { href: 'https://www.congress.gov',          label: 'U.S. Congress',   ext: true },
-      { href: 'https://www.cnes.fr/geipan',        label: 'GEIPAN — CNES',   ext: true },
+      { href: 'https://www.aaro.mil',                label: 'AARO (Pentagon)',    external: true },
+      { href: 'https://science.nasa.gov/uap',        label: 'NASA UAP Study',     external: true },
+      { href: 'https://www.war.gov/ufo',             label: 'PURSUE (war.gov)',   external: true },
+      { href: 'https://www.cnes-geipan.fr',          label: 'GEIPAN (France)',    external: true },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#FAF8F4', borderTop: '1px solid #E2E8F0' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '64px 24px 40px' }}>
-
-        {/* Top row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr repeat(3, auto)', gap: '48px', marginBottom: '48px', flexWrap: 'wrap' }} className="flex flex-col md:grid">
+    <footer className="border-t border-border/50 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
 
           {/* Brand */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-              <div style={{
-                width: '28px', height: '32px',
-                background: 'linear-gradient(135deg, #C9A84C, #E8C96A)',
-                clipPath: 'polygon(50% 0%, 100% 15%, 100% 70%, 50% 100%, 0% 70%, 0% 15%)',
-              }} />
-              <div>
-                <div style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '15px', color: '#1B2A4A' }}>LBDG</div>
-                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', letterSpacing: '0.12em', color: '#C9A84C', textTransform: 'uppercase' }}>Leadership Bureau</div>
-              </div>
-            </div>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#8A9BB5', lineHeight: 1.6, maxWidth: '220px' }}>
-              The reference portal for understanding and anticipating the official announcement of non-human intelligence existence.
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-3">
+              <Radio size={16} className="text-signal" />
+              <span
+                className="font-display font-700 text-bright text-sm tracking-widest uppercase"
+                style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
+              >
+                LBDG
+              </span>
+            </Link>
+            <p className="text-muted text-xs leading-relaxed mb-4" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              Leadership Bureau for Disclosure Guidance. Operational toolkits and signal tracking for organizations preparing for a paradigm-shifting announcement.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '16px' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ADE80', animation: 'pulse 3s ease-in-out infinite' }} />
-              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#4ADE80', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Signal Active</span>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+              <span className="text-2xs font-mono text-signal tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                SIGNAL ACTIVE — DVI 7.0
+              </span>
             </div>
           </div>
 
           {/* Nav columns */}
-          {COLS.map((col) => (
+          {COLUMNS.map((col) => (
             <div key={col.title}>
-              <h3 style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#8A9BB5', textTransform: 'uppercase', marginBottom: '16px', fontWeight: 500 }}>
+              <h3
+                className="text-2xs font-mono font-600 text-muted tracking-widest uppercase mb-4"
+                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              >
                 {col.title}
               </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <ul className="space-y-2">
                 {col.links.map((link) => (
                   <li key={link.href}>
-                    {'ext' in link && link.ext ? (
-                      <a href={link.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#4A5D78', textDecoration: 'none' }}>
-                        {link.label} ↗
+                    {'external' in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-muted hover:text-bright transition-colors"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        {link.label}
+                        <ExternalLink size={9} className="opacity-50" />
                       </a>
                     ) : (
-                      <Link href={link.href} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#4A5D78', textDecoration: 'none' }}>
+                      <Link
+                        href={link.href}
+                        className="text-xs text-muted hover:text-bright transition-colors"
+                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                      >
                         {link.label}
                       </Link>
                     )}
@@ -85,17 +99,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div style={{ borderTop: '1px solid #E2E8F0', paddingTop: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#8A9BB5' }}>
-            © {new Date().getFullYear()} Leadership Bureau for Disclosure Guidance
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/30">
+          <p className="text-2xs font-mono text-muted/50" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            © 2025 LBDG — readyfordisclosure.com
           </p>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            {['Legal', 'Privacy', 'Terms'].map((item) => (
-              <Link key={item} href={`/${item.toLowerCase()}`} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#8A9BB5', textDecoration: 'none' }}>
-                {item}
-              </Link>
-            ))}
+          <div className="flex gap-4">
+            <a href="/legal" className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Legal</a>
+            <a href="/privacy" className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Privacy</a>
+            <a href="/terms" className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Terms</a>
           </div>
+          <p className="text-2xs font-mono text-muted/40 text-center sm:text-right max-w-sm" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            Sources: DoD/AARO · NASA · CNES/GEIPAN · Deloitte AG 2026 · Bank of England · CBOE · U.S. Congress
+          </p>
         </div>
       </div>
     </footer>
