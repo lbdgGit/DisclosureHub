@@ -22,7 +22,7 @@ export default function LegalPage() {
           Legal Notice
         </h1>
         <p className="text-sm text-muted font-mono" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-          Last updated: June 2025 — readyfordisclosure.com
+          Last updated: June 2026 — readyfordisclosure.com
         </p>
       </div>
 
@@ -123,7 +123,7 @@ export default function LegalPage() {
 
         <div className="pt-4 border-t border-border/40">
           <p className="text-xs text-muted font-mono" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-            © 2025 LBDG — readyfordisclosure.com ·{' '}
+            © 2026 LBDG — readyfordisclosure.com ·{' '}
             <a href="/privacy" className="hover:text-bright transition-colors">Privacy Policy</a>
             {' '}·{' '}
             <a href="/terms" className="hover:text-bright transition-colors">Terms of Use</a>
