@@ -7,9 +7,109 @@ import {
   getOverallSignalLevel, type SignalCategory, type SignalStrength
 } from '@/data/signals';
 
+// ─── Methodology constants ────────────────────────────────
+const DVI_METHODOLOGY = [
+  { dimension: 'Executive action',       score: 2.0, max: 2, note: 'Trump EO (Feb 2026) + PURSUE active declassification program' },
+  { dimension: 'Legislative action',     score: 0.5, max: 2, note: 'UAPDA blocked 3× but bypassed by executive order' },
+  { dimension: 'Witness testimony',      score: 1.8, max: 2, note: 'Stratton firsthand on record + Grusch sworn congressional testimony' },
+  { dimension: 'Financial / institutional', score: 1.5, max: 2, note: 'UFOD ETF on CBOE + Deloitte Black Swan + Bank of England warning' },
+  { dimension: 'International alignment', score: 1.0, max: 2, note: 'Japan Cabinet proposal + GEIPAN + EU — active but not coordinated' },
+];
+
+const ISS_METHODOLOGY = [
+  { dimension: 'Source authority',   score: 20, max: 25, note: 'Secretary of State + former program director + 34 officials — on record in documentary, not official press conference' },
+  { dimension: 'Verifiability',      score: 15, max: 25, note: 'PURSUE files public but selective — no physical evidence released publicly' },
+  { dimension: 'Consistency',        score: 15, max: 25, note: 'AARO Historical Report contradicts Grusch; UAPDA blocked vs EO signed — mixed signals' },
+  { dimension: 'Completeness',       score: 13, max: 25, note: 'Clearly partial — most significant classified materials still withheld' },
+];
+
+// ─── Info Modal Component ─────────────────────────────────
+interface InfoModalProps {
+  type: 'dvi' | 'iss';
+  onClose: () => void;
+}
+
+function InfoModal({ type, onClose }: InfoModalProps) {
+  const isDVI = type === 'dvi';
+  const navy = '#1B2A4A';
+  const gold = '#C9A84C';
+  const border = '#E2E8F0';
+  const body = '#4A5D78';
+  const muted = '#8A9BB5';
+  const light = '#F1F5F9';
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(27,42,74,0.6)', backdropFilter: 'blur(4px)' }} onClick={onClose} />
+      <div style={{ position: 'relative', width: '100%', maxWidth: '520px', background: 'white', borderRadius: '12px', border: `1px solid ${border}`, padding: '24px', boxShadow: '0 20px 60px rgba(27,42,74,0.2)' }}>
+
+        {/* Close */}
+        <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', cursor: 'pointer', color: muted, fontSize: '18px', lineHeight: 1 }}>✕</button>
+
+        {/* Header */}
+        <div style={{ marginBottom: '16px', paddingBottom: '12px', borderBottom: `1px solid ${border}` }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '4px' }}>
+            Methodology — {isDVI ? 'DVI' : 'ISS'}
+          </div>
+          <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '18px', fontWeight: 700, color: navy }}>
+            {isDVI ? 'Disclosure Velocity Index' : 'Institutional Sincerity Score'}
+          </div>
+          <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '13px', color: body, marginTop: '6px', lineHeight: 1.5 }}>
+            {isDVI
+              ? '5 dimensions scored 0–2 each, total out of 10. Scores based on verified institutional events only. A 10 requires official multi-government NHI confirmation — not yet reached.'
+              : '4 dimensions scored 0–25% each, total out of 100%. Measures quality and credibility of released information, not just volume. A 100% requires complete, verifiable, consistent data from highest authority — not yet reached.'
+            }
+          </div>
+        </div>
+
+        {/* Dimensions */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
+          {(isDVI ? DVI_METHODOLOGY : ISS_METHODOLOGY).map((item, idx) => {
+            const pct = (item.score / item.max) * 100;
+            const color = pct >= 80 ? '#1A6B3C' : pct >= 60 ? '#C9A84C' : pct >= 40 ? '#BA7517' : '#E24B4A';
+            return (
+              <div key={idx} style={{ padding: '10px 12px', background: light, borderRadius: '6px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <span style={{ fontFamily: 'Syne, sans-serif', fontSize: '13px', fontWeight: 600, color: navy }}>
+                    {item.dimension}
+                  </span>
+                  <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, color }}>
+                    {item.score} / {item.max}{isDVI ? '' : '%'}
+                  </span>
+                </div>
+                {/* Progress bar */}
+                <div style={{ height: '4px', background: border, borderRadius: '2px', marginBottom: '6px' }}>
+                  <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: '2px', transition: 'width 0.3s' }} />
+                </div>
+                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, lineHeight: 1.5, margin: 0 }}>
+                  {item.note}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Total */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: navy, borderRadius: '8px' }}>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>
+            CURRENT {isDVI ? 'DVI' : 'ISS'} SCORE
+          </span>
+          <span style={{ fontFamily: 'Syne, sans-serif', fontSize: '24px', fontWeight: 700, color: gold }}>
+            {isDVI ? '6.8 / 10' : '63%'}
+          </span>
+        </div>
+
+        <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, marginTop: '12px', lineHeight: 1.5, textAlign: 'center' }}>
+          LBDG editorial assessment · Updated May 2026 · Sources: DoD, AARO, ODNI, U.S. Congress, Deloitte AG, Bank of England, CBOE
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ─── Constants ────────────────────────────────────────────
-const DVI = 6.2;
-const ISS = 64;
+const DVI = 6.8;
+const ISS = 63;
 
 const PHASES = [
   { label: 'Whistleblower\nFilings',    sub: 'Grusch 2023\nProtected disclosures',       done: true,  current: false, parallel: false },
@@ -147,6 +247,7 @@ function VelocityChart() {
 export default function SignalsPage() {
   const [activeCat, setActiveCat] = useState<string>('all');
   const [activeStr, setActiveStr] = useState<string>('all');
+  const [infoModal, setInfoModal] = useState<'dvi' | 'iss' | null>(null);
 
   const filtered = useMemo(() =>
     SIGNALS
@@ -171,6 +272,7 @@ export default function SignalsPage() {
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '112px 24px 80px', fontFamily: 'DM Sans, sans-serif' }}>
+      {infoModal && <InfoModal type={infoModal} onClose={() => setInfoModal(null)} />}
 
       {/* Header */}
       <div style={{ marginBottom: '32px' }}>
@@ -194,8 +296,9 @@ export default function SignalsPage() {
         {/* DVI */}
         <div style={{ background: navy, borderRadius: '8px', padding: '24px', color: 'white', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', right: '-40px', top: '-40px', width: '180px', height: '180px', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.1)', pointerEvents: 'none' }} />
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(201,168,76,0.8)', letterSpacing: '0.18em', marginBottom: '12px' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(201,168,76,0.8)', letterSpacing: '0.18em', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             DISCLOSURE VELOCITY INDEX (DVI)
+            <button onClick={() => setInfoModal('dvi')} style={{ width: '16px', height: '16px', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.4)', background: 'rgba(201,168,76,0.1)', color: 'rgba(201,168,76,0.8)', fontSize: '10px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontFamily: 'serif', fontStyle: 'italic', fontWeight: 'bold', lineHeight: 1 }}>i</button>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '14px' }}>
             <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '56px', fontWeight: 700, color: gold, lineHeight: 1 }}>{DVI}</span>
@@ -216,8 +319,9 @@ export default function SignalsPage() {
 
         {/* ISS */}
         <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '24px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '12px' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             SINCERITY SCORE (ISS)
+            <button onClick={() => setInfoModal('iss')} style={{ width: '16px', height: '16px', borderRadius: '50%', border: `1px solid ${border}`, background: light, color: muted, fontSize: '10px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontFamily: 'serif', fontStyle: 'italic', fontWeight: 'bold', lineHeight: 1 }}>i</button>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '12px' }}>
             <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '46px', fontWeight: 700, color: navy, lineHeight: 1 }}>{ISS}</span>
