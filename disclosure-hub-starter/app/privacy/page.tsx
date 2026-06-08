@@ -61,7 +61,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm text-muted font-mono" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-          Last updated: June 2025 — readyfordisclosure.com
+          Last updated: June 2026 — readyfordisclosure.com
         </p>
       </div>
 
