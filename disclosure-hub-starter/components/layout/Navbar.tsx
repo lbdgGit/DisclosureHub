@@ -119,7 +119,7 @@ export default function Navbar() {
                   'px-3 py-2.5 rounded text-sm font-mono tracking-wider uppercase transition-colors flex items-center gap-2',
                   pathname === link.href
                     ? 'text-signal bg-signal/10'
-                    : 'text-muted hover:text-bright hover:bg-white/5',
+                    : 'text-gray-300 hover:text-bright hover:bg-white/5',
                 )}
                 style={{ fontFamily: 'JetBrains Mono, monospace' }}
               >
