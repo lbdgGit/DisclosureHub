@@ -7,6 +7,7 @@ import { Menu, X, Radio } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
+  { href: '/framework', label: 'Framework'  },
   { href: '/lexique',   label: 'Lexicon'    },
   { href: '/frise',     label: 'Timeline'   },
   { href: '/faq',       label: 'FAQ'        },
@@ -100,9 +101,15 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — fixed background */}
       {open && (
-        <div className="lg:hidden glass border-t border-border/60 mt-0">
+        <div
+          className="lg:hidden border-t border-border/60 mt-0"
+          style={{
+            backgroundColor: '#0F1B30',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+          }}
+        >
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <Link
