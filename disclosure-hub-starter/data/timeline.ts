@@ -36,6 +36,16 @@ export const TIMELINE: TimelineEvent[] = [
     categorie: 'scientifique',
   },
   {
+  id: '1971-australian-naa',
+  date: '1971-05',
+  titre: 'Australian National Archives — Intelligence Report on UAP Cover-Up',
+  description: 'A declassified 58-page Australian intelligence report (NAA A13693, 3092/2/000) concludes that the CIA used Project Blue Book as a public debunking facade while intensifying classified collection. Documents that anti-gravity research was funded by 46 U.S. government programs by 1966. Statistical analysis shows that the most reliable witnesses (pilots, scientists, radar operators) produced the highest percentage of unexplained cases — the inverse of official USAF claims. States explicitly that "by erecting a facade of ridicule, the U.S. hoped to allay public alarm." Referenced by David Grusch at the June 2026 Capitol press conference as primary source validation of the institutional cover-up mechanism.',
+  importance: 'majeur',
+  categorie: 'militaire',
+  source: 'National Archives of Australia — NAA A13693, 3092/2/000',
+  lienSource: 'https://recordsearch.naa.gov.au/SearchNRetrieve/Interface/DetailsReports/ItemDetail.aspx?Barcode=3092949',
+  },
+  {
     id: '1977-geipan',
     date: '1977',
     titre: 'France creates GEIPAN — the world\'s first official UAP program',
