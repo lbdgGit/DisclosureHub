@@ -562,7 +562,15 @@ export const LEXIQUE: LexiqueEntry[] = [
     tier: 2,
     tags: ['Bigelow', 'contractor', 'AAWSAP', 'DIA', 'private research'],
   },
-
+  {
+  id: 'naa-australian-report-1971',
+  terme: 'Australian Intelligence Report on UAP (1971)',
+  definition: `A declassified 58-page intelligence report held at the National Archives of Australia (NAA A13693, 3092/2/000), produced in May 1971 by an Australian intelligence officer analyzing open and classified U.S. sources. One of the most candid government documents on record regarding institutional UAP cover-up mechanisms. Key findings: (1) The CIA used Project Blue Book explicitly as a public debunking mechanism — a "facade of ridicule" — while intensifying classified collection behind it; (2) By 1966, 46 separate U.S. government anti-gravity research programs were running, 33 under USAF supervision; (3) A statistical analysis of Blue Book data shows that witness reliability correlates positively with unexplained classification — the more credible the witness, the higher the probability of an "unknown" verdict, directly contradicting official USAF claims; (4) JANAP 146 (1953) criminalized military UAP reporting with up to 10 years imprisonment and $10,000 fines, and multiple retired senior officers subsequently stated publicly the U.S. government knew UAP were extraterrestrial. The report is significant for being an allied government's independent assessment — not a U.S. document — reaching explicit conclusions about deliberate deception. Referenced by David Grusch at the June 2026 Capitol press conference alongside the UAP Caucus and other senior figures as primary source validation of the institutional suppression mechanism he described in 2023 congressional testimony.`,
+  categorie: 'historique',
+  tier: 1,
+  sources: [{ label: 'NAA A13693 — National Archives of Australia', url: 'https://recordsearch.naa.gov.au/SearchNRetrieve/Interface/DetailsReports/ItemDetail.aspx?Barcode=3092949' }],
+  tags: ['Australia', 'CIA', 'Blue Book', 'cover-up', 'declassified', '1971', 'Grusch', 'JANAP', 'anti-gravity', 'statistical analysis'],
+  },
 
   // ─── BATCH 2: KEY FIGURES (LEGISLATORS & ADVOCATES) ────
 
