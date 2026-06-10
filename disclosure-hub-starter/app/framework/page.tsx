@@ -40,13 +40,13 @@ interface Cell {
 const CELLS: Record<string, Cell> = {
   'prepared-A':   { level: 'manageable',    text: 'Markets absorb within days. Messaging activated. No governance gap exposed.' },
   'prepared-B1':  { level: 'manageable',    text: 'Orderly sector rotation. Defense and materials reposition ahead of market.' },
-  'prepared-B2':  { level: 'disruptive',    text: 'Energy horizon visible at 20–30y. Prepared orgs reposition. Recovery within months.' },
+  'prepared-B2':  { level: 'disruptive',    text: 'Energy horizon visible at 20-30y. Prepared orgs reposition. Recovery within months.' },
   'prepared-C':   { level: 'transformative',text: 'Deep restructuring required. Playbooks activate. Survival likely with prior architecture.' },
   'partial-A':    { level: 'manageable',    text: 'Public surprise, limited org impact. Prepared orgs gain immediate credibility advantage.' },
-  'partial-B1':   { level: 'disruptive',    text: '2–8 week drawdown. Prepared orgs outperform. Unprepared freeze at board level.' },
+  'partial-B1':   { level: 'disruptive',    text: '2-8 week drawdown. Prepared orgs outperform. Unprepared freeze at board level.' },
   'partial-B2':   { level: 'transformative',text: 'Board-level restructuring required. Non-prepared orgs structurally disadvantaged.' },
   'partial-C':    { level: 'systemic',      text: 'Existing frameworks fail. Crisis architecture needed but incomplete. No recovery timeline.' },
-  'unprepared-A': { level: 'disruptive',    text: 'Narrative crisis. Stakeholder panic. No messaging ready. Recovery 2–6 weeks.' },
+  'unprepared-A': { level: 'disruptive',    text: 'Narrative crisis. Stakeholder panic. No messaging ready. Recovery 2-6 weeks.' },
   'unprepared-B1':{ level: 'transformative',text: 'Governance vacuum. Leadership exposed. Boards demand answers no one has.' },
   'unprepared-B2':{ level: 'systemic',      text: 'Supply chains, energy, capital markets repriced simultaneously. No playbook.' },
   'unprepared-C': { level: 'existential',   text: 'Civilization-scale reorientation. No functioning playbook. Organizational survival in question.' },
@@ -83,10 +83,15 @@ const LEGEND_ITEMS: ImpactLevel[] = ['manageable', 'disruptive', 'transformative
 
 const TOOLKITS = [
   { name: 'HR Toolkit', href: '/toolkits#hr', scenario: 'All scenarios', desc: 'Workforce readiness, psychological protocols, internal comms.' },
-  { name: 'Finance Toolkit', href: '/toolkits#finance', scenario: 'B1 → C', desc: 'Asset rotation, sector exposure, treasury protocols.' },
+  { name: 'Finance Toolkit', href: '/toolkits#finance', scenario: 'B1 -> C', desc: 'Asset rotation, sector exposure, treasury protocols.' },
   { name: 'Communications Toolkit', href: '/toolkits#comms', scenario: 'All scenarios', desc: 'Stakeholder messaging, crisis comms, media frameworks.' },
-  { name: 'Leadership & Board Toolkit', href: '/toolkits#leadership', scenario: 'B2 → C', desc: 'Board-level governance, decision architecture, scenario planning.' },
+  { name: 'Leadership & Board Toolkit', href: '/toolkits#leadership', scenario: 'B2 -> C', desc: 'Board-level governance, decision architecture, scenario planning.' },
 ];
+
+// Fixed column widths for the matrix
+const COL_Y = 130;   // Y-axis label column
+const COL_X = 150;   // Each scenario column
+const MATRIX_MIN_WIDTH = COL_Y + COL_X * 4 + 6 * 5; // total with gaps
 
 export default function FrameworkPage() {
   return (
@@ -131,269 +136,282 @@ export default function FrameworkPage() {
         </div>
       </section>
 
-      {/* Matrix */}
+      {/* Matrix section — outer padding only, scroll inside */}
       <section style={{ padding: '64px 24px', maxWidth: 1100, margin: '0 auto' }}>
 
-        {/* X axis label */}
-        <div style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: 8, marginBottom: 4 }}>
-          <div />
-          <div>
-            <p style={{
-              fontFamily: 'DM Mono, monospace',
-              fontSize: 10,
-              letterSpacing: '0.08em',
-              color: '#8A9BB5',
-              textAlign: 'center',
-              marginBottom: 4,
-            }}>
-              Disclosure path — direction certain, velocity unknown
-            </p>
-            <div style={{ position: 'relative', height: 12, display: 'flex', alignItems: 'center' }}>
-              <div style={{
-                flex: 1,
-                height: 1.5,
-                background: 'linear-gradient(to right, #C7D2DE, #E24B4A)',
-                borderRadius: 2,
-                position: 'relative',
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  right: -1,
-                  top: -4,
-                  width: 0,
-                  height: 0,
-                  borderLeft: '7px solid #E24B4A',
-                  borderTop: '5px solid transparent',
-                  borderBottom: '5px solid transparent',
-                }} />
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Scrollable matrix wrapper */}
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+          <div style={{ minWidth: MATRIX_MIN_WIDTH + 46 }}>
 
-        {/* Column headers */}
-        <div style={{ display: 'grid', gridTemplateColumns: '140px repeat(4, 1fr)', gap: 6, marginBottom: 6 }}>
-          <div />
-          {SCENARIOS.map(sc => (
-            <div key={sc.id} style={{ textAlign: 'center' }}>
-              <p style={{
-                fontFamily: 'DM Mono, monospace',
-                fontSize: 9,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: sc.isEnd ? '#C9A84C' : '#8A9BB5',
-                fontWeight: sc.isEnd ? 600 : 400,
-              }}>
-                {sc.isEnd ? 'C — end state' : sc.id}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Main grid with Y axis */}
-        <div style={{ display: 'flex', gap: 10, alignItems: 'stretch', overflowX: 'auto', WebkitOverflowScrolling: 'touch'}}>
-
-          {/* Y axis */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'stretch',
-            width: 36,
-            flexShrink: 0,
-            paddingTop: 68,
-          }}>
-            <div style={{
-              writingMode: 'vertical-rl',
-              transform: 'rotate(180deg)',
-              fontSize: 9,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: '#8A9BB5',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flex: 1,
-              fontFamily: 'DM Mono, monospace',
-            }}>
-              Preparedness level
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 12 }}>
-              <div style={{
-                flex: 1,
-                width: 1.5,
-                background: '#C7D2DE',
-                borderRadius: 2,
-                position: 'relative',
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  top: -1,
-                  left: -3,
-                  width: 0,
-                  height: 0,
-                  borderBottom: '7px solid #8A9BB5',
-                  borderLeft: '4px solid transparent',
-                  borderRight: '4px solid transparent',
-                }} />
-              </div>
-            </div>
-            <div style={{
-              writingMode: 'vertical-rl',
-              transform: 'rotate(180deg)',
-              fontSize: 9,
-              letterSpacing: '0.06em',
-              color: '#C9A84C',
-              fontWeight: 600,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flex: 1,
-              fontFamily: 'DM Mono, monospace',
-            }}>
-              You control this
-            </div>
-          </div>
-
-          {/* Grid */}
-          <div style={{ flex: 1, minWidth: 6800 }}>
-            {/* Scenario row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '140px repeat(4, 1fr)', gap: 6, marginBottom: 6 }}>
-              <div />
-              {SCENARIOS.map(sc => (
-                <div key={sc.id} style={{
-                  backgroundColor: sc.isEnd ? '#1B2A4A' : '#FFFFFF',
-                  border: sc.isEnd ? '1.5px solid #C9A84C' : '1px solid #E2E8F0',
-                  borderRadius: 8,
-                  padding: '10px 12px',
-                  minHeight: 60,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
+            {/* X axis label — spans full matrix width minus Y axis */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 4 }}>
+              {/* spacer for Y axis */}
+              <div style={{ width: 46, flexShrink: 0 }} />
+              {/* spacer for Y label column */}
+              <div style={{ width: COL_Y, flexShrink: 0 }} />
+              {/* arrow + label spanning all 4 scenario columns */}
+              <div style={{ flex: 1 }}>
+                <p style={{
+                  fontFamily: 'DM Mono, monospace',
+                  fontSize: 10,
+                  letterSpacing: '0.08em',
+                  color: '#8A9BB5',
+                  textAlign: 'center',
+                  marginBottom: 4,
                 }}>
+                  Disclosure path — direction certain, velocity unknown
+                </p>
+                <div style={{ position: 'relative', height: 12, display: 'flex', alignItems: 'center' }}>
+                  <div style={{
+                    flex: 1,
+                    height: 1.5,
+                    background: 'linear-gradient(to right, #C7D2DE, #E24B4A)',
+                    borderRadius: 2,
+                    position: 'relative',
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      right: -1,
+                      top: -4,
+                      width: 0,
+                      height: 0,
+                      borderLeft: '7px solid #E24B4A',
+                      borderTop: '5px solid transparent',
+                      borderBottom: '5px solid transparent',
+                    }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Column headers row */}
+            <div style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
+              <div style={{ width: 46, flexShrink: 0 }} />
+              <div style={{ width: COL_Y, flexShrink: 0 }} />
+              {SCENARIOS.map(sc => (
+                <div key={sc.id} style={{ width: COL_X, flexShrink: 0, textAlign: 'center' }}>
                   <p style={{
                     fontFamily: 'DM Mono, monospace',
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: sc.isEnd ? '#C9A84C' : '#1B2A4A',
-                    marginBottom: 3,
+                    fontSize: 9,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: sc.isEnd ? '#C9A84C' : '#8A9BB5',
+                    fontWeight: sc.isEnd ? 600 : 400,
                   }}>
-                    {sc.label}
-                    {sc.optional && (
-                      <span style={{ fontSize: 9, color: '#8A9BB5', fontWeight: 400, marginLeft: 4 }}>(optional)</span>
-                    )}
-                  </p>
-                  <p style={{ fontSize: 10, color: sc.isEnd ? '#8A9BB5' : '#6B7A8D', lineHeight: 1.4 }}>
-                    {sc.desc}
+                    {sc.isEnd ? 'C — end state' : sc.id}
                   </p>
                 </div>
               ))}
             </div>
 
-            {/* Impact rows */}
-            {PREP_LEVELS.map(prep => (
-              <div key={prep.id} style={{
-                display: 'grid',
-                gridTemplateColumns: '140px repeat(4, 1fr)',
-                gap: 6,
-                marginBottom: 6,
-              }}>
-                {/* Y label */}
-                <div style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: 8,
-                  padding: '12px 14px',
-                  minHeight: 96,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                }}>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: '#1B2A4A', marginBottom: 4 }}>
-                    {prep.label}
-                  </p>
-                  <p style={{ fontSize: 10, color: '#8A9BB5', lineHeight: 1.4 }}>
-                    {prep.desc}
-                  </p>
-                  {prep.note && (
-                    <p style={{
-                      fontFamily: 'DM Mono, monospace',
-                      fontSize: 9,
-                      color: '#C9A84C',
-                      marginTop: 5,
-                      letterSpacing: '0.04em',
-                    }}>
-                      ↳ {prep.note}
-                    </p>
-                  )}
-                </div>
+            {/* Y axis + grid */}
+            <div style={{ display: 'flex', gap: 6, alignItems: 'stretch' }}>
 
-                {/* Impact cells */}
-                {SCENARIOS.map(sc => {
-                  const key = `${prep.id}-${sc.id}`;
-                  const cell = CELLS[key];
-                  if (!cell) return <div key={sc.id} />;
-                  const config = IMPACT_CONFIG[cell.level];
-                  return (
+              {/* Y axis */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'stretch',
+                width: 40,
+                flexShrink: 0,
+                paddingTop: 68,
+              }}>
+                <div style={{
+                  writingMode: 'vertical-rl',
+                  transform: 'rotate(180deg)',
+                  fontSize: 9,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: '#8A9BB5',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flex: 1,
+                  fontFamily: 'DM Mono, monospace',
+                }}>
+                  Preparedness level
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 12 }}>
+                  <div style={{
+                    flex: 1,
+                    width: 1.5,
+                    background: '#C7D2DE',
+                    borderRadius: 2,
+                    position: 'relative',
+                  }}>
+                    <div style={{
+                      position: 'absolute',
+                      top: -1,
+                      left: -3,
+                      width: 0,
+                      height: 0,
+                      borderBottom: '7px solid #8A9BB5',
+                      borderLeft: '4px solid transparent',
+                      borderRight: '4px solid transparent',
+                    }} />
+                  </div>
+                </div>
+                <div style={{
+                  writingMode: 'vertical-rl',
+                  transform: 'rotate(180deg)',
+                  fontSize: 9,
+                  letterSpacing: '0.06em',
+                  color: '#C9A84C',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flex: 1,
+                  fontFamily: 'DM Mono, monospace',
+                }}>
+                  You control this
+                </div>
+              </div>
+
+              {/* Grid */}
+              <div style={{ flex: 1 }}>
+                {/* Scenario row */}
+                <div style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
+                  <div style={{ width: COL_Y, flexShrink: 0 }} />
+                  {SCENARIOS.map(sc => (
                     <div key={sc.id} style={{
-                      backgroundColor: config.bg,
-                      border: `1px solid ${config.border}`,
+                      width: COL_X,
+                      flexShrink: 0,
+                      backgroundColor: sc.isEnd ? '#1B2A4A' : '#FFFFFF',
+                      border: sc.isEnd ? '1.5px solid #C9A84C' : '1px solid #E2E8F0',
                       borderRadius: 8,
                       padding: '10px 12px',
+                      minHeight: 60,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                    }}>
+                      <p style={{
+                        fontFamily: 'DM Mono, monospace',
+                        fontSize: 11,
+                        fontWeight: 600,
+                        color: sc.isEnd ? '#C9A84C' : '#1B2A4A',
+                        marginBottom: 3,
+                      }}>
+                        {sc.label}
+                        {sc.optional && (
+                          <span style={{ fontSize: 9, color: '#8A9BB5', fontWeight: 400, marginLeft: 4 }}>(optional)</span>
+                        )}
+                      </p>
+                      <p style={{ fontSize: 10, color: sc.isEnd ? '#8A9BB5' : '#6B7A8D', lineHeight: 1.4 }}>
+                        {sc.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Impact rows */}
+                {PREP_LEVELS.map(prep => (
+                  <div key={prep.id} style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
+                    {/* Y label */}
+                    <div style={{
+                      width: COL_Y,
+                      flexShrink: 0,
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: 8,
+                      padding: '12px 14px',
                       minHeight: 96,
                       display: 'flex',
                       flexDirection: 'column',
+                      justifyContent: 'center',
                     }}>
-                      <p style={{
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: config.labelColor,
-                        marginBottom: 4,
-                      }}>
-                        {config.label}
+                      <p style={{ fontSize: 13, fontWeight: 600, color: '#1B2A4A', marginBottom: 4 }}>
+                        {prep.label}
                       </p>
-                      <p style={{ fontSize: 10, color: config.textColor, lineHeight: 1.5 }}>
-                        {cell.text}
+                      <p style={{ fontSize: 10, color: '#8A9BB5', lineHeight: 1.4 }}>
+                        {prep.desc}
                       </p>
+                      {prep.note && (
+                        <p style={{
+                          fontFamily: 'DM Mono, monospace',
+                          fontSize: 9,
+                          color: '#C9A84C',
+                          marginTop: 5,
+                          letterSpacing: '0.04em',
+                        }}>
+                          {prep.note}
+                        </p>
+                      )}
                     </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Legend */}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '8px 16px',
-          marginTop: 20,
-          paddingLeft: 46,
-        }}>
-          {LEGEND_ITEMS.map(level => {
-            const config = IMPACT_CONFIG[level];
-            return (
-              <div key={level} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: 3,
-                  backgroundColor: config.bg,
-                  border: `1.5px solid ${config.border}`,
-                  flexShrink: 0,
-                }} />
-                <span style={{ fontSize: 11, color: '#6B7A8D', fontFamily: 'DM Mono, monospace' }}>
-                  {config.label}
-                </span>
+                    {/* Impact cells */}
+                    {SCENARIOS.map(sc => {
+                      const key = `${prep.id}-${sc.id}`;
+                      const cell = CELLS[key];
+                      if (!cell) return <div key={sc.id} style={{ width: COL_X, flexShrink: 0 }} />;
+                      const config = IMPACT_CONFIG[cell.level];
+                      return (
+                        <div key={sc.id} style={{
+                          width: COL_X,
+                          flexShrink: 0,
+                          backgroundColor: config.bg,
+                          border: `1px solid ${config.border}`,
+                          borderRadius: 8,
+                          padding: '10px 12px',
+                          minHeight: 96,
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}>
+                          <p style={{
+                            fontSize: 12,
+                            fontWeight: 600,
+                            color: config.labelColor,
+                            marginBottom: 4,
+                          }}>
+                            {config.label}
+                          </p>
+                          <p style={{ fontSize: 10, color: config.textColor, lineHeight: 1.5 }}>
+                            {cell.text}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
-            );
-          })}
+            </div>
+
+            {/* Legend */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '8px 16px',
+              marginTop: 20,
+              paddingLeft: 46,
+            }}>
+              {LEGEND_ITEMS.map(level => {
+                const config = IMPACT_CONFIG[level];
+                return (
+                  <div key={level} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <div style={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: 3,
+                      backgroundColor: config.bg,
+                      border: `1.5px solid ${config.border}`,
+                      flexShrink: 0,
+                    }} />
+                    <span style={{ fontSize: 11, color: '#6B7A8D', fontFamily: 'DM Mono, monospace' }}>
+                      {config.label}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* Modifier notes */}
       <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
 
           <div style={{
             backgroundColor: '#FFFFFF',
@@ -435,7 +453,7 @@ export default function FrameworkPage() {
               The velocity variable
             </p>
             <p style={{ fontSize: 12, color: '#6B7A8D', lineHeight: 1.7 }}>
-              The faster disclosure moves from A to C, the less time organizations have to climb the preparedness axis. A slow trajectory over 3–5 years allows adaptation. An abrupt jump — leak, arrival, uncontrolled event — compresses that window to days. You cannot control the scenario. You can only control where you stand on the Y axis when each threshold is crossed.
+              The faster disclosure moves from A to C, the less time organizations have to climb the preparedness axis. A slow trajectory over 3-5 years allows adaptation. An abrupt jump — leak, arrival, uncontrolled event — compresses that window to days. You cannot control the scenario. You can only control where you stand on the Y axis when each threshold is crossed.
             </p>
           </div>
         </div>
@@ -472,7 +490,7 @@ export default function FrameworkPage() {
               {
                 color: '#4A9A5E',
                 label: 'Current trajectory',
-                text: 'World is at A/Partial today — PURSUE releases ongoing. Gradual drift toward B1 over 12–24 months. Organizations that act now move up the Y axis before the next threshold is crossed.',
+                text: 'World is at A/Partial today — PURSUE releases ongoing. Gradual drift toward B1 over 12-24 months. Organizations that act now move up the Y axis before the next threshold is crossed.',
               },
               {
                 color: '#C9A84C',
@@ -508,7 +526,7 @@ export default function FrameworkPage() {
         </div>
       </section>
 
-      {/* CTA — Toolkits */}
+      {/* CTA Toolkits */}
       <section style={{ padding: '64px 24px', maxWidth: 1100, margin: '0 auto' }}>
         <p style={{
           fontFamily: 'DM Mono, monospace',
@@ -536,15 +554,16 @@ export default function FrameworkPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
           {TOOLKITS.map(tk => (
             <Link key={tk.name} href={tk.href} style={{ textDecoration: 'none' }}>
-              <div style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #E2E8F0',
-                borderRadius: 10,
-                padding: '20px 22px',
-                height: '100%',
-                cursor: 'pointer',
-                transition: 'border-color 0.2s',
-              }}
+              <div
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: 10,
+                  padding: '20px 22px',
+                  height: '100%',
+                  cursor: 'pointer',
+                  transition: 'border-color 0.2s',
+                }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = '#C9A84C')}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = '#E2E8F0')}
               >
@@ -581,7 +600,7 @@ export default function FrameworkPage() {
             textDecoration: 'none',
             letterSpacing: '0.02em',
           }}>
-            View all toolkits →
+            View all toolkits
           </Link>
         </div>
       </section>
