@@ -191,7 +191,7 @@ export default function FrameworkPage() {
         </div>
 
         {/* Main grid with Y axis */}
-        <div style={{ display: 'flex', gap: 10, alignItems: 'stretch' }}>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'stretch', overflowX: 'auto', WebkitOverflowScrolling: 'touch'}}>
 
           {/* Y axis */}
           <div style={{
@@ -255,7 +255,7 @@ export default function FrameworkPage() {
           </div>
 
           {/* Grid */}
-          <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ flex: 1, minWidth: 6800 }}>
             {/* Scenario row */}
             <div style={{ display: 'grid', gridTemplateColumns: '140px repeat(4, 1fr)', gap: 6, marginBottom: 6 }}>
               <div />
