@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Radio, AlertTriangle, Wrench, FileText, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
+import { InstitutionalSignals } from '@/components/InstitutionalSignals';
 
 export const metadata: Metadata = {
   title: 'LBDG — Leadership Bureau for Disclosure Guidance',
@@ -56,13 +57,6 @@ const PILLARS = [
   },
 ];
 
-const SIGNALS_PREVIEW = [
-  { date: 'May 2026',  text: 'Pentagon PURSUE: 162 classified UAP files released at war.gov/ufo. Secretary Hegseth confirms 2,000+ AARO cases.', strength: 'critical' },
-  { date: 'Mar 2026',  text: 'Marco Rubio, U.S. Secretary of State: "We\'ve had repeated instances of something operating over restricted nuclear facilities — and it\'s not ours."', strength: 'critical' },
-  { date: 'Feb 2026',  text: 'UFOD ETF launches on CBOE. Bank of England analyst urges central bank preparedness. Trump presidential directive issued (Truth Social).', strength: 'critical' },
-  { date: 'Nov 2025',  text: 'Jay Stratton, former UAP Task Force Director: "I have seen, with my own eyes, non-human craft and non-human beings." (The Age of Disclosure, Amazon Prime)', strength: 'critical' },
-];
-
 export default function HomePage() {
   return (
     <>
@@ -80,7 +74,7 @@ export default function HomePage() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/10">
               <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
               <span className="text-2xs font-mono font-600 text-signal tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Signal active — DVI 7.0 — Pre-Disclosure
+                Signal active — DVI 6.2 — HIGH
               </span>
             </span>
           </div>
@@ -141,33 +135,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SIGNAL PREVIEW */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-                <span className="text-2xs font-mono text-signal tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Latest Critical Signals</span>
-              </div>
-              <h2 className="font-display text-xl sm:text-3xl font-700 text-bright" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
-                The disclosure process is already underway.
-              </h2>
-            </div>
-            <Link href="/signals" className="text-xs font-mono text-signal hover:text-signal/80 transition-colors shrink-0" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              View all signals →
-            </Link>
-          </div>
-          <div className="flex flex-col gap-3">
-            {SIGNALS_PREVIEW.map((s, i) => (
-              <div key={i} className="flex gap-3 sm:gap-4 p-4 rounded border border-border/60 bg-surface/30 hover:bg-surface/60 transition-colors" style={{ borderLeft: '3px solid #EF4444' }}>
-                <span className="font-mono text-xs text-muted whitespace-nowrap pt-0.5 shrink-0" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{s.date}</span>
-                <p className="text-sm text-body/90 leading-relaxed" style={{ fontFamily: 'Syne, sans-serif' }}>{s.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* INSTITUTIONAL SIGNALS */}
+      <InstitutionalSignals />
 
       {/* 3 PILLARS */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30">
