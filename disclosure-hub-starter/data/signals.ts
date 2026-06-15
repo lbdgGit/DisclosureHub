@@ -23,7 +23,34 @@ export interface Signal {
 }
 
 export const SIGNALS: Signal[] = [
-  // CRITICAL — Most recent / highest weight
+  // ─── CRITICAL ────────────────────────────────────────────────────────────
+
+  {
+    id: 'loeb-science-council-2026',
+    date: '2026-06-12',
+    institution: 'White House / AARO / ODNI / FBI',
+    country: 'USA',
+    title: 'Avi Loeb appointed to lead White House-mandated UAP Science Advisory Council',
+    description: 'Harvard astrophysicist Avi Loeb announces he has been asked by the White House, AARO, ODNI, FBI, and other intelligence agencies to assemble and chair a UAP Science Advisory Council. Five founding researchers covering AI, instrumentation, numerical analysis, astrophysics, and human psychology. First time multiple government agencies have simultaneously mandated a standing scientific council on UAP. Loeb: "Identifying the unidentified deserves a high priority within the U.S. government and the scientific community."',
+    category: 'scientific',
+    strength: 'critical',
+    sourceLabel: 'Disclosure Foundation, June 12 2026',
+    sourceUrl: 'https://disclosure.org/news/uap-science-advisory-council',
+    isNew: true,
+  },
+  {
+    id: 'pursue-tranche3-2026',
+    date: '2026-06-12',
+    institution: 'Department of War / AARO / NASA / FBI / CIA',
+    country: 'USA',
+    title: 'PURSUE Tranche 3 — 53 files, 6 videos, NASA audio recordings released',
+    description: 'Third PURSUE release at war.gov/ufo: 53 documents, 10 images, 6 videos, and 3 NASA mission audio recordings from CIA, FBI, NASA, and DoD. Key document: AARO director Kosloski report on October 2023 incident over a sensitive national security site — federal agents observed an orange "mother" orb launching smaller red orbs. Approximately 40% of phenomena in that case remain unexplained. Site has received over 1.7 billion visits since launch May 8, 2026. Rolling releases confirmed to continue.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'war.gov/ufo, June 12 2026',
+    sourceUrl: 'https://www.war.gov/ufo',
+    isNew: true,
+  },
   {
     id: 'age-of-disclosure-2025',
     date: '2025-11-21',
@@ -35,20 +62,18 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'Amazon Prime Video',
     sourceUrl: 'https://www.amazon.com/Age-Disclosure/dp/B0DMJL2ZDM',
-    isNew: true,
   },
   {
     id: 'pursue-2026',
     date: '2026-05-08',
     institution: 'Department of War (formerly DoD)',
     country: 'USA',
-    title: 'Pentagon launches PURSUE — 162 UAP files released',
+    title: 'Pentagon launches PURSUE — 222 UAP files released across two tranches',
     description: 'Trump presidential directive (Truth Social, Feb 19 2026) triggers mass declassification. PURSUE (war.gov/ufo) launches with 222 files across two releases from FBI, DoD, NASA, State Dept. Rolling release ongoing. Secretary Hegseth confirms AARO caseload exceeds 2,000 reports dating to 1945.',
     category: 'government',
     strength: 'critical',
     sourceLabel: 'DoD / war.gov/ufo',
     sourceUrl: 'https://www.war.gov/ufo',
-    isNew: true,
   },
   {
     id: 'trump-eo-2026',
@@ -60,7 +85,6 @@ export const SIGNALS: Signal[] = [
     category: 'government',
     strength: 'critical',
     sourceLabel: 'Truth Social / DefenseScoop',
-    isNew: true,
   },
   {
     id: 'ufod-etf-2026',
@@ -73,7 +97,6 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'CBOE / Nasdaq',
     sourceUrl: 'https://finance.yahoo.com/quote/UFOD/',
-    isNew: true,
   },
   {
     id: 'boe-mccaw-2026',
@@ -84,7 +107,6 @@ export const SIGNALS: Signal[] = [
     description: 'Helen McCaw, former senior Bank of England analyst, publicly warns that UAP disclosure could cause "ontological shock" with significant market instability. Urges central banks to begin preparedness planning. First such warning from a major financial institution.',
     category: 'financial',
     strength: 'critical',
-    isNew: true,
   },
   {
     id: 'japan-cabinet-2026',
@@ -95,10 +117,23 @@ export const SIGNALS: Signal[] = [
     description: 'Following Trump\'s executive order, Japan\'s bipartisan UAP caucus (80+ Diet members) formally proposes a dedicated UAP framework under the Deputy Chief Cabinet Secretary for Crisis Management — moving UAP from MoD to the Cabinet Office.',
     category: 'international',
     strength: 'critical',
-    isNew: true,
   },
 
-  // HIGH
+  // ─── HIGH ─────────────────────────────────────────────────────────────────
+
+  {
+    id: 'burlison-uapda-2026',
+    date: '2026-06-09',
+    institution: 'U.S. House of Representatives / UAP Caucus',
+    country: 'USA',
+    title: 'Rep. Burlison confirms active UAPDA push for NDAA — "It will probably happen in the Rules process"',
+    description: 'Rep. Eric Burlison (R-MO, Congressional UAP Caucus) confirms the UAP Disclosure Act is "absolutely" still needed despite PURSUE releases and is being actively worked into the NDAA. Strategy: insertion via the House Rules Committee process rather than Armed Services Committee markup. Interviewed by Matt Laslo immediately after the bipartisan UAP Caucus Capitol press conference where David Grusch cited the 1971 Australian NAA intelligence document.',
+    category: 'legislative',
+    strength: 'high',
+    sourceLabel: 'Ask a Pol UAP — Matt Laslo, June 9 2026',
+    sourceUrl: 'https://www.askapoluaps.com/p/burlison-uapda-still-needed-ndaa',
+    isNew: true,
+  },
   {
     id: 'deloitte-2026',
     date: '2026-01-01',
@@ -131,20 +166,20 @@ export const SIGNALS: Signal[] = [
     category: 'international',
     strength: 'high',
     sourceLabel: 'Japan Times',
-    isNew: true,
   },
   {
     id: 'uapda-blocked-2025',
     date: '2025-09-09',
     institution: 'U.S. House Rules Committee',
     country: 'USA',
-    title: 'UAPDA blocked from NDAA FY2026 — second consecutive year',
-    description: 'UAP Disclosure Act amendment (Rep. Burlison) blocked from the FY2026 NDAA by the Rules Committee. Second consecutive year of active DoD/AARO opposition to legislative disclosure oversight. Nell: "UAPDA is not optional — catastrophic disclosure risk increases each year it fails."',
+    title: 'UAPDA blocked from NDAA FY2026 — third consecutive year',
+    description: 'UAP Disclosure Act amendment blocked from the FY2026 NDAA by the Rules Committee. Third consecutive year of active DoD/AARO opposition to legislative disclosure oversight. Nell: "UAPDA is not optional — catastrophic disclosure risk increases each year it fails." Burlison confirms June 2026 push via Rules process.',
     category: 'legislative',
     strength: 'high',
   },
 
-  // MEDIUM
+  // ─── MEDIUM ───────────────────────────────────────────────────────────────
+
   {
     id: 'grusch-2023',
     date: '2023-07-26',
@@ -199,7 +234,8 @@ export const SIGNALS: Signal[] = [
     strength: 'medium',
   },
 
-  // LOW / HISTORICAL CONTEXT
+  // ─── LOW / HISTORICAL ─────────────────────────────────────────────────────
+
   {
     id: 'pentagon-videos-2020',
     date: '2020-04-27',
@@ -248,46 +284,33 @@ export const SIGNALS: Signal[] = [
 ];
 
 // ─── Signal level calculation ──────────────────────────────
-// DVI (Disclosure Velocity Index) — 1 to 10
-// Updated to 7.0 following Age of Disclosure (Nov 2025):
-// Jay Stratton (former UAP Task Force Director) is the first
-// program official to state firsthand visual confirmation of
-// non-human craft and beings. This crosses the pre-disclosure threshold.
 export function getOverallSignalLevel(): { level: number; label: string; description: string } {
   const critical = SIGNALS.filter(s => s.strength === 'critical').length;
-  const high     = SIGNALS.filter(s => s.strength === 'high').length;
 
-  // Stratton firsthand testimony + sitting Secretary of State on record
-  // + PURSUE rolling declassification = DVI 7.0 — pre-disclosure threshold crossed
-  if (critical >= 6) return {
+  if (critical >= 8) return {
     level: 5,
     label: 'MAXIMUM',
     description: 'Active disclosure scenario — executive branch and intelligence officials confirmed on record'
   };
-  if (critical >= 5) return {
+  if (critical >= 6) return {
     level: 5,
     label: 'MAXIMUM',
-    description: 'Imminent confirmation — first-hand program official testimony + Secretary of State on record'
+    description: 'Imminent confirmation — Science Council mandated + PURSUE Tranche 3 + firsthand testimony'
   };
   if (critical >= 4) return {
     level: 4,
     label: 'PRE-DISCLOSURE',
-    description: 'DVI 7.0 — Firsthand official testimony + active declassification + financial sector pricing'
+    description: 'DVI 6.2 — Science Council mandated + active declassification + financial sector pricing'
   };
   if (critical >= 3) return {
     level: 4,
     label: 'ELEVATED',
     description: 'Multiple critical institutional signals — active disclosure process underway'
   };
-  if (critical >= 1 || high >= 3) return {
+  if (critical >= 1) return {
     level: 3,
     label: 'ACTIVE',
     description: 'Significant institutional signals — soft disclosure in progress'
-  };
-  if (high >= 1) return {
-    level: 2,
-    label: 'MODERATE',
-    description: 'Growing institutional attention — monitoring recommended'
   };
   return {
     level: 1,
