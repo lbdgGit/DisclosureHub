@@ -56,6 +56,7 @@ export const TIMELINE: TimelineEvent[] = [
     source: 'U.S. House Oversight Committee, November 13 2024',
   },
   {
+    id: 'Whashington D.C. 1952 Flyover',
     date: '1952-07',
     titre: 'UAP Flyover — Washington D.C.',
     description: 'Multiple UAP detected on radars at Washington National Airport and Andrews Air Force Base. Fighter jets scrambled. General Samford holds a historic press conference. The incident triggers the largest number of UFO reports since records began.',
