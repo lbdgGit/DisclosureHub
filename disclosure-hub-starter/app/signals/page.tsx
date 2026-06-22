@@ -90,7 +90,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
             CURRENT {isDVI ? 'DVI' : 'ISS'} SCORE
           </span>
           <span style={{ fontFamily: 'Syne, sans-serif', fontSize: '24px', fontWeight: 700, color: gold }}>
-            {isDVI ? '6.2 / 10' : '64%'}
+            {isDVI ? '6.5 / 10' : '64%'}
           </span>
         </div>
 
@@ -103,7 +103,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
 }
 
 // ─── Constants ────────────────────────────────────────────
-const DVI = 6.2;
+const DVI = 6.5;
 const ISS = 64;
 
 const PHASES = [
@@ -378,7 +378,7 @@ export default function SignalsPage() {
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '14px' }}>
             <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '56px', fontWeight: 700, color: gold, lineHeight: 1 }}>{DVI}</span>
             <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.4)' }}>/10</span>
-            <span style={{ padding: '3px 10px', borderRadius: '3px', background: 'rgba(239,68,68,0.2)', color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em' }}>HIGH</span>
+            <span style={{ padding: '3px 10px', borderRadius: '3px', background: 'rgba(239,68,68,0.2)', color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em' }}>CRITICAL</span>
           </div>
           <div style={{ position: 'relative', height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '10px' }}>
             <div style={{ width: `${DVI * 10}%`, height: '100%', borderRadius: '4px', background: 'linear-gradient(90deg, #4ADE80, #C9A84C, #EF4444)' }} />
