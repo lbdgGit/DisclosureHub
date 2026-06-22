@@ -33,7 +33,7 @@ export const SIGNALS: Signal[] = [
     title: 'Avi Loeb appointed to lead White House-mandated UAP Science Advisory Council',
     description: 'Harvard astrophysicist Avi Loeb announces he has been asked by the White House, AARO, ODNI, FBI, and other intelligence agencies to assemble and chair a UAP Science Advisory Council. Five founding researchers covering AI, instrumentation, numerical analysis, astrophysics, and human psychology. First time multiple government agencies have simultaneously mandated a standing scientific council on UAP. Loeb: "Identifying the unidentified deserves a high priority within the U.S. government and the scientific community."',
     category: 'scientific',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'Disclosure Foundation, June 12 2026',
     sourceUrl: 'https://disclosure.org/news/uap-science-advisory-council',
     isNew: true,
@@ -46,7 +46,7 @@ export const SIGNALS: Signal[] = [
     title: 'PURSUE Tranche 3 — 53 files, 6 videos, NASA audio recordings released',
     description: 'Third PURSUE release at war.gov/ufo: 53 documents, 10 images, 6 videos, and 3 NASA mission audio recordings from CIA, FBI, NASA, and DoD. Key document: AARO director Kosloski report on October 2023 incident over a sensitive national security site — federal agents observed an orange "mother" orb launching smaller red orbs. Approximately 40% of phenomena in that case remain unexplained. Site has received over 1.7 billion visits since launch May 8, 2026. Rolling releases confirmed to continue.',
     category: 'government',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'war.gov/ufo, June 12 2026',
     sourceUrl: 'https://www.war.gov/ufo',
     isNew: true,
@@ -59,7 +59,7 @@ export const SIGNALS: Signal[] = [
     title: '"The Age of Disclosure" — 34 senior officials on record, including the Secretary of State',
     description: 'Dan Farah\'s documentary features 34 senior U.S. government, military, and intelligence officials — including Secretary of State Marco Rubio, former DNI James Clapper, and former UAP Task Force Director Jay Stratton. Released on Prime Video after debuting at SXSW. Key on-record statements: Rubio: "We\'ve had repeated instances of something operating in the airspace over restricted nuclear facilities — and it\'s not ours." and "Even presidents have been operating on a need-to-know basis, but that begins to ramp out of control." Stratton (former UAP Task Force Director): "I have seen, with my own eyes, non-human craft and non-human beings." Rep. André Carson (House Intelligence Committee): "These are otherworldly things that are performing maneuvers that haven\'t been seen." The sitting U.S. Secretary of State on record about UAPs penetrating nuclear airspace is without precedent in the history of institutional disclosure.',
     category: 'government',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'Amazon Prime Video',
     sourceUrl: 'https://www.amazon.com/Age-Disclosure/dp/B0DMJL2ZDM',
   },
@@ -71,7 +71,7 @@ export const SIGNALS: Signal[] = [
     title: 'Pentagon launches PURSUE — 222 UAP files released across two tranches',
     description: 'Trump presidential directive (Truth Social, Feb 19 2026) triggers mass declassification. PURSUE (war.gov/ufo) launches with 222 files across two releases from FBI, DoD, NASA, State Dept. Rolling release ongoing. Secretary Hegseth confirms AARO caseload exceeds 2,000 reports dating to 1945.',
     category: 'government',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'DoD / war.gov/ufo',
     sourceUrl: 'https://www.war.gov/ufo',
   },
@@ -83,7 +83,7 @@ export const SIGNALS: Signal[] = [
     title: 'Presidential executive order: identify and release UAP files',
     description: 'Trump directs DoD and all federal agencies to "begin the process of identifying and releasing Government files related to alien and extraterrestrial life, UAP, and UFOs." First presidential directive of its kind in history.',
     category: 'government',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'Truth Social / DefenseScoop',
   },
   {
@@ -94,7 +94,7 @@ export const SIGNALS: Signal[] = [
     title: 'UFOD ETF launches on CBOE — first UAP disclosure fund',
     description: 'Tuttle Capital launches the UFO Disclosure ETF (CBOE: UFOD), investing in aerospace, defense, advanced materials and energy companies positioned to benefit from NHI technology disclosure. Launched following Bank of England analyst warning. $2.9M AUM at launch.',
     category: 'financial',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'CBOE / Nasdaq',
     sourceUrl: 'https://finance.yahoo.com/quote/UFOD/',
   },
@@ -106,7 +106,7 @@ export const SIGNALS: Signal[] = [
     title: 'Bank of England analyst urges central bank preparedness',
     description: 'Helen McCaw, former senior Bank of England analyst, publicly warns that UAP disclosure could cause "ontological shock" with significant market instability. Urges central banks to begin preparedness planning. First such warning from a major financial institution.',
     category: 'financial',
-    strength: 'activation',
+    strength: 'critical',
   },
   {
     id: 'japan-cabinet-2026',
@@ -116,7 +116,7 @@ export const SIGNALS: Signal[] = [
     title: 'Japan proposes Cabinet Office UAP body — AARO equivalent',
     description: 'Following Trump\'s executive order, Japan\'s bipartisan UAP caucus (80+ Diet members) formally proposes a dedicated UAP framework under the Deputy Chief Cabinet Secretary for Crisis Management — moving UAP from MoD to the Cabinet Office.',
     category: 'international',
-    strength: 'activation',
+    strength: 'critical',
   },
 
   // ─── ACTIVATION ─────────────────────────────────────────────────────────────────
@@ -129,7 +129,7 @@ export const SIGNALS: Signal[] = [
     title: 'Full UAPDA text officially deposited to House Rules Committee — Amendment BURLIS_087 to NDAA FY2027',
     description: 'Rep. Eric Burlison (R-MO) deposits a complete 62-page UAP Disclosure Act amendment to the House Rules Committee for inclusion in NDAA FY2027. Establishes: UAP Records Collection at NARA (public access within 30 days); independent 9-member Review Board with Senate confirmation and full SAP access (terminates Sep 30 2030, $20M authorized for FY2027); eminent domain authority over recovered non-human technologies and biologics held by private entities; 25-year maximum classification ceiling; absolute prohibition on destruction or reclassification of UAP records. Formally repeals and supersedes the weaker NDAA FY2024 version. Codifies legal definitions of NHI, Technologies of Unknown Origin, and UAP in federal law.',
     category: 'legislative',
-    strength: 'activation',
+    strength: 'critical',
     sourceLabel: 'House Rules Committee — Amendment BURLIS_087, June 17 2026',
     sourceUrl: 'https://amendments-rules.house.gov/amendments/BURLIS_087_xml260618163721471.pdf',
     isNew: true,
@@ -142,7 +142,7 @@ export const SIGNALS: Signal[] = [
     title: 'Deloitte classifies NHI disclosure as credible Black Swan',
     description: 'Deloitte AG 2026 Risk Intelligence Report (GPMESII analysis) includes "Non-Human Intelligence Disclosure" as a Social domain scenario. Probability: 2/5 within 5 years. Impact: market and societal disruption, international relations, science domain. Tags: Ontological Shock, Institutional Trust, Narrative Polarisation.',
     category: 'financial',
-    strength: 'readiness',
+    strength: 'high',
     sourceLabel: 'Deloitte AG 2026',
   },
   {
@@ -153,7 +153,7 @@ export const SIGNALS: Signal[] = [
     title: 'DoD confirms AARO caseload: 2,000+ reports back to 1945',
     description: 'Defense Secretary Hegseth publicly confirms AARO is tracking over 2,000 UAP reports dating back to 1945. States Pentagon is "eager" to comply with Trump executive order and that "more is coming."',
     category: 'government',
-    strength: 'readiness',
+    strength: 'high',
     sourceLabel: 'DefenseScoop',
   },
   {
@@ -164,7 +164,7 @@ export const SIGNALS: Signal[] = [
     title: 'Japan analyzes Pentagon UAP files near Japan "with great interest"',
     description: 'Japan\'s government spokesman confirms Tokyo is analyzing the Pentagon PURSUE files "with great interest," including two videos of UAP spotted near Japan in 2024. Signals active international coordination.',
     category: 'international',
-    strength: 'readiness',
+    strength: 'high',
     sourceLabel: 'Japan Times',
   },
   {
@@ -175,7 +175,7 @@ export const SIGNALS: Signal[] = [
     title: 'UAPDA blocked from NDAA FY2026 — third consecutive year',
     description: 'UAP Disclosure Act amendment blocked from the FY2026 NDAA by the Rules Committee. Third consecutive year of active DoD/AARO opposition to legislative disclosure oversight. Nell: "UAPDA is not optional — catastrophic disclosure risk increases each year it fails." Burlison confirms June 2026 push via Rules process.',
     category: 'legislative',
-    strength: 'readiness',
+    strength: 'high',
   },
 
   // ─── MEDIUM ───────────────────────────────────────────────────────────────
@@ -340,7 +340,7 @@ export const CATEGORY_CONFIG: Record<SignalCategory, { color: string; bg: string
 
 export const STRENGTH_CONFIG: Record<SignalStrength, { label: string; color: string; dot: string }> = {
   critical: { label: 'ACTIVATION', color: '#EF4444', dot: '#EF4444' },
-  high:     { label: 'ACTIVATION',     color: '#F97316', dot: '#F97316' },
-  medium:   { label: 'MEDIUM',   color: '#EAB308', dot: '#EAB308' },
-  low:      { label: 'LOW',      color: '#6B7280', dot: '#6B7280' },
+  high:     { label: 'READINESS',  color: '#F97316', dot: '#F97316' },
+  medium:   { label: 'MONITOR',    color: '#EAB308', dot: '#EAB308' },
+  low:      { label: 'BASELINE',   color: '#6B7280', dot: '#6B7280' },
 };
