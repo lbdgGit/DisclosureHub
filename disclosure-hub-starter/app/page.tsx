@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const STATS = [
   { value: '2,000+', label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
   { value: '34',     label: 'Senior officials on record — The Age of Disclosure (Amazon Prime)' },
-  { value: '7.0',    label: 'Current DVI — Disclosure Velocity Index (LBDG, May 2026)' },
+  { value: '6.5',    label: 'Current DVI — Disclosure Velocity Index (LBDG, June 2026)' },
   { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
 ];
 
@@ -22,7 +22,7 @@ const PILLARS = [
     number: '01',
     title: 'Signal Monitor',
     badge: 'Live',
-    description: 'Real-time tracking of institutional disclosure signals — government actions, financial instruments, legislative developments. DVI 7.0 — pre-disclosure threshold crossed.',
+    description: 'Real-time tracking of institutional disclosure signals — government actions, financial instruments, legislative developments. DVI 6.5 — READINESS threshold crossed.',
     links: [
       { href: '/signals', label: 'Open Signal Board' },
       { href: '/frise',   label: 'Historical Timeline' },
@@ -74,7 +74,7 @@ export default function HomePage() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/10">
               <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
               <span className="text-2xs font-mono font-600 text-signal tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Signal active — DVI 6.2 — HIGH
+                Signal active — DVI 6.5 — READINESS
               </span>
             </span>
           </div>
