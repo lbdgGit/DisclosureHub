@@ -54,7 +54,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
           </div>
           <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '13px', color: body, marginTop: '6px', lineHeight: 1.5 }}>
             {isDVI
-              ? '5 dimensions scored 0–2 each, total out of 10. Scores based on verified institutional events only. A 10 requires official multi-government NHI confirmation — not yet reached.'
+              ? 'Logarithmic index of institutional UAP signal density over a 36-month rolling window, compared to the 1946–2016 historical baseline. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical.'
               : '4 dimensions scored 0–25% each, total out of 100%. Measures quality and credibility of released information, not just volume. A 100% requires complete, verifiable, consistent data from highest authority — not yet reached.'
             }
           </div>
@@ -153,6 +153,18 @@ const VELOCITY_DATA = {
   media:         [0.7, 0.4, 0.5, 1,   1.8, 1.5, 3,   1.5, 2,   7  ],
 };
 
+// ─── DVI Scale ────────────────────────────────────────────
+const DVI_SCALE = [
+  { range: '0 – 3', level: 'BASELINE',   color: '#4A9A5E' },
+  { range: '3 – 5', level: 'MONITOR',    color: '#6B8CAE' },
+  { range: '5 – 7', level: 'READINESS',  color: '#E8A030' },
+  { range: '7 – 9', level: 'ACTIVATION', color: '#E24B4A' },
+  { range: '9 – 10',level: 'CRITICAL',   color: '#9B2C2C' },
+];
+
+const currentLevel = DVI >= 9 ? 'CRITICAL' : DVI >= 7 ? 'ACTIVATION' : DVI >= 5 ? 'READINESS' : DVI >= 3 ? 'MONITOR' : 'BASELINE';
+const currentLevelColor = DVI >= 9 ? '#9B2C2C' : DVI >= 7 ? '#E24B4A' : DVI >= 5 ? '#E8A030' : DVI >= 3 ? '#6B8CAE' : '#4A9A5E';
+
 // ─── Helpers ──────────────────────────────────────────────
 function formatDate(d: string): string {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -230,9 +242,9 @@ export default function SignalsPage() {
   );
 
   const counts = useMemo(() => ({
-    critical: SIGNALS.filter(s => s.strength === 'critical').length,
-    high:     SIGNALS.filter(s => s.strength === 'high').length,
-    total:    SIGNALS.length,
+    activation: SIGNALS.filter(s => s.strength === 'critical').length,
+    readiness:  SIGNALS.filter(s => s.strength === 'high').length,
+    total:      SIGNALS.length,
   }), []);
 
   const navy = '#1B2A4A';
@@ -253,8 +265,6 @@ export default function SignalsPage() {
 
       {/* ─── INSTITUTIONAL SIGNAL FEED ─── */}
       <div style={{ marginBottom: '48px', paddingBottom: '40px', borderBottom: `1px solid ${border}` }}>
-
-        {/* Feed header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444', boxShadow: '0 0 0 2px rgba(239,68,68,0.2)' }} />
@@ -267,7 +277,6 @@ export default function SignalsPage() {
           </span>
         </div>
 
-        {/* Feed cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {feedSignals
             .slice(0, showAllFeed ? feedSignals.length : 5)
@@ -278,15 +287,10 @@ export default function SignalsPage() {
                 <div
                   key={signal.id}
                   style={{
-                    background: 'white',
-                    borderRadius: '0 6px 6px 0',
-                    border: `1px solid ${border}`,
-                    borderLeft: `3px solid ${strCfg.dot}`,
-                    padding: '14px 18px',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr auto',
-                    gap: '12px',
-                    alignItems: 'start',
+                    background: 'white', borderRadius: '0 6px 6px 0',
+                    border: `1px solid ${border}`, borderLeft: `3px solid ${strCfg.dot}`,
+                    padding: '14px 18px', display: 'grid',
+                    gridTemplateColumns: '1fr auto', gap: '12px', alignItems: 'start',
                   }}
                 >
                   <div>
@@ -327,27 +331,17 @@ export default function SignalsPage() {
           }
         </div>
 
-        {/* Show more / less */}
         {feedSignals.length > 5 && (
           <div style={{ textAlign: 'center', marginTop: '16px' }}>
             <button
               onClick={() => setShowAllFeed(!showAllFeed)}
-              style={{
-                fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.08em',
-                textTransform: 'uppercase', padding: '8px 20px', borderRadius: '6px',
-                border: `1px solid ${border}`, background: 'transparent', color: muted,
-                cursor: 'pointer', transition: 'all 0.15s',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = navy; (e.currentTarget as HTMLElement).style.color = navy; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = border; (e.currentTarget as HTMLElement).style.color = muted; }}
+              style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', padding: '8px 20px', borderRadius: '6px', border: `1px solid ${border}`, background: 'transparent', color: muted, cursor: 'pointer' }}
             >
               {showAllFeed ? 'Show fewer signals ↑' : `Show all ${feedSignals.length} signals ↓`}
             </button>
           </div>
         )}
       </div>
-
-      {/* ─── EXISTING PAGE CONTENT BELOW — unchanged ─── */}
 
       {/* Header */}
       <div style={{ marginBottom: '32px' }}>
@@ -378,14 +372,16 @@ export default function SignalsPage() {
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '14px' }}>
             <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '56px', fontWeight: 700, color: gold, lineHeight: 1 }}>{DVI}</span>
             <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.4)' }}>/10</span>
-            <span style={{ padding: '3px 10px', borderRadius: '3px', background: 'rgba(239,68,68,0.2)', color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em' }}>CRITICAL</span>
+            <span style={{ padding: '3px 10px', borderRadius: '3px', background: `${currentLevelColor}30`, color: currentLevelColor === '#E8A030' ? '#FCD34D' : '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', border: `1px solid ${currentLevelColor}50` }}>
+              {currentLevel}
+            </span>
           </div>
           <div style={{ position: 'relative', height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '10px' }}>
             <div style={{ width: `${DVI * 10}%`, height: '100%', borderRadius: '4px', background: 'linear-gradient(90deg, #4ADE80, #C9A84C, #EF4444)' }} />
             <div style={{ position: 'absolute', left: `${DVI * 10}%`, top: '-4px', width: '2px', height: '16px', background: 'white', borderRadius: '1px' }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.3)', marginBottom: '12px' }}>
-            <span>1 — Denial</span><span>4 — Leaks</span><span>7 — Pre-Disclosure</span><span>10 — Confirmed</span>
+            <span>0 — Baseline</span><span>3 — Monitor</span><span>5 — Readiness</span><span>7 — Activation</span>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
             Science Council mandated by White House + AARO + ODNI + FBI (June 2026). PURSUE Tranche 3 released. Active declassification accelerating. System jammed at amnesty legislation — the last institutional gate before open confirmation.
@@ -413,9 +409,9 @@ export default function SignalsPage() {
         {/* Counts */}
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '10px' }}>
           {[
-            { label: 'Critical', value: counts.critical, color: '#EF4444' },
-            { label: 'High',     value: counts.high,     color: '#F97316' },
-            { label: 'Total',    value: counts.total,    color: muted     },
+            { label: 'Activation', value: counts.activation, color: '#EF4444' },
+            { label: 'Readiness',  value: counts.readiness,  color: '#F97316' },
+            { label: 'Total',      value: counts.total,      color: muted     },
           ].map(({ label, value, color }) => (
             <div key={label} style={{ flex: 1, background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '14px 16px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color, letterSpacing: '0.12em', marginBottom: '4px' }}>{label.toUpperCase()} SIGNALS</div>
@@ -464,8 +460,6 @@ export default function SignalsPage() {
 
       {/* ROW 3: Heatmap + Velocity */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px', marginBottom: '14px' }}>
-
-        {/* Sector Heatmap */}
         <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '14px' }}>
             SECTOR RISK HEATMAP — DVI {DVI}
@@ -494,7 +488,6 @@ export default function SignalsPage() {
           </div>
         </div>
 
-        {/* Velocity Chart */}
         <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '14px' }}>
             SIGNAL VELOCITY — INSTITUTIONAL VS MEDIA ATTENTION
@@ -542,7 +535,7 @@ export default function SignalsPage() {
         </div>
         <div style={{ borderTop: `1px solid ${border}`, paddingTop: '14px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em', marginBottom: '10px' }}>
-            RECOMMENDED ACTIONS AT CURRENT DVI {DVI}
+            RECOMMENDED ACTIONS AT CURRENT DVI {DVI} — {currentLevel}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
             {ACTIONS.map(a => (
@@ -565,37 +558,23 @@ export default function SignalsPage() {
             <button
               key={cat.id}
               onClick={() => setActiveCat(cat.id)}
-              style={{
-                padding: '4px 10px', borderRadius: '4px', cursor: 'pointer',
-                fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.05em',
-                border: `1px solid ${activeCat === cat.id ? '#1B2A4A' : border}`,
-                background: activeCat === cat.id ? '#1B2A4A' : 'white',
-                color: activeCat === cat.id ? 'white' : muted,
-                transition: 'all 0.15s',
-              }}
+              style={{ padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.05em', border: `1px solid ${activeCat === cat.id ? '#1B2A4A' : border}`, background: activeCat === cat.id ? '#1B2A4A' : 'white', color: activeCat === cat.id ? 'white' : muted, transition: 'all 0.15s' }}
             >
               {cat.label}
             </button>
           ))}
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>STRENGTH</span>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>LEVEL</span>
           {(['all', 'critical', 'high', 'medium', 'low'] as const).map(s => {
-            const c = s === 'all' ? navy : STRENGTH_CONFIG[s as SignalStrength]?.color || navy;
+            const cfg = s === 'all' ? { color: navy, label: 'ALL' } : { color: STRENGTH_CONFIG[s as SignalStrength]?.color || navy, label: STRENGTH_CONFIG[s as SignalStrength]?.label || s.toUpperCase() };
             return (
               <button
                 key={s}
                 onClick={() => setActiveStr(s)}
-                style={{
-                  padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', textTransform: 'uppercase',
-                  fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.06em',
-                  border: `1px solid ${activeStr === s ? c : border}`,
-                  background: activeStr === s ? `${c}18` : 'white',
-                  color: activeStr === s ? c : muted,
-                  transition: 'all 0.15s',
-                }}
+                style={{ padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.06em', border: `1px solid ${activeStr === s ? cfg.color : border}`, background: activeStr === s ? `${cfg.color}18` : 'white', color: activeStr === s ? cfg.color : muted, transition: 'all 0.15s' }}
               >
-                {s}
+                {cfg.label}
               </button>
             );
           })}
@@ -612,14 +591,7 @@ export default function SignalsPage() {
           const catCfg = CATEGORY_CONFIG[signal.category];
           const strCfg = STRENGTH_CONFIG[signal.strength];
           return (
-            <div
-              key={signal.id}
-              style={{
-                background: 'white', borderRadius: '0 6px 6px 0',
-                border: `1px solid ${border}`, borderLeft: `3px solid ${strCfg.dot}`,
-                padding: '16px 20px',
-              }}
-            >
+            <div key={signal.id} style={{ background: 'white', borderRadius: '0 6px 6px 0', border: `1px solid ${border}`, borderLeft: `3px solid ${strCfg.dot}`, padding: '16px 20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                   <span style={{ padding: '2px 8px', borderRadius: '3px', fontSize: '10px', fontFamily: 'DM Mono, monospace', fontWeight: 600, letterSpacing: '0.08em', color: strCfg.color, background: `${strCfg.dot}18`, border: `0.5px solid ${strCfg.dot}40`, display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -665,7 +637,7 @@ export default function SignalsPage() {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
           <AlertTriangle size={13} style={{ color: muted, marginTop: '2px', flexShrink: 0 }} />
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, lineHeight: 1.6 }}>
-            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Sector heatmap reflects inference from documented market precedents. This page does not constitute financial, legal, or investment advice.
+            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. This page does not constitute financial, legal, or investment advice.
           </p>
         </div>
       </div>
