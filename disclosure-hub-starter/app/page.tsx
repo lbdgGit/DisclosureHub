@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Radio, AlertTriangle, Wrench, FileText, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
 import { InstitutionalSignals } from '@/components/InstitutionalSignals';
+import { DVIBadge } from '@/components/DVIBadge';
 
 export const metadata: Metadata = {
   title: 'LBDG — Leadership Bureau for Disclosure Guidance',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 const STATS = [
   { value: '2,000+', label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
   { value: '34',     label: 'Senior officials on record — The Age of Disclosure (Amazon Prime)' },
-  { value: '6.5',    label: 'Current DVI — Disclosure Velocity Index (LBDG, June 2026)' },
+  { value: '63',     label: 'Verified institutional events in the DVI dataset (39 since 2017)' },
   { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
 ];
 
@@ -69,14 +70,9 @@ export default function HomePage() {
         />
         <div className="max-w-5xl mx-auto w-full relative">
 
-          {/* Badge */}
-          <div className="flex items-center gap-2.5 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/10">
-              <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-              <span className="text-2xs font-mono font-600 text-signal tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Signal active — DVI 6.5 — READINESS
-              </span>
-            </span>
+          {/* DVI Badge — clickable, with visual scale */}
+          <div className="mb-6">
+            <DVIBadge />
           </div>
 
           {/* Headline */}
