@@ -339,8 +339,8 @@ export const CATEGORY_CONFIG: Record<SignalCategory, { color: string; bg: string
 };
 
 export const STRENGTH_CONFIG: Record<SignalStrength, { label: string; color: string; dot: string }> = {
-  critical: { label: 'ACTIVATION', color: '#EF4444', dot: '#EF4444' },
-  high:     { label: 'READINESS',  color: '#F97316', dot: '#F97316' },
-  medium:   { label: 'MONITOR',    color: '#EAB308', dot: '#EAB308' },
-  low:      { label: 'BASELINE',   color: '#6B7280', dot: '#6B7280' },
+  critical: { label: 'CRITICAL', color: '#EF4444', dot: '#EF4444' },
+  high:     { label: 'HIGH',     color: '#F97316', dot: '#F97316' },
+  medium:   { label: 'MEDIUM',   color: '#EAB308', dot: '#EAB308' },
+  low:      { label: 'LOW',      color: '#6B7280', dot: '#6B7280' },
 };
