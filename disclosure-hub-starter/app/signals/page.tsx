@@ -242,8 +242,8 @@ export default function SignalsPage() {
   );
 
   const counts = useMemo(() => ({
-    activation: SIGNALS.filter(s => s.strength === 'critical').length,
-    readiness:  SIGNALS.filter(s => s.strength === 'high').length,
+    critical: SIGNALS.filter(s => s.strength === 'critical').length,
+    high:     SIGNALS.filter(s => s.strength === 'high').length,
     total:      SIGNALS.length,
   }), []);
 
@@ -409,8 +409,8 @@ export default function SignalsPage() {
         {/* Counts */}
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '10px' }}>
           {[
-            { label: 'Activation', value: counts.activation, color: '#EF4444' },
-            { label: 'Readiness',  value: counts.readiness,  color: '#F97316' },
+            { label: 'Critical', value: counts.critical, color: '#EF4444' },
+            { label: 'High',     value: counts.high,     color: '#F97316' },
             { label: 'Total',      value: counts.total,      color: muted     },
           ].map(({ label, value, color }) => (
             <div key={label} style={{ flex: 1, background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '14px 16px' }}>
@@ -565,9 +565,9 @@ export default function SignalsPage() {
           ))}
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>LEVEL</span>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>STRENGTH</span>
           {(['all', 'critical', 'high', 'medium', 'low'] as const).map(s => {
-            const cfg = s === 'all' ? { color: navy, label: 'ALL' } : { color: STRENGTH_CONFIG[s as SignalStrength]?.color || navy, label: STRENGTH_CONFIG[s as SignalStrength]?.label || s.toUpperCase() };
+            const cfg = s === 'all' ? { color: navy, label: 'ALL' } : { color: STRENGTH_CONFIG[s as SignalStrength]?.color || navy, label: s.toUpperCase() };
             return (
               <button
                 key={s}
