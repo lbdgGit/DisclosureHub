@@ -119,19 +119,19 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
   },
 
-  // ─── HIGH ─────────────────────────────────────────────────────────────────
+  // ─── CRITICAL ─────────────────────────────────────────────────────────────────
 
   {
     id: 'burlison-uapda-2026',
-    date: '2026-06-09',
-    institution: 'U.S. House of Representatives / UAP Caucus',
+    date: '2026-06-17',
+    institution: 'U.S. House of Representatives / Rep. Eric Burlison',
     country: 'USA',
-    title: 'Rep. Burlison confirms active UAPDA push for NDAA — "It will probably happen in the Rules process"',
-    description: 'Rep. Eric Burlison (R-MO, Congressional UAP Caucus) confirms the UAP Disclosure Act is "absolutely" still needed despite PURSUE releases and is being actively worked into the NDAA. Strategy: insertion via the House Rules Committee process rather than Armed Services Committee markup. Interviewed by Matt Laslo immediately after the bipartisan UAP Caucus Capitol press conference where David Grusch cited the 1971 Australian NAA intelligence document.',
+    title: 'Full UAPDA text officially deposited to House Rules Committee — Amendment BURLIS_087 to NDAA FY2027',
+    description: 'Rep. Eric Burlison (R-MO) deposits a complete 62-page UAP Disclosure Act amendment to the House Rules Committee for inclusion in NDAA FY2027. Establishes: UAP Records Collection at NARA (public access within 30 days); independent 9-member Review Board with Senate confirmation and full SAP access (terminates Sep 30 2030, $20M authorized for FY2027); eminent domain authority over recovered non-human technologies and biologics held by private entities; 25-year maximum classification ceiling; absolute prohibition on destruction or reclassification of UAP records. Formally repeals and supersedes the weaker NDAA FY2024 version. Codifies legal definitions of NHI, Technologies of Unknown Origin, and UAP in federal law.',
     category: 'legislative',
-    strength: 'high',
-    sourceLabel: 'Ask a Pol UAP — Matt Laslo, June 9 2026',
-    sourceUrl: 'https://www.askapoluaps.com/p/burlison-uapda-still-needed-ndaa',
+    strength: 'critical',
+    sourceLabel: 'House Rules Committee — Amendment BURLIS_087, June 17 2026',
+    sourceUrl: 'https://amendments-rules.house.gov/amendments/BURLIS_087_xml260618163721471.pdf',
     isNew: true,
   },
   {
@@ -300,11 +300,11 @@ export function getOverallSignalLevel(): { level: number; label: string; descrip
   if (critical >= 4) return {
     level: 4,
     label: 'PRE-DISCLOSURE',
-    description: 'DVI 6.2 — Science Council mandated + active declassification + financial sector pricing'
+    description: 'DVI 6.5 — Science Council mandated + active declassification + financial sector pricing'
   };
   if (critical >= 3) return {
     level: 4,
-    label: 'ELEVATED',
+    label: 'CRITICAL',
     description: 'Multiple critical institutional signals — active disclosure process underway'
   };
   if (critical >= 1) return {
@@ -340,7 +340,7 @@ export const CATEGORY_CONFIG: Record<SignalCategory, { color: string; bg: string
 
 export const STRENGTH_CONFIG: Record<SignalStrength, { label: string; color: string; dot: string }> = {
   critical: { label: 'CRITICAL', color: '#EF4444', dot: '#EF4444' },
-  high:     { label: 'HIGH',     color: '#F97316', dot: '#F97316' },
+  high:     { label: 'CRITICAL',     color: '#F97316', dot: '#F97316' },
   medium:   { label: 'MEDIUM',   color: '#EAB308', dot: '#EAB308' },
   low:      { label: 'LOW',      color: '#6B7280', dot: '#6B7280' },
 };
