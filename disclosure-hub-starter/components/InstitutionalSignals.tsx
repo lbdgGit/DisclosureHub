@@ -85,14 +85,14 @@ export function InstitutionalSignals() {
             color: '#C9A84C',
             lineHeight: 1,
             marginBottom: 4,
-          }}>6.2</p>
+          }}>6.5</p>
           <p style={{
             fontFamily: 'DM Mono, monospace',
             fontSize: 10,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
             color: '#E8A030',
-          }}>HIGH</p>
+          }}>ACTIVATION</p>
         </div>
       </div>
 
