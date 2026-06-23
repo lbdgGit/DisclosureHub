@@ -72,7 +72,7 @@ export default function HomePage() {
 
           {/* DVI Badge — clickable, with visual scale */}
           <div className="mb-6">
-            <DVIBadge />
+            <DVIBadge variant="dark" />
           </div>
 
           {/* Headline */}
