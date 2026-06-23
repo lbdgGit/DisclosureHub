@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { ExternalLink, Radio, AlertTriangle } from 'lucide-react';
+import { ExternalLink, AlertTriangle } from 'lucide-react';
 import {
   SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, STRENGTH_CONFIG,
-  getOverallSignalLevel, type SignalCategory, type SignalStrength
+  type SignalStrength
 } from '@/data/signals';
+import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 
 // ─── Methodology constants ────────────────────────────────
 const DVI_METHODOLOGY = [
@@ -147,11 +148,6 @@ const ACTIONS = [
   { role: 'Legal / Compliance', action: 'Review Reg FD / AMF obligations with outside counsel', toolkit: 'Finance Tool 5', href: '/toolkits' },
 ];
 
-const VELOCITY_DATA = {
-  labels: ['2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'],
-  institutional: [2,   1,   2,   3.5, 3,   4.5, 6,   4.5, 5,   8.5],
-  media:         [0.7, 0.4, 0.5, 1,   1.8, 1.5, 3,   1.5, 2,   7  ],
-};
 
 // ─── DVI Scale ────────────────────────────────────────────
 const DVI_SCALE = [
@@ -174,57 +170,6 @@ function formatDate(d: string): string {
   return `${months[parseInt(parts[1])-1]} ${parseInt(parts[2])}, ${parts[0]}`;
 }
 
-// ─── Chart component ──────────────────────────────────────
-function VelocityChart() {
-  const inst  = VELOCITY_DATA.institutional;
-  const media = VELOCITY_DATA.media;
-  const labels = VELOCITY_DATA.labels;
-  const max = 10;
-  const W = 560, H = 160, padL = 24, padR = 8, padT = 8, padB = 24;
-  const chartW = W - padL - padR;
-  const chartH = H - padT - padB;
-
-  const px = (i: number) => padL + (i / (labels.length - 1)) * chartW;
-  const py = (v: number) => padT + chartH - (v / max) * chartH;
-
-  const instPath = inst.map((v, i) => `${i === 0 ? 'M' : 'L'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
-  const mediaPath = media.map((v, i) => `${i === 0 ? 'M' : 'L'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
-  const areaPath = `${instPath} L${px(inst.length-1).toFixed(1)},${py(0).toFixed(1)} L${px(0).toFixed(1)},${py(0).toFixed(1)} Z`;
-
-  return (
-    <div style={{ position: 'relative', height: '180px', width: '100%' }}>
-      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none"
-           style={{ width: '100%', height: '100%' }}
-           role="img" aria-label="Institutional signals accelerating sharply in 2026 while media coverage remains low">
-        <defs>
-          <linearGradient id="instGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.15"/>
-            <stop offset="100%" stopColor="#38BDF8" stopOpacity="0"/>
-          </linearGradient>
-        </defs>
-        {[2,4,6,8,10].map(v => (
-          <line key={v} x1={padL} x2={W-padR} y1={py(v)} y2={py(v)} stroke="#E2E8F0" strokeWidth="0.5" />
-        ))}
-        {[0,5,10].map(v => (
-          <text key={v} x={padL - 4} y={py(v) + 3} textAnchor="end" fontSize="8" fill="#8A9BB5">{v}</text>
-        ))}
-        {labels.filter((_, i) => i % 2 === 0).map((l, idx) => {
-          const i = idx * 2;
-          return <text key={l} x={px(i)} y={H - 6} textAnchor="middle" fontSize="8" fill="#8A9BB5">{l}</text>;
-        })}
-        <path d={areaPath} fill="url(#instGrad)" />
-        <path d={instPath} fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d={mediaPath} fill="none" stroke="#4A5D78" strokeWidth="1.5" strokeDasharray="4 3" strokeLinecap="round" strokeLinejoin="round" />
-        {inst.map((v, i) => (
-          <circle key={i} cx={px(i)} cy={py(v)} r="2.5" fill="#38BDF8" />
-        ))}
-        {media.map((v, i) => (
-          <circle key={i} cx={px(i)} cy={py(v)} r="2" fill="#4A5D78" />
-        ))}
-      </svg>
-    </div>
-  );
-}
 
 // ─── Main component ───────────────────────────────────────
 export default function SignalsPage() {
@@ -489,23 +434,7 @@ export default function SignalsPage() {
         </div>
 
         <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '14px' }}>
-            SIGNAL VELOCITY — INSTITUTIONAL VS MEDIA ATTENTION
-          </div>
-          <VelocityChart />
-          <div style={{ display: 'flex', gap: '16px', marginTop: '10px', flexWrap: 'wrap' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
-              <span style={{ width: '16px', height: '2px', background: '#38BDF8', display: 'inline-block' }} />
-              Institutional action (LBDG weighted scoring)
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: body }}>
-              <span style={{ width: '16px', height: '0', borderTop: '2px dashed #4A5D78', display: 'inline-block' }} />
-              Media coverage (Google Trends ×0.7 hedging discount)
-            </span>
-          </div>
-          <p style={{ fontSize: '12px', color: body, marginTop: '10px', lineHeight: 1.6 }}>
-            <strong>2026: the lines are converging for the first time.</strong> Institutional action (8.5/10) now outpaces media coverage (7/10). Science Council mandate + PURSUE Tranche 3 push institutional score to highest ever recorded. The preparation window is closing, not closed.
-          </p>
+          <InstitutionalAcceleration />
         </div>
       </div>
 
@@ -637,7 +566,7 @@ export default function SignalsPage() {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
           <AlertTriangle size={13} style={{ color: muted, marginTop: '2px', flexShrink: 0 }} />
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, lineHeight: 1.6 }}>
-            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. This page does not constitute financial, legal, or investment advice.
+            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. Institutional acceleration chart: 63 verified events, 1946–2026, sources in LBDG-DVI-Event-Audit.csv. This page does not constitute financial, legal, or investment advice.
           </p>
         </div>
       </div>
