@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { DVIBadge } from '@/components/DVIBadge';
 import { SIGNALS, CATEGORY_CONFIG, STRENGTH_CONFIG } from '@/data/signals';
 
 const DVI_VALUE = 6.5;
@@ -164,28 +165,7 @@ export function InstitutionalSignals() {
           </p>
         </div>
 
-        {/* DVI badge — clickable */}
-        <button
-          onClick={() => setShowModal(true)}
-          title="What is the DVI? Click to learn more"
-          style={{
-            backgroundColor: '#1B2A4A',
-            borderRadius: 10,
-            padding: '14px 22px',
-            textAlign: 'center',
-            minWidth: 130,
-            border: '1px solid rgba(201,168,76,0.2)',
-            cursor: 'pointer',
-            transition: 'border-color 0.2s',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(201,168,76,0.5)')}
-          onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)')}
-        >
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 4 }}>DVI</p>
-          <p style={{ fontFamily: 'Playfair Display, serif', fontSize: 36, fontWeight: 700, color: '#C9A84C', lineHeight: 1, marginBottom: 4 }}>{DVI_VALUE}</p>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#E8A030' }}>{DVI_LEVEL}</p>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: 'rgba(138,155,181,0.6)', marginTop: 6, letterSpacing: '0.06em' }}>tap to learn more</p>
-        </button>
+        <DVIBadge variant="light" />
       </div>
 
       {/* Signal list */}
