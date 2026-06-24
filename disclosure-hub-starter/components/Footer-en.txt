@@ -91,7 +91,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/30">
           <p className="text-2xs font-mono text-muted/50" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-            © 2025 LBDG — readyfordisclosure.com
+            © 2026 LBDG — readyfordisclosure.com
           </p>
           <div className="flex gap-4">
             <a href="/legal"   className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Legal</a>
