@@ -34,15 +34,13 @@ export default function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'py-3 border-b border-border/80'
-          : 'bg-transparent py-5',
+        scrolled ? 'py-3 border-b border-border/80' : 'py-5',
       )}
-      style={scrolled ? {
-        backgroundColor: '#0F1B30',
+      style={{
+        backgroundColor: scrolled ? '#0F1B30' : 'rgba(15, 27, 48, 0.85)',
         backdropFilter: 'blur(12px)',
-        boxShadow: '0 2px 20px rgba(0,0,0,0.3)',
-      } : undefined}
+        boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.3)' : 'none',
+      }}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
@@ -52,7 +50,7 @@ export default function Navbar() {
             <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
           </div>
           <span
-            className="font-display font-700 text-bright text-sm tracking-[0.15em] uppercase"
+            className="font-display font-700 text-white text-sm tracking-[0.15em] uppercase"
             style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}
           >
             LBDG
@@ -70,7 +68,7 @@ export default function Navbar() {
                 'text-xs font-mono font-500 tracking-widest uppercase transition-colors flex items-center gap-1',
                 pathname === link.href
                   ? 'text-signal'
-                  : 'text-muted hover:text-bright',
+                  : 'text-white/70 hover:text-white',
               )}
               style={{ fontFamily: 'JetBrains Mono, monospace' }}
             >
