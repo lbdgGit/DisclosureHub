@@ -35,18 +35,20 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'glass border-b border-border/80 py-3'
+          ? 'py-3 border-b border-border/80'
           : 'bg-transparent py-5',
       )}
+      style={scrolled ? {
+        backgroundColor: '#0F1B30',
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 2px 20px rgba(0,0,0,0.3)',
+      } : undefined}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative">
-            <Radio
-              size={20}
-              className="text-signal group-hover:text-signal/80 transition-colors"
-            />
+            <Radio size={20} className="text-signal group-hover:text-signal/80 transition-colors" />
             <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
           </div>
           <span
@@ -73,7 +75,7 @@ export default function Navbar() {
               style={{ fontFamily: 'JetBrains Mono, monospace' }}
             >
               {link.href === '/signals' && (
-                <span className="w-1.5 h-1.5 rounded-full bg-verified animate-pulse-slow" />
+                <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
               )}
               {link.label}
             </Link>
@@ -101,14 +103,11 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu — fixed background */}
+      {/* Mobile menu */}
       {open && (
         <div
           className="lg:hidden border-t border-border/60 mt-0"
-          style={{
-            backgroundColor: '#0F1B30',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
-          }}
+          style={{ backgroundColor: '#0F1B30', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
         >
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
@@ -124,7 +123,7 @@ export default function Navbar() {
                 style={{ fontFamily: 'JetBrains Mono, monospace' }}
               >
                 {link.href === '/signals' && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-verified animate-pulse-slow" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
                 )}
                 {link.label}
               </Link>
