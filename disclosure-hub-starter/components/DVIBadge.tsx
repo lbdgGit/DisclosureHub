@@ -93,23 +93,17 @@ function ScaleBar({ variant }: { variant: 'dark' | 'light' }) {
         </div>
         <div style={{ position: 'absolute', left: `calc(${pct}% - 2px)`, top: -5, width: 4, height: 20, background: cursor, borderRadius: 2 }} />
       </div>
-      <div style={{ display: 'flex', marginBottom: 3 }}>
-        {segments.map((s, i) => (
-          <div key={i} style={{ width: s.width, textAlign: 'center' }}>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: s.labelColor, fontWeight: s.bold ? 700 : 400, letterSpacing: s.spacing }}>
-              {s.label}
-            </span>
-          </div>
+      {/* Numbers only — no overlapping text on mobile */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 5 }}>
+        {['0', '3', '5', '7', '9', '10'].map(v => (
+          <span key={v} style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: rangeColor }}>{v}</span>
         ))}
       </div>
-      <div style={{ display: 'flex' }}>
-        {segments.map((s, i) => (
-          <div key={i} style={{ width: s.width, textAlign: 'center' }}>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: rangeColor }}>
-              {s.range}
-            </span>
-          </div>
-        ))}
+      {/* Current level — single label centered under cursor */}
+      <div style={{ marginTop: 4, textAlign: 'center' }}>
+        <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', color: variant === 'dark' ? '#E8A030' : '#8A5C00' }}>
+          ▲ {DVI_LEVEL}
+        </span>
       </div>
     </div>
   );
