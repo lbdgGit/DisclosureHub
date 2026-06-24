@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       {/* ── INSTITUTIONAL SIGNALS — no second DVI badge ── */}
-      <InstitutionalSignals hideDVIBadge />
+      <InstitutionalSignals />
 
       {/* ── 3 PILLARS ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30">
@@ -184,10 +184,7 @@ export default function HomePage() {
               return (
                 <div
                   key={pillar.number}
-                  className={`group p-6 rounded-lg border border-border/60 bg-white ${pillar.hoverBorder} transition-all duration-300`}
-                  style={{ boxShadow: '0 1px 4px rgba(27,42,74,0.06)' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(27,42,74,0.12)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(27,42,74,0.06)'; }}
+                  className={`group p-6 rounded-lg border border-border/60 bg-white ${pillar.hoverBorder} hover:shadow-lg transition-all duration-300`}
                 >
                   <div className="flex items-center justify-between mb-5">
                     <span className="font-mono text-xs text-muted/50 tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
