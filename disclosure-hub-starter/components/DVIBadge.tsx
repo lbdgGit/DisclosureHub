@@ -152,23 +152,20 @@ export function DVIBadge({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
           </span>
         </div>
 
-        {/* Score + bar grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', alignItems: 'center', gap: 40 }}>
-          {/* Score */}
-          <div>
-            <span style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 72, fontWeight: 700, color: scoreColor, lineHeight: 1, display: 'block' }}>
-              {DVI_VALUE}
+        {/* Score + level inline, bar below */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+          <span style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 64, fontWeight: 700, color: scoreColor, lineHeight: 1, flexShrink: 0 }}>
+            {DVI_VALUE}
+          </span>
+          <div style={{ background: badgeBg, border: `1px solid ${badgeBorder}`, borderRadius: 5, padding: '4px 12px', flexShrink: 0 }}>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', color: badgeText }}>
+              {DVI_LEVEL}
             </span>
-            <div style={{ background: badgeBg, border: `1px solid ${badgeBorder}`, borderRadius: 5, padding: '4px 10px', display: 'inline-block', marginTop: 8 }}>
-              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: badgeText }}>
-                {DVI_LEVEL}
-              </span>
-            </div>
           </div>
-
-          {/* Scale bar */}
-          <ScaleBar variant={variant} />
         </div>
+
+        {/* Scale bar — full width */}
+        <ScaleBar variant={variant} />
 
         {/* Footer */}
         <div style={{ borderTop: `1px solid ${footerBorder}`, paddingTop: 12, marginTop: 24, textAlign: 'right' }}>
