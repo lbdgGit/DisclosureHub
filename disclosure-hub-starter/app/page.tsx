@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       {/* ── INSTITUTIONAL SIGNALS — no second DVI badge ── */}
-      <InstitutionalSignals />
+      <InstitutionalSignals hideDVIBadge />
 
       {/* ── 3 PILLARS ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30">
