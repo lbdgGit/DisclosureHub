@@ -65,7 +65,7 @@ export default function HomePage() {
     <>
       {/* ── HERO NAVY BAND ── */}
       <section
-        className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-24 pb-16"
+        className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-24 pb-16 overflow-x-hidden"
         style={{ backgroundColor: '#1B2A4A' }}
       >
         {/* Subtle glow */}
@@ -78,7 +78,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto w-full relative">
 
           {/* DVI Badge — dark variant, full width */}
-          <div className="mb-10">
+          <div className="mb-10 w-full">
             <DVIBadge variant="dark" />
           </div>
 
