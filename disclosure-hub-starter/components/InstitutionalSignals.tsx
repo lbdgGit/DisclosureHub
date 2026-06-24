@@ -135,7 +135,7 @@ function DVIModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export function InstitutionalSignals() {
+export function InstitutionalSignals({ hideDVIBadge = false }: { hideDVIBadge?: boolean }) {
   const [showModal, setShowModal] = useState(false);
 
   const signals = [...SIGNALS]
@@ -165,7 +165,7 @@ export function InstitutionalSignals() {
           </p>
         </div>
 
-        <DVIBadge variant="light" />
+        {!hideDVIBadge && <DVIBadge variant="light" />}
       </div>
 
       {/* Signal list */}
