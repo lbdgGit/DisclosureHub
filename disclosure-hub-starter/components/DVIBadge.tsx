@@ -71,37 +71,80 @@ function DVIModal({ onClose }: { onClose: () => void }) {
 }
 
 function ScaleBar({ variant }: { variant: 'dark' | 'light' }) {
-  const pct = (DVI_VALUE / 10) * 100;
+  // DVI 0-10, segments: 0-3 (30%), 3-5 (20%), 5-7 (20%), 7-9 (20%), 9-10 (10%)
+  const pct = (DVI_VALUE / 10) * 100; // 6.5 → 65%
   const cursor = variant === 'dark' ? 'white' : '#1B2A4A';
-  const rangeColor = variant === 'dark' ? 'rgba(255,255,255,0.45)' : 'rgba(27,42,74,0.4)';
+  const rangeColor = variant === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(27,42,74,0.45)';
 
   const segments = [
-    { width: '30%', bg: '#4A9A5E',                   label: 'BASELINE',   labelColor: '#4A9A5E',              range: '0 – 3',  bold: false, spacing: '0.05em' },
-    { width: '20%', bg: '#6B8CAE',                   label: 'MONITOR',    labelColor: '#6B8CAE',              range: '3 – 5',  bold: false, spacing: '0.05em' },
-    { width: '20%', bg: '#E8A030',                   label: 'READINESS ▲',labelColor: variant === 'dark' ? '#E8A030' : '#8A5C00', range: '5 – 7', bold: true, spacing: '0.05em' },
-    { width: '20%', bg: variant === 'dark' ? 'rgba(226,75,74,0.65)' : 'rgba(226,75,74,0.7)', label: 'ACTIVATION', labelColor: variant === 'dark' ? 'rgba(226,75,74,0.95)' : '#C03030', range: '7 – 9', bold: false, spacing: '0.05em' },
-    { width: '10%', bg: variant === 'dark' ? 'rgba(155,44,44,0.65)' : 'rgba(155,44,44,0.7)', label: 'CRITICAL',   labelColor: variant === 'dark' ? 'rgba(200,80,80,0.95)' : '#7B1F1F',  range: '9–10', bold: false, spacing: '0.03em' },
+    { width: '30%', bg: '#4A9A5E' },
+    { width: '20%', bg: '#6B8CAE' },
+    { width: '20%', bg: '#E8A030' },
+    { width: '20%', bg: variant === 'dark' ? 'rgba(226,75,74,0.7)' : 'rgba(226,75,74,0.75)' },
+    { width: '10%', bg: variant === 'dark' ? 'rgba(155,44,44,0.7)' : 'rgba(155,44,44,0.75)' },
+  ];
+
+  // Boundary positions as % of total bar width: 0→0%, 3→30%, 5→50%, 7→70%, 9→90%, 10→100%
+  const ticks = [
+    { val: '0',  pct: 0,   align: 'left'   as const },
+    { val: '3',  pct: 30,  align: 'center' as const },
+    { val: '5',  pct: 50,  align: 'center' as const },
+    { val: '7',  pct: 70,  align: 'center' as const },
+    { val: '9',  pct: 90,  align: 'center' as const },
+    { val: '10', pct: 100, align: 'right'  as const },
   ];
 
   return (
     <div>
-      <div style={{ position: 'relative', marginBottom: 12 }}>
+      {/* Bar */}
+      <div style={{ position: 'relative', marginBottom: 8 }}>
         <div style={{ display: 'flex', height: 10, borderRadius: 5, overflow: 'hidden' }}>
           {segments.map((s, i) => (
             <div key={i} style={{ width: s.width, background: s.bg }} />
           ))}
         </div>
-        <div style={{ position: 'absolute', left: `calc(${pct}% - 2px)`, top: -5, width: 4, height: 20, background: cursor, borderRadius: 2 }} />
+        {/* Cursor — exactly at DVI_VALUE position */}
+        <div style={{
+          position: 'absolute',
+          left: `calc(${pct}% - 2px)`,
+          top: -5, width: 4, height: 20,
+          background: cursor, borderRadius: 2,
+        }} />
       </div>
-      {/* Numbers only — no overlapping text on mobile */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 5 }}>
-        {['0', '3', '5', '7', '9', '10'].map(v => (
-          <span key={v} style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: rangeColor }}>{v}</span>
+
+      {/* Tick marks at exact boundary positions */}
+      <div style={{ position: 'relative', height: 16 }}>
+        {ticks.map(t => (
+          <span
+            key={t.val}
+            style={{
+              position: 'absolute',
+              left: t.pct === 100 ? undefined : `${t.pct}%`,
+              right: t.pct === 100 ? '0%' : undefined,
+              transform: t.pct > 0 && t.pct < 100 ? 'translateX(-50%)' : undefined,
+              fontFamily: 'DM Mono, monospace',
+              fontSize: 9,
+              color: rangeColor,
+              lineHeight: 1,
+            }}
+          >
+            {t.val}
+          </span>
         ))}
       </div>
-      {/* Current level — single label centered under cursor */}
-      <div style={{ marginTop: 4, textAlign: 'center' }}>
-        <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', color: variant === 'dark' ? '#E8A030' : '#8A5C00' }}>
+
+      {/* Current level label at cursor position */}
+      <div style={{ position: 'relative', height: 14, marginTop: 2 }}>
+        <span style={{
+          position: 'absolute',
+          left: `${pct}%`,
+          transform: 'translateX(-50%)',
+          fontFamily: 'DM Mono, monospace',
+          fontSize: 9, fontWeight: 700,
+          letterSpacing: '0.08em',
+          color: variant === 'dark' ? '#E8A030' : '#8A5C00',
+          whiteSpace: 'nowrap',
+        }}>
           ▲ {DVI_LEVEL}
         </span>
       </div>
