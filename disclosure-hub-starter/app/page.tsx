@@ -35,7 +35,7 @@ const PILLARS = [
     number: '02',
     title: 'Operational Toolkits',
     badge: 'Action',
-    description: 'Five-tool kits for HR, Finance, Communications, and Leadership. Scorecards, checklists, decision trees, and templates — designed to be used, not read.',
+    description: 'Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates — designed to be used, not read.',
     links: [
       { href: '/toolkits',         label: 'All Toolkits'           },
       { href: '/toolkits#hr',      label: 'HR Toolkit'             },
@@ -59,6 +59,8 @@ const PILLARS = [
     hoverBorder: 'hover:border-cold/50',
   },
 ];
+
+const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/2e53ef9a-fa4b-4c3d-9cfd-a10a6ec91c3b?embed=1';
 
 export default function HomePage() {
   return (
@@ -101,7 +103,8 @@ export default function HomePage() {
             className="text-base sm:text-xl max-w-2xl mb-8 leading-relaxed"
             style={{ fontFamily: 'Syne, sans-serif', fontStyle: 'italic', color: 'rgba(255,255,255,0.65)' }}
           >
-            The sitting U.S. Secretary of State is on record. The former UAP Task Force Director has personally seen non-human craft. 34 senior officials are on Amazon Prime. The Pentagon is releasing classified files. <strong style={{ color: 'rgba(255,255,255,0.9)', fontStyle: 'normal' }}>Your organization is not prepared.</strong>
+            The sitting U.S. Secretary of State is on record. The former UAP Task Force Director has personally seen non-human craft. 34 senior officials are on Amazon Prime. The Pentagon is releasing classified files.{' '}
+            <strong style={{ color: 'rgba(255,255,255,0.9)', fontStyle: 'normal' }}>Your organization is not prepared.</strong>
           </p>
 
           {/* CTAs */}
@@ -244,17 +247,17 @@ export default function HomePage() {
             className="text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed"
             style={{ fontFamily: 'Syne, sans-serif', color: 'rgba(255,255,255,0.6)' }}
           >
-            A 10-minute organizational readiness check. Full institutional signal timeline. Decision tree to identify which toolkit your organization needs. 3 pages. Free.
+            A 10-minute organizational readiness check. Full institutional signal timeline. Sector exposure grid. Decision tree to identify which toolkit your organization needs. Free.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/rapports#starter"
-              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
+            <a
+              href={LS_STARTER_URL}
+              className="lemonsqueezy-button group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
               style={{ background: '#C9A84C', color: '#1B2A4A', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, fontSize: 13 }}
             >
               Download free
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
             <Link
               href="/toolkits"
               className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
