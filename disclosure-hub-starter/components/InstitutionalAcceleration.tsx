@@ -173,8 +173,13 @@ export function InstitutionalAcceleration() {
   const handleLeave = () => { if (!pinned) setTooltip(null); };
   const handleClick = (e: React.MouseEvent, ev: Event) => {
     e.stopPropagation();
-    setPinned(true);
-    setTooltip({ event: ev });
+    if (pinned && tooltip?.event === ev) {
+      setPinned(false);
+      setTooltip(null);
+    } else {
+      setPinned(true);
+      setTooltip({ event: ev });
+    }
   };
   const handleDismiss = () => { setPinned(false); setTooltip(null); };
 
@@ -288,7 +293,7 @@ export function InstitutionalAcceleration() {
           {ALL_YEARS.map(year =>
             (byYear[year] || []).map((ev, si) => {
               const color = CAT_COLORS[ev.cat] || '#C9A84C';
-              const isHov = tooltip?.event === ev;
+              const isPinned = pinned && tooltip?.event === ev;
               const isAccel = year >= 2017;
               return (
                 <rect
@@ -296,12 +301,24 @@ export function InstitutionalAcceleration() {
                   x={sqX(year)} y={sqY(si)}
                   width={SQ} height={SQ} rx={2}
                   fill={color}
-                  opacity={isHov ? 1 : ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38}
-                  stroke={isHov ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none'}
-                  strokeWidth={isHov ? 1.5 : isAccel ? 0.5 : 0}
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={() => handleEnter(ev)}
-                  onMouseLeave={handleLeave}
+                  opacity={isPinned ? 1 : ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38}
+                  stroke={isPinned ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none'}
+                  strokeWidth={isPinned ? 2 : isAccel ? 0.5 : 0}
+                  style={{
+                    cursor: 'pointer',
+                    transition: 'opacity 0.15s, stroke-width 0.15s',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as SVGRectElement).style.opacity = '1';
+                    (e.currentTarget as SVGRectElement).style.strokeWidth = '2';
+                    (e.currentTarget as SVGRectElement).style.stroke = 'rgba(255,255,255,0.7)';
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as SVGRectElement;
+                    el.style.opacity = isPinned ? '1' : String(ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38);
+                    el.style.strokeWidth = isPinned ? '2' : isAccel ? '0.5' : '0';
+                    el.style.stroke = isPinned ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none';
+                  }}
                   onClick={(e) => handleClick(e, ev)}
                 />
               );
@@ -346,29 +363,50 @@ export function InstitutionalAcceleration() {
         </svg>
       </div>
 
-      {/* Tooltip pinned below chart */}
-      {tooltip && (
-        <div style={{
-          marginTop: 10,
-          background: '#0F1C30',
-          border: `1px solid ${CAT_COLORS[tooltip.event.cat]}`,
-          borderRadius: 8,
-          padding: '10px 14px',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5 }}>
-            <div style={{ width: 8, height: 8, borderRadius: 2, background: CAT_COLORS[tooltip.event.cat], flexShrink: 0 }} />
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: '#C9A84C', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              {CAT_LABELS[tooltip.event.cat]} · {tooltip.event.year} · Weight {tooltip.event.w}
-            </span>
-            <button
-              onClick={handleDismiss}
-              style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#8A9BB5', cursor: 'pointer', fontSize: 14, lineHeight: 1, padding: 2 }}
-            >✕</button>
+      {/* Tooltip — fixed height reserved, no layout shift */}
+      <div style={{
+        marginTop: 10,
+        height: 90,
+        borderRadius: 8,
+        overflow: 'hidden',
+        transition: 'background 0.15s, border-color 0.15s',
+        background: tooltip ? '#0F1C30' : 'rgba(255,255,255,0.03)',
+        border: `1px solid ${tooltip ? (CAT_COLORS[tooltip.event.cat] || '#C9A84C') : 'rgba(255,255,255,0.06)'}`,
+      }}>
+        {tooltip ? (
+          <div style={{ padding: '10px 14px', height: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5 }}>
+              <div style={{ width: 8, height: 8, borderRadius: 2, background: CAT_COLORS[tooltip.event.cat], flexShrink: 0 }} />
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: '#C9A84C', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                {CAT_LABELS[tooltip.event.cat]} · {tooltip.event.year} · Weight {tooltip.event.w}
+              </span>
+              {pinned && (
+                <button
+                  onClick={handleDismiss}
+                  style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#8A9BB5', cursor: 'pointer', fontSize: 14, lineHeight: 1, padding: 2 }}
+                >✕</button>
+              )}
+            </div>
+            <p style={{ fontSize: 12, color: '#FAF8F4', lineHeight: 1.4, margin: '0 0 3px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {tooltip.event.event}
+            </p>
+            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, color: '#8A9BB5', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontStyle: 'italic' }}>
+              {tooltip.event.source}
+            </p>
+            {!pinned && (
+              <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: 'rgba(138,155,181,0.4)', margin: '4px 0 0' }}>
+                click to pin · click again to close
+              </p>
+            )}
           </div>
-          <p style={{ fontSize: 12, color: '#FAF8F4', lineHeight: 1.5, margin: '0 0 4px' }}>{tooltip.event.event}</p>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, color: '#8A9BB5', lineHeight: 1.5, margin: 0, fontStyle: 'italic' }}>{tooltip.event.source}</p>
-        </div>
-      )}
+        ) : (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: 'rgba(138,155,181,0.3)', letterSpacing: '0.1em' }}>
+              HOVER A SQUARE TO PREVIEW · CLICK TO PIN
+            </p>
+          </div>
+        )}
+      </div>
 
       {/* Legend */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px', marginTop: 16, marginBottom: 10 }}>
