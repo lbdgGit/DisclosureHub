@@ -91,7 +91,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
             CURRENT {isDVI ? 'DVI' : 'ISS'} SCORE
           </span>
           <span style={{ fontFamily: 'Syne, sans-serif', fontSize: '24px', fontWeight: 700, color: gold }}>
-            {isDVI ? '6.5 / 10' : '64%'}
+            {isDVI ? '6.6 / 10' : '64%'}
           </span>
         </div>
 
@@ -104,7 +104,7 @@ function InfoModal({ type, onClose }: InfoModalProps) {
 }
 
 // ─── Constants ────────────────────────────────────────────
-const DVI = 6.5;
+const DVI = 6.6;
 const ISS = 64;
 
 const PHASES = [
@@ -148,7 +148,6 @@ const ACTIONS = [
   { role: 'Legal / Compliance', action: 'Review Reg FD / AMF obligations with outside counsel', toolkit: 'Finance Tool 5', href: '/toolkits' },
 ];
 
-
 // ─── DVI Scale ────────────────────────────────────────────
 const DVI_SCALE = [
   { range: '0 – 3', level: 'BASELINE',   color: '#4A9A5E' },
@@ -170,7 +169,6 @@ function formatDate(d: string): string {
   return `${months[parseInt(parts[1])-1]} ${parseInt(parts[2])}, ${parts[0]}`;
 }
 
-
 // ─── Main component ───────────────────────────────────────
 export default function SignalsPage() {
   const [activeCat, setActiveCat] = useState<string>('all');
@@ -189,7 +187,7 @@ export default function SignalsPage() {
   const counts = useMemo(() => ({
     critical: SIGNALS.filter(s => s.strength === 'critical').length,
     high:     SIGNALS.filter(s => s.strength === 'high').length,
-    total:      SIGNALS.length,
+    total:    SIGNALS.length,
   }), []);
 
   const navy = '#1B2A4A';
@@ -291,7 +289,7 @@ export default function SignalsPage() {
       {/* Header */}
       <div style={{ marginBottom: '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444', animation: 'pulse 2s infinite' }} />
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444' }} />
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, letterSpacing: '0.15em' }}>
             LBDG · INSTITUTIONAL DISCLOSURE TRACKER · LAST UPDATED JUNE 2026
           </span>
@@ -356,7 +354,7 @@ export default function SignalsPage() {
           {[
             { label: 'Critical', value: counts.critical, color: '#EF4444' },
             { label: 'High',     value: counts.high,     color: '#F97316' },
-            { label: 'Total',      value: counts.total,      color: muted     },
+            { label: 'Total',    value: counts.total,    color: muted     },
           ].map(({ label, value, color }) => (
             <div key={label} style={{ flex: 1, background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '14px 16px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color, letterSpacing: '0.12em', marginBottom: '4px' }}>{label.toUpperCase()} SIGNALS</div>
@@ -403,7 +401,7 @@ export default function SignalsPage() {
         </p>
       </div>
 
-      {/* ROW 3: Heatmap + Velocity */}
+      {/* ROW 3: Sector Heatmap — full width left, chart full width right — now stacked */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px', marginBottom: '14px' }}>
         <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.15em', marginBottom: '14px' }}>
@@ -432,10 +430,19 @@ export default function SignalsPage() {
             ))}
           </div>
         </div>
+      </div>
 
-        <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px' }}>
-          <InstitutionalAcceleration />
-        </div>
+      {/* ── INSTITUTIONAL ACCELERATION CHART — full width ── */}
+      <div style={{
+        background: '#0F1C30',
+        border: `1px solid rgba(201,168,76,0.2)`,
+        borderRadius: '8px',
+        padding: '24px',
+        marginBottom: '14px',
+        width: '100%',
+        boxSizing: 'border-box',
+      }}>
+        <InstitutionalAcceleration />
       </div>
 
       {/* TRIGGER ALERT BOX */}
@@ -566,7 +573,7 @@ export default function SignalsPage() {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
           <AlertTriangle size={13} style={{ color: muted, marginTop: '2px', flexShrink: 0 }} />
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, lineHeight: 1.6 }}>
-            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. Institutional acceleration chart: 63 verified events, 1946–2026, sources in LBDG-DVI-Event-Audit.csv. This page does not constitute financial, legal, or investment advice.
+            All signals derived exclusively from verifiable institutional sources. DVI and ISS are LBDG editorial assessments — not predictions of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. Institutional acceleration chart: 64 verified events, 1946–2026, sources in LBDG-DVI-Event-Audit.csv. This page does not constitute financial, legal, or investment advice.
           </p>
         </div>
       </div>
