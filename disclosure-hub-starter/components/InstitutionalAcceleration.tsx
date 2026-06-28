@@ -120,9 +120,13 @@ interface TooltipState {
   event: Event;
 }
 
+// Unique key per event for pinned tracking
+function evKey(ev: Event) { return `${ev.year}-${ev.mo}-${ev.cat}`; }
+
 export function InstitutionalAcceleration() {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [pinned, setPinned] = useState(false);
+  const [pinnedKey, setPinnedKey] = useState<string | null>(null);
 
   const pre2017  = EVENTS.filter(e => e.year < 2017).length;
   const from2017 = EVENTS.filter(e => e.year >= 2017 && e.year < 2026).length;
@@ -173,15 +177,20 @@ export function InstitutionalAcceleration() {
   const handleLeave = () => { if (!pinned) setTooltip(null); };
   const handleClick = (e: React.MouseEvent, ev: Event) => {
     e.stopPropagation();
-    if (pinned && tooltip?.event === ev) {
+    const key = evKey(ev);
+    if (pinned && pinnedKey === key) {
+      // clicking same square — unpin
       setPinned(false);
+      setPinnedKey(null);
       setTooltip(null);
     } else {
+      // new square — pin it, clear previous
       setPinned(true);
+      setPinnedKey(key);
       setTooltip({ event: ev });
     }
   };
-  const handleDismiss = () => { setPinned(false); setTooltip(null); };
+  const handleDismiss = () => { setPinned(false); setPinnedKey(null); setTooltip(null); };
 
   return (
     <div style={{ fontFamily: 'DM Sans, sans-serif' }}>
@@ -293,31 +302,32 @@ export function InstitutionalAcceleration() {
           {ALL_YEARS.map(year =>
             (byYear[year] || []).map((ev, si) => {
               const color = CAT_COLORS[ev.cat] || '#C9A84C';
-              const isPinned = pinned && tooltip?.event === ev;
               const isAccel = year >= 2017;
+              const isPinned = pinned && pinnedKey === evKey(ev);
+              const baseOpacity = ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38;
               return (
                 <rect
                   key={`${year}-${si}`}
                   x={sqX(year)} y={sqY(si)}
                   width={SQ} height={SQ} rx={2}
                   fill={color}
-                  opacity={isPinned ? 1 : ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38}
+                  opacity={isPinned ? 1 : baseOpacity}
                   stroke={isPinned ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none'}
                   strokeWidth={isPinned ? 2 : isAccel ? 0.5 : 0}
-                  style={{
-                    cursor: 'pointer',
-                    transition: 'opacity 0.15s, stroke-width 0.15s',
-                  }}
+                  style={{ cursor: 'pointer', transition: 'opacity 0.12s, stroke-width 0.12s' }}
                   onMouseEnter={e => {
-                    (e.currentTarget as SVGRectElement).style.opacity = '1';
-                    (e.currentTarget as SVGRectElement).style.strokeWidth = '2';
-                    (e.currentTarget as SVGRectElement).style.stroke = 'rgba(255,255,255,0.7)';
+                    if (isPinned) return;
+                    const el = e.currentTarget as SVGRectElement;
+                    el.style.opacity = '1';
+                    el.style.stroke = 'rgba(255,255,255,0.6)';
+                    el.style.strokeWidth = '1.5';
                   }}
                   onMouseLeave={e => {
+                    if (isPinned) return;
                     const el = e.currentTarget as SVGRectElement;
-                    el.style.opacity = isPinned ? '1' : String(ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38);
-                    el.style.strokeWidth = isPinned ? '2' : isAccel ? '0.5' : '0';
-                    el.style.stroke = isPinned ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none';
+                    el.style.opacity = String(baseOpacity);
+                    el.style.stroke = isAccel ? 'rgba(201,168,76,0.15)' : 'none';
+                    el.style.strokeWidth = isAccel ? '0.5' : '0';
                   }}
                   onClick={(e) => handleClick(e, ev)}
                 />
