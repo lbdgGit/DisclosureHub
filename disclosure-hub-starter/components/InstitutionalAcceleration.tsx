@@ -91,11 +91,21 @@ const CAT_LABELS: Record<string, string> = {
 // All years in order, with a visual gap between 2011 and 2017
 const ALL_YEARS = [
   1946, 1947, 1949, 1950, 1952, 1953, 1966, 1969, 1977, 1978, 1979, 1997, 2004, 2007, 2009, 2011,
-  // gap marker — represented as null
   2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
 ];
 
 const BREAK_AFTER = 2011; // year after which we render the gap
+
+// Category sort order — most institutional at bottom, most indirect at top
+const CAT_ORDER: Record<string, number> = {
+  military:      0,
+  government:    1,
+  legislative:   2,
+  international: 3,
+  scientific:    4,
+  financial:     5,
+  media:         6,
+};
 
 interface Event {
   year: number;
@@ -118,9 +128,13 @@ export function InstitutionalAcceleration() {
   const from2017 = EVENTS.filter(e => e.year >= 2017 && e.year < 2026).length;
   const in2026   = EVENTS.filter(e => e.year === 2026).length;
 
-  // Build byYear
+  // Build byYear — sorted by category order (most institutional at bottom = index 0)
   const byYear: Record<number, Event[]> = {};
-  ALL_YEARS.forEach(y => { byYear[y] = EVENTS.filter(e => e.year === y); });
+  ALL_YEARS.forEach(y => {
+    byYear[y] = EVENTS
+      .filter(e => e.year === y)
+      .sort((a, b) => (CAT_ORDER[a.cat] ?? 99) - (CAT_ORDER[b.cat] ?? 99));
+  });
 
   const maxStack = Math.max(...ALL_YEARS.map(y => byYear[y]?.length ?? 0));
 
