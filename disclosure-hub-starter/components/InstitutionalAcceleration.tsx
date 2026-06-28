@@ -88,8 +88,14 @@ const CAT_LABELS: Record<string, string> = {
   media:         'Media',
 };
 
-const ERA1_YEARS = [1946, 1947, 1949, 1950, 1952, 1953, 1966, 1969, 1977, 1978, 1979, 1997, 2004, 2007, 2009, 2011];
-const ERA2_YEARS = [2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+// All years in order, with a visual gap between 2011 and 2017
+const ALL_YEARS = [
+  1946, 1947, 1949, 1950, 1952, 1953, 1966, 1969, 1977, 1978, 1979, 1997, 2004, 2007, 2009, 2011,
+  // gap marker — represented as null
+  2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
+];
+
+const BREAK_AFTER = 2011; // year after which we render the gap
 
 interface Event {
   year: number;
@@ -102,71 +108,185 @@ interface Event {
 
 interface TooltipState {
   event: Event;
-  x: number;
-  y: number;
-} 
+}
 
-function MiniChart({ years, label, accentBorder = false }: { years: number[]; label: string; accentBorder?: boolean }) {
+export function InstitutionalAcceleration() {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [pinned, setPinned] = useState(false);
 
+  const pre2017  = EVENTS.filter(e => e.year < 2017).length;
+  const from2017 = EVENTS.filter(e => e.year >= 2017 && e.year < 2026).length;
+  const in2026   = EVENTS.filter(e => e.year === 2026).length;
+
+  // Build byYear
   const byYear: Record<number, Event[]> = {};
-  years.forEach(y => { byYear[y] = EVENTS.filter(e => e.year === y); });
-  const maxStack = Math.max(...years.map(y => byYear[y].length));
+  ALL_YEARS.forEach(y => { byYear[y] = EVENTS.filter(e => e.year === y); });
 
-  const SQ = 22;
-  const GAP = 3;
-  const YEAR_W = 52;
-  const PAD_L = 28;
-  const PAD_B = 40;
-  const PAD_T = 24;
-  const PAD_R = 12;
-  const W = years.length * YEAR_W + PAD_L + PAD_R;
-  const H = (maxStack + 1) * (SQ + GAP) + PAD_T + PAD_B;
+  const maxStack = Math.max(...ALL_YEARS.map(y => byYear[y]?.length ?? 0));
 
-  const sqX = (yi: number) => PAD_L + yi * YEAR_W + (YEAR_W - SQ) / 2;
+  // Layout constants
+  const SQ      = 20;
+  const GAP     = 3;
+  const YEAR_W  = 48;
+  const GAP_W   = 32; // width of the break gap
+  const PAD_L   = 24;
+  const PAD_R   = 12;
+  const PAD_T   = 28;
+  const PAD_B   = 44;
+
+  // Compute x positions
+  let curX = PAD_L;
+  const yearX: Record<number, number> = {};
+  ALL_YEARS.forEach((y, i) => {
+    yearX[y] = curX;
+    curX += YEAR_W;
+    // Insert break gap after BREAK_AFTER
+    if (y === BREAK_AFTER) curX += GAP_W;
+  });
+  const totalW = curX + PAD_R;
+  const totalH = (maxStack + 1) * (SQ + GAP) + PAD_T + PAD_B;
+
+  const sqX = (y: number) => yearX[y] + (YEAR_W - SQ) / 2;
   const sqY = (si: number) => PAD_T + (maxStack - si - 1) * (SQ + GAP);
 
-  const handleEnter = (e: React.MouseEvent, ev: Event) => {
+  // Break line x position
+  const breakX = yearX[BREAK_AFTER] + YEAR_W + GAP_W / 2;
+
+  const handleEnter = (ev: Event) => {
     if (pinned) return;
-    setTooltip({ event: ev, x: e.clientX, y: e.clientY });
+    setTooltip({ event: ev });
   };
   const handleLeave = () => { if (!pinned) setTooltip(null); };
   const handleClick = (e: React.MouseEvent, ev: Event) => {
     e.stopPropagation();
     setPinned(true);
-    setTooltip({ event: ev, x: e.clientX, y: e.clientY });
+    setTooltip({ event: ev });
   };
+  const handleDismiss = () => { setPinned(false); setTooltip(null); };
 
   return (
-    <div style={{ marginBottom: 8 }}>
-      <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: accentBorder ? '#C9A84C' : '#8A9BB5', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
-        {label}
-      </p>
-      <div style={{ overflowX: 'auto' }} onClick={() => { if (pinned) { setPinned(false); setTooltip(null); }}}>
-        <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ display: 'block' }}>
+    <div style={{ fontFamily: 'DM Sans, sans-serif' }}>
+
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 20 }}>
+        <div>
+          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 6 }}>
+            LBDG · Institutional Signal Chart
+          </p>
+          <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: 18, fontWeight: 500, color: '#1B2A4A', marginBottom: 4 }}>
+            64 verified institutional events — 1946 to 2026
+          </h3>
+          <p style={{ fontSize: 12, color: '#8A9BB5', lineHeight: 1.6 }}>
+            Each square = one verified event. Click for source. Opacity reflects weight (1.0 / 0.8 / 0.5).
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          {[
+            { label: '1946–2016', value: pre2017,  sub: '71 years' },
+            { label: '2017–2025', value: from2017, sub: '8 years' },
+            { label: '2026',      value: in2026,   sub: 'ongoing', gold: true },
+          ].map(s => (
+            <div key={s.label} style={{
+              background: s.gold ? 'rgba(201,168,76,0.08)' : 'rgba(255,255,255,0.03)',
+              border: `1px solid ${s.gold ? 'rgba(201,168,76,0.25)' : 'rgba(255,255,255,0.08)'}`,
+              borderRadius: 8, padding: '10px 14px', textAlign: 'center', minWidth: 80,
+            }}>
+              <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: '#8A9BB5', marginBottom: 4, letterSpacing: '0.06em' }}>{s.label}</p>
+              <p style={{ fontFamily: 'Playfair Display, serif', fontSize: 26, fontWeight: 700, color: s.gold ? '#C9A84C' : '#FAF8F4', lineHeight: 1 }}>{s.value}</p>
+              <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: '#8A9BB5', marginTop: 3 }}>{s.sub}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Single unified chart */}
+      <div
+        style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}
+        onClick={handleDismiss}
+      >
+        <svg
+          viewBox={`0 0 ${totalW} ${totalH}`}
+          width={totalW}
+          height={totalH}
+          style={{ display: 'block', minWidth: totalW }}
+        >
+          {/* Era background bands */}
+          <rect
+            x={0} y={0}
+            width={breakX - GAP_W / 2}
+            height={totalH}
+            fill="rgba(255,255,255,0.015)"
+          />
+          <rect
+            x={breakX + GAP_W / 2}
+            y={0}
+            width={totalW - breakX - GAP_W / 2}
+            height={totalH}
+            fill="rgba(201,168,76,0.04)"
+          />
+
+          {/* Era labels at top */}
+          <text
+            x={(breakX - GAP_W / 2) / 2}
+            y={12}
+            textAnchor="middle"
+            fontSize={8}
+            fill="#8A9BB5"
+            fontFamily="DM Mono, monospace"
+            letterSpacing="0.12em"
+          >
+            1946 – 2016 · CONTAINMENT
+          </text>
+          <text
+            x={breakX + GAP_W / 2 + (totalW - breakX - GAP_W / 2) / 2}
+            y={12}
+            textAnchor="middle"
+            fontSize={8}
+            fill="#C9A84C"
+            fontFamily="DM Mono, monospace"
+            letterSpacing="0.12em"
+          >
+            2017 – 2026 · ACCELERATION
+          </text>
+
+          {/* Break line */}
+          <line
+            x1={breakX} y1={PAD_T - 8}
+            x2={breakX} y2={totalH - PAD_B + 20}
+            stroke="rgba(201,168,76,0.3)"
+            strokeWidth={1}
+            strokeDasharray="4 3"
+          />
+          <text x={breakX} y={totalH - PAD_B + 34} textAnchor="middle" fontSize={7} fill="rgba(201,168,76,0.5)" fontFamily="DM Mono, monospace">
+            2012–2016
+          </text>
+
           {/* Y axis labels */}
           {Array.from({ length: maxStack }, (_, i) => i + 1).map(i =>
             i % 2 === 0 ? (
-              <text key={i} x={PAD_L - 4} y={sqY(i - 1) + SQ / 2 + 3} textAnchor="end" fontSize={7} fill="#8A9BB5" fontFamily="DM Mono, monospace">{i}</text>
+              <text key={i} x={PAD_L - 4} y={sqY(i - 1) + SQ / 2 + 3}
+                textAnchor="end" fontSize={7} fill="#8A9BB5" fontFamily="DM Mono, monospace"
+              >{i}</text>
             ) : null
           )}
 
           {/* Squares */}
-          {years.map((year, yi) =>
-            byYear[year].map((ev, si) => {
+          {ALL_YEARS.map(year =>
+            (byYear[year] || []).map((ev, si) => {
               const color = CAT_COLORS[ev.cat] || '#C9A84C';
               const isHov = tooltip?.event === ev;
+              const isAccel = year >= 2017;
               return (
                 <rect
                   key={`${year}-${si}`}
-                  x={sqX(yi)} y={sqY(si)}
+                  x={sqX(year)} y={sqY(si)}
                   width={SQ} height={SQ} rx={2}
                   fill={color}
-                  opacity={isHov ? 1 : ev.w >= 1.0 ? 0.88 : ev.w >= 0.8 ? 0.65 : 0.38}
-                  stroke={isHov ? '#fff' : 'none'} strokeWidth={isHov ? 1.5 : 0}
+                  opacity={isHov ? 1 : ev.w >= 1.0 ? 0.9 : ev.w >= 0.8 ? 0.65 : 0.38}
+                  stroke={isHov ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none'}
+                  strokeWidth={isHov ? 1.5 : isAccel ? 0.5 : 0}
                   style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => handleEnter(e, ev)}
+                  onMouseEnter={() => handleEnter(ev)}
                   onMouseLeave={handleLeave}
                   onClick={(e) => handleClick(e, ev)}
                 />
@@ -175,8 +295,12 @@ function MiniChart({ years, label, accentBorder = false }: { years: number[]; la
           )}
 
           {/* Year labels */}
-          {years.map((year, yi) => (
-            <text key={year} x={sqX(yi) + SQ / 2} y={H - PAD_B + 16} textAnchor="middle"
+          {ALL_YEARS.map(year => (
+            <text
+              key={year}
+              x={sqX(year) + SQ / 2}
+              y={totalH - PAD_B + 16}
+              textAnchor="middle"
               fill={year >= 2017 ? '#C9A84C' : '#8A9BB5'}
               fontSize={year >= 2017 ? 9 : 8}
               fontFamily="DM Mono, monospace"
@@ -186,12 +310,15 @@ function MiniChart({ years, label, accentBorder = false }: { years: number[]; la
             </text>
           ))}
 
-          {/* Count labels */}
-          {years.map((year, yi) => {
-            const count = byYear[year].length;
+          {/* Count labels above columns */}
+          {ALL_YEARS.map(year => {
+            const count = byYear[year]?.length ?? 0;
             if (!count) return null;
             return (
-              <text key={`c-${year}`} x={sqX(yi) + SQ / 2} y={sqY(count - 1) - 5}
+              <text
+                key={`c-${year}`}
+                x={sqX(year) + SQ / 2}
+                y={sqY(count - 1) - 5}
                 textAnchor="middle"
                 fill={count >= 5 ? '#E24B4A' : '#8A9BB5'}
                 fontSize={count >= 5 ? 10 : 8}
@@ -207,71 +334,30 @@ function MiniChart({ years, label, accentBorder = false }: { years: number[]; la
 
       {/* Tooltip pinned below chart */}
       {tooltip && (
-        <div style={{ marginTop: 8, background: '#0F1C30', border: `1px solid ${CAT_COLORS[tooltip.event.cat]}`, borderRadius: 8, padding: '10px 14px' }}>
+        <div style={{
+          marginTop: 10,
+          background: '#0F1C30',
+          border: `1px solid ${CAT_COLORS[tooltip.event.cat]}`,
+          borderRadius: 8,
+          padding: '10px 14px',
+        }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5 }}>
             <div style={{ width: 8, height: 8, borderRadius: 2, background: CAT_COLORS[tooltip.event.cat], flexShrink: 0 }} />
             <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: '#C9A84C', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               {CAT_LABELS[tooltip.event.cat]} · {tooltip.event.year} · Weight {tooltip.event.w}
             </span>
+            <button
+              onClick={handleDismiss}
+              style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#8A9BB5', cursor: 'pointer', fontSize: 14, lineHeight: 1, padding: 2 }}
+            >✕</button>
           </div>
           <p style={{ fontSize: 12, color: '#FAF8F4', lineHeight: 1.5, margin: '0 0 4px' }}>{tooltip.event.event}</p>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, color: '#8A9BB5', lineHeight: 1.5, margin: 0, fontStyle: 'italic' }}>{tooltip.event.source}</p>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: 'rgba(138,155,181,0.5)', marginTop: 6 }}>click elsewhere to close</p>
         </div>
       )}
-    </div>
-  );
-}
-
-export function InstitutionalAcceleration() {
-  const pre2017 = EVENTS.filter(e => e.year < 2017).length;
-  const from2017to2025 = EVENTS.filter(e => e.year >= 2017 && e.year < 2026).length;
-  const in2026 = EVENTS.filter(e => e.year === 2026).length;
-
-  return (
-    <div style={{ fontFamily: 'DM Sans, sans-serif' }}>
-
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 24 }}>
-        <div>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 6 }}>
-            LBDG · Institutional Signal Chart
-          </p>
-          <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: 18, fontWeight: 500, color: '#1B2A4A', marginBottom: 4 }}>
-            63 verified institutional events — 1946 to 2026
-          </h3>
-          <p style={{ fontSize: 12, color: '#8A9BB5', lineHeight: 1.6 }}>
-            Each square = one verified event. Click for source. Opacity reflects weight (1.0 / 0.8 / 0.5).
-          </p>
-        </div>
-        {/* Stats */}
-        <div style={{ display: 'flex', gap: 8 }}>
-          {[
-            { label: '1946–2016', value: pre2017, sub: '71 years' },
-            { label: '2017–2025', value: from2017to2025, sub: '8 years' },
-            { label: '2026', value: in2026, sub: 'ongoing', gold: true },
-          ].map(s => (
-            <div key={s.label} style={{ background: s.gold ? 'rgba(201,168,76,0.08)' : 'rgba(255,255,255,0.03)', border: `1px solid ${s.gold ? 'rgba(201,168,76,0.25)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 8, padding: '10px 14px', textAlign: 'center', minWidth: 80 }}>
-              <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: '#8A9BB5', marginBottom: 4, letterSpacing: '0.06em' }}>{s.label}</p>
-              <p style={{ fontFamily: 'Playfair Display, serif', fontSize: 26, fontWeight: 700, color: s.gold ? '#C9A84C' : '#FAF8F4', lineHeight: 1 }}>{s.value}</p>
-              <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: '#8A9BB5', marginTop: 3 }}>{s.sub}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Era 1 */}
-      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: '16px 16px 12px', marginBottom: 10 }}>
-        <MiniChart years={ERA1_YEARS} label="1946 – 2016 · 71 years of containment" />
-      </div>
-
-      {/* Era 2 */}
-      <div style={{ background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 10, padding: '16px 16px 12px', marginBottom: 20 }}>
-        <MiniChart years={ERA2_YEARS} label="2017 – 2026 · Acceleration phase" accentBorder />
-      </div>
 
       {/* Legend */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px', marginBottom: 12 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px', marginTop: 16, marginBottom: 10 }}>
         {Object.entries(CAT_LABELS).map(([key, label]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
             <div style={{ width: 10, height: 10, borderRadius: 2, background: CAT_COLORS[key], opacity: 0.85, flexShrink: 0 }} />
@@ -281,7 +367,11 @@ export function InstitutionalAcceleration() {
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 20px' }}>
-        {[{ w: 1.0, label: 'Weight 1.0 — formal institutional action' }, { w: 0.8, label: 'Weight 0.8 — secondary signal' }, { w: 0.5, label: 'Weight 0.5 — credentialed/semi-institutional' }].map(s => (
+        {[
+          { w: 1.0, label: 'Weight 1.0 — formal institutional action' },
+          { w: 0.8, label: 'Weight 0.8 — secondary signal' },
+          { w: 0.5, label: 'Weight 0.5 — credentialed/semi-institutional' },
+        ].map(s => (
           <div key={s.w} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
             <div style={{ width: 10, height: 10, borderRadius: 2, background: '#8A9BB5', opacity: s.w >= 1.0 ? 0.88 : s.w >= 0.8 ? 0.65 : 0.38, flexShrink: 0 }} />
             <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: '#8A9BB5' }}>{s.label}</span>
