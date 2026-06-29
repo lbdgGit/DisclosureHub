@@ -57,10 +57,14 @@ const SECTORS = [
 ];
 
 const TOOLKITS = [
-  { name: 'HR Toolkit',              href: '/toolkits#hr',         scenario: 'All scenarios', desc: 'Workforce readiness, psychological protocols, internal comms.' },
-  { name: 'Finance Toolkit',         href: '/toolkits#finance',    scenario: 'B1 → C',        desc: 'Asset rotation, sector exposure, treasury protocols.' },
-  { name: 'Communications Toolkit',  href: '/toolkits#comms',      scenario: 'All scenarios', desc: 'Stakeholder messaging, crisis comms, media frameworks.' },
-  { name: 'Leadership & Board',      href: '/toolkits#board',      scenario: 'B2 → C',        desc: 'Board-level governance, decision architecture, scenario planning.' },
+  { name: 'HR Toolkit',             href: '/toolkits#hr',          scenario: 'DVI 3+ — Monitor',    desc: 'Workforce readiness, psychological protocols, internal comms.' },
+  { name: 'Finance Toolkit',        href: '/toolkits#finance',     scenario: 'DVI 5+ — Readiness',  desc: 'Asset rotation, sector exposure, treasury protocols.' },
+  { name: 'Communications Toolkit', href: '/toolkits#comms',       scenario: 'DVI 5+ — Readiness',  desc: 'Stakeholder messaging, crisis comms, media frameworks.' },
+  { name: 'Legal & Compliance',     href: '/toolkits#legal',       scenario: 'DVI 5+ — Readiness',  desc: 'Reg FD / AMF obligations, disclosure triggers, record management.' },
+  { name: 'Leadership & Board',     href: '/toolkits#board',       scenario: 'DVI 5+ — Readiness',  desc: 'Board-level governance, decision authority matrix, scenario planning.' },
+  { name: 'Marketing Toolkit',      href: '/toolkits#marketing',   scenario: 'DVI 7+ — Activation', desc: 'Demand model review, campaign pause/adapt, brand narrative.' },
+  { name: 'Supply Chain Toolkit',   href: '/toolkits#supplychain', scenario: 'DVI 7+ — Activation', desc: 'Supplier exposure mapping, demand surge, logistics continuity.' },
+  { name: 'Investor Relations',     href: '/toolkits#ir',          scenario: 'DVI 7+ — Activation', desc: 'Investor call scripts, analyst FAQ, SEC/AMF filing obligations.' },
 ];
 
 const COL_Y = 130;
@@ -288,18 +292,22 @@ export default function FrameworkPage() {
           Each toolkit maps directly to the matrix. Start where you are.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
-          {TOOLKITS.map(tk => (
+          {TOOLKITS.map(tk => {
+            const isActivation = tk.scenario.includes('7+');
+            const labelColor = isActivation ? '#E24B4A' : tk.scenario.includes('3+') ? '#4A9A5E' : '#E8A030';
+            return (
             <Link key={tk.name} href={tk.href} style={{ textDecoration: 'none' }}>
               <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 10, padding: '20px 22px', height: '100%', cursor: 'pointer', transition: 'border-color 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = '#C9A84C')}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = '#E2E8F0')}
               >
-                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 8 }}>{tk.scenario}</p>
+                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: labelColor, marginBottom: 8 }}>{tk.scenario}</p>
                 <p style={{ fontSize: 14, fontWeight: 600, color: '#1B2A4A', marginBottom: 6 }}>{tk.name}</p>
                 <p style={{ fontSize: 12, color: '#8A9BB5', lineHeight: 1.5 }}>{tk.desc}</p>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
         <div style={{ marginTop: 40, textAlign: 'center' }}>
           <Link href="/toolkits" style={{ display: 'inline-block', backgroundColor: '#1B2A4A', color: '#FAF8F4', padding: '14px 32px', borderRadius: 8, fontSize: 13, fontWeight: 500, textDecoration: 'none', letterSpacing: '0.02em' }}>
