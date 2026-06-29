@@ -274,8 +274,21 @@ export default function ReportsPage() {
             </div>
             <button
               onClick={() => setNotifyModal(report)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded border border-border text-muted font-mono text-sm hover:border-signal/40 hover:text-signal transition-all"
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-mono text-sm transition-all"
+              style={{
+                fontFamily: 'JetBrains Mono, monospace',
+                background: '#1B2A4A',
+                color: '#C9A84C',
+                border: '1px solid #1B2A4A',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.background = '#243556';
+                (e.currentTarget as HTMLButtonElement).style.borderColor = '#C9A84C';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.background = '#1B2A4A';
+                (e.currentTarget as HTMLButtonElement).style.borderColor = '#1B2A4A';
+              }}
             >
               <Bell size={14} />
               Notify me when available
