@@ -54,7 +54,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
               <span className="text-2xs font-mono text-signal tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                SIGNAL ACTIVE — DVI 7.0
+                SIGNAL ACTIVE
               </span>
             </div>
           </div>
