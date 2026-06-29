@@ -12,6 +12,8 @@ import { DVIBadge } from '@/components/DVIBadge';
 
 const DVI = DVI_CONFIG.value;
 const currentLevel = getDVILevel(DVI);
+
+const PHASES = [
   { label: 'Whistleblower\nFilings',    sub: 'Grusch 2023\nProtected disclosures',       done: true,  current: false, parallel: false },
   { label: 'Closed-Door\nBriefings',    sub: 'Congressional Intel\nCommittee briefings', done: true,  current: false, parallel: false },
   { label: 'Official\nInvestigation',   sub: 'AARO created\nNASA study 2022-23',          done: true,  current: false, parallel: false },
