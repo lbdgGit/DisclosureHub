@@ -7,6 +7,7 @@ import { Menu, X, Radio } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
+  { href: '/',          label: 'Home'              },
   { href: '/signals',   label: 'Signals'           },
   { href: '/toolkits',  label: 'Toolkits'          },
   { href: '/framework', label: 'Scenarios & Impact' },
