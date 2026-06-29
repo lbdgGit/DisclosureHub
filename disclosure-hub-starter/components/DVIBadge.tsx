@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { SIGNALS, DVI_CONFIG } from '@/data/signals';
 
-const DVI_VALUE = 6.6;
-const DVI_LEVEL = 'READINESS';
-const DVI_EVENTS = 64;
+const DVI_VALUE  = DVI_CONFIG.value;
+const DVI_LEVEL  = DVI_CONFIG.level;
+const DVI_EVENTS = SIGNALS.length;
 
 const DVI_SCALE = [
   { range: '0 – 3', level: 'BASELINE',   color: '#4A9A5E', action: 'No urgent action. Read the Starter Pack.' },
