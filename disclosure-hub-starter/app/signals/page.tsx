@@ -4,14 +4,14 @@ import { useState, useMemo } from 'react';
 import { ExternalLink, AlertTriangle } from 'lucide-react';
 import {
   SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, STRENGTH_CONFIG,
+  DVI_CONFIG, getDVILevel,
   type SignalStrength
 } from '@/data/signals';
 import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 import { DVIBadge } from '@/components/DVIBadge';
 
-const DVI = 6.6;
-
-const PHASES = [
+const DVI = DVI_CONFIG.value;
+const currentLevel = getDVILevel(DVI);
   { label: 'Whistleblower\nFilings',    sub: 'Grusch 2023\nProtected disclosures',       done: true,  current: false, parallel: false },
   { label: 'Closed-Door\nBriefings',    sub: 'Congressional Intel\nCommittee briefings', done: true,  current: false, parallel: false },
   { label: 'Official\nInvestigation',   sub: 'AARO created\nNASA study 2022-23',          done: true,  current: false, parallel: false },
@@ -28,7 +28,6 @@ const ACTIONS = [
   { role: 'Legal / Compliance', action: 'Review Reg FD / AMF obligations with outside counsel', toolkit: 'Legal Toolkit',   href: '/toolkits' },
 ];
 
-const currentLevel = DVI >= 9 ? 'CRITICAL' : DVI >= 7 ? 'ACTIVATION' : DVI >= 5 ? 'READINESS' : DVI >= 3 ? 'MONITOR' : 'BASELINE';
 
 function formatDate(d: string): string {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
