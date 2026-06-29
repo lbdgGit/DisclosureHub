@@ -66,7 +66,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-xs font-mono font-500 tracking-widest uppercase transition-colors flex items-center gap-1.5"
+                className="relative text-xs font-mono font-500 tracking-widest uppercase transition-colors flex items-center gap-1.5 pb-1"
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',
                   color: isActive ? '#ffffff' : 'rgba(255,255,255,0.65)',
@@ -78,20 +78,21 @@ export default function Navbar() {
                   <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
                 )}
                 {link.label}
-                {/* Active underline in gold */}
-                {isActive && (
-                  <span
-                    style={{
-                      position: 'absolute',
-                      bottom: '-4px',
-                      left: 0,
-                      right: 0,
-                      height: '2px',
-                      background: '#C9A84C',
-                      borderRadius: '1px',
-                    }}
-                  />
-                )}
+                {/* Animated gold underline */}
+                <span
+                  style={{
+                    position: 'absolute',
+                    bottom: '-2px',
+                    left: 0,
+                    right: 0,
+                    height: '2px',
+                    background: '#C9A84C',
+                    borderRadius: '1px',
+                    transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left center',
+                    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
+                />
               </Link>
             );
           })}
