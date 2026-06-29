@@ -110,9 +110,10 @@ export default function Navbar() {
 
         {/* Mobile burger */}
         <button
-          className="lg:hidden p-2 rounded text-muted hover:text-bright transition-colors"
+          className="lg:hidden p-2 rounded transition-colors"
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Close menu' : 'Open menu'}
+          style={{ color: '#ffffff' }}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -131,7 +132,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-2.5 rounded text-sm font-mono tracking-wider uppercase transition-colors flex items-center gap-2"
+                  className="px-3 py-2.5 rounded text-sm font-mono tracking-wider uppercase transition-colors flex items-center"
                   style={{
                     fontFamily: 'JetBrains Mono, monospace',
                     color: isActive ? '#ffffff' : 'rgba(255,255,255,0.65)',
@@ -139,18 +140,23 @@ export default function Navbar() {
                     borderLeft: isActive ? '2px solid #C9A84C' : '2px solid transparent',
                   }}
                 >
-                  {link.href === '/signals' && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-                  )}
                   {link.label}
+                  {link.href === '/signals' && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse ml-2" />
+                  )}
                 </Link>
               );
             })}
             <div className="mt-2 pt-2 border-t border-border/50">
               <Link
                 href="/toolkits"
-                className="block px-3 py-2.5 rounded border border-signal/40 text-signal text-sm font-mono text-center hover:bg-signal/10 transition-all"
-                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                className="block px-3 py-2.5 rounded text-sm font-mono text-center transition-all"
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  border: '1px solid #C9A84C',
+                  color: '#C9A84C',
+                  background: 'rgba(201,168,76,0.08)',
+                }}
               >
                 Get Toolkits →
               </Link>
