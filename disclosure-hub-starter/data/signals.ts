@@ -751,7 +751,8 @@ export const SIGNALS: Signal[] = [
     description: 'White House, AARO, ODNI, and FBI jointly mandate UAP Science Advisory Council. Avi Loeb provisionally appointed chair. First multi-agency mandated scientific council on UAP.',
     category: 'scientific',
     strength: 'critical',
-    sourceLabel: 'Loeb Medium post; disclosure.org Jun 12 2026',
+    sourceLabel: 'Loeb Medium post — Jun 12 2026',
+    sourceUrl: 'https://medium.com/@aviloeb',
     isNew: true,
   },
   {
@@ -779,6 +780,18 @@ export const SIGNALS: Signal[] = [
     sourceLabel: 'House Rules Committee — BURLIS_087, Jun 17 2026',
     sourceUrl: 'https://amendments-rules.house.gov/amendments/BURLIS_087_xml260618163721471.pdf',
     isNew: true,
+  },
+  {
+    id: 'aaro-fy2024-report',
+    date: '2024-12', year: 2024, mo: 12, w: 1.0,
+    institution: 'AARO / DoD / NSA / CIA / FBI / NASA',
+    country: 'USA',
+    title: 'AARO FY2024 Annual Report — 1,652 cases, 21 anomalous, co-signed by 20+ agencies',
+    description: 'AARO publishes FY2024 Annual Report: 1,652 UAP reports processed, 21 categorized as anomalous with no prosaic explanation. Co-signed by NSA, CIA, FBI, NASA and 17 additional agencies — the broadest inter-agency UAP endorsement in US history.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'AARO / DoD FY2024 Annual Report',
+    sourceUrl: 'https://www.aaro.mil/Reports-Testimonies/Annual-Reports/',
   },
 ];
 
@@ -822,3 +835,21 @@ export const CAT_ORDER: Record<SignalCategory, number> = {
   financial:     5,
   media:         6,
 };
+
+// ─── Single source of truth for DVI ───────────────────────
+export const DVI_CONFIG = {
+  value:     6.6,
+  level:     'READINESS' as const,
+  updatedAt: 'June 2026',
+  baseline:  '22× the historical baseline',
+} as const;
+
+export type DVILevel = 'BASELINE' | 'MONITOR' | 'READINESS' | 'ACTIVATION' | 'CRITICAL';
+
+export function getDVILevel(dvi: number): DVILevel {
+  if (dvi >= 9) return 'CRITICAL';
+  if (dvi >= 7) return 'ACTIVATION';
+  if (dvi >= 5) return 'READINESS';
+  if (dvi >= 3) return 'MONITOR';
+  return 'BASELINE';
+}
