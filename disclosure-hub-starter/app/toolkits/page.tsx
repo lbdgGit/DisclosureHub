@@ -4,16 +4,16 @@ import { useState } from 'react';
 import { ArrowRight, Download, FileText, Users, TrendingUp, Radio, Crown, Scale, BarChart2, Truck, LineChart, Package } from 'lucide-react';
 
 const LS_URLS: Record<string, string> = {
-  starter:    'https://lbdg.lemonsqueezy.com/checkout/buy/2e53ef9a-fa4b-4c3d-9cfd-a10a6ec91c3b?embed=1',
-  hr:         'https://lbdg.lemonsqueezy.com/checkout/buy/fe2e7acf-ebd2-4aa0-812a-303e4c03b0c2?embed=1',
-  finance:    'https://lbdg.lemonsqueezy.com/checkout/buy/8a2023fa-1dde-4a79-b839-20d0c03cab22?embed=1',
-  comms:      'https://lbdg.lemonsqueezy.com/checkout/buy/859b220c-83f0-4e5c-a58a-b6e754375ff2?embed=1',
-  board:      'https://lbdg.lemonsqueezy.com/checkout/buy/e994d5bc-599e-464b-99ce-d739a55aaf2e?embed=1',
-  legal:      'https://lbdg.lemonsqueezy.com/checkout/buy/9da8d88a-8abb-43f6-9fab-3d7572eeb284?embed=1',
-  marketing:  'https://lbdg.lemonsqueezy.com/checkout/buy/0b34d82b-4f03-42e3-a844-c7391bc1586a?embed=1',
-  supplychain:'https://lbdg.lemonsqueezy.com/checkout/buy/e1782586-8bc3-494b-8dba-9ac4fb9d79aa?embed=1',
-  ir:         'https://lbdg.lemonsqueezy.com/checkout/buy/5c3e3e9e-e41c-40ad-9b02-9050af08f8fe?embed=1',
-  bundle:     'https://lbdg.lemonsqueezy.com/checkout/buy/0993a701-af87-465b-9372-a6545073c418?embed=1',
+  starter:    'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1',
+  hr:         'https://lbdg.lemonsqueezy.com/checkout/buy/70b2894a-54b5-4e52-850c-9b2ba54971f7?embed=1',
+  finance:    'https://lbdg.lemonsqueezy.com/checkout/buy/babe7e6a-bb93-407a-9845-dc0db2e90eaa?embed=1',
+  comms:      'https://lbdg.lemonsqueezy.com/checkout/buy/0e03c5a7-fb39-4d03-927f-7037b49a9b1e?embed=1',
+  board:      'https://lbdg.lemonsqueezy.com/checkout/buy/2f0bc701-7b7c-4f22-833d-5e439b774ac9?embed=1',
+  legal:      'https://lbdg.lemonsqueezy.com/checkout/buy/325c2dee-f1f8-4a89-8b51-43e36cb0bcba?embed=1',
+  marketing:  'https://lbdg.lemonsqueezy.com/checkout/buy/6fb93fdc-000f-4669-bf5b-d96bb6b476fa?embed=1',
+  supplychain:'https://lbdg.lemonsqueezy.com/checkout/buy/b4847129-1bee-4b9e-8145-6c7f0ebf86f6?embed=1',
+  ir:         'https://lbdg.lemonsqueezy.com/checkout/buy/6a4d61d6-b5cd-4179-8c21-847fb7edab1a?embed=1',
+  bundle:     'https://lbdg.lemonsqueezy.com/checkout/buy/d420ff06-5bca-4f1c-8931-cf58dc783fdd?embed=1',
 };
 
 const TOOLKITS = [
