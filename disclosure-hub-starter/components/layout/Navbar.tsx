@@ -7,14 +7,12 @@ import { Menu, X, Radio } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
-  { href: '/framework', label: 'Framework'  },
-  { href: '/lexique',   label: 'Lexicon'    },
-  { href: '/frise',     label: 'Timeline'   },
-  { href: '/faq',       label: 'FAQ'        },
-  { href: '/toolkits',  label: 'Toolkits'   },
-  { href: '/rapports',  label: 'Reports'    },
-  { href: '/signals',   label: 'Signals'    },
-  { href: '/chatbot',   label: 'AI Signal'  },
+  { href: '/signals',   label: 'Signals'           },
+  { href: '/toolkits',  label: 'Toolkits'          },
+  { href: '/framework', label: 'Scenarios & Impact' },
+  { href: '/rapports',  label: 'Reports'            },
+  { href: '/lexique',   label: 'Lexicon'            },
+  { href: '/faq',       label: 'FAQ'                },
 ];
 
 export default function Navbar() {
@@ -43,6 +41,7 @@ export default function Navbar() {
       }}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative">
@@ -60,34 +59,51 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-5">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'text-xs font-mono font-500 tracking-widest uppercase transition-colors flex items-center gap-1',
-                pathname === link.href
-                  ? 'text-signal'
-                  : 'text-white/70 hover:text-white',
-              )}
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}
-            >
-              {link.href === '/signals' && (
-                <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-              )}
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="relative text-xs font-mono font-500 tracking-widest uppercase transition-colors flex items-center gap-1.5"
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.65)',
+                }}
+                onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
+                onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.65)'; }}
+              >
+                {link.href === '/signals' && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+                )}
+                {link.label}
+                {/* Active underline in gold */}
+                {isActive && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: '-4px',
+                      left: 0,
+                      right: 0,
+                      height: '2px',
+                      background: '#C9A84C',
+                      borderRadius: '1px',
+                    }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <Link
-            href="/rapports"
+            href="/toolkits"
             className="px-4 py-2 rounded border border-signal/40 text-signal text-xs font-mono font-500 tracking-wider uppercase hover:bg-signal/10 hover:border-signal transition-all"
             style={{ fontFamily: 'JetBrains Mono, monospace' }}
           >
-            Access Reports
+            Get Toolkits →
           </Link>
         </div>
 
@@ -108,31 +124,34 @@ export default function Navbar() {
           style={{ backgroundColor: '#0F1B30', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
         >
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'px-3 py-2.5 rounded text-sm font-mono tracking-wider uppercase transition-colors flex items-center gap-2',
-                  pathname === link.href
-                    ? 'text-signal bg-signal/10'
-                    : 'text-gray-300 hover:text-bright hover:bg-white/5',
-                )}
-                style={{ fontFamily: 'JetBrains Mono, monospace' }}
-              >
-                {link.href === '/signals' && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-                )}
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 py-2.5 rounded text-sm font-mono tracking-wider uppercase transition-colors flex items-center gap-2"
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    color: isActive ? '#ffffff' : 'rgba(255,255,255,0.65)',
+                    background: isActive ? 'rgba(201,168,76,0.15)' : 'transparent',
+                    borderLeft: isActive ? '2px solid #C9A84C' : '2px solid transparent',
+                  }}
+                >
+                  {link.href === '/signals' && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
+                  )}
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="mt-2 pt-2 border-t border-border/50">
               <Link
-                href="/rapports"
+                href="/toolkits"
                 className="block px-3 py-2.5 rounded border border-signal/40 text-signal text-sm font-mono text-center hover:bg-signal/10 transition-all"
                 style={{ fontFamily: 'JetBrains Mono, monospace' }}
               >
-                Access Reports →
+                Get Toolkits →
               </Link>
             </div>
           </div>
