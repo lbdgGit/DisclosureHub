@@ -21,17 +21,6 @@ const PHASES = [
   { label: 'Official\nConfirmation',    sub: 'Executive / multi-gov\nannouncement',       done: false, current: false, parallel: false },
 ];
 
-const TRIGGERS = [
-  { label: 'PURSUE active',            status: 'HIT',   note: '3 tranches released — 275+ files, 6 videos, NASA audio'  },
-  { label: 'UAPDA amnesty blocked',    status: 'HIT',   note: 'FY2026 — third year, Rules process push ongoing'          },
-  { label: 'Presidential directive',   status: 'HIT',   note: 'Feb 20, 2026'                                             },
-  { label: 'Financial ETF launched',   status: 'HIT',   note: 'UFOD on CBOE Feb 2026'                                    },
-  { label: 'Central bank warning',     status: 'HIT',   note: 'Bank of England Jan 2026'                                 },
-  { label: 'Science Council mandated', status: 'HIT',   note: 'Loeb / White House + AARO + ODNI + FBI Jun 2026'          },
-  { label: 'Amnesty bill signed',      status: 'WATCH', note: 'Not yet — key gate'                                       },
-  { label: 'Multi-gov coordination',   status: 'WATCH', note: 'Japan signals aligning'                                   },
-];
-
 const ACTIONS = [
   { role: 'All organizations',  action: 'Complete Executive Starter Pack readiness check',       toolkit: 'Starter Pack',    href: '/toolkits' },
   { role: 'HR Directors',       action: 'Distribute Manager Action Guide to all team leads',     toolkit: 'HR Toolkit',      href: '/toolkits' },
@@ -148,40 +137,18 @@ export default function SignalsPage() {
         <InstitutionalAcceleration />
       </div>
 
-      {/* ── TRIGGER ALERT BOX ── */}
-      <div style={{ borderLeft: '3px solid #EF4444', borderTop: '1px solid rgba(239,68,68,0.25)', borderRight: '1px solid rgba(239,68,68,0.25)', borderBottom: '1px solid rgba(239,68,68,0.25)', borderRadius: '0 8px 8px 0', padding: '20px 24px', marginBottom: '16px', background: 'rgba(239,68,68,0.03)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444' }} />
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#EF4444', letterSpacing: '0.18em' }}>SYSTEM ALERT — TRIGGER STATUS</span>
+      {/* ── RECOMMENDED ACTIONS ── */}
+      <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '20px 24px', marginBottom: '16px' }}>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em', marginBottom: '10px' }}>
+          RECOMMENDED ACTIONS AT CURRENT DVI {DVI} — {currentLevel}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '8px', marginBottom: '16px' }}>
-          {TRIGGERS.map(t => {
-            const isHit = t.status === 'HIT';
-            const c = isHit ? '#EF4444' : '#F97316';
-            return (
-              <div key={t.label} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', padding: '10px 12px', background: isHit ? 'rgba(239,68,68,0.04)' : 'rgba(249,115,22,0.04)', borderRadius: '6px', border: `0.5px solid ${c}30` }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: c, marginTop: '4px', flexShrink: 0 }} />
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '13px', fontWeight: 500, color: navy }}>{t.label}</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted }}>{t.note}</div>
-                </div>
-                <span style={{ padding: '2px 8px', borderRadius: '3px', background: `${c}18`, color: c, fontFamily: 'DM Mono, monospace', fontSize: '10px', fontWeight: 600, letterSpacing: '0.08em', flexShrink: 0 }}>{t.status}</span>
-              </div>
-            );
-          })}
-        </div>
-        <div style={{ borderTop: `1px solid ${border}`, paddingTop: '14px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em', marginBottom: '10px' }}>
-            RECOMMENDED ACTIONS AT CURRENT DVI {DVI} — {currentLevel}
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
-            {ACTIONS.map(a => (
-              <a key={a.role} href={a.href} style={{ padding: '12px 14px', background: 'white', borderRadius: '6px', border: `1px solid ${border}`, textDecoration: 'none', display: 'block' }}>
-                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: gold, letterSpacing: '0.08em', marginBottom: '4px' }}>{a.role} · {a.toolkit}</div>
-                <div style={{ fontSize: '13px', color: navy, lineHeight: 1.4 }}>{a.action} →</div>
-              </a>
-            ))}
-          </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
+          {ACTIONS.map(a => (
+            <a key={a.role} href={a.href} style={{ padding: '12px 14px', background: 'white', borderRadius: '6px', border: `1px solid ${border}`, textDecoration: 'none', display: 'block' }}>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: gold, letterSpacing: '0.08em', marginBottom: '4px' }}>{a.role} · {a.toolkit}</div>
+              <div style={{ fontSize: '13px', color: navy, lineHeight: 1.4 }}>{a.action} →</div>
+            </a>
+          ))}
         </div>
       </div>
 
