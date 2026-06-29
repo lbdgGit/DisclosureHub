@@ -298,6 +298,14 @@ export function InstitutionalAcceleration() {
             ) : null
           )}
 
+          {/* CSS hover — no DOM style manipulation */}
+          <defs>
+            <style>{`
+              .sq { cursor: pointer; transition: opacity 0.12s; }
+              .sq:hover { opacity: 1 !important; stroke: rgba(255,255,255,0.7) !important; stroke-width: 1.5 !important; }
+            `}</style>
+          </defs>
+
           {/* Squares */}
           {ALL_YEARS.map(year =>
             (byYear[year] || []).map((ev, si) => {
@@ -308,27 +316,13 @@ export function InstitutionalAcceleration() {
               return (
                 <rect
                   key={`${year}-${si}`}
+                  className="sq"
                   x={sqX(year)} y={sqY(si)}
                   width={SQ} height={SQ} rx={2}
                   fill={color}
                   opacity={isPinned ? 1 : baseOpacity}
                   stroke={isPinned ? '#fff' : isAccel ? 'rgba(201,168,76,0.15)' : 'none'}
                   strokeWidth={isPinned ? 2 : isAccel ? 0.5 : 0}
-                  style={{ cursor: 'pointer', transition: 'opacity 0.12s, stroke-width 0.12s' }}
-                  onMouseEnter={e => {
-                    if (isPinned) return;
-                    const el = e.currentTarget as SVGRectElement;
-                    el.style.opacity = '1';
-                    el.style.stroke = 'rgba(255,255,255,0.6)';
-                    el.style.strokeWidth = '1.5';
-                  }}
-                  onMouseLeave={e => {
-                    if (isPinned) return;
-                    const el = e.currentTarget as SVGRectElement;
-                    el.style.opacity = String(baseOpacity);
-                    el.style.stroke = isAccel ? 'rgba(201,168,76,0.15)' : 'none';
-                    el.style.strokeWidth = isAccel ? '0.5' : '0';
-                  }}
                   onClick={(e) => handleClick(e, ev)}
                 />
               );
