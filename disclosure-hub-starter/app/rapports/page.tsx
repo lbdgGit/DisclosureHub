@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Download, FileText, ArrowRight, Bell, X, CheckCircle } from 'lucide-react';
 
-const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/2e53ef9a-fa4b-4c3d-9cfd-a10a6ec91c3b?embed=1';
+const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
 
 const REPORTS = [
   {
