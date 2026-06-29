@@ -74,10 +74,21 @@ export default function Navbar() {
                 onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
                 onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.65)'; }}
               >
-                {link.href === '/signals' && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-                )}
                 {link.label}
+                {link.href === '/signals' && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: '-3px',
+                      right: '-8px',
+                      width: '5px',
+                      height: '5px',
+                      borderRadius: '50%',
+                      background: '#38BDF8',
+                    }}
+                    className="animate-pulse"
+                  />
+                )}
                 {/* Animated gold underline */}
                 <span
                   style={{
