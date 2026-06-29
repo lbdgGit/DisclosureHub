@@ -98,7 +98,7 @@ export default function SignalsPage() {
       </div>
 
       {/* ── COUNTS ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '14px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '14px' }}>
         {[
           { label: 'Critical signals', value: counts.critical, color: '#EF4444', sub: 'Highest institutional weight' },
           { label: 'High signals',     value: counts.high,     color: '#F97316', sub: 'Secondary institutional acts' },
