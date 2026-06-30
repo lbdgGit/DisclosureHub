@@ -113,8 +113,15 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/toolkits"
-            className="px-4 py-2 rounded border border-signal/40 text-signal text-xs font-mono font-500 tracking-wider uppercase hover:bg-signal/10 hover:border-signal transition-all"
-            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+            className="px-4 py-2 rounded text-xs font-mono font-500 tracking-wider uppercase transition-all"
+            style={{
+              fontFamily: 'JetBrains Mono, monospace',
+              border: '1px solid #C9A84C',
+              color: '#C9A84C',
+              background: 'rgba(201,168,76,0.08)',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.18)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.08)'; }}
           >
             Get Toolkits →
           </Link>
