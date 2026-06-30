@@ -5,7 +5,7 @@ import Link from 'next/link';
 const SCENARIOS = [
   { id: 'A',  label: 'Scenario A',  desc: 'UAP origin officially attributed to NHI. No crafts, tech or biologics confirmed.', isEnd: false },
   { id: 'B1', label: 'Scenario B1', desc: 'Crash retrieval confirmed. No technology mastered or disclosed.', isEnd: false },
-  { id: 'B2', label: 'Scenario B2', desc: 'Partial reverse engineering confirmed. Tech held as national asset.', isEnd: false, optional: true },
+  { id: 'B2', label: 'Scenario B2', desc: 'Partial reverse engineering confirmed. Tech held as national asset.', isEnd: false },
   { id: 'C',  label: 'Scenario C',  desc: 'Confirmed ongoing contact with non-human intelligence.', isEnd: true },
 ];
 
@@ -13,18 +13,18 @@ type ImpactLevel = 'manageable' | 'disruptive' | 'transformative' | 'systemic' |
 interface Cell { level: ImpactLevel; text: string; }
 
 const CELLS: Record<string, Cell> = {
-  'prepared-A':   { level: 'manageable',    text: 'Markets absorb within days. Messaging activated. No governance gap exposed.' },
-  'prepared-B1':  { level: 'manageable',    text: 'Orderly sector rotation. Defense and materials reposition ahead of market.' },
-  'prepared-B2':  { level: 'disruptive',    text: 'Energy horizon visible at 20-30y. Prepared orgs reposition. Recovery within months.' },
-  'prepared-C':   { level: 'transformative',text: 'Deep restructuring required. Playbooks activate. Survival likely with prior architecture.' },
-  'partial-A':    { level: 'manageable',    text: 'Public surprise, limited org impact. Prepared orgs gain immediate credibility advantage.' },
-  'partial-B1':   { level: 'disruptive',    text: '2-8 week drawdown. Prepared orgs outperform. Unprepared freeze at board level.' },
-  'partial-B2':   { level: 'transformative',text: 'Board-level restructuring required. Non-prepared orgs structurally disadvantaged.' },
-  'partial-C':    { level: 'systemic',      text: 'Existing frameworks fail. Crisis architecture needed but incomplete. No recovery timeline.' },
-  'unprepared-A': { level: 'disruptive',    text: 'Narrative crisis. Stakeholder panic. No messaging ready. Recovery 2-6 weeks.' },
-  'unprepared-B1':{ level: 'transformative',text: 'Governance vacuum. Leadership exposed. Boards demand answers no one has.' },
-  'unprepared-B2':{ level: 'systemic',      text: 'Supply chains, energy, capital markets repriced simultaneously. No playbook.' },
-  'unprepared-C': { level: 'existential',   text: 'Civilization-scale reorientation. No functioning playbook. Organizational survival in question.' },
+  'prepared-A':   { level: 'manageable',    text: 'Holding statement issued within H+1. Board briefed within H+4. No internal confusion, no media scrambling.' },
+  'prepared-B1':  { level: 'manageable',    text: 'Sector exposure pre-mapped. Treasury triggers pre-authorized. Capital allocation decisions made within H+24, not weeks.' },
+  'prepared-B2':  { level: 'disruptive',    text: 'Energy/materials exposure already audited. Board reviews repricing scenarios same week. No emergency restructuring needed.' },
+  'prepared-C':   { level: 'transformative',text: 'Crisis governance activated on schedule. Existing playbooks adapted, not built from scratch. Leadership retains decision authority throughout.' },
+  'partial-A':    { level: 'manageable',    text: 'Comms team scrambles for 48h before stabilizing. Some internal confusion. No reputational damage if response lands within the week.' },
+  'partial-B1':   { level: 'disruptive',    text: 'Finance team builds exposure analysis reactively. Board requests emergency briefing. Capital decisions delayed 1-2 weeks vs prepared peers.' },
+  'partial-B2':   { level: 'transformative',text: 'Board convenes emergency sessions without a pre-built framework. Decision authority unclear. External advisors brought in under time pressure.' },
+  'partial-C':    { level: 'systemic',      text: 'Existing governance structures strain under decision volume. No clear chain of command for crisis-scale choices. Leadership fatigue sets in within days.' },
+  'unprepared-A': { level: 'disruptive',    text: 'No holding statement exists. Employees and stakeholders learn from external media first. Leadership response is reactive and inconsistent across channels.' },
+  'unprepared-B1':{ level: 'transformative',text: 'No one owns the decision. CFO and board discover exposure gaps in real time. External counsel and advisors engaged under maximum time pressure.' },
+  'unprepared-B2':{ level: 'systemic',      text: 'No existing framework for the scale of decisions required. Leadership turnover risk rises. Operational paralysis while basic questions get answered for the first time.' },
+  'unprepared-C': { level: 'existential',   text: 'No functioning decision structure exists for this scale of disruption. Organizational continuity itself becomes the open question, independent of sector or size.' },
 };
 
 const IMPACT_CONFIG: Record<ImpactLevel, { label: string; bg: string; border: string; labelColor: string; textColor: string }> = {
@@ -148,7 +148,6 @@ export default function FrameworkPage() {
                     <div key={sc.id} style={{ width: COL_X, flexShrink: 0, backgroundColor: sc.isEnd ? '#1B2A4A' : '#FFFFFF', border: sc.isEnd ? '1.5px solid #C9A84C' : '1px solid #E2E8F0', borderRadius: 8, padding: '10px 12px', minHeight: 60, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                       <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, fontWeight: 600, color: sc.isEnd ? '#C9A84C' : '#1B2A4A', marginBottom: 3 }}>
                         {sc.label}
-                        {sc.optional && <span style={{ fontSize: 9, color: '#8A9BB5', fontWeight: 400, marginLeft: 4 }}>(optional)</span>}
                       </p>
                       <p style={{ fontSize: 10, color: sc.isEnd ? '#8A9BB5' : '#6B7A8D', lineHeight: 1.4 }}>{sc.desc}</p>
                     </div>
@@ -181,13 +180,23 @@ export default function FrameworkPage() {
             </div>
 
             {/* Legend */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 16px', marginTop: 20, paddingLeft: 46 }}>
+            <div style={{
+              display: 'flex', flexWrap: 'wrap', gap: '10px 24px',
+              marginTop: 28, marginLeft: 46,
+              padding: '16px 20px',
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: 8,
+            }}>
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8A9BB5', display: 'flex', alignItems: 'center' }}>
+                Impact level
+              </span>
               {LEGEND_ITEMS.map(level => {
                 const config = IMPACT_CONFIG[level];
                 return (
-                  <div key={level} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: config.bg, border: `1.5px solid ${config.border}`, flexShrink: 0 }} />
-                    <span style={{ fontSize: 11, color: '#6B7A8D', fontFamily: 'DM Mono, monospace' }}>{config.label}</span>
+                  <div key={level} style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                    <div style={{ width: 11, height: 11, borderRadius: 3, backgroundColor: config.bg, border: `1.5px solid ${config.border}`, flexShrink: 0 }} />
+                    <span style={{ fontSize: 12, color: '#4A5568', fontFamily: 'DM Mono, monospace' }}>{config.label}</span>
                   </div>
                 );
               })}
