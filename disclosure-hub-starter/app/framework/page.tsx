@@ -118,7 +118,7 @@ export default function FrameworkPage() {
               {SCENARIOS.map(sc => (
                 <div key={sc.id} style={{ width: COL_X, flexShrink: 0, textAlign: 'center' }}>
                   <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: sc.isEnd ? '#C9A84C' : '#8A9BB5', fontWeight: sc.isEnd ? 600 : 400 }}>
-                    {sc.isEnd ? 'C — end state' : sc.id}
+                    {sc.isEnd ? 'C — Structural Shift' : sc.id}
                   </p>
                 </div>
               ))}
