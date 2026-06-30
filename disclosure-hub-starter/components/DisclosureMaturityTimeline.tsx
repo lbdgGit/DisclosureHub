@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Check, Circle } from 'lucide-react';
 
 // ─── Data ───────────────────────────────────────────────────
 type Status = 'achieved' | 'partial' | 'not-achieved';
@@ -112,14 +113,19 @@ const TRACKS: CategoryTrack[] = [
 ];
 
 // ─── Status visuals ─────────────────────────────────────────
-const STATUS_CONFIG: Record<Status, { icon: string; label: string }> = {
-  achieved:     { icon: '\u2713', label: 'Achieved' },
-  partial:      { icon: '\u25D0', label: 'Partial' },
-  'not-achieved': { icon: '\u25CB', label: 'Not yet' },
+const STATUS_CONFIG: Record<Status, { label: string }> = {
+  achieved:       { label: 'Achieved' },
+  partial:        { label: 'Partial' },
+  'not-achieved': { label: 'Not yet' },
 };
 
+function StatusIcon({ status, color }: { status: Status; color: string }) {
+  if (status === 'achieved') return <Check size={11} strokeWidth={3} color="#1B2A4A" />;
+  if (status === 'partial') return <Circle size={9} strokeWidth={2.5} fill={color} color={color} style={{ opacity: 0.6 }} />;
+  return <Circle size={9} strokeWidth={2} color={color} style={{ opacity: 0.5 }} />;
+}
+
 function MilestoneRow({ m, color }: { m: Milestone; color: string }) {
-  const cfg = STATUS_CONFIG[m.status];
   const isAchieved = m.status === 'achieved';
   const isPartial = m.status === 'partial';
   const opacity = m.status === 'not-achieved' ? 0.42 : 1;
@@ -133,11 +139,9 @@ function MilestoneRow({ m, color }: { m: Milestone; color: string }) {
           background: isAchieved ? color : isPartial ? `${color}30` : 'transparent',
           border: `1.5px solid ${isAchieved ? color : color + '80'}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 11, fontWeight: 700,
-          color: isAchieved ? '#1B2A4A' : color,
           flexShrink: 0,
         }}>
-          {cfg.icon}
+          <StatusIcon status={m.status} color={isAchieved ? '#1B2A4A' : color} />
         </div>
         <div style={{ width: 1.5, flex: 1, minHeight: 14, background: `${color}30`, marginTop: 2 }} />
       </div>
@@ -200,15 +204,21 @@ function Legend() {
         Legend
       </span>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <span style={{ width: 16, height: 16, borderRadius: '50%', background: '#1B2A4A', color: 'white', fontSize: 9, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>\u2713</span>
+        <span style={{ width: 16, height: 16, borderRadius: '50%', background: '#1B2A4A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <Check size={9} strokeWidth={3} color="white" />
+        </span>
         <span style={{ fontSize: 12, color: '#4A5D78' }}>Achieved — confirmed by primary source</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <span style={{ width: 16, height: 16, borderRadius: '50%', border: '1.5px solid #8A9BB5', background: 'rgba(138,155,181,0.15)', fontSize: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8A9BB5' }}>\u25D0</span>
+        <span style={{ width: 16, height: 16, borderRadius: '50%', border: '1.5px solid #8A9BB5', background: 'rgba(138,155,181,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <Circle size={7} strokeWidth={2.5} fill="#8A9BB5" color="#8A9BB5" style={{ opacity: 0.6 }} />
+        </span>
         <span style={{ fontSize: 12, color: '#4A5D78' }}>Partial — exists in part, not fully verified</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: 0.6 }}>
-        <span style={{ width: 16, height: 16, borderRadius: '50%', border: '1.5px solid #8A9BB5', fontSize: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8A9BB5' }}>\u25CB</span>
+        <span style={{ width: 16, height: 16, borderRadius: '50%', border: '1.5px solid #8A9BB5', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <Circle size={7} strokeWidth={2} color="#8A9BB5" />
+        </span>
         <span style={{ fontSize: 12, color: '#4A5D78' }}>Not yet — no confirming event</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
