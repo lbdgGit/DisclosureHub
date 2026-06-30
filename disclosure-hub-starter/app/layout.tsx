@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://assets.lemonsqueezy.com/lemon.js"
           strategy="afterInteractive"
         />
+        <Analytics />
       </body>
     </html>
   );
