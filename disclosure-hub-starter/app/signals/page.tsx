@@ -95,14 +95,14 @@ export default function SignalsPage() {
         ))}
       </div>
 
-      {/* ── DISCLOSURE MATURITY TRACKER ── */}
-      <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '24px', marginBottom: '14px' }}>
-        <DisclosureMaturityTimeline />
-      </div>
-
       {/* ── INSTITUTIONAL ACCELERATION CHART ── */}
       <div style={{ background: '#0F1C30', border: '1px solid rgba(201,168,76,0.2)', borderRadius: '8px', padding: '24px', marginBottom: '14px', width: '100%', boxSizing: 'border-box' }}>
         <InstitutionalAcceleration />
+      </div>
+
+      {/* ── DISCLOSURE MATURITY TRACKER ── */}
+      <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '24px', marginBottom: '14px' }}>
+        <DisclosureMaturityTimeline />
       </div>
 
       {/* ── RECOMMENDED ACTIONS ── */}
