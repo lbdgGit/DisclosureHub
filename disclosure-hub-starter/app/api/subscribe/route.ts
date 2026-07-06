@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { DVI_CONFIG } from '@/data/signals';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
               </a>
             </div>
             <p style="font-size: 13px; color: #4A5D78; line-height: 1.7; margin: 0 0 8px 0;">
-              Current DVI: <strong>6.6 / 10 — READINESS</strong>. Track live signals at readyfordisclosure.com/signals.
+              Current DVI: <strong>${DVI_CONFIG.value} / 10 — ${DVI_CONFIG.level}</strong>. Track live signals at readyfordisclosure.com/signals.
             </p>
             <div style="border-top: 1px solid #E2E8F0; padding-top: 20px; margin-top: 32px;">
               <p style="font-family: 'Courier New', monospace; font-size: 11px; color: #8A9BB5; margin: 0;">
@@ -109,7 +110,7 @@ export async function POST(req: NextRequest) {
           </div>
           <div style="background: #F1F5F9; border-left: 3px solid #C9A84C; padding: 16px 20px; margin: 32px 0; border-radius: 0 4px 4px 0;">
             <p style="font-size: 13px; color: #4A5D78; margin: 0 0 8px 0; font-weight: 600;">
-              Current signal level: DVI 6.6 — READINESS
+              Current signal level: DVI ${DVI_CONFIG.value} — ${DVI_CONFIG.level}
             </p>
             <p style="font-size: 13px; color: #4A5D78; margin: 0;">
               Secretary of State Rubio, former UAP Task Force Director Stratton, and 32 other senior officials are on record. Pentagon PURSUE program is live at war.gov/ufo.
