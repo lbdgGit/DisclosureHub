@@ -4,9 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { SIGNALS, DVI_CONFIG } from '@/data/signals';
 
-const DVI_VALUE  = DVI_CONFIG.value;
-const DVI_LEVEL  = DVI_CONFIG.level;
-const DVI_EVENTS = SIGNALS.length;
+const DVI_VALUE    = DVI_CONFIG.value;
+const DVI_LEVEL    = DVI_CONFIG.level;
+const DVI_EVENTS   = SIGNALS.length;
+const DVI_UPDATED  = DVI_CONFIG.updatedAt;
+const DVI_BASELINE = DVI_CONFIG.baseline;
 
 const DVI_SCALE = [
   { range: '0 – 3', level: 'BASELINE',   color: '#4A9A5E', action: 'No urgent action. Read the Starter Pack.' },
@@ -39,10 +41,10 @@ function DVIModal({ onClose }: { onClose: () => void }) {
         <div style={{ background: '#1B2A4A', borderRadius: 10, padding: '16px 20px', marginBottom: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 4 }}>
-              Current DVI — June 2026
+              Current DVI — {DVI_UPDATED}
             </p>
             <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#E8A030' }}>
-              Signal density <strong style={{ color: '#C9A84C' }}>22× the historical baseline</strong>
+              Signal density <strong style={{ color: '#C9A84C' }}>{DVI_BASELINE}</strong>
             </p>
           </div>
           <div style={{ textAlign: 'center' }}>
@@ -195,7 +197,7 @@ export function DVIBadge({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
             Disclosure Velocity Index™
           </span>
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, color: dateColor, marginLeft: 'auto' }}>
-            June 2026 · {DVI_EVENTS} verified events
+            {DVI_UPDATED} · {DVI_EVENTS} verified events
           </span>
         </div>
 
