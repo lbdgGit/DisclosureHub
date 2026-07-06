@@ -744,7 +744,7 @@ export const SIGNALS: Signal[] = [
   },
   {
     id: 'loeb-council-2026',
-    date: '2026-06', year: 2026, mo: 6, w: 0.5,
+    date: '2026-06', year: 2026, mo: 6, w: 0.8,
     institution: 'White House / AARO / ODNI / FBI',
     country: 'USA',
     title: 'UAP Science Advisory Council mandated — Avi Loeb chair (provisional)',
@@ -793,6 +793,19 @@ export const SIGNALS: Signal[] = [
     sourceLabel: 'AARO / DoD FY2024 Annual Report',
     sourceUrl: 'https://www.aaro.mil/Reports-Testimonies/Annual-Reports/',
   },
+  {
+    id: 'uap-governance-board-2026',
+    date: '2026-06', year: 2026, mo: 6, w: 1.0,
+    institution: 'ODNI / White House / DoD / FBI / CIA',
+    country: 'USA',
+    title: 'UAP Governance Board holds first meeting — ODNI oversight confirmed',
+    description: 'UAP Governance Board convenes for the first time in June 2026 under ODNI oversight. Board brings together military, law enforcement, and intelligence community to coordinate UAP policy. Confirmed by AP, The Hill, WBUR. Distinct from and superior to the Loeb Science Advisory Council, which reports to the Board.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'AP / The Hill / WBUR — Jul 1 2026',
+    sourceUrl: 'https://thehill.com/homenews/administration/5949753-harvard-professor-leads-ufo-study/',
+    isNew: true,
+  },
 ];
 
 // ─── Derived helpers ───────────────────────────────────────
@@ -838,10 +851,10 @@ export const CAT_ORDER: Record<SignalCategory, number> = {
 
 // ─── Single source of truth for DVI ───────────────────────
 export const DVI_CONFIG = {
-  value:     6.6,
+  value:     6.8,
   level:     'READINESS' as const,
-  updatedAt: 'June 2026',
-  baseline:  '22× the historical baseline',
+  updatedAt: 'July 2026',
+  baseline:  '27× the historical baseline',
 } as const;
 
 export type DVILevel = 'BASELINE' | 'MONITOR' | 'READINESS' | 'ACTIVATION' | 'CRITICAL';
