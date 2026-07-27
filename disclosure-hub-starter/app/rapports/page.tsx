@@ -1,26 +1,28 @@
 'use client';
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { Download, FileText, ArrowRight, Bell, X, CheckCircle } from 'lucide-react';
 
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
+const LS_FINANCE_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/468ce8c1-92a7-4500-b60a-33e25723684d?embed=1';
+const FINANCE_PREVIEW_URL = '/downloads/LBDG-Finance-Risk-Report-PREVIEW.pdf';
 
 const REPORTS = [
   {
     id: 'finance-risk',
-    title: 'Finance Risk Report — Disclosure Scenarios A through C',
+    title: 'Finance Risk Report — Organizational Financial Exposure to Institutional Disclosure',
     badge: 'Analytical',
-    status: 'coming',
-    description: 'In-depth financial risk analysis for CFOs and risk managers. Four-scenario framework (A/B1/B2/C) with documented market precedents from COVID-19 and 9/11. The nuclear technology analogy applied to sector repricing.',
+    status: 'available',
+    price: '€399',
+    description: 'How a finance function should reason about exposure to disclosure before it happens. Built on four documented precedents — 1945, 2001, 2008, 2020 — it isolates the mechanisms through which a paradigm-shifting event transmits into financial consequence, maps sector exposure to demonstrated mechanisms rather than speculation, and sets out a 72-hour response framework.',
     features: [
-      'Scenario A/B1/B2/C financial impact analysis',
-      'COVID-19 and 9/11 as documented market precedents',
-      'Nuclear analogy: 15-30y energy disruption timeline',
-      'Defense contractor legal risk framework',
-      'Sector winners and losers — verified inference',
+      'The four mechanisms of financial impact, each anchored to a precedent',
+      'Sector-exposure grid traced to demonstrated mechanisms',
+      'The Disclosure Impact Matrix: preparedness × scenario',
+      'A three-tier, 72-hour response framework',
+      'DVI methodology and its current reading',
     ],
-    pages: 42,
+    pages: 38,
     audience: 'CFOs · Risk Managers · Compliance Officers',
   },
   {
@@ -75,13 +77,11 @@ interface NotifyModalProps {
   report: typeof REPORTS[0];
   onClose: () => void;
 }
-
 function NotifyModal({ report, onClose }: NotifyModalProps) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !email.includes('@')) {
@@ -103,7 +103,6 @@ function NotifyModal({ report, onClose }: NotifyModalProps) {
       setSuccess(true);
     }
   };
-
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,27,48,0.75)', backdropFilter: 'blur(4px)' }} onClick={onClose} />
@@ -111,7 +110,6 @@ function NotifyModal({ report, onClose }: NotifyModalProps) {
         <button onClick={onClose} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', color: '#8A9BB5', fontSize: 18, lineHeight: 1, padding: 4 }}>
           <X size={18} />
         </button>
-
         {success ? (
           <div style={{ textAlign: 'center', padding: '16px 0' }}>
             <CheckCircle size={40} style={{ color: '#4ADE80', margin: '0 auto 16px' }} />
@@ -144,7 +142,6 @@ function NotifyModal({ report, onClose }: NotifyModalProps) {
                 This report is currently in production. Enter your email and we'll notify you the moment it's released.
               </p>
             </div>
-
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <input
                 type="email"
@@ -162,7 +159,6 @@ function NotifyModal({ report, onClose }: NotifyModalProps) {
                 {loading ? 'Registering…' : 'Notify me when available →'}
               </button>
             </form>
-
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: '#8A9BB5', textAlign: 'center', marginTop: 12 }}>
               GDPR compliant · No spam · Unsubscribe anytime
             </p>
@@ -176,11 +172,9 @@ function NotifyModal({ report, onClose }: NotifyModalProps) {
 // ─── Page ─────────────────────────────────────────────────
 export default function ReportsPage() {
   const [notifyModal, setNotifyModal] = useState<typeof REPORTS[0] | null>(null);
-
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-24 pb-20">
       {notifyModal && <NotifyModal report={notifyModal} onClose={() => setNotifyModal(null)} />}
-
       {/* Header */}
       <div className="mb-12">
         <span className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-3" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
@@ -193,7 +187,6 @@ export default function ReportsPage() {
           Analytical reports on the geopolitical, financial, and organizational implications of disclosure. Every claim sourced. Inferences explicitly labeled.
         </p>
       </div>
-
       {/* Starter Pack — free, LS checkout */}
       <div id="starter" className="relative mb-12 p-6 sm:p-8 rounded-xl border border-green-400/20 bg-green-400/5 scroll-mt-24">
         <div className="flex flex-col sm:flex-row sm:items-start gap-6">
@@ -234,12 +227,10 @@ export default function ReportsPage() {
           </div>
         </div>
       </div>
-
       {/* Analytical Reports */}
       <h2 className="font-display text-xl font-700 text-bright mb-5" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
         Analytical Reports
       </h2>
-
       <div className="flex flex-col gap-5">
         {REPORTS.map(report => (
           <div key={report.id} className="p-6 rounded-xl border border-border bg-surface/40 hover:bg-surface hover:border-border/80 transition-all">
@@ -249,9 +240,15 @@ export default function ReportsPage() {
                   <span className="px-2 py-0.5 rounded text-2xs font-mono border text-signal border-signal/30 bg-signal/10" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
                     {report.badge}
                   </span>
-                  <span className="px-2 py-0.5 rounded text-2xs font-mono border text-muted border-border bg-surface/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    In production
-                  </span>
+                  {report.status === 'available' ? (
+                    <span className="px-2 py-0.5 rounded text-2xs font-mono border text-green-400 border-green-400/30 bg-green-400/10 font-600" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                      Available · {report.price}
+                    </span>
+                  ) : (
+                    <span className="px-2 py-0.5 rounded text-2xs font-mono border text-muted border-border bg-surface/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                      In production
+                    </span>
+                  )}
                   <span className="text-2xs font-mono text-muted" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
                     {report.pages}p · {report.audience}
                   </span>
@@ -272,31 +269,51 @@ export default function ReportsPage() {
                 </ul>
               </div>
             </div>
-            <button
-              onClick={() => setNotifyModal(report)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-mono text-sm transition-all"
-              style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                background: '#1B2A4A',
-                color: '#C9A84C',
-                border: '1px solid #1B2A4A',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLButtonElement).style.background = '#243556';
-                (e.currentTarget as HTMLButtonElement).style.borderColor = '#C9A84C';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLButtonElement).style.background = '#1B2A4A';
-                (e.currentTarget as HTMLButtonElement).style.borderColor = '#1B2A4A';
-              }}
-            >
-              <Bell size={14} />
-              Notify me when available
-            </button>
+            {report.status === 'available' ? (
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={LS_FINANCE_URL}
+                  className="lemonsqueezy-button inline-flex items-center gap-2 px-5 py-2.5 rounded font-mono text-sm transition-all"
+                  style={{ fontFamily: 'JetBrains Mono, monospace', background: '#1B2A4A', color: '#C9A84C', border: '1px solid #1B2A4A' }}
+                >
+                  <Download size={14} />
+                  Buy the report — {report.price}
+                </a>
+                <a
+                  href={FINANCE_PREVIEW_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-mono text-sm border border-border text-muted hover:text-bright hover:border-border/80 transition-all"
+                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                >
+                  <FileText size={14} />
+                  Preview — 5 pages
+                </a>
+              </div>
+            ) : (
+              <button
+                onClick={() => setNotifyModal(report)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-mono text-sm transition-all"
+                style={{ fontFamily: 'JetBrains Mono, monospace', background: '#1B2A4A', color: '#C9A84C', border: '1px solid #1B2A4A' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#243556'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#C9A84C'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#1B2A4A'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#1B2A4A'; }}
+              >
+                <Bell size={14} />
+                Notify me when available
+              </button>
+            )}
           </div>
         ))}
       </div>
-
+      {/* Legal notice for paid analytical reports */}
+      <div className="mt-8 p-5 rounded-xl border border-border bg-surface/30">
+        <p className="text-2xs font-mono text-signal tracking-wider uppercase mb-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+          Important notice
+        </p>
+        <p className="text-xs text-muted leading-relaxed" style={{ fontFamily: 'Syne, sans-serif' }}>
+          LBDG reports are published for informational and educational purposes only. They present analytical frameworks and do not constitute investment, financial, legal, tax, or accounting advice, nor a recommendation to buy, sell, or hold any security or asset. They contain no predictions. Each organization is responsible for its own decisions and should obtain independent professional advice appropriate to its circumstances. A full notice is included in each report.
+        </p>
+      </div>
       {/* CTA to toolkits */}
       <div className="mt-10 p-6 rounded-xl border border-signal/20 bg-signal/5 text-center">
         <p className="text-sm text-body/80 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
