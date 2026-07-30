@@ -1,1 +1,101 @@
-
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LBDG Disclosure Maturity — Track schema",
+  "description": "One file per track (e.g. government.json). Source of truth for both the public site (tiles + expandable rung cards) and the DVI v5 whitepaper. The narrative .md file remains the human-readable / whitepaper long-form; this JSON is the structured data the site renders.",
+  "type": "object",
+  "required": ["id", "name", "icon", "order", "scope", "method", "statusCount", "summary", "sourcingQuality", "lastReviewed", "rungs"],
+  "properties": {
+    "id":   { "type": "string", "description": "URL slug + anchor base, e.g. 'government'." },
+    "name": { "type": "string", "description": "Display name, e.g. 'Government'." },
+    "icon": { "type": "string", "enum": ["chevrons", "pediment", "gavel", "atom", "candlesticks", "broadcast", "globe"] },
+    "order": { "type": "integer", "description": "Position in the 7-tile grid." },
+    "scope":    { "type": "string", "description": "One line: what this track covers." },
+    "excludes": { "type": "string", "description": "What it deliberately does NOT cover (domain purity)." },
+    "method":   { "type": "string", "description": "First-principles + non-ontological framing sentence(s)." },
+    "scopeNote": { "type": "string", "description": "Optional, e.g. 'International in scope, unlike US-only tracks.'" },
+    "insight":  { "type": "string", "description": "Optional special call-out for the tile/header (e.g. Financial zero-Partial, International non-linearity). Omit if none." },
+    "statusCount": {
+      "type": "object",
+      "required": ["achieved", "partial", "notYet"],
+      "properties": {
+        "achieved": { "type": "integer" },
+        "partial":  { "type": "integer" },
+        "notYet":   { "type": "integer" }
+      }
+    },
+    "summary": { "type": "string", "description": "Card-ready 2-3 sentence summary; used at foot of fiche + meta." },
+    "sourcingQuality": { "type": "string", "description": "Honest one-line on overall evidence level." },
+    "lastReviewed": { "type": "string", "format": "date" },
+    "rungs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["n", "title", "status", "oneLiner", "firstPrinciples", "statusRationale", "sources"],
+        "properties": {
+          "n":      { "type": "integer" },
+          "title":  { "type": "string" },
+          "status": { "type": "string", "enum": ["achieved", "partial", "notYet"] },
+          "oneLiner": { "type": "string", "description": "Shown when the card is collapsed (mirrors the PNG card's description line)." },
+          "firstPrinciples": { "type": "string", "description": "Why this rung exists / why it sits here." },
+          "statusRationale": { "type": "string", "description": "Why this specific status." },
+          "sources": {
+            "type": "array",
+            "description": "The featured evidence. Empty array allowed only when a 'none' tier entry represents an absence.",
+            "items": {
+              "type": "object",
+              "required": ["label", "tier"],
+              "properties": {
+                "label": { "type": "string", "description": "Display text, e.g. 'ODNI Preliminary Assessment, June 2021'." },
+                "url":   { "type": "string", "description": "Link; omit for tier 'none'." },
+                "tier":  { "type": "string", "enum": ["primary", "official-proceeding", "secondary", "none"],
+                           "description": "Drives the confidence badge. 'none' = no qualifying source (absence)." },
+                "note":  { "type": "string", "description": "Optional, e.g. 'verbatim text not directly accessed', 'tangential precedent'." }
+              }
+            }
+          },
+          "limitation": { "type": "string", "description": "Optional limitation / reversibility note." },
+          "flags": {
+            "type": "array",
+            "description": "Short honest badges the UI can show, e.g. 'preprint', 'secondary-source', 'non-ontological', 'to-source', 'structural-ceiling'.",
+            "items": { "type": "string" }
+          },
+          "skepticChallenge": {
+            "type": "object",
+            "description": "INTERNAL / whitepaper only — NOT rendered on the public site by default. Kept for rigor, not exposed so the page isn't framed around detractors.",
+            "properties": {
+              "challenge": { "type": "string" },
+              "holds":     { "type": "string" }
+            }
+          },
+          "arguable": { "type": "string", "description": "Optional: genuinely arguable-status note (both sides). Deep level only." }
+        }
+      }
+    },
+    "excludedClaims": {
+      "type": "array",
+      "description": "Collapsed annex: things deliberately excluded and why. Proves rigor without giving skeptics the frame.",
+      "items": {
+        "type": "object",
+        "required": ["claim", "reason"],
+        "properties": {
+          "claim":  { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "bibliography": {
+      "type": "array",
+      "description": "Optional: for tracks with a formal source list (Military, Scientific).",
+      "items": {
+        "type": "object",
+        "required": ["label"],
+        "properties": {
+          "label": { "type": "string" },
+          "url":   { "type": "string" }
+        }
+      }
+    },
+    "crossTrackNotes": { "type": "string", "description": "Optional: domain-boundary notes (e.g. Loeb -> Scientific vs Government)." },
+    "verificationAudit": { "type": "string", "description": "Optional: collapsed audit summary (domain purity, independence test, etc.)." }
+  }
+}
