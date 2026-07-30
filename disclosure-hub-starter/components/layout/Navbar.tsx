@@ -7,14 +7,21 @@ import { Menu, X, Radio } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
-  { href: '/',          label: 'Home'              },
-  { href: '/signals',   label: 'Signals'           },
-  { href: '/toolkits',  label: 'Toolkits'          },
+  { href: '/',          label: 'Home'               },
+  { href: '/signals',   label: 'Disclosure Velocity' },
+  { href: '/maturity',  label: 'Disclosure Maturity' },
+  { href: '/toolkits',  label: 'Toolkits'           },
   { href: '/framework', label: 'Scenarios & Impact' },
   { href: '/rapports',  label: 'Reports'            },
   { href: '/lexique',   label: 'Lexicon'            },
   { href: '/faq',       label: 'FAQ'                },
 ];
+
+// pulsing status dot next to specific links
+const PULSE: Record<string, string> = {
+  '/signals':  '#38BDF8', // Velocity — blue
+  '/maturity': '#4E8B45', // Maturity — green (matches "Achieved")
+};
 
 export default function Navbar() {
   const [open, setOpen]         = useState(false);
@@ -41,8 +48,14 @@ export default function Navbar() {
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.3)' : 'none',
       }}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      {/* desynced pulse so the two dots breathe in alternation, not in unison */}
+      <style>{`
+        @keyframes lbdgPulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+        .lbdg-pulse { animation: lbdgPulse 2s ease-in-out infinite; }
+        .lbdg-pulse.delay { animation-delay: 1s; }
+      `}</style>
 
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative">
@@ -62,6 +75,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-5">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
+            const pulseColor = PULSE[link.href];
             return (
               <Link
                 key={link.href}
@@ -75,8 +89,9 @@ export default function Navbar() {
                 onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.65)'; }}
               >
                 {link.label}
-                {link.href === '/signals' && (
+                {pulseColor && (
                   <span
+                    className={cn('lbdg-pulse', link.href === '/maturity' && 'delay')}
                     style={{
                       position: 'absolute',
                       top: '-3px',
@@ -84,9 +99,8 @@ export default function Navbar() {
                       width: '5px',
                       height: '5px',
                       borderRadius: '50%',
-                      background: '#38BDF8',
+                      background: pulseColor,
                     }}
-                    className="animate-pulse"
                   />
                 )}
                 {/* Animated gold underline */}
@@ -147,6 +161,7 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
+              const pulseColor = PULSE[link.href];
               return (
                 <Link
                   key={link.href}
@@ -160,12 +175,22 @@ export default function Navbar() {
                   }}
                 >
                   {link.label}
-                  {link.href === '/signals' && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse ml-2" />
+                  {pulseColor && (
+                    <span
+                      className={cn('lbdg-pulse', link.href === '/maturity' && 'delay')}
+                      style={{
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        background: pulseColor,
+                        marginLeft: '8px',
+                      }}
+                    />
                   )}
                 </Link>
               );
             })}
+
             <div className="mt-2 pt-2 border-t border-border/50">
               <Link
                 href="/toolkits"
