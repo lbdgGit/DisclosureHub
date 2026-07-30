@@ -316,7 +316,7 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
           </div>
 
           {/* right pane */}
-          <div>{active && <Fiche track={active} />}</div>
+          <div>{active && <Fiche key={active.id} track={active} />}</div>
         </div>
       </div>
 
