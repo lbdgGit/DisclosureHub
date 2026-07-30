@@ -7,8 +7,16 @@ import financial from "@/content/tracks/financial.json";
 import media from "@/content/tracks/media.json";
 import international from "@/content/tracks/international.json";
 
-const tracks = [military, government, legislative, scientific, financial, media, international];
+const tracks = [
+  military,
+  government,
+  legislative,
+  scientific,
+  financial,
+  media,
+  international,
+] as any[];
 
-export default function Page() {
+export default function MaturityPage() {
   return <DisclosureMaturity tracks={tracks} />;
 }
