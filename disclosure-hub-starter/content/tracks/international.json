@@ -6,58 +6,144 @@
   "scope": "The internationalization of UAP disclosure itself — the degree to which the subject moves from a purely national matter toward coordinated action between states. Foreign national acts count only as data points proving a rung of internationalization.",
   "excludes": "The domestic depth of any foreign government's UAP program (those tracks are US-scoped). A foreign act is credited here for internationalization, not re-measured for domestic maturity.",
   "method": "First-principles ladder ordered by cross-border commitment, formality, cost and irreversibility. Non-ontological: rungs measure inter-state acts, not the nature of the phenomenon.",
-  "statusCount": { "achieved": 2, "partial": 2, "notYet": 2 },
+  "statusCount": {
+    "achieved": 2,
+    "partial": 2,
+    "notYet": 2
+  },
   "read": "The non-linearity is the story: the universal body — the UN — is a dead letter, while bilateral and Five Eyes cooperation quietly advance. Disclosure internationalizes through intelligence alliances, not open institutions. The top rung is capped by design.",
   "summary": "The international dimension has climbed from isolated national programs to broad parallel recognition — France and the USSR ran structured state programs by the late 1970s, and engagement now spans the UK, Japan, Chile and Argentina. The operational frontier sits at bilateral contact and a nascent, US-led Five Eyes caucus. The top rung — a binding, transparent global regime — is structurally capped by national-security sensitivity.",
   "sourcingQuality": "Strong at rungs 1-2 and 5 (official agency pages, Russian Academy of Sciences journal, AARO FOIA). Rung 4 mixes primary and official-proceeding (Japan) evidence.",
   "lastReviewed": "2026-07-29",
   "rungs": [
-    { "n": 1, "title": "Individual state initiative", "status": "achieved",
+    {
+      "n": 1,
+      "title": "Individual state initiative",
+      "status": "achieved",
       "oneLiner": "A non-US state formally engages. e.g. France GEIPAN 1977; USSR Setka 1978.",
       "firstPrinciples": "First act above baseline — a state other than the US formally engages (program, hearing, official body), proving the subject escaped its national container.",
       "statusRationale": "France (1977) and the USSR (1978) ran structured state programs near-simultaneously — the subject was escaping national borders in both East and West at once.",
       "sources": [
-        { "label": "France — CNES/GEIPAN (GEPAN created 1977)", "url": "https://www.cnes-geipan.fr/", "tier": "primary" },
-        { "label": "USSR — 'Setka' state program 1978-1990, documented by Platov & Sokolov, Herald of the Russian Academy of Sciences (2000)", "tier": "primary", "note": "written by the program leaders" }
-      ] },
-    { "n": 2, "title": "Parallel recognition", "status": "achieved",
+        {
+          "label": "France — CNES/GEIPAN (GEPAN created 1977)",
+          "url": "https://www.cnes-geipan.fr/",
+          "tier": "primary"
+        },
+        {
+          "label": "USSR — 'Setka' state program 1978-1990, documented by Platov & Sokolov, Herald of the Russian Academy of Sciences (2000)",
+          "tier": "primary",
+          "note": "written by the program leaders"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Parallel recognition",
+      "status": "achieved",
       "oneLiner": "Multiple states engage independently. e.g. UK, France, USSR, Japan, Chile, Argentina.",
       "firstPrinciples": "Multiple states engage independently, proving a pattern across political systems, not one state's curiosity.",
       "statusRationale": "Independent engagement is proven across Europe, the Soviet sphere, East Asia and South America — under radically different systems.",
       "sources": [
-        { "label": "Chile — CEFAA/SEFAA, created 3 Oct 1997 by DGAC", "tier": "primary" },
-        { "label": "Japan — MoD reporting/analysis directive (2020), repeated Diet scrutiny (2024), cross-party UAP caucus (June 2024)", "tier": "official-proceeding", "note": "Kantei pages video-only; caucus documentation proceeding-level" }
-      ] },
-    { "n": 3, "title": "Intergovernmental recognition", "status": "notYet",
+        {
+          "label": "Chile — CEFAA/SEFAA, created 3 Oct 1997 by DGAC",
+          "tier": "primary"
+        },
+        {
+          "label": "Japan — MoD reporting/analysis directive (2020), repeated Diet scrutiny (2024), cross-party UAP caucus (June 2024)",
+          "tier": "official-proceeding",
+          "note": "Kantei pages video-only; caucus documentation proceeding-level"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Intergovernmental recognition",
+      "status": "notYet",
       "oneLiner": "UN Decision 33/426 (1978) produced no body, no follow-through in 48 years.",
       "firstPrinciples": "A multilateral body (UN/NATO/regional) substantively engages, making the subject an international matter, not just a collection of national ones.",
       "statusRationale": "The only instance — UN GA Decision 33/426 (1978) — was adopted but created no agency, and 48 years of silence followed. A reversible gesture with zero function and zero successor is Not yet, not Partial: nothing operational was ever started.",
-      "sources": [ { "label": "No qualifying source for substantive engagement (UN records confirm the 1978 decision produced no body)", "tier": "none" } ] },
-    { "n": 4, "title": "Bilateral cooperation", "status": "partial",
+      "sources": [
+        {
+          "label": "No qualifying source for substantive engagement (UN records confirm the 1978 decision produced no body)",
+          "tier": "none"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Bilateral cooperation",
+      "status": "partial",
       "oneLiner": "Cross-border contact exists. e.g. GEIPAN-CEFAA 2014, Japan-US. Partial: no UAP-specific accord.",
       "firstPrinciples": "Two states move from independent domestic action to actual cross-border interaction — the first operational rung.",
       "statusRationale": "Official contact and coordination are demonstrated (GEIPAN-CEFAA 2014; Japan-US 2020/2023; AARO's ongoing international engagement), but no public UAP-specific agreement, joint intake standard or recurring case-sharing pipeline exists. The 1971 US-USSR agreement is a tangential precedent (nuclear risk reduction), not UAP cooperation.",
       "sources": [
-        { "label": "AARO FY2025 report — ongoing international engagement/information exchange", "url": "https://www.aaro.mil/", "tier": "primary" },
-        { "label": "Japan MoD statement of close US coordination on unidentified objects (Diet, Nov 2023)", "tier": "official-proceeding" }
-      ] },
-    { "n": 5, "title": "Multilateral coordination", "status": "partial",
+        {
+          "label": "AARO FY2025 report — ongoing international engagement/information exchange",
+          "url": "https://www.aaro.mil/",
+          "tier": "primary"
+        },
+        {
+          "label": "Japan MoD statement of close US coordination on unidentified objects (Diet, Nov 2023)",
+          "tier": "official-proceeding"
+        },
+        {
+          "label": "1971 US-USSR Agreement on Measures to Reduce the Risk of Outbreak of Nuclear War, Art. 3 (unidentified objects on missile-warning systems) — Avalon Project, Yale Law",
+          "url": "https://avalon.law.yale.edu/20th_century/sov001.asp",
+          "tier": "primary",
+          "note": "tangential precedent — nuclear risk reduction, not UAP-specific cooperation"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Multilateral coordination",
+      "status": "partial",
       "oneLiner": "AARO Five Eyes UAP Caucus, May 2023 (FOIA). Partial: US-led, nascent, no shared standards.",
       "firstPrinciples": "More than two states coordinate through a standing mechanism with shared standards/data/protocols.",
       "statusRationale": "The AARO Five Eyes UAP Caucus (inaugural 24 May 2023) is a real multilateral forum, but US-led, inside an existing SIGINT alliance, with shared-database items only aspirational, and one member (UK) publicly disclaims current UAP investigation. Highly reversible, no treaty basis.",
-      "sources": [ { "label": "AARO Five Eyes UAP Caucus — FOIA-released agenda + NASA FACA meeting confirmation (May 2023)", "url": "https://www.aaro.mil/", "tier": "primary" } ] },
-    { "n": 6, "title": "Comprehensive international framework", "status": "notYet",
+      "sources": [
+        {
+          "label": "AARO Five Eyes UAP Caucus — FOIA-released agenda + NASA FACA meeting confirmation (May 2023)",
+          "url": "https://www.aaro.mil/",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Comprehensive international framework",
+      "status": "notYet",
       "oneLiner": "No binding regime. Structurally capped by sensitive sources, methods, locations.",
       "firstPrinciples": "A binding, transparent international regime governs the subject — shared standards, open reporting, common protocols, institutional permanence.",
       "statusRationale": "No treaty, no UN agency, no binding data-sharing regime. Structurally capped: full international data-sharing would require sharing sensitive sensor sources, methods and locations — unprecedented even among allies. Any future framework would be partial-by-design. Inaccessibility is a feature of the subject's sensitivity, not a maturity failure.",
-      "flags": ["structural-ceiling"],
-      "sources": [ { "label": "No qualifying source (absence)", "tier": "none" } ] }
+      "flags": [
+        "structural-ceiling"
+      ],
+      "sources": [
+        {
+          "label": "No qualifying source (absence)",
+          "tier": "none"
+        }
+      ]
+    }
   ],
   "excludedClaims": [
-    { "claim": "\"Mexico officially acknowledged aliens\" (Sept 2023)", "reason": "A single-member-organized hearing; Congress took no position; the 'bodies' were discredited. A weak secondary data point, never official recognition." },
-    { "claim": "\"The UN created a UFO agency\" (1978)", "reason": "No agency was ever established (see rung 3)." },
-    { "claim": "\"1971 US-USSR was UAP cooperation\"", "reason": "Nuclear arms control with incidental relevance to unidentified objects on warning systems." },
-    { "claim": "George Knapp's Soviet files — dramatic claims (Unit 73790, reverse-engineering, downed MiGs)", "reason": "The congressional testimony is a genuine primary record and program existence (Setka) is established, but the extraordinary operational/technological claims are journalist-mediated documents with public authentication still incomplete. Excluded as bilateral cooperation (document transfer, not state-to-state cooperation)." }
+    {
+      "claim": "\"Mexico officially acknowledged aliens\" (Sept 2023)",
+      "reason": "A single-member-organized hearing; Congress took no position; the 'bodies' were discredited. A weak secondary data point, never official recognition."
+    },
+    {
+      "claim": "\"The UN created a UFO agency\" (1978)",
+      "reason": "No agency was ever established (see rung 3)."
+    },
+    {
+      "claim": "\"1971 US-USSR was UAP cooperation\"",
+      "reason": "Nuclear arms control with incidental relevance to unidentified objects on warning systems."
+    },
+    {
+      "claim": "George Knapp's Soviet files — dramatic claims (Unit 73790, reverse-engineering, downed MiGs)",
+      "reason": "The congressional testimony is a genuine primary record and program existence (Setka) is established, but the extraordinary operational/technological claims are journalist-mediated documents with public authentication still incomplete. Excluded as bilateral cooperation (document transfer, not state-to-state cooperation)."
+    }
   ],
   "crossTrackNotes": "Non-linearity is a finding, not a flaw: rung 3 (UN) is Not yet while rungs 4-5 are Partial, because cooperation flows through intelligence alliances while universal bodies stay a dead letter. A foreign state's internal act proves an internationalization rung; it does not re-measure that country's domestic maturity."
 }
