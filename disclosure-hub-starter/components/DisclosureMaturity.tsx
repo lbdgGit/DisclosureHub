@@ -304,10 +304,10 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
           ))}
         </div>
 
-        {/* master-detail */}
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start" }} className="lbdg-md-grid">
-          {/* left rail */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, position: "sticky", top: 84 }} className="lbdg-rail">
+        {/* master-detail — fills remaining viewport height; left rail fixed, right pane scrolls */}
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start", height: "calc(100vh - 250px)", minHeight: 360 }} className="lbdg-md-grid">
+          {/* left rail — fixed, never scrolls */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, height: "100%", overflow: "hidden" }} className="lbdg-rail">
             {ordered.map((t) => <RailTile key={t.id} track={t} active={t.id === activeId} onClick={() => setActiveId(t.id)} />)}
             <div style={{ marginTop: 6, padding: "10px 14px", border: `1px dashed ${C.line}`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{ ...eyebrow, color: C.mute }}>All seven</span>
@@ -315,17 +315,20 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
             </div>
           </div>
 
-          {/* right pane */}
-          <div>{active && <Fiche key={active.id} track={active} />}</div>
+          {/* right pane — scrolls independently if the fiche is long */}
+          <div style={{ height: "100%", overflowY: "auto", paddingRight: 6 }} className="lbdg-pane">
+            {active && <Fiche key={active.id} track={active} />}
+          </div>
         </div>
       </div>
 
-      {/* stack the two columns on narrow screens */}
+      {/* stack the two columns on narrow screens, and let the page scroll normally */}
       <style>{`
         @media (max-width: 860px) {
-          .lbdg-md-grid { grid-template-columns: 1fr !important; }
-          .lbdg-rail { position: static !important; flex-direction: row !important; flex-wrap: wrap !important; }
+          .lbdg-md-grid { grid-template-columns: 1fr !important; height: auto !important; min-height: 0 !important; }
+          .lbdg-rail { height: auto !important; overflow: visible !important; flex-direction: row !important; flex-wrap: wrap !important; }
           .lbdg-rail > button { flex: 1 1 140px; }
+          .lbdg-pane { height: auto !important; overflow: visible !important; padding-right: 0 !important; }
         }
       `}</style>
     </div>
