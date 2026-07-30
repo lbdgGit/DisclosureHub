@@ -1,0 +1,135 @@
+{
+  "id": "financial",
+  "name": "Financial",
+  "icon": "candlesticks",
+  "order": 5,
+  "scope": "Private finance / business-sector treatment of UAP (or UAP disclosure) as a financial risk or opportunity: investment managers, funds, banks, insurers/reinsurers, rating agencies, auditors, corporate risk functions, standards bodies, and market regulators in a market-supervision capacity.",
+  "excludes": "Government appropriations / power of the purse (Legislative/Government), defense-contractor budgets (Military/Government), academic/scientific funding (Scientific), and novelty products (alien-abduction certificates, meme coins, prediction-market bets).",
+  "method": "First-principles ladder ordered by increasing legal accountability, capital at risk, and cost of reversal. Non-ontological: rungs measure the sector's acts (recognizing, disclosing, pricing, allocating, insuring), never the nature of the phenomenon. Crediting a financial act (e.g. an ETF) does not endorse its investment thesis.",
+  "insight": "Zero Partial — and that matters. Finance moves in binary thresholds, not gradual capabilities: an ETF exists or it doesn't; a risk factor is in the filing or it isn't. So there is no 'in-progress' state. The consequence is a threshold-and-herding sector: when a real trigger lands, finance won't climb the rungs gradually like science — it will cross them in a cascade, as each institution copies the first mover. This could go from 3 green to 8 green in months. That is exactly why preparation is urgent: the day it flips, it is already too late.",
+  "statusCount": { "achieved": 3, "partial": 0, "notYet": 5 },
+  "summary": "Finance has produced three isolated but concrete acts — a regulated UAP risk disclosure and an operating UAP-disclosure ETF, plus the recognition they imply. The analytical infrastructure beneath is almost entirely absent: no internal risk governance, no quantitative pricing, no insurance or risk transfer, no ratings or standards treatment, and no market-wide adoption. A few pioneers have moved; the serious institutional market has not.",
+  "sourcingQuality": "Strong — SEC EDGAR filings and official Cboe/fund records. (Two other AI passes wrongly reported 'all Not yet'; they failed to search EDGAR. The Procure and UFOD events are real and primary-sourced.)",
+  "lastReviewed": "2026-07-29",
+  "rungs": [
+    {
+      "n": 1,
+      "title": "Formal financial recognition",
+      "status": "achieved",
+      "oneLiner": "A regulated manager names UAP as a financial risk. e.g. Procure Space ETF (UFO) risk factor, SEC.",
+      "firstPrinciples": "Minimum positive financial act — a named institution puts UAP into its formal financial vocabulary. Nothing yet governed, priced or hedged.",
+      "statusRationale": "A regulated manager has formally identified UAP as a financial risk in a securities-law document. Discrete threshold, crossed and irreversible.",
+      "sources": [
+        { "label": "Procure Space ETF (UFO) prospectus — SEC Rule 497 supplement, 8 June 2021", "url": "https://www.sec.gov/Archives/edgar/data/1727398/000089418921003518/procureufosupplement6821.htm", "tier": "primary" },
+        { "label": "Procure Space ETF prospectus, 28 Feb 2026 (UAP risk factor retained)", "url": "https://procureetfs.com/wp-content/uploads/2026/03/Procure-Space-ETF-UFO-Prospectus.pdf", "tier": "primary" }
+      ],
+      "limitation": "Inherited from the regulated disclosure at rung 3; not double-counted.",
+      "flags": [],
+      "skepticChallenge": {
+        "challenge": "One niche space ETF whose ticker was already UFO.",
+        "holds": "Limits significance, not the existence threshold; breadth is measured at rung 8."
+      }
+    },
+    {
+      "n": 2,
+      "title": "Internal risk ownership & exposure mapping",
+      "status": "notYet",
+      "oneLiner": "No bank/insurer/fund with a named UAP risk owner or mapped exposure on record.",
+      "firstPrinciples": "Recognition becomes operational when someone inside an institution owns the exposure and maps affected assets/counterparties.",
+      "statusRationale": "No public record of any bank, insurer, asset manager or corporation assigning a named UAP risk owner, adding UAP to an enterprise-risk register, or mapping exposure. A prospectus risk factor governs the filing, not a dedicated UAP risk-management capability.",
+      "sources": [
+        { "label": "No qualifying source (absence)", "tier": "none" }
+      ],
+      "flags": []
+    },
+    {
+      "n": 3,
+      "title": "Regulated exposure disclosure",
+      "status": "achieved",
+      "oneLiner": "A UAP risk factor sits in an SEC-filed prospectus, retained to 2026. e.g. Procure Space ETF.",
+      "firstPrinciples": "Recognition becomes public and legally consequential — management stands behind wording in a securities-law-governed document.",
+      "statusRationale": "A UAP risk factor is stated in an SEC-filed prospectus and retained across editions (2021 to 2026), warning that operational/cyber/data-security interference with satellites could reduce portfolio value.",
+      "sources": [
+        { "label": "Procure Space ETF prospectus (UAP risk factor), SEC-filed 2021 & 2026", "url": "https://www.sec.gov/Archives/edgar/data/1727398/000089418921003518/procureufosupplement6821.htm", "tier": "primary" }
+      ],
+      "flags": [],
+      "skepticChallenge": {
+        "challenge": "The SEC just received the filing; it didn't validate the risk.",
+        "holds": "Correct re the SEC — this is an issuer/manager act, not SEC endorsement. The rung measures regulated disclosure by a market participant, which is satisfied."
+      }
+    },
+    {
+      "n": 4,
+      "title": "Quantified exposure & explicit pricing",
+      "status": "notYet",
+      "oneLiner": "No probability, loss estimate, sensitivity, or UAP-specific risk premium published.",
+      "firstPrinciples": "Qualitative language says something might matter; quantification assigns probabilities, scenario values, sensitivities, premiums, spreads — a testable model.",
+      "statusRationale": "No institution publicly assigns numbers to UAP exposure. Near miss: the UFOD ETF selects 'disclosure beneficiary' stocks but discloses no probability-weighted scenario, UAP valuation factor, or measurable sensitivity — thematic selection is not pricing the event.",
+      "sources": [
+        { "label": "No qualifying source (absence)", "tier": "none" }
+      ],
+      "flags": []
+    },
+    {
+      "n": 5,
+      "title": "Dedicated capital allocation / investable product",
+      "status": "achieved",
+      "oneLiner": "An exchange-listed product allocates capital on a UAP thesis. e.g. UFOD ETF, Cboe, Feb 2026.",
+      "firstPrinciples": "The sector commits real investor capital via a regulated product, with fiduciary and regulatory obligations.",
+      "statusRationale": "A regulated, exchange-listed product actively allocates investor capital around a UAP-disclosure thesis. Discrete threshold, crossed.",
+      "sources": [
+        { "label": "Tuttle Capital UFO Disclosure ETF (UFOD) — Cboe BZX listing, trading from 5 Feb 2026", "url": "https://www.cboe.com/us/equities/listings/listed_products/symbols/UFOD/", "tier": "primary" },
+        { "label": "UFOD official fund data (inception, ~$2.82M net assets, 61 holdings, 22 Jul 2026)", "url": "https://www.thetruthisoutthereufod.com/etfs/ufod/", "tier": "primary" },
+        { "label": "To The Stars Academy Regulation A offering (~$1.09M by Apr 2018), SEC-filed — earlier supporting capital-formation event", "url": "https://www.sec.gov/Archives/edgar/data/1710274/000114420418023727/tv492460_partii.htm", "tier": "primary" }
+      ],
+      "flags": ["non-ontological"],
+      "limitation": "UFOD's own materials make aggressive nonhuman/reverse-engineering claims. Crediting the financial act (capital was allocated around the thesis) does NOT endorse the thesis.",
+      "skepticChallenge": {
+        "challenge": "Tiny speculative novelty ETF, more marketing than finance.",
+        "holds": "Limits scale/durability, not the binary threshold — it's registered, listed, actively managed, funded. Scale belongs at rung 8."
+      }
+    },
+    {
+      "n": 6,
+      "title": "Contractual risk transfer & hedging",
+      "status": "notYet",
+      "oneLiner": "No credible institutional UAP insurance, reinsurance, or derivative product.",
+      "firstPrinciples": "Investment products give exposure; risk-transfer contracts require a counterparty to define triggers, exclusions, premiums, and assume a defined UAP loss.",
+      "statusRationale": "No credible institutional UAP insurance/reinsurance/derivative, no UAP cat model, no parametric disclosure trigger. Novelty 'alien-abduction insurance' does not qualify. Generic all-risk cover that might respond regardless of cause is not UAP separately identified/priced.",
+      "sources": [
+        { "label": "No qualifying source (absence)", "tier": "none" }
+      ],
+      "flags": []
+    },
+    {
+      "n": 7,
+      "title": "Standards / audit / actuarial / ratings integration",
+      "status": "notYet",
+      "oneLiner": "No standard-setter, actuarial body, or rating agency has incorporated UAP exposure.",
+      "firstPrinciples": "Bilateral products stay isolated; standards make multiple institutions use common definitions, materiality rules, and methodologies.",
+      "statusRationale": "No UAP-specific record from IFRS/IASB/ISSB, FASB, SASB, SEC disclosure guidance, PCAOB/IAASB, the actuarial bodies, or Moody's/S&P/Fitch. Generic materiality/operational-risk rules could apply, but that is not engagement with UAP as a recognized category.",
+      "sources": [
+        { "label": "No qualifying source (absence)", "tier": "none" }
+      ],
+      "flags": []
+    },
+    {
+      "n": 8,
+      "title": "Routine market-wide incorporation",
+      "status": "notYet",
+      "oneLiner": "UAP absent from mainstream research, credit, insurance, corporate disclosure, standards.",
+      "firstPrinciples": "Normalization endpoint — UAP routinely analysed, disclosed, priced and managed by multiple mainstream institutions, with observable market data. The 'widespread' state that rungs 1/3/5 (first-mover signals) point toward.",
+      "statusRationale": "The record is one space ETF with a risk factor, one small disclosure ETF, and an old operating-company offering. No broad pattern across public-company risk factors, sell-side research, asset-allocation frameworks, credit ratings, insurance underwriting, audit, or regulatory guidance. No observable UAP risk premium.",
+      "sources": [
+        { "label": "No qualifying source (absence)", "tier": "none" }
+      ],
+      "flags": []
+    }
+  ],
+  "excludedClaims": [
+    { "claim": "Alien-abduction / novelty 'insurance'", "reason": "Implausible proof requirements, no real risk-management role — not institutional risk transfer." },
+    { "claim": "Meme coins / prediction-market bets on disclosure", "reason": "Not institutional financial engagement; speculative novelty, outside the sector's risk/pricing functions." },
+    { "claim": "A company merely mentioning UAP in passing", "reason": "A mention is not recognition, governance, pricing, or a product — no rung crossed." }
+  ],
+  "crossTrackNotes": "Government appropriations and the congressional power of the purse are Legislative/Government, never here. Defense-contractor budgets are Military/Government. Academic/scientific funding is Scientific. This track is strictly the private financial/business sector's own acts."
+}
