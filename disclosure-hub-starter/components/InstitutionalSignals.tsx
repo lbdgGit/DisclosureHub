@@ -172,8 +172,8 @@ export function InstitutionalSignals({ hideDVIBadge = false }: { hideDVIBadge?: 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         {signals.map((signal) => {
           const catCfg = CATEGORY_CONFIG[signal.category];
-          const strCfg = STRENGTH_CONFIG[signal.strength];
-
+          const strCfg = WEIGHT_CONFIG[getWeightTier(signal.w)];
+      
           return (
             <div
               key={signal.id}
