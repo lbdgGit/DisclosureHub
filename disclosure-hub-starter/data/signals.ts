@@ -831,12 +831,23 @@ export const CATEGORY_CONFIG: Record<SignalCategory, { color: string; bg: string
   media:         { color: '#22D3EE', bg: 'rgba(34,211,238,0.1)',   border: 'rgba(34,211,238,0.3)'   },
 };
 
-export const STRENGTH_CONFIG: Record<SignalStrength, { label: string; color: string; dot: string }> = {
-  critical: { label: 'CRITICAL', color: '#EF4444', dot: '#EF4444' },
-  high:     { label: 'HIGH',     color: '#F97316', dot: '#F97316' },
-  medium:   { label: 'MEDIUM',   color: '#EAB308', dot: '#EAB308' },
-  low:      { label: 'LOW',      color: '#6B7280', dot: '#6B7280' },
-};
+// Weight-derived tiers (single source of truth: the DVI weight w)
+export const WEIGHT_CONFIG = {
+  foundational: { label: 'FOUNDATIONAL', color: '#B04A3A', dot: '#B04A3A', min: 1.0 },  // w ≥ 1.0
+  significant:  { label: 'SIGNIFICANT',  color: '#C98A2E', dot: '#C98A2E', min: 0.8 },  // w ≥ 0.8
+  contextual:   { label: 'CONTEXTUAL',   color: '#6B7280', dot: '#6B7280', min: 0    },  // below
+} as const;
+
+export type WeightTier = keyof typeof WEIGHT_CONFIG;
+
+export function getWeightTier(w: number): WeightTier {
+  if (w >= 1.0) return 'foundational';
+  if (w >= 0.8) return 'significant';
+  return 'contextual';
+}
+
+// Back-compat alias so existing imports of STRENGTH_CONFIG keep working
+export const STRENGTH_CONFIG = WEIGHT_CONFIG;
 
 // Category sort order for chart — most institutional at bottom
 export const CAT_ORDER: Record<SignalCategory, number> = {
