@@ -33,7 +33,7 @@ type Track = {
   statusCount: { achieved: number; partial: number; notYet: number };
   summary: string; sourcingQuality: string; lastReviewed: string;
   rungs: Rung[];
-  excludedClaims?: { claim: string; reason: string }[];
+  excludedClaims?: { claim: string; reason: string; url?: string; tier?: Tier }[];
   crossTrackNotes?: string;
 };
 type IconKind = "chevrons" | "pediment" | "gavel" | "atom" | "candlesticks" | "broadcast" | "globe";
@@ -158,11 +158,19 @@ function Fiche({ track }: { track: Track }) {
 
       {track.excludedClaims && track.excludedClaims.length > 0 && (
         <Collapsible label="Deliberately excluded">
-          <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {track.excludedClaims.map((x, i) => (
               <div key={i} style={{ fontSize: 13.5, lineHeight: 1.5 }}>
-                <span style={{ color: C.navy, fontWeight: 600 }}>{x.claim}</span>
-                <span style={{ color: C.mute }}> — {x.reason}</span>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+                  <span style={{ color: C.navy, fontWeight: 600 }}>{x.claim}</span>
+                  {x.tier && <TierBadge tier={x.tier} />}
+                </div>
+                <span style={{ color: C.mute }}>{x.reason}</span>
+                {x.url && (
+                  <div style={{ marginTop: 3 }}>
+                    <a href={x.url} target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontSize: 13, textDecoration: "underline", textDecorationColor: C.gold, textUnderlineOffset: 3 }}>View the record →</a>
+                  </div>
+                )}
               </div>
             ))}
           </div>
