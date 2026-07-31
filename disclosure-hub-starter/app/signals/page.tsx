@@ -3,9 +3,8 @@
 import { useState, useMemo } from 'react';
 import { ExternalLink, AlertTriangle } from 'lucide-react';
 import {
-  SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, STRENGTH_CONFIG,
+  SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, WEIGHT_CONFIG, getWeightTier,
   DVI_CONFIG, getDVILevel,
-  type SignalStrength
 } from '@/data/signals';
 import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 import { DVIBadge } from '@/components/DVIBadge';
@@ -35,15 +34,15 @@ export default function SignalsPage() {
   const filtered = useMemo(() =>
     SIGNALS
       .filter(s => activeCat === 'all' || s.category === activeCat)
-      .filter(s => activeStr === 'all' || s.strength === activeStr)
+      .filter(s => activeStr === 'all' || getWeightTier(s.w) === activeStr)
       .sort((a, b) => b.date.localeCompare(a.date)),
     [activeCat, activeStr]
   );
 
   const counts = useMemo(() => ({
-    critical: SIGNALS.filter(s => s.strength === 'critical').length,
-    high:     SIGNALS.filter(s => s.strength === 'high').length,
-    total:    SIGNALS.length,
+    foundational: SIGNALS.filter(s => s.w >= 1.0).length,
+    significant:  SIGNALS.filter(s => s.w >= 0.8 && s.w < 1.0).length,
+    total:        SIGNALS.length,
   }), []);
 
   const navy  = '#1B2A4A';
@@ -81,9 +80,9 @@ export default function SignalsPage() {
       {/* ── COUNTS ── */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '14px' }}>
         {[
-          { label: 'Critical signals', value: counts.critical, color: '#EF4444', sub: 'Highest institutional weight' },
-          { label: 'High signals',     value: counts.high,     color: '#F97316', sub: 'Secondary institutional acts' },
-          { label: 'Total verified',   value: counts.total,    color: muted,     sub: 'Events in dataset 1946–2026' },
+          { label: 'Foundational', value: counts.foundational, color: '#B04A3A', sub: 'Weight 1.0 — highest DVI weight' },
+          { label: 'Significant',  value: counts.significant,  color: '#C98A2E', sub: 'Weight 0.8 — secondary acts' },
+          { label: 'Total verified', value: counts.total,      color: muted,     sub: 'Events in dataset 1946–2026' },
         ].map(({ label, value, color, sub }) => (
           <div key={label} style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '14px 16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
             <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '34px', fontWeight: 700, color: navy, lineHeight: 1, flexShrink: 0 }}>{value}</div>
@@ -109,14 +108,14 @@ export default function SignalsPage() {
           All {SIGNALS.length} verified events with dates, institutions, categories, weights, and primary sources, plus the full scoring method. Audit it, challenge it, recompute the index yourself.
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          <a
+          
             href="/downloads/LBDG-DVI-Dataset.csv"
             download
             style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: navy, color: '#C9A84C', border: '1px solid #C9A84C', borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
           >
             ↓ Download data (CSV)
           </a>
-          <a
+          
             href="/downloads/LBDG-DVI-Methodology.pdf"
             download
             style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: navy, border: `1px solid ${navy}`, borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
@@ -152,12 +151,12 @@ export default function SignalsPage() {
           ))}
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>STRENGTH</span>
-          {(['all', 'critical', 'high', 'medium', 'low'] as const).map(s => {
-            const cfg = s === 'all' ? { color: navy, label: 'ALL' } : { color: STRENGTH_CONFIG[s as SignalStrength]?.color || navy, label: s.toUpperCase() };
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: muted, letterSpacing: '0.12em' }}>WEIGHT</span>
+          {(['all', 'foundational', 'significant', 'contextual'] as const).map(t => {
+            const cfg = t === 'all' ? { color: navy, label: 'ALL' } : { color: WEIGHT_CONFIG[t].color, label: WEIGHT_CONFIG[t].label };
             return (
-              <button key={s} onClick={() => setActiveStr(s)}
-                style={{ padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.06em', border: `1px solid ${activeStr === s ? cfg.color : border}`, background: activeStr === s ? `${cfg.color}18` : 'white', color: activeStr === s ? cfg.color : muted, transition: 'all 0.15s' }}
+              <button key={t} onClick={() => setActiveStr(t)}
+                style={{ padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.06em', border: `1px solid ${activeStr === t ? cfg.color : border}`, background: activeStr === t ? `${cfg.color}18` : 'white', color: activeStr === t ? cfg.color : muted, transition: 'all 0.15s' }}
               >{cfg.label}</button>
             );
           })}
@@ -172,7 +171,7 @@ export default function SignalsPage() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {filtered.map(signal => {
           const catCfg = CATEGORY_CONFIG[signal.category];
-          const strCfg = STRENGTH_CONFIG[signal.strength];
+          const strCfg = WEIGHT_CONFIG[getWeightTier(signal.w)];
           return (
             <div key={signal.id} style={{ background: 'white', borderRadius: '0 6px 6px 0', border: `1px solid ${border}`, borderLeft: `3px solid ${strCfg.dot}`, padding: '16px 20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
@@ -218,7 +217,7 @@ export default function SignalsPage() {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
           <AlertTriangle size={13} style={{ color: muted, marginTop: '2px', flexShrink: 0 }} />
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, lineHeight: 1.6 }}>
-            All signals derived exclusively from verifiable institutional sources. DVI is an LBDG editorial assessment — not a prediction of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. Dataset: {SIGNALS.length} verified events 1946–2026. This page does not constitute financial, legal, or investment advice.
+            All signals derived exclusively from verifiable institutional sources. Each signal is weighted (Foundational 1.0 · Significant 0.8 · Contextual ≤0.7) and the DVI is their weighted composite — an LBDG editorial assessment, not a prediction of disclosure timing. Scale: 0–3 Baseline · 3–5 Monitor · 5–7 Readiness · 7–9 Activation · 9–10 Critical. Dataset: {SIGNALS.length} verified events 1946–2026. This page does not constitute financial, legal, or investment advice.
           </p>
         </div>
       </div>
