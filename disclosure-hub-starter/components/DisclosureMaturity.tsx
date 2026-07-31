@@ -308,14 +308,14 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
           </div>
         </div>
 
-        {/* master-detail — normal page flow; rail sticks as you scroll, right pane flows */}
+        {/* master-detail — plain two-column flow, scrolls together (stable under an animated navbar) */}
         <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start" }} className="lbdg-md-grid">
-          {/* left rail — sticks in view while you read */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 6, position: "sticky", top: 90, alignSelf: "start" }} className="lbdg-rail">
+          {/* left rail */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }} className="lbdg-rail">
             {ordered.map((t) => <RailTile key={t.id} track={t} active={t.id === activeId} onClick={() => setActiveId(t.id)} />)}
           </div>
 
-          {/* right pane — flows with the page */}
+          {/* right pane */}
           <div className="lbdg-pane">
             {active && <Fiche key={active.id} track={active} />}
           </div>
@@ -326,7 +326,7 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
       <style>{`
         @media (max-width: 860px) {
           .lbdg-md-grid { grid-template-columns: 1fr !important; }
-          .lbdg-rail { position: static !important; flex-direction: row !important; flex-wrap: wrap !important; }
+          .lbdg-rail { flex-direction: row !important; flex-wrap: wrap !important; }
           .lbdg-rail > button { flex: 1 1 140px; }
         }
       `}</style>
