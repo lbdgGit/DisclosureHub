@@ -9,6 +9,7 @@ import {
 } from '@/data/signals';
 import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 import { DVIBadge } from '@/components/DVIBadge';
+import { ExternalLink, AlertTriangle } from 'lucide-react';
 
 const DVI = DVI_CONFIG.value;
 const currentLevel = getDVILevel(DVI);
@@ -69,10 +70,6 @@ export default function SignalsPage() {
           How fast the disclosure process is moving. A single weighted index — the DVI — built from {SIGNALS.length} verified institutional signals across bureaucratic, legislative, and financial activity. Sources: DoD, NASA, CNES, Deloitte, Bank of England, Cboe, U.S. Congress, Japan Diet. No unverified speculation.
         </p>
         {/* cross-link to Maturity */}
-        <a href="/maturity" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', color: navy, textDecoration: 'none', border: `1px solid ${border}`, borderRadius: '6px', padding: '8px 14px' }}>
-          Looking for where each sector stands? See <span style={{ color: gold, fontWeight: 600 }}>Disclosure Maturity</span>
-          <ArrowRight size={13} />
-        </a>
       </div>
 
       {/* ── DVI BADGE — same component as homepage ── */}
