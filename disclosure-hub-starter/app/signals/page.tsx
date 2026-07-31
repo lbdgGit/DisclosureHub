@@ -109,14 +109,14 @@ export default function SignalsPage() {
           All {SIGNALS.length} verified events with dates, institutions, categories, weights, and primary sources, plus the full scoring method. Audit it, challenge it, recompute the index yourself.
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          
+          <a
             href="/downloads/LBDG-DVI-Dataset.csv"
             download
             style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: navy, color: '#C9A84C', border: '1px solid #C9A84C', borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
           >
             ↓ Download data (CSV)
           </a>
-          
+          <a
             href="/downloads/LBDG-DVI-Methodology.pdf"
             download
             style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: navy, border: `1px solid ${navy}`, borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
