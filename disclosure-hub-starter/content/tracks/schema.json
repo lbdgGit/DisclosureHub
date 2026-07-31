@@ -73,13 +73,15 @@
     },
     "excludedClaims": {
       "type": "array",
-      "description": "Collapsed annex: things deliberately excluded and why. Proves rigor without giving skeptics the frame.",
+      "description": "Collapsed annex: things deliberately excluded and why. Proves rigor without giving skeptics the frame. A source may be linked when the item is an officially-recorded document/testimony (see 'congressional record rule' in README): the link evidences the filing, not the truth of the content.",
       "items": {
         "type": "object",
         "required": ["claim", "reason"],
         "properties": {
           "claim":  { "type": "string" },
-          "reason": { "type": "string" }
+          "reason": { "type": "string" },
+          "url":    { "type": "string", "description": "Optional. Link to the officially-recorded source (e.g. congress.gov hearing record). Presence of a link attests the document was filed, never that its contents are corroborated." },
+          "tier":   { "type": "string", "enum": ["primary", "official-proceeding", "secondary", "none"], "description": "Optional. Use 'official-proceeding' for documents entered into a congressional/parliamentary record." }
         }
       }
     },
