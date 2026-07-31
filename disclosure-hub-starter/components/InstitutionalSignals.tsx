@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { DVIBadge } from '@/components/DVIBadge';
-import { SIGNALS, CATEGORY_CONFIG, STRENGTH_CONFIG } from '@/data/signals';
 import { SIGNALS, CATEGORY_CONFIG, WEIGHT_CONFIG, getWeightTier} from '@/data/signals';
 const DVI_VALUE = 6.5;
 const DVI_LEVEL = 'READINESS';
