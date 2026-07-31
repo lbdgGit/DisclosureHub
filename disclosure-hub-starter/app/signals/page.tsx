@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { ExternalLink, AlertTriangle } from 'lucide-react';
+import { ExternalLink, AlertTriangle, ArrowRight } from 'lucide-react';
 import {
   SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, STRENGTH_CONFIG,
   DVI_CONFIG, getDVILevel,
@@ -9,7 +9,6 @@ import {
 } from '@/data/signals';
 import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 import { DVIBadge } from '@/components/DVIBadge';
-import { DisclosureMaturityTimeline } from '@/components/DisclosureMaturityTimeline';
 
 const DVI = DVI_CONFIG.value;
 const currentLevel = getDVILevel(DVI);
@@ -20,7 +19,6 @@ const ACTIONS = [
   { role: 'CFOs / Risk',        action: 'Run sector exposure audit and pre-define triggers',     toolkit: 'Finance Toolkit', href: '/toolkits' },
   { role: 'Legal / Compliance', action: 'Review Reg FD / AMF obligations with outside counsel', toolkit: 'Legal Toolkit',   href: '/toolkits' },
 ];
-
 
 function formatDate(d: string): string {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -56,21 +54,25 @@ export default function SignalsPage() {
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '112px 24px 80px', fontFamily: 'DM Sans, sans-serif' }}>
-
       {/* ── HEADER ── */}
       <div style={{ marginBottom: '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444', boxShadow: '0 0 0 3px rgba(239,68,68,0.2)' }} />
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#38BDF8', boxShadow: '0 0 0 3px rgba(56,189,248,0.2)' }} />
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, letterSpacing: '0.15em' }}>
-            LBDG · INSTITUTIONAL DISCLOSURE TRACKER · LAST UPDATED JUNE 2026
+            LBDG · DISCLOSURE VELOCITY · LAST UPDATED JUNE 2026
           </span>
         </div>
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(32px,5vw,52px)', fontWeight: 700, color: navy, marginBottom: '8px', lineHeight: 1.1 }}>
-          Disclosure Signal Board
+          Disclosure Velocity
         </h1>
-        <p style={{ fontSize: '15px', color: body, maxWidth: '600px', lineHeight: 1.7 }}>
-          Verified institutional signals tracking the bureaucratic, legislative, and financial velocity of the disclosure process. Sources: DoD, NASA, CNES, Deloitte AG, Bank of England, CBOE, U.S. Congress, Japan Diet. No unverified speculation.
+        <p style={{ fontSize: '15px', color: body, maxWidth: '640px', lineHeight: 1.7 }}>
+          How fast the disclosure process is moving. A single weighted index — the DVI — built from {SIGNALS.length} verified institutional signals across bureaucratic, legislative, and financial activity. Sources: DoD, NASA, CNES, Deloitte, Bank of England, Cboe, U.S. Congress, Japan Diet. No unverified speculation.
         </p>
+        {/* cross-link to Maturity */}
+        <a href="/maturity" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', color: navy, textDecoration: 'none', border: `1px solid ${border}`, borderRadius: '6px', padding: '8px 14px' }}>
+          Looking for where each sector stands? See <span style={{ color: gold, fontWeight: 600 }}>Disclosure Maturity</span>
+          <ArrowRight size={13} />
+        </a>
       </div>
 
       {/* ── DVI BADGE — same component as homepage ── */}
@@ -109,14 +111,14 @@ export default function SignalsPage() {
           All {SIGNALS.length} verified events with dates, institutions, categories, weights, and primary sources, plus the full scoring method. Audit it, challenge it, recompute the index yourself.
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          <a
+          
             href="/downloads/LBDG-DVI-Dataset.csv"
             download
             style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: navy, color: '#C9A84C', border: '1px solid #C9A84C', borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
           >
             ↓ Download data (CSV)
           </a>
-          <a
+          
             href="/downloads/LBDG-DVI-Methodology.pdf"
             download
             style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: navy, border: `1px solid ${navy}`, borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
@@ -124,11 +126,6 @@ export default function SignalsPage() {
             ↓ Methodology (PDF)
           </a>
         </div>
-      </div>
-
-      {/* ── DISCLOSURE MATURITY TRACKER ── */}
-      <div style={{ background: '#FAF8F4', border: `1px solid ${border}`, borderRadius: '8px', padding: '24px', marginBottom: '14px' }}>
-        <DisclosureMaturityTimeline />
       </div>
 
       {/* ── RECOMMENDED ACTIONS ── */}
