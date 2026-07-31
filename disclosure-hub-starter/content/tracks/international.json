@@ -142,7 +142,9 @@
     },
     {
       "claim": "George Knapp's Soviet files — dramatic claims (Unit 73790, reverse-engineering, downed MiGs)",
-      "reason": "The congressional testimony is a genuine primary record and program existence (Setka) is established, but the extraordinary operational/technological claims are journalist-mediated documents with public authentication still incomplete. Excluded as bilateral cooperation (document transfer, not state-to-state cooperation)."
+      "reason": "The congressional testimony is a genuine primary record and program existence (Setka) is established, but the extraordinary operational/technological claims are journalist-mediated documents with public authentication still incomplete. Excluded as bilateral cooperation (document transfer, not state-to-state cooperation). The written testimony (House Oversight, 9 Sept 2025) is entered into the record — the filing is verifiable; the extraordinary claims within it are not corroborated.",
+      "url": "https://oversight.house.gov/wp-content/uploads/2025/09/George-Knapp-Written-Testimony.pdf",
+      "tier": "official-proceeding"
     }
   ],
   "crossTrackNotes": "Non-linearity is a finding, not a flaw: rung 3 (UN) is Not yet while rungs 4-5 are Partial, because cooperation flows through intelligence alliances while universal bodies stay a dead letter. A foreign state's internal act proves an internationalization rung; it does not re-measure that country's domestic maturity."
