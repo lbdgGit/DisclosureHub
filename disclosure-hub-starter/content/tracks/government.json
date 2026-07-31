@@ -6,89 +6,240 @@
   "scope": "U.S. executive branch. Executive/agency acts only: directives, agency offices, agency reporting, declassification/records-release, executive-ordered NDA waivers.",
   "excludes": "A statute's enactment (that is Legislative); the executive merely executing it is credited here. Foreign acts (International). Scientific advisory bodies acting as external science (Scientific).",
   "method": "First-principles ladder, reality checked afterward. Non-ontological: rungs measure institutional acts (e.g. an admission of custody), never the existence of the underlying thing.",
-  "statusCount": { "achieved": 1, "partial": 8, "notYet": 3 },
+  "statusCount": {
+    "achieved": 1,
+    "partial": 8,
+    "notYet": 3
+  },
   "read": "The executive has started on almost every front and matured almost none: one settled act, a long partial middle, and the heaviest disclosures unmet. Breadth without depth.",
   "summary": "One rung settled (hazard recognition). Everything else is a capability in progress — reporting, intake, the central office, coordination, records release, NDA channels and even the presidential files-release directive all exist but are demonstrably incomplete — and the heaviest acts (raw-data release, independent review board, formal presidential disclosure, custody admission) are unmet.",
   "sourcingQuality": "Strong — first-party sources (dni.gov, defense.gov, war.gov, aaro.mil, dodig.mil, archives.gov). Two points rest on named-secondary reporting and are flagged.",
   "lastReviewed": "2026-07-29",
   "rungs": [
-    { "n": 1, "title": "Recognized as a hazard", "status": "achieved",
+    {
+      "n": 1,
+      "title": "Recognized as a hazard",
+      "status": "achieved",
       "oneLiner": "Executive admits UAP matter for safety/security. e.g. ODNI Preliminary Assessment, June 2021.",
       "firstPrinciples": "First irreversible conceptual shift — UAP enter the operational threat model. A discrete, settled act; you can't be 'more recognized.'",
       "statusRationale": "The executive has affirmatively acknowledged UAP as a flight-safety and possible national-security matter. Settled and irreversible.",
-      "sources": [ { "label": "ODNI Preliminary Assessment on UAP, 25 June 2021", "url": "https://www.dni.gov/files/ODNI/documents/assessments/Prelimary-Assessment-UAP-20210625.pdf", "tier": "primary" } ] },
-    { "n": 2, "title": "Mandated reporting (executive)", "status": "partial",
+      "sources": [
+        {
+          "label": "ODNI Preliminary Assessment on UAP, 25 June 2021",
+          "url": "https://www.dni.gov/files/ODNI/documents/assessments/Prelimary-Assessment-UAP-20210625.pdf",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Mandated reporting (executive)",
+      "status": "partial",
       "oneLiner": "Personnel ordered to report. Partial: defense directives only, not government-wide.",
       "firstPrinciples": "Changes personnel incentives — non-reporting becomes an auditable failure.",
       "statusRationale": "Mandatory defense reporting exists, but no government-wide duty binds every department through one common process.",
-      "sources": [ { "label": "Deputy Secretary of Defense memo, UAP Assessments, 25 June 2021", "url": "https://media.defense.gov/2021/Jun/25/2002749916/-1/-1/1/DEPUTY-SECRETARY-OF-DEFENSE-MEMORANDUM-ON-UNIDENTIFIED-AERIAL-PHENOMENA-ASSESSMENTS.PDF", "tier": "primary" } ] },
-    { "n": 3, "title": "Standardized intake", "status": "partial",
+      "sources": [
+        {
+          "label": "Deputy Secretary of Defense memo, UAP Assessments, 25 June 2021",
+          "url": "https://media.defense.gov/2021/Jun/25/2002749916/-1/-1/1/DEPUTY-SECRETARY-OF-DEFENSE-MEMORANDUM-ON-UNIDENTIFIED-AERIAL-PHENOMENA-ASSESSMENTS.PDF",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Standardized intake",
+      "status": "partial",
       "oneLiner": "A reporting mechanism exists. Partial: fragmented, no public intake, quality contested (DoD IG).",
       "firstPrinciples": "Converts anecdote into durable, auditable record.",
       "statusRationale": "Standardized mechanisms exist but are fragmented by reporter type, with no public intake and no government-wide traceable architecture.",
       "limitation": "The 'catch-and-kill' characterization is an analytical judgment, not a sourced fact. The sourced criticism is narrower: the DoD Inspector General found no comprehensive/coordinated DoD UAP approach.",
       "sources": [
-        { "label": "AARO Submit-A-Report (multiple intake routes; no general public reporting)", "url": "https://www.aaro.mil/Submit-A-Report/", "tier": "primary" },
-        { "label": "DoD Inspector General — no comprehensive/coordinated DoD UAP approach", "url": "https://www.dodig.mil/In-the-Spotlight/Article/3656428/", "tier": "primary" }
-      ] },
-    { "n": 4, "title": "Centralized executive office", "status": "partial",
+        {
+          "label": "AARO Submit-A-Report (multiple intake routes; no general public reporting)",
+          "url": "https://www.aaro.mil/Submit-A-Report/",
+          "tier": "primary"
+        },
+        {
+          "label": "DoD Inspector General — no comprehensive/coordinated DoD UAP approach",
+          "url": "https://www.dodig.mil/In-the-Spotlight/Article/3656428/",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Centralized executive office",
+      "status": "partial",
       "oneLiner": "AARO exists and is centralized. Partial: DoD IG found no coordinated approach.",
       "firstPrinciples": "A single named body owns the problem; ends agency deflection.",
       "statusRationale": "The office exists and operates, but the DoD Inspector General found no coordinated, overarching approach — the centralized capability is not mature. Under the strict bar (existence alone isn't maturity), Partial.",
       "sources": [
-        { "label": "AARO establishment memo (DepSecDef Hicks), 15 July 2022", "url": "https://media.defense.gov/2022/Jul/20/2003039074/-1/-1/1/ESTABLISHMENT-OF-THE-ALL-DOMAIN-ANOMALY-RESOLUTION-OFFICE.PDF", "tier": "primary" },
-        { "label": "DoD Inspector General evaluation of the DoD UAP approach", "url": "https://www.dodig.mil/In-the-Spotlight/Article/3656428/", "tier": "primary" }
-      ] },
-    { "n": 5, "title": "Cross-agency coordination", "status": "partial",
+        {
+          "label": "AARO establishment memo (DepSecDef Hicks), 15 July 2022",
+          "url": "https://media.defense.gov/2022/Jul/20/2003039074/-1/-1/1/ESTABLISHMENT-OF-THE-ALL-DOMAIN-ANOMALY-RESOLUTION-OFFICE.PDF",
+          "tier": "primary"
+        },
+        {
+          "label": "DoD Inspector General evaluation of the DoD UAP approach",
+          "url": "https://www.dodig.mil/In-the-Spotlight/Article/3656428/",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Cross-agency coordination",
+      "status": "partial",
       "oneLiner": "AARO partnerships + 2026 Governance Board + PURSUE. Partial: not seamless.",
       "firstPrinciples": "Overcoming interagency stovepipes; whole-of-government management.",
       "statusRationale": "Real interagency activity and recently strengthened, but no complete durable governance architecture is verified, and DoD IG documented fragmentation.",
       "sources": [
-        { "label": "ODNI 2022 Annual Report (interagency inputs)", "url": "https://www.dni.gov/files/ODNI/documents/assessments/Unclassified-2022-Annual-Report-UAP.pdf", "tier": "primary" },
-        { "label": "PURSUE interagency effort (White House, ODNI, DoE, AARO, NASA, FBI)", "url": "https://www.war.gov/News/Releases/Release/Article/4480582/", "tier": "primary" },
-        { "label": "June 2026 UAP Governance Board (AP News, attributing ODNI)", "url": "https://apnews.com/article/trump-ufo-council-avi-loeb-science-uaps-5798dd793b77aeb2d9baa99586ad8a85", "tier": "secondary", "note": "primary charter not public" }
-      ] },
-    { "n": 6, "title": "Public reporting", "status": "partial",
+        {
+          "label": "ODNI 2022 Annual Report (interagency inputs)",
+          "url": "https://www.dni.gov/files/ODNI/documents/assessments/Unclassified-2022-Annual-Report-UAP.pdf",
+          "tier": "primary"
+        },
+        {
+          "label": "PURSUE interagency effort (White House, ODNI, DoE, AARO, NASA, FBI)",
+          "url": "https://www.war.gov/News/Releases/Release/Article/4480582/",
+          "tier": "primary"
+        },
+        {
+          "label": "June 2026 UAP Governance Board (AP News, attributing ODNI)",
+          "url": "https://apnews.com/article/trump-ufo-council-avi-loeb-science-uaps-5798dd793b77aeb2d9baa99586ad8a85",
+          "tier": "secondary",
+          "note": "primary charter not public"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Public reporting",
+      "status": "partial",
       "oneLiner": "Recurring unclassified reports. Partial: summaries only, data and annexes withheld.",
       "firstPrinciples": "Removes disclosure from internal discretion; claims become publicly checkable on a schedule.",
       "statusRationale": "Recurring unclassified reports are published (the mechanism works), but they are summaries — underlying data, classified annexes, sources/methods and most evidence are withheld. Significant room remains.",
-      "sources": [ { "label": "AARO Congressional/press products index (ODNI 2021–22, AARO FY2023–FY2025)", "url": "https://www.aaro.mil/Congressional-Press-Products/", "tier": "primary" } ] },
-    { "n": 7, "title": "Structured declassification & records release", "status": "partial",
+      "sources": [
+        {
+          "label": "AARO Congressional/press products index (ODNI 2021–22, AARO FY2023–FY2025)",
+          "url": "https://www.aaro.mil/Congressional-Press-Products/",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Structured declassification & records release",
+      "status": "partial",
       "oneLiner": "PURSUE + NARA RG 615. Partial: selective source files, no full raw packages.",
       "firstPrinciples": "Identifying records across agencies, reviewing, centralizing and publishing them on a rolling basis. More than aggregate reporting, less than raw-feed release.",
       "statusRationale": "A real, active program releasing selected source files — but curated, selective, brand-new (2026), no full raw packages.",
       "sources": [
-        { "label": "PURSUE (presidentially directed; 4 tranches by 10 July 2026)", "url": "https://www.war.gov/ufo/", "tier": "primary" },
-        { "label": "NARA UAP Records Collection, Record Group 615 (bulk downloads + metadata)", "url": "https://www.archives.gov/research/topics/uaps/rg-615", "tier": "primary" }
-      ] },
-    { "n": 8, "title": "Release of underlying data / raw feeds", "status": "notYet",
+        {
+          "label": "PURSUE (presidentially directed; 4 tranches by 10 July 2026)",
+          "url": "https://www.war.gov/ufo/",
+          "tier": "primary"
+        },
+        {
+          "label": "NARA UAP Records Collection, Record Group 615 (bulk downloads + metadata)",
+          "url": "https://www.archives.gov/research/topics/uaps/rg-615",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Release of underlying data / raw feeds",
+      "status": "notYet",
       "oneLiner": "No complete raw sensor feeds. Loeb council reportedly denied 50 items.",
       "firstPrinciples": "The report is the summary and PURSUE releases source documents; this rung is the raw sensor layer — complete feeds, full-resolution files, metadata, calibration.",
       "statusRationale": "None of that is systematically released. Reportedly, the government's own science council requested ~50 items and had not received them, custodians citing national security.",
-      "flags": ["secondary-source"],
-      "sources": [ { "label": "Fox News, July 2026 — Loeb council denied 50 requested items", "url": "https://www.foxnews.com/politics/harvard-astronomer-tapped-lead-white-house-ufo-council-says-us-government-baffled-what-they-are-seeing", "tier": "secondary", "note": "named-secondary via Loeb, not a documented formal denial" } ] },
-    { "n": 9, "title": "Witnesses released from secrecy", "status": "partial",
+      "flags": [
+        "secondary-source"
+      ],
+      "sources": [
+        {
+          "label": "Fox News, July 2026 — Loeb council denied 50 requested items",
+          "url": "https://www.foxnews.com/politics/harvard-astronomer-tapped-lead-white-house-ufo-council-says-us-government-baffled-what-they-are-seeing",
+          "tier": "secondary",
+          "note": "named-secondary via Loeb, not a documented formal denial"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Witnesses released from secrecy",
+      "status": "partial",
       "oneLiner": "AARO channel overrides NDAs. Partial: no verified general waiver, no public route.",
       "firstPrinciples": "The state actively dismantles its own secrecy so past witnesses can speak. Distinct from reporting.",
       "statusRationale": "Partial holds because the AARO authorized channel is operational — not because of the reported July 2026 general waiver, which has no public text (unnamed officials only). No protected route to speak publicly/to the press.",
-      "flags": ["secondary-source"],
-      "sources": [ { "label": "AARO Submit-A-Report — authorized disclosures not subject to individual NDAs", "url": "https://www.aaro.mil/Submit-A-Report/", "tier": "primary" } ] },
-    { "n": 10, "title": "Operational independent review board", "status": "notYet",
+      "flags": [
+        "secondary-source"
+      ],
+      "sources": [
+        {
+          "label": "AARO Submit-A-Report — authorized disclosures not subject to individual NDAs",
+          "url": "https://www.aaro.mil/Submit-A-Report/",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Operational independent review board",
+      "status": "notYet",
       "oneLiner": "No executive board with independent access, override, or enforcement power.",
       "firstPrinciples": "An independent body (outside holding agencies) with access, override and enforcement power — the executive constitution/operation of such a board.",
       "statusRationale": "No operational executive board exists. The Governance Board is coordination, not adjudication; the Loeb council is external advisory with no override. The Burlison FY2027 vote is a legislative act (see Legislative), not an executive board.",
-      "sources": [ { "label": "No qualifying source (executive side)", "tier": "none" } ] },
-    { "n": 11, "title": "Executive / head-of-state formal disclosure", "status": "partial",
+      "sources": [
+        {
+          "label": "No qualifying source (executive side)",
+          "tier": "none"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title": "Executive / head-of-state formal disclosure",
+      "status": "partial",
       "oneLiner": "Feb 2026 release directive via PURSUE. Partial: a files-release order, not a formal address.",
       "firstPrinciples": "Highest-formality disclosure act (non-ontological — measures formality, not what is disclosed).",
       "statusRationale": "A presidential release directive (19 Feb 2026, via Truth Social, on the official DoW page) was executed by PURSUE — real, so no longer Not yet. But it is a files-release order, not a formal substantive presidential disclosure. Achieved would require the President formally disclosing to the nation.",
-      "sources": [ { "label": "Presidential UAP release directive, executed via PURSUE (official DoW page)", "url": "https://www.war.gov/ufo/", "tier": "primary" } ] },
-    { "n": 12, "title": "Acknowledged custody of materials & biologics", "status": "notYet",
+      "sources": [
+        {
+          "label": "Presidential UAP release directive, executed via PURSUE (official DoW page)",
+          "url": "https://www.war.gov/ufo/",
+          "tier": "primary"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "title": "Acknowledged custody of materials & biologics",
+      "status": "notYet",
       "oneLiner": "No official admission of held materials. Measures the admission, not the existence.",
       "firstPrinciples": "Measures the public admission of holding materials/biologics — not their existence. Stays 'not yet' permanently if no admission occurs, which is correct.",
       "statusRationale": "No qualifying public executive admission of custody. Only sworn allegations exist; AARO's own record reports no verifiable evidence of held exotic material.",
-      "flags": ["non-ontological"],
-      "sources": [ { "label": "AARO Historical Record Report Vol. I (no verifiable evidence of extraterrestrial technology access)", "url": "https://www.aaro.mil/Portals/136/PDFs/AARO_Historical_Record_Report_Vol_1_2024.pdf", "tier": "primary" } ] }
+      "flags": [
+        "non-ontological"
+      ],
+      "sources": [
+        {
+          "label": "AARO Historical Record Report Vol. I (no verifiable evidence of extraterrestrial technology access)",
+          "url": "https://www.aaro.mil/Portals/136/PDFs/AARO_Historical_Record_Report_Vol_1_2024.pdf",
+          "tier": "primary"
+        }
+      ]
+    }
   ],
-  "crossTrackNotes": "A statute's vote is Legislative; the executive executing it is Government. The Loeb-chaired Science Advisory Council is external/scientific (Scientific), not Government; only the interagency Governance Board is a Government-track act."
+  "crossTrackNotes": "A statute's vote is Legislative; the executive executing it is Government. The Loeb-chaired Science Advisory Council is external/scientific (Scientific), not Government; only the interagency Governance Board is a Government-track act.",
+  "excludedClaims": [
+    {
+      "claim": "Immaculate Constellation — an alleged unacknowledged special-access UAP program",
+      "reason": "Entered into the Congressional Record on 13 Nov 2024 (Rep. Mace), so the filing is a verifiable official act — but the content is uncorroborated: the DoD stated it has no record of such a program, and 19 months on no government source has confirmed it, nor does its name appear in any PURSUE release. Shown because it is officially recorded and widely known; the record attests the deposit, not the program.",
+      "url": "https://www.congress.gov/event/118th-congress/house-event/LC73681/text",
+      "tier": "official-proceeding"
+    }
+  ]
 }
