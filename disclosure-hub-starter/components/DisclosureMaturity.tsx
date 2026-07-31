@@ -232,7 +232,7 @@ function RungRowControlled({ trackId, r, isLast, defaultOpen }: { trackId: strin
   );
 }
 
-/* ---------- left-rail tile (compact) ---------- */
+/* ---------- left-rail tile (compact — all 7 fit in the viewport) ---------- */
 function RailTile({ track, active, onClick }: { track: Track; active: boolean; onClick: () => void }) {
   const [hover, setHover] = useState(false);
   return (
@@ -244,16 +244,16 @@ function RailTile({ track, active, onClick }: { track: Track; active: boolean; o
         background: active ? C.cream : C.white,
         border: `1px solid ${active ? C.gold : C.line}`,
         borderLeft: `3px solid ${active ? C.gold : "transparent"}`,
-        borderRadius: 8, padding: "12px 14px", display: "flex", flexDirection: "column", gap: 8,
+        borderRadius: 8, padding: "9px 12px", display: "flex", flexDirection: "column", gap: 6,
         boxShadow: hover && !active ? "0 3px 12px rgba(27,42,74,0.07)" : "none",
         transition: "all 0.15s ease",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <Icon kind={track.icon} size={22} />
-        <span style={{ fontFamily: mono, fontWeight: 700, fontSize: 14, color: C.navy, letterSpacing: "-0.01em" }}>{track.name}</span>
+      <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+        <Icon kind={track.icon} size={18} />
+        <span style={{ fontFamily: mono, fontWeight: 700, fontSize: 13, color: C.navy, letterSpacing: "-0.01em", flex: 1 }}>{track.name}</span>
+        <CountNumbers count={track.statusCount} size={11} />
       </div>
-      <CountNumbers count={track.statusCount} size={12} />
       <CountBar count={track.statusCount} />
     </button>
   );
@@ -302,33 +302,32 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
               <span style={{ color: C.mute, fontSize: 12.5 }}>— {STATUS[k].def}</span>
             </div>
           ))}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: "auto" }}>
+            <span style={{ ...eyebrow, color: C.mute }}>All seven</span>
+            <CountNumbers count={totals} size={12} />
+          </div>
         </div>
 
-        {/* master-detail — fills remaining viewport height; left rail fixed, right pane scrolls */}
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start", height: "calc(100vh - 250px)", minHeight: 360 }} className="lbdg-md-grid">
-          {/* left rail — fixed, never scrolls */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, height: "100%", overflow: "hidden" }} className="lbdg-rail">
+        {/* master-detail — normal page flow; rail sticks as you scroll, right pane flows */}
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start" }} className="lbdg-md-grid">
+          {/* left rail — sticks in view while you read */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, position: "sticky", top: 90, alignSelf: "start" }} className="lbdg-rail">
             {ordered.map((t) => <RailTile key={t.id} track={t} active={t.id === activeId} onClick={() => setActiveId(t.id)} />)}
-            <div style={{ marginTop: 6, padding: "10px 14px", border: `1px dashed ${C.line}`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span style={{ ...eyebrow, color: C.mute }}>All seven</span>
-              <CountNumbers count={totals} size={12} />
-            </div>
           </div>
 
-          {/* right pane — scrolls independently if the fiche is long */}
-          <div style={{ height: "100%", overflowY: "auto", paddingRight: 6 }} className="lbdg-pane">
+          {/* right pane — flows with the page */}
+          <div className="lbdg-pane">
             {active && <Fiche key={active.id} track={active} />}
           </div>
         </div>
       </div>
 
-      {/* stack the two columns on narrow screens, and let the page scroll normally */}
+      {/* stack the two columns on narrow screens */}
       <style>{`
         @media (max-width: 860px) {
-          .lbdg-md-grid { grid-template-columns: 1fr !important; height: auto !important; min-height: 0 !important; }
-          .lbdg-rail { height: auto !important; overflow: visible !important; flex-direction: row !important; flex-wrap: wrap !important; }
+          .lbdg-md-grid { grid-template-columns: 1fr !important; }
+          .lbdg-rail { position: static !important; flex-direction: row !important; flex-wrap: wrap !important; }
           .lbdg-rail > button { flex: 1 1 140px; }
-          .lbdg-pane { height: auto !important; overflow: visible !important; padding-right: 0 !important; }
         }
       `}</style>
     </div>
