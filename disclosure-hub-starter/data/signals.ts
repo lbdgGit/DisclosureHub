@@ -875,10 +875,10 @@ export const CAT_ORDER: Record<SignalCategory, number> = {
 
 // ─── Single source of truth for DVI ───────────────────────
 export const DVI_CONFIG = {
-  value:     6.8,
+  value:     6.9,
   level:     'READINESS' as const,
-  updatedAt: 'July 2026',
-  baseline:  '27× the historical baseline',
+  updatedAt: 'August 2026',
+  baseline:  '28× the historical baseline',
 } as const;
 
 export type DVILevel = 'BASELINE' | 'MONITOR' | 'READINESS' | 'ACTIVATION' | 'CRITICAL';
