@@ -806,6 +806,19 @@ export const SIGNALS: Signal[] = [
     sourceUrl: 'https://thehill.com/homenews/administration/5949753-harvard-professor-leads-ufo-study/',
     isNew: true,
   },
+  {
+    id: 'trump-nda-waiver-guidance-2026',
+    date: '2026-08', year: 2026, mo: 8, w: 1.0,
+    institution: 'White House / Rep. Burlison (House record)',
+    country: 'USA',
+    title: 'Trump UAP NDA-waiver directive — preliminary implementation guidance released',
+    description: 'The Trump administration releases preliminary implementation guidance for the President\'s directive waiving nondisclosure agreements for current and former government employees and contractors holding UAP information. Released on the official House record via Rep. Burlison, who is authorized to distribute the memorandum and route affected individuals. First public text and public route for the waiver.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'Rep. Burlison / House.gov — Aug 1 2026',
+    sourceUrl: 'https://burlison.house.gov/media/press-releases/rep-burlison-releases-administration-memorandum-president-trumps-uap-nda',
+    isNew: true,
+  },
 ];
 
 // ─── Derived helpers ───────────────────────────────────────
