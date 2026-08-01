@@ -171,17 +171,20 @@
       "n": 9,
       "title": "Witnesses released from secrecy",
       "status": "partial",
-      "oneLiner": "AARO channel overrides NDAs. Partial: no verified general waiver, no public route.",
+      "oneLiner": "AARO channel + a presidential NDA-waiver directive with published guidance. Partial: preliminary, no verified public testimony yet.",
       "firstPrinciples": "The state actively dismantles its own secrecy so past witnesses can speak. Distinct from reporting.",
-      "statusRationale": "Partial holds because the AARO authorized channel is operational — not because of the reported July 2026 general waiver, which has no public text (unnamed officials only). No protected route to speak publicly/to the press.",
-      "flags": [
-        "secondary-source"
-      ],
+      "statusRationale": "Partial, now strengthened. Two operational elements exist: the AARO authorized channel, and — as of 1 Aug 2026 — preliminary implementation guidance for President Trump's UAP NDA-waiver directive, released on the official House record and routed through a named congressional office. This supersedes the earlier unnamed-officials reporting: the waiver now has a public text and a public route. It stays Partial rather than Achieved because the guidance is explicitly preliminary and no verified public witness testimony has yet resulted — a symbolic waiver with no demonstrated effect is not yet a completed act.",
       "sources": [
         {
           "label": "AARO Submit-A-Report — authorized disclosures not subject to individual NDAs",
           "url": "https://www.aaro.mil/Submit-A-Report/",
           "tier": "primary"
+        },
+        {
+          "label": "Rep. Burlison — Administration Memorandum on Trump UAP NDA directive (preliminary implementation guidance), 1 Aug 2026",
+          "url": "https://burlison.house.gov/media/press-releases/rep-burlison-releases-administration-memorandum-president-trumps-uap-nda",
+          "tier": "official-proceeding",
+          "note": "guidance is preliminary; attests the directive and route, not yet an effected waiver"
         }
       ]
     },
