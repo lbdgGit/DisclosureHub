@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const STATS = [
   { value: '2,000+', label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
   { value: '34',     label: 'Senior officials on record — The Age of Disclosure (Amazon Prime)' },
-  { value: '63',     label: 'Verified institutional events in the DVI dataset (39 since 2017)' },
+  { value: '66',     label: 'Verified institutional events in the DVI dataset (40 since 2017)' },
   { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007–2012 (NYT, 2017)' },
 ];
 
