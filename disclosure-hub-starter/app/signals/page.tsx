@@ -58,10 +58,10 @@ export default function SignalsPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#38BDF8', boxShadow: '0 0 0 3px rgba(56,189,248,0.2)' }} />
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, letterSpacing: '0.15em' }}>
-            LBDG · DISCLOSURE VELOCITY · LAST UPDATED JUNE 2026
+            LBDG · DISCLOSURE VELOCITY · LAST UPDATED AUGUST 2026
           </span>
         </div>
-        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(32px,5vw,52px)', fontWeight: 700, color: navy, marginBottom: '8px', lineHeight: 1.1 }}>
+        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(34px,5vw,56px)', fontWeight: 700, color: navy, marginBottom: '8px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
           Disclosure Velocity
         </h1>
         <p style={{ fontSize: '15px', color: body, maxWidth: '640px', lineHeight: 1.7 }}>
@@ -108,20 +108,8 @@ export default function SignalsPage() {
           All {SIGNALS.length} verified events with dates, institutions, categories, weights, and primary sources, plus the full scoring method. Audit it, challenge it, recompute the index yourself.
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          <a
-            href="/downloads/LBDG-DVI-Dataset.csv"
-            download
-            style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: navy, color: '#C9A84C', border: '1px solid #C9A84C', borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
-          >
-            ↓ Download data (CSV)
-          </a>
-          <a
-            href="/downloads/LBDG-DVI-Methodology.pdf"
-            download
-            style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: navy, border: `1px solid ${navy}`, borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.06em', textDecoration: 'none', fontWeight: 500 }}
-          >
-            ↓ Methodology (PDF)
-          </a>
+          <a href="/downloads/LBDG-DVI-Dataset.csv" download style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: navy, color: gold, border: `1px solid ${gold}`, borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', textDecoration: 'none' }}>Download data (CSV)</a>
+          <a href="/downloads/LBDG-DVI-Methodology.pdf" download style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: navy, border: `1px solid ${navy}`, borderRadius: '6px', padding: '10px 18px', fontFamily: 'DM Mono, monospace', fontSize: '12px', textDecoration: 'none' }}>Methodology (PDF)</a>
         </div>
       </div>
 
