@@ -202,7 +202,7 @@ export default function HomePage() {
             A 10-minute organizational readiness check. Full institutional signal timeline. Sector exposure grid. Decision tree to identify which toolkit your organization needs. Free.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            
+            </a>
               href={LS_STARTER_URL}
               className="lemonsqueezy-button group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
               style={{ background: GOLD, color: NAVY, fontFamily: MONO, fontWeight: 700, fontSize: 13 }}
