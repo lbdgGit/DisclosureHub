@@ -248,4 +248,71 @@ export default function FrameworkPage() {
           </div>
           <div style={{ display: 'flex', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
             {[{ label: 'Opportunity', c: '#4ADE80' }, { label: 'Watch', c: '#FCD34D' }, { label: 'High risk', c: '#F87171' }].map(({ label, c }) => (
-              <span key={label} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color:
+              <span key={label} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: '#6B7A8D' }}>
+                <span style={{ width: 10, height: 10, borderRadius: 2, background: c, flexShrink: 0 }} />{label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Trajectories */}
+      <section style={{ backgroundColor: '#1B2A4A', padding: '64px 24px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 12 }}>
+            Three probable trajectories
+          </p>
+          <h2 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, color: '#FAF8F4', marginBottom: 40 }}>
+            Where is the world heading — and how fast?
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+            {[
+              { color: '#4A9A5E', label: 'Current trajectory',      text: 'World is at A/Partial today — PURSUE releases ongoing. Gradual drift toward B1 over 12-24 months. Organizations that act now move up the Y axis before the next threshold is crossed.' },
+              { color: '#C9A84C', label: 'Ideal trajectory',         text: 'Preparedness grows faster than disclosure intensity. Organizations stay in green/yellow even as scenarios escalate. Requires action before the next tranche — not after.' },
+              { color: '#E24B4A', label: 'Catastrophic trajectory',  text: 'Abrupt jump to C with world at Unprepared — arrival scenario, uncontrolled leak, or intelligence failure. Bottom-right cell. No playbook exists. This is the scenario that justifies building the infrastructure now.' },
+            ].map(t => (
+              <div key={t.label} style={{ borderTop: `2px solid ${t.color}`, paddingTop: 16 }}>
+                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: t.color, marginBottom: 10 }}>{t.label}</p>
+                <p style={{ fontSize: 13, color: '#8A9BB5', lineHeight: 1.7 }}>{t.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* CTA Toolkits */}
+      <section style={{ padding: '64px 24px', maxWidth: 1100, margin: '0 auto' }}>
+        <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 12 }}>
+          From matrix to action
+        </p>
+        <h2 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, color: '#1B2A4A', marginBottom: 8 }}>
+          Identify your scenario. Access the right toolkit.
+        </h2>
+        <p style={{ fontSize: 14, color: '#6B7A8D', marginBottom: 40, maxWidth: 560 }}>
+          Each toolkit maps directly to the matrix. Start where you are.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+          {TOOLKITS.map(tk => {
+            const isActivation = tk.scenario.includes('7+');
+            const labelColor = isActivation ? '#E24B4A' : tk.scenario.includes('3+') ? '#4A9A5E' : '#E8A030';
+            return (
+            <Link key={tk.name} href={tk.href} style={{ textDecoration: 'none' }}>
+              <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 10, padding: '20px 22px', height: '100%', cursor: 'pointer', transition: 'border-color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = '#C9A84C')}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = '#E2E8F0')}
+              >
+                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: labelColor, marginBottom: 8 }}>{tk.scenario}</p>
+                <p style={{ fontSize: 14, fontWeight: 600, color: '#1B2A4A', marginBottom: 6 }}>{tk.name}</p>
+                <p style={{ fontSize: 12, color: '#8A9BB5', lineHeight: 1.5 }}>{tk.desc}</p>
+              </div>
+            </Link>
+            );
+          })}
+        </div>
+        <div style={{ marginTop: 40, textAlign: 'center' }}>
+          <Link href="/toolkits" style={{ display: 'inline-block', backgroundColor: '#1B2A4A', color: '#FAF8F4', padding: '14px 32px', borderRadius: 8, fontSize: 13, fontWeight: 500, textDecoration: 'none', letterSpacing: '0.02em' }}>
+            View all toolkits
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}
