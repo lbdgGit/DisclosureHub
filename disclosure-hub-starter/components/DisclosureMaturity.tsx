@@ -295,7 +295,7 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
             <div style={eyebrow}>Readyfordisclosure.com · LBDG</div>
           </div>
-          <h1 style={{ margin: "8px 0 0", color: C.navy, fontSize: 34, letterSpacing: "-0.02em", fontWeight: 800 }}>Disclosure Maturity</h1>
+          <h1 style={{ margin: "8px 0 0", color: C.navy, fontSize: "clamp(34px, 5vw, 56px)", letterSpacing: "-0.02em", fontWeight: 700 }}>Disclosure Maturity</h1>
           <p style={{ color: C.ink, fontSize: 15, lineHeight: 1.55, marginTop: 8, maxWidth: 760 }}>
             Where institutional disclosure actually stands, one sector at a time. Seven tracks, each a first-principles ladder measured against the public record. Every status is sourced; the gaps are where the exposure lives.
           </p>
