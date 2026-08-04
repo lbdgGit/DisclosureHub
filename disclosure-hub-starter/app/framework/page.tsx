@@ -74,27 +74,25 @@ const MATRIX_MIN_WIDTH = COL_Y + COL_X * 4 + 6 * 5;
 export default function FrameworkPage() {
   return (
     <main style={{ backgroundColor: '#FAF8F4', minHeight: '100vh', fontFamily: 'DM Sans, sans-serif' }}>
-
-      {/* Hero */}
-      <section style={{ backgroundColor: '#1B2A4A', padding: '80px 24px 64px', textAlign: 'center' }}>
-        <div style={{ maxWidth: 760, margin: '0 auto' }}>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 20 }}>
+      {/* ── STANDARD HEADER (cream, serif) ── */}
+      <section style={{ backgroundColor: '#FAF8F4', padding: '128px 24px 40px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 14 }}>
             LBDG · Scenarios & Impact
           </p>
-          <h1 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 500, color: '#FAF8F4', lineHeight: 1.2, marginBottom: 20 }}>
+          <h1 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(34px, 5vw, 56px)', fontWeight: 700, color: '#1B2A4A', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 18 }}>
             Disclosure Impact Matrix
           </h1>
-          <p style={{ fontSize: 16, color: '#8A9BB5', lineHeight: 1.7, maxWidth: 560, margin: '0 auto' }}>
-            Direction is certain. Velocity is not. Your preparedness level determines where your organization stands when each disclosure threshold is crossed.
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 17, color: '#4A5D78', lineHeight: 1.7, maxWidth: 640 }}>
+            The direction is settled; the velocity is not. Your preparedness level determines where your organization stands when each disclosure threshold is crossed.
           </p>
         </div>
       </section>
 
       {/* Matrix */}
-      <section style={{ padding: '64px 24px', maxWidth: 1100, margin: '0 auto' }}>
+      <section style={{ padding: '40px 24px 64px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
           <div style={{ minWidth: MATRIX_MIN_WIDTH + 46 }}>
-
             {/* X axis label */}
             <div style={{ display: 'flex', gap: 8, marginBottom: 4 }}>
               <div style={{ width: 46, flexShrink: 0 }} />
@@ -110,7 +108,6 @@ export default function FrameworkPage() {
                 </div>
               </div>
             </div>
-
             {/* Column headers */}
             <div style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
               <div style={{ width: 46, flexShrink: 0 }} />
@@ -123,7 +120,6 @@ export default function FrameworkPage() {
                 </div>
               ))}
             </div>
-
             {/* Y axis + grid */}
             <div style={{ display: 'flex', gap: 6, alignItems: 'stretch' }}>
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', width: 40, flexShrink: 0, paddingTop: 68 }}>
@@ -139,7 +135,6 @@ export default function FrameworkPage() {
                   You control this
                 </div>
               </div>
-
               <div style={{ flex: 1 }}>
                 {/* Scenario row */}
                 <div style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
@@ -153,7 +148,6 @@ export default function FrameworkPage() {
                     </div>
                   ))}
                 </div>
-
                 {/* Impact rows */}
                 {PREP_LEVELS.map(prep => (
                   <div key={prep.id} style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
@@ -178,7 +172,6 @@ export default function FrameworkPage() {
                 ))}
               </div>
             </div>
-
             {/* Legend */}
             <div style={{
               display: 'flex', flexWrap: 'wrap', gap: '10px 24px',
@@ -204,7 +197,6 @@ export default function FrameworkPage() {
           </div>
         </div>
       </section>
-
       {/* Modifier notes */}
       <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
@@ -222,7 +214,6 @@ export default function FrameworkPage() {
           </div>
         </div>
       </section>
-
       {/* ── SECTOR RISK HEATMAP ── */}
       <section style={{ padding: '0 24px 64px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ marginBottom: 24 }}>
@@ -257,74 +248,4 @@ export default function FrameworkPage() {
           </div>
           <div style={{ display: 'flex', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
             {[{ label: 'Opportunity', c: '#4ADE80' }, { label: 'Watch', c: '#FCD34D' }, { label: 'High risk', c: '#F87171' }].map(({ label, c }) => (
-              <span key={label} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: '#6B7A8D' }}>
-                <span style={{ width: 10, height: 10, borderRadius: 2, background: c, flexShrink: 0 }} />{label}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trajectories */}
-      <section style={{ backgroundColor: '#1B2A4A', padding: '64px 24px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 12 }}>
-            Three probable trajectories
-          </p>
-          <h2 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, color: '#FAF8F4', marginBottom: 40 }}>
-            Where is the world heading — and how fast?
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
-            {[
-              { color: '#4A9A5E', label: 'Current trajectory',      text: 'World is at A/Partial today — PURSUE releases ongoing. Gradual drift toward B1 over 12-24 months. Organizations that act now move up the Y axis before the next threshold is crossed.' },
-              { color: '#C9A84C', label: 'Ideal trajectory',         text: 'Preparedness grows faster than disclosure intensity. Organizations stay in green/yellow even as scenarios escalate. Requires action before the next tranche — not after.' },
-              { color: '#E24B4A', label: 'Catastrophic trajectory',  text: 'Abrupt jump to C with world at Unprepared — arrival scenario, uncontrolled leak, or intelligence failure. Bottom-right cell. No playbook exists. This is the scenario that justifies building the infrastructure now.' },
-            ].map(t => (
-              <div key={t.label} style={{ borderTop: `2px solid ${t.color}`, paddingTop: 16 }}>
-                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: t.color, marginBottom: 10 }}>{t.label}</p>
-                <p style={{ fontSize: 13, color: '#8A9BB5', lineHeight: 1.7 }}>{t.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Toolkits */}
-      <section style={{ padding: '64px 24px', maxWidth: 1100, margin: '0 auto' }}>
-        <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 12 }}>
-          From matrix to action
-        </p>
-        <h2 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, color: '#1B2A4A', marginBottom: 8 }}>
-          Identify your scenario. Access the right toolkit.
-        </h2>
-        <p style={{ fontSize: 14, color: '#6B7A8D', marginBottom: 40, maxWidth: 560 }}>
-          Each toolkit maps directly to the matrix. Start where you are.
-        </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
-          {TOOLKITS.map(tk => {
-            const isActivation = tk.scenario.includes('7+');
-            const labelColor = isActivation ? '#E24B4A' : tk.scenario.includes('3+') ? '#4A9A5E' : '#E8A030';
-            return (
-            <Link key={tk.name} href={tk.href} style={{ textDecoration: 'none' }}>
-              <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 10, padding: '20px 22px', height: '100%', cursor: 'pointer', transition: 'border-color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = '#C9A84C')}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = '#E2E8F0')}
-              >
-                <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: labelColor, marginBottom: 8 }}>{tk.scenario}</p>
-                <p style={{ fontSize: 14, fontWeight: 600, color: '#1B2A4A', marginBottom: 6 }}>{tk.name}</p>
-                <p style={{ fontSize: 12, color: '#8A9BB5', lineHeight: 1.5 }}>{tk.desc}</p>
-              </div>
-            </Link>
-            );
-          })}
-        </div>
-        <div style={{ marginTop: 40, textAlign: 'center' }}>
-          <Link href="/toolkits" style={{ display: 'inline-block', backgroundColor: '#1B2A4A', color: '#FAF8F4', padding: '14px 32px', borderRadius: 8, fontSize: 13, fontWeight: 500, textDecoration: 'none', letterSpacing: '0.02em' }}>
-            View all toolkits
-          </Link>
-        </div>
-      </section>
-
-    </main>
-  );
-}
+              <span key={label} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color:
