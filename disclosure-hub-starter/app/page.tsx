@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { ArrowRight, Radio, AlertTriangle, Wrench, FileText, TrendingUp } from 'lucide-react';
+import { ArrowRight, Wrench, FileText, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
 import { InstitutionalSignals } from '@/components/InstitutionalSignals';
-import { DVIBadge } from '@/components/DVIBadge';
 
 export const metadata: Metadata = {
   title: 'LBDG — Leadership Bureau for Disclosure Guidance',
-  description: 'Operational toolkits and institutional signal tracking for organizations preparing for a paradigm-shifting government announcement.',
+  description: 'Institutional preparedness for a disclosure event. Measured, sourced, and built for the people who carry the risk.',
 };
 
 const STATS = [
@@ -20,12 +19,12 @@ const PILLARS = [
   {
     icon: TrendingUp,
     number: '01',
-    title: 'Signal Monitor',
+    title: 'Disclosure Velocity',
     badge: 'Live',
-    description: 'Real-time tracking of institutional disclosure signals — government actions, financial instruments, legislative developments. DVI 6.5 — READINESS threshold crossed.',
+    description: 'A single weighted index — the DVI — tracking how fast institutional disclosure is moving across 66 verified events. Government actions, financial instruments, legislative developments.',
     links: [
-      { href: '/signals', label: 'Open Signal Board' },
-      { href: '/frise',   label: 'Historical Timeline' },
+      { href: '/signals',  label: 'Open Velocity Index' },
+      { href: '/maturity', label: 'See Disclosure Maturity' },
     ],
     color: 'signal',
     hoverBorder: 'hover:border-signal/50',
@@ -62,94 +61,59 @@ const PILLARS = [
 
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
 
+// shared type tokens (match Velocity / Maturity)
+const SERIF = 'Playfair Display, serif';
+const SANS = 'DM Sans, sans-serif';
+const MONO = 'DM Mono, monospace';
+const NAVY = '#1B2A4A';
+const GOLD = '#C9A84C';
+const CREAM = '#FAF8F4';
+
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO NAVY BAND ── */}
-      <section
-        className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-24 pb-16 overflow-x-hidden"
-        style={{ backgroundColor: '#1B2A4A' }}
-      >
-        {/* Subtle glow */}
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%)', filter: 'blur(60px)' }}
-          aria-hidden
-        />
-
-        <div className="max-w-5xl mx-auto w-full relative">
-
-          {/* DVI Badge — dark variant, full width */}
-          <div className="mb-10 w-full">
-            <DVIBadge variant="dark" />
+      {/* ── STANDARD HEADER (cream, serif) — matches all other pages ── */}
+      <section style={{ background: CREAM, padding: '128px 24px 56px' }}>
+        <div className="max-w-5xl mx-auto">
+          <div style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 14 }}>
+            LBDG · Leadership Bureau for Disclosure Guidance
           </div>
-
-          {/* Headline */}
-          <h1
-            className="font-display text-4xl sm:text-6xl lg:text-7xl font-800 leading-[1.05] tracking-tight mb-6"
-            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
-          >
-            <span className="text-white">It is not a question</span>
-            <br />
-            <span className="text-white">of belief.</span>
-            <br />
-            <span style={{ color: '#C9A84C' }}>It is a question</span>
-            <br />
-            <span style={{ color: '#C9A84C' }}>of being ready.</span>
+          <h1 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(34px, 5vw, 56px)', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 18, maxWidth: 900 }}>
+            Institutional preparedness for a disclosure event.
           </h1>
-
-          {/* Sub */}
-          <p
-            className="text-base sm:text-xl max-w-2xl mb-8 leading-relaxed"
-            style={{ fontFamily: 'Syne, sans-serif', fontStyle: 'italic', color: 'rgba(255,255,255,0.65)' }}
-          >
-            The sitting U.S. Secretary of State is on record. The former UAP Task Force Director has personally seen non-human craft. 34 senior officials are on Amazon Prime. The Pentagon is releasing classified files.{' '}
-            <strong style={{ color: 'rgba(255,255,255,0.9)', fontStyle: 'normal' }}>Your organization is not prepared.</strong>
+          <p style={{ fontFamily: SANS, fontSize: 17, lineHeight: 1.7, color: '#4A5D78', maxWidth: 640, marginBottom: 28 }}>
+            Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
           </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-10">
+          <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/toolkits"
-              className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all"
-              style={{ background: '#C9A84C', color: '#1B2A4A', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14, letterSpacing: '0.05em' }}
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all"
+              style={{ background: NAVY, color: GOLD, fontFamily: MONO, fontWeight: 500, fontSize: 13, letterSpacing: '0.04em' }}
             >
               Get the Toolkits
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/signals"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all"
-              style={{ border: '1px solid rgba(201,168,76,0.35)', color: 'rgba(201,168,76,0.9)', fontFamily: 'Syne, sans-serif', fontWeight: 600, fontSize: 14 }}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all"
+              style={{ border: `1px solid ${NAVY}`, color: NAVY, fontFamily: MONO, fontWeight: 500, fontSize: 13 }}
             >
-              <Radio size={14} />
-              Signal Board →
+              Disclosure Velocity →
             </Link>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="flex items-start gap-3 max-w-xl">
-            <AlertTriangle size={13} style={{ color: 'rgba(255,255,255,0.3)', marginTop: 2, flexShrink: 0 }} />
-            <p className="text-xs leading-relaxed" style={{ fontFamily: 'JetBrains Mono, monospace', color: 'rgba(255,255,255,0.3)' }}>
-              LBDG compiles exclusively verifiable institutional sources: U.S. Congress, DoD/AARO, NASA, CNES/GEIPAN, Deloitte AG, Bank of England, CBOE. No unverified speculation.
-            </p>
           </div>
         </div>
       </section>
 
       {/* ── STATS ── */}
-      <section className="py-12 sm:py-16 border-y border-border/40">
+      <section className="py-12 sm:py-16 border-y border-border/40" style={{ background: CREAM }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {STATS.map((stat, idx) => (
               <div key={stat.value + idx} className="text-center">
-                <div
-                  className="font-display text-2xl sm:text-4xl font-800 text-gradient-signal mb-1"
-                  style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
-                >
+                <div style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3vw, 38px)', lineHeight: 1, marginBottom: 6 }}>
                   {stat.value}
                 </div>
-                <div className="text-xs font-mono text-muted leading-snug" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                <div className="text-xs leading-snug" style={{ fontFamily: MONO, color: '#8A9BB5' }}>
                   {stat.label}
                 </div>
               </div>
@@ -158,17 +122,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── INSTITUTIONAL SIGNALS — no second DVI badge ── */}
+      {/* ── INSTITUTIONAL SIGNALS teaser — no DVI badge ── */}
       <InstitutionalSignals hideDVIBadge />
 
       {/* ── 3 PILLARS ── */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
         <div className="max-w-5xl mx-auto">
           <div className="mb-10 sm:mb-14">
-            <span className="text-2xs font-mono text-muted tracking-[0.25em] uppercase block mb-3" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
               What LBDG provides
             </span>
-            <h2 className="font-display text-2xl sm:text-4xl font-700 text-bright" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}>
               Three ways to prepare your organization
             </h2>
           </div>
@@ -190,18 +154,18 @@ export default function HomePage() {
                   className={`group p-6 rounded-lg border border-border/60 bg-white ${pillar.hoverBorder} hover:shadow-lg transition-all duration-300`}
                 >
                   <div className="flex items-center justify-between mb-5">
-                    <span className="font-mono text-xs text-muted/50 tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                    <span style={{ fontFamily: MONO, fontSize: 12, color: 'rgba(138,155,181,0.5)', letterSpacing: '0.1em' }}>
                       {pillar.number}
                     </span>
-                    <span className={`px-2.5 py-1 rounded-full text-2xs font-mono font-600 tracking-widest uppercase border ${badgeColors[pillar.color]}`} style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                    <span className={`px-2.5 py-1 rounded-full text-2xs font-600 tracking-widest uppercase border ${badgeColors[pillar.color]}`} style={{ fontFamily: MONO }}>
                       {pillar.badge}
                     </span>
                   </div>
                   <Icon size={26} className={`mb-4 ${iconColors[pillar.color]}`} />
-                  <h3 className="font-display text-lg font-700 text-bright mb-3" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 20, marginBottom: 12 }}>
                     {pillar.title}
                   </h3>
-                  <p className="text-sm text-body/80 leading-relaxed mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>
+                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 24 }}>
                     {pillar.description}
                   </p>
                   <ul className="space-y-2 border-t border-border/50 pt-4">
@@ -209,8 +173,8 @@ export default function HomePage() {
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className="flex items-center justify-between text-xs font-mono text-muted hover:text-bright group/link transition-colors"
-                          style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                          className="flex items-center justify-between text-xs text-muted hover:text-bright group/link transition-colors"
+                          style={{ fontFamily: MONO }}
                         >
                           <span>{link.label}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
@@ -225,35 +189,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── STARTER PACK CTA — navy background ── */}
-      <section
-        className="py-16 sm:py-20 px-4 sm:px-6"
-        style={{ backgroundColor: '#1B2A4A' }}
-      >
+      {/* ── STARTER PACK CTA — navy accent block ── */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: NAVY }}>
         <div className="max-w-3xl mx-auto text-center">
-          <span
-            className="text-2xs font-mono tracking-[0.25em] uppercase block mb-4"
-            style={{ fontFamily: 'JetBrains Mono, monospace', color: 'rgba(201,168,76,0.6)' }}
-          >
+          <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.6)', display: 'block', marginBottom: 16 }}>
             Free — Start here
           </span>
-          <h2
-            className="font-display text-2xl sm:text-4xl font-700 mb-4"
-            style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, color: '#FAF8F4' }}
-          >
+          <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: CREAM, fontSize: 'clamp(26px, 3.5vw, 40px)', marginBottom: 16 }}>
             Download the Executive Starter Pack
           </h2>
-          <p
-            className="text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed"
-            style={{ fontFamily: 'Syne, sans-serif', color: 'rgba(255,255,255,0.6)' }}
-          >
+          <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', maxWidth: 520, margin: '0 auto 32px' }}>
             A 10-minute organizational readiness check. Full institutional signal timeline. Sector exposure grid. Decision tree to identify which toolkit your organization needs. Free.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
+            
               href={LS_STARTER_URL}
               className="lemonsqueezy-button group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
-              style={{ background: '#C9A84C', color: '#1B2A4A', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, fontSize: 13 }}
+              style={{ background: GOLD, color: NAVY, fontFamily: MONO, fontWeight: 700, fontSize: 13 }}
             >
               Download free
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -261,7 +213,7 @@ export default function HomePage() {
             <Link
               href="/toolkits"
               className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
-              style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)', fontFamily: 'JetBrains Mono, monospace', fontSize: 13 }}
+              style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)', fontFamily: MONO, fontSize: 13 }}
             >
               View all toolkits →
             </Link>
@@ -270,9 +222,9 @@ export default function HomePage() {
       </section>
 
       {/* ── SOURCES ── */}
-      <section className="py-8 px-4 sm:px-6 border-t border-border/20">
+      <section className="py-8 px-4 sm:px-6 border-t border-border/20" style={{ background: CREAM }}>
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-xs text-muted/60 leading-relaxed" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+          <p className="text-xs text-muted/60 leading-relaxed" style={{ fontFamily: MONO }}>
             Sources: DoD/AARO · NASA · CNES/GEIPAN · Deloitte AG 2026 · Bank of England · Tuttle Capital (CBOE: UFOD) · U.S. Congress · The Age of Disclosure (Dan Farah, 2025) · Pentagon PURSUE (war.gov/ufo, 2026) · Col. Karl Nell (US Army ret.)
           </p>
         </div>
