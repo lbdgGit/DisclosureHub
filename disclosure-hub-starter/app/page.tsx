@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Wrench, FileText, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
 import { InstitutionalSignals } from '@/components/InstitutionalSignals';
+import { PageHeader } from '@/components/PageHeader';
 
 export const metadata: Metadata = {
   title: 'LBDG — Leadership Bureau for Disclosure Guidance',
@@ -61,7 +62,6 @@ const PILLARS = [
 
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
 
-// shared type tokens (match Velocity / Maturity)
 const SERIF = 'Playfair Display, serif';
 const SANS = 'DM Sans, sans-serif';
 const MONO = 'DM Mono, monospace';
@@ -72,18 +72,14 @@ const CREAM = '#FAF8F4';
 export default function HomePage() {
   return (
     <>
-      {/* ── STANDARD HEADER (cream, serif) — matches all other pages ── */}
-      <section style={{ background: CREAM, padding: '128px 24px 56px' }}>
-        <div className="max-w-5xl mx-auto">
-          <div style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 14 }}>
-            LBDG · Leadership Bureau for Disclosure Guidance
-          </div>
-          <h1 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(34px, 5vw, 56px)', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 18, maxWidth: 900 }}>
-            Institutional preparedness for a disclosure event.
-          </h1>
-          <p style={{ fontFamily: SANS, fontSize: 17, lineHeight: 1.7, color: '#4A5D78', maxWidth: 640, marginBottom: 28 }}>
-            Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
-          </p>
+      {/* ── STANDARD HEADER ── */}
+      <PageHeader eyebrow="LBDG · Leadership Bureau for Disclosure Guidance" title="Institutional preparedness for a disclosure event.">
+        Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
+      </PageHeader>
+
+      {/* ── HERO BUTTONS ── */}
+      <section style={{ background: CREAM, padding: '0 24px 40px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/toolkits"
@@ -106,7 +102,7 @@ export default function HomePage() {
 
       {/* ── STATS ── */}
       <section className="py-12 sm:py-16 border-y border-border/40" style={{ background: CREAM }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {STATS.map((stat, idx) => (
               <div key={stat.value + idx} className="text-center">
@@ -122,12 +118,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── INSTITUTIONAL SIGNALS teaser — no DVI badge ── */}
+      {/* ── INSTITUTIONAL SIGNALS teaser ── */}
       <InstitutionalSignals hideDVIBadge />
 
       {/* ── 3 PILLARS ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
-        <div className="max-w-5xl mx-auto">
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="mb-10 sm:mb-14">
             <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
               What LBDG provides
@@ -189,7 +185,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── STARTER PACK CTA — navy accent block ── */}
+      {/* ── STARTER PACK CTA ── */}
       <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: NAVY }}>
         <div className="max-w-3xl mx-auto text-center">
           <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.6)', display: 'block', marginBottom: 16 }}>
@@ -202,28 +198,15 @@ export default function HomePage() {
             A 10-minute organizational readiness check. Full institutional signal timeline. Sector exposure grid. Decision tree to identify which toolkit your organization needs. Free.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={LS_STARTER_URL}
-              className="lemonsqueezy-button group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
-              style={{ background: GOLD, color: NAVY, fontFamily: MONO, fontWeight: 700, fontSize: 13 }}
-            >
-              Download free
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <Link
-              href="/toolkits"
-              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all"
-              style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)', fontFamily: MONO, fontSize: 13 }}
-            >
-              View all toolkits →
-            </Link>
+            <a href={LS_STARTER_URL} className="lemonsqueezy-button group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all" style={{ background: GOLD, color: NAVY, fontFamily: MONO, fontWeight: 700, fontSize: 13 }}>Download free <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" /></a>
+            <Link href="/toolkits" className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded transition-all" style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)', fontFamily: MONO, fontSize: 13 }}>View all toolkits →</Link>
           </div>
         </div>
       </section>
 
       {/* ── SOURCES ── */}
       <section className="py-8 px-4 sm:px-6 border-t border-border/20" style={{ background: CREAM }}>
-        <div className="max-w-5xl mx-auto text-center">
+        <div style={{ maxWidth: 1100, margin: '0 auto' }} className="text-center">
           <p className="text-xs text-muted/60 leading-relaxed" style={{ fontFamily: MONO }}>
             Sources: DoD/AARO · NASA · CNES/GEIPAN · Deloitte AG 2026 · Bank of England · Tuttle Capital (CBOE: UFOD) · U.S. Congress · The Age of Disclosure (Dan Farah, 2025) · Pentagon PURSUE (war.gov/ufo, 2026) · Col. Karl Nell (US Army ret.)
           </p>
