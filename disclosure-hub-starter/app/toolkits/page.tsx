@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { ArrowRight, Download, Users, TrendingUp, Radio, Crown, Scale, BarChart2, Truck, LineChart, Package } from 'lucide-react';
+import { PageHeader } from '@/components/PageHeader';
 
 const LS_URLS: Record<string, string> = {
   starter:    'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1',
@@ -146,166 +146,160 @@ const TOOLKITS = [
 ];
 
 export default function ToolkitsPage() {
-  const [hovered, setHovered] = useState<string | null>(null);
   const freeToolkit = TOOLKITS.find(t => t.free)!;
   const paidToolkits = TOOLKITS.filter(t => !t.free);
 
   return (
-    <div style={{ background: CREAM }}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-28 pb-20">
-        {/* ── STANDARD HEADER (serif, cream) ── */}
-        <div className="mb-12">
-          <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 14 }}>
-            LBDG · Operational Toolkits
-          </span>
-          <h1 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(34px, 5vw, 56px)', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 18 }}>
-            Prepare your organization
-          </h1>
-          <p style={{ fontFamily: SANS, fontSize: 17, lineHeight: 1.7, color: '#4A5D78', maxWidth: 640 }}>
-            Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates — designed to be used, not read.
-          </p>
-        </div>
+    <>
+      <PageHeader eyebrow="LBDG · Operational Toolkits" title="Prepare your organization">
+        Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates — designed to be used, not read.
+      </PageHeader>
 
-        {/* ── STARTER PACK CTA ── */}
-        <div className="mb-8 p-5 rounded-xl border border-border/40 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(138,155,181,0.7)', display: 'block', marginBottom: 4 }}>
-              Read first
-            </span>
-            <p style={{ fontFamily: SANS, fontSize: 14, color: '#4A5D78' }}>
-              <strong style={{ color: NAVY }}>Executive Starter Pack</strong> — 10-minute readiness check, sector exposure grid, DVI explained, CEO orchestration. Free.
-            </p>
-          </div>
-          <a href={LS_URLS.starter} className="lemonsqueezy-button shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded border border-green-400/40 bg-green-400/10 text-green-500 text-sm hover:bg-green-400/20 transition-all whitespace-nowrap" style={{ fontFamily: MONO }}><Download size={14} /> Download free</a>
-        </div>
+      <div style={{ background: CREAM }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-4 sm:px-6 pb-20">
 
-        {/* ── FREE HR TOOLKIT ── */}
-        <div id={freeToolkit.anchor} className="mb-6 p-6 sm:p-8 rounded-xl border border-green-400/30 bg-green-400/5 transition-all">
-          <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-            <div className="shrink-0 w-12 h-12 rounded-lg border border-green-400/30 bg-green-400/10 flex items-center justify-center">
-              <freeToolkit.icon size={22} className="text-green-500" />
+          {/* ── STARTER PACK CTA ── */}
+          <div className="mb-8 p-5 rounded-xl border border-border/40 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(138,155,181,0.7)', display: 'block', marginBottom: 4 }}>
+                Read first
+              </span>
+              <p style={{ fontFamily: SANS, fontSize: 14, color: '#4A5D78' }}>
+                <strong style={{ color: NAVY }}>Executive Starter Pack</strong> — 10-minute readiness check, sector exposure grid, DVI explained, CEO orchestration. Free.
+              </p>
             </div>
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className={`px-2 py-0.5 rounded text-2xs border font-600 ${freeToolkit.badgeColor}`} style={{ fontFamily: MONO }}>
-                  {freeToolkit.badge}
-                </span>
-                <span style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
-                  {freeToolkit.pages} pages · {freeToolkit.audience}
-                </span>
+            <a href={LS_URLS.starter} className="lemonsqueezy-button shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded border border-green-400/40 bg-green-400/10 text-green-500 text-sm hover:bg-green-400/20 transition-all whitespace-nowrap" style={{ fontFamily: MONO }}><Download size={14} /> Download free</a>
+          </div>
+
+          {/* ── FREE HR TOOLKIT ── */}
+          <div id={freeToolkit.anchor} className="mb-6 p-6 sm:p-8 rounded-xl border border-green-400/30 bg-green-400/5 transition-all">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+              <div className="shrink-0 w-12 h-12 rounded-lg border border-green-400/30 bg-green-400/10 flex items-center justify-center">
+                <freeToolkit.icon size={22} className="text-green-500" />
               </div>
-              <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 24, marginBottom: 4 }}>
-                {freeToolkit.title}
-              </h2>
-              <p style={{ fontFamily: MONO, fontSize: 12, color: '#8A9BB5', marginBottom: 12 }}>
-                {freeToolkit.subtitle}
-              </p>
-              <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 16 }}>
-                {freeToolkit.description}
-              </p>
-              <ul className="space-y-1 mb-5">
-                {freeToolkit.tools.map(tool => (
-                  <li key={tool} className="flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: '#8A9BB5' }}>
-                    <span className="w-1 h-1 rounded-full bg-green-500 shrink-0" />
-                    {tool}
-                  </li>
-                ))}
-              </ul>
-              <a href={LS_URLS.hr} className="lemonsqueezy-button inline-flex items-center gap-2 px-5 py-2.5 rounded bg-green-400/10 border border-green-400/40 text-green-500 text-sm hover:bg-green-400/20 transition-all" style={{ fontFamily: MONO }}><Download size={14} /> Download free</a>
-            </div>
-          </div>
-        </div>
-
-        {/* ── PAID TOOLKITS GRID ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-          {paidToolkits.map(toolkit => {
-            const Icon = toolkit.icon;
-            return (
-              <div
-                key={toolkit.id}
-                id={toolkit.anchor}
-                className="flex flex-col p-6 rounded-xl border border-border bg-white hover:border-border/80 hover:shadow-lg transition-all"
-              >
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="shrink-0 w-10 h-10 rounded-lg border border-border bg-white flex items-center justify-center">
-                    <Icon size={18} className="text-muted" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className={`px-2 py-0.5 rounded text-2xs border ${toolkit.badgeColor}`} style={{ fontFamily: MONO }}>
-                        {toolkit.badge}
-                      </span>
-                      <span style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
-                        {toolkit.pages}p
-                      </span>
-                      <span className="ml-auto" style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, color: NAVY }}>
-                        {toolkit.price}
-                      </span>
-                    </div>
-                    <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 19 }}>
-                      {toolkit.title}
-                    </h3>
-                    <p style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
-                      {toolkit.subtitle}
-                    </p>
-                  </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className={`px-2 py-0.5 rounded text-2xs border font-600 ${freeToolkit.badgeColor}`} style={{ fontFamily: MONO }}>
+                    {freeToolkit.badge}
+                  </span>
+                  <span style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
+                    {freeToolkit.pages} pages · {freeToolkit.audience}
+                  </span>
                 </div>
-                <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.8)', marginBottom: 16, flex: 1 }}>
-                  {toolkit.description}
+                <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 24, marginBottom: 4 }}>
+                  {freeToolkit.title}
+                </h2>
+                <p style={{ fontFamily: MONO, fontSize: 12, color: '#8A9BB5', marginBottom: 12 }}>
+                  {freeToolkit.subtitle}
                 </p>
-                <ul className="space-y-1 mb-5 border-t border-border/50 pt-4">
-                  {toolkit.tools.map(tool => (
+                <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 16 }}>
+                  {freeToolkit.description}
+                </p>
+                <ul className="space-y-1 mb-5">
+                  {freeToolkit.tools.map(tool => (
                     <li key={tool} className="flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: '#8A9BB5' }}>
-                      <span className="w-1 h-1 rounded-full bg-signal shrink-0" />
+                      <span className="w-1 h-1 rounded-full bg-green-500 shrink-0" />
                       {tool}
                     </li>
                   ))}
                 </ul>
-                <div style={{ fontFamily: MONO, fontSize: 11, color: 'rgba(138,155,181,0.7)', marginBottom: 16 }}>
-                  {toolkit.audience}
-                </div>
-                <a href={LS_URLS[toolkit.id]} className="lemonsqueezy-button w-full flex items-center justify-center gap-2 py-2.5 rounded border border-signal/30 text-signal text-sm hover:bg-signal/10 hover:border-signal/50 transition-all" style={{ fontFamily: MONO }}><Download size={14} /> Get toolkit — {toolkit.price}</a>
+                <a href={LS_URLS.hr} className="lemonsqueezy-button inline-flex items-center gap-2 px-5 py-2.5 rounded bg-green-400/10 border border-green-400/40 text-green-500 text-sm hover:bg-green-400/20 transition-all" style={{ fontFamily: MONO }}><Download size={14} /> Download free</a>
               </div>
-            );
-          })}
-        </div>
-
-        {/* ── BUNDLE ── */}
-        <div className="p-6 sm:p-8 rounded-xl border border-yellow-400/40 bg-yellow-400/5 transition-all">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div className="flex items-start gap-4">
-              <div className="shrink-0 w-12 h-12 rounded-lg border border-yellow-400/40 bg-yellow-400/10 flex items-center justify-center">
-                <Package size={22} className="text-yellow-500" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2 py-0.5 rounded text-2xs border text-yellow-600 border-yellow-400/40 bg-yellow-400/10 font-600" style={{ fontFamily: MONO }}>
-                    Bundle
-                  </span>
-                  <span style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
-                    All 8 toolkits
-                  </span>
-                </div>
-                <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 24, marginBottom: 4 }}>
-                  Full Toolkit Bundle
-                </h3>
-                <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.8)', maxWidth: 560 }}>
-                  HR, Finance, Communications, Legal & Compliance, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Designed for parallel activation at D0 across all organizational functions.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-3 shrink-0">
-              <span style={{ fontFamily: SERIF, fontSize: 34, fontWeight: 700, color: NAVY }}>
-                €249
-              </span>
-              <a href={LS_URLS.bundle} className="lemonsqueezy-button inline-flex items-center gap-2 px-6 py-3 rounded border border-yellow-400/50 bg-yellow-400/10 text-yellow-600 text-sm hover:bg-yellow-400/20 transition-all whitespace-nowrap" style={{ fontFamily: MONO, fontWeight: 700 }}><ArrowRight size={14} /> Get full bundle</a>
-              <span style={{ fontFamily: MONO, fontSize: 10, color: 'rgba(138,155,181,0.6)' }}>
-                vs €392 individually
-              </span>
             </div>
           </div>
+
+          {/* ── PAID TOOLKITS GRID ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            {paidToolkits.map(toolkit => {
+              const Icon = toolkit.icon;
+              return (
+                <div
+                  key={toolkit.id}
+                  id={toolkit.anchor}
+                  className="flex flex-col p-6 rounded-xl border border-border bg-white hover:border-border/80 hover:shadow-lg transition-all"
+                >
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="shrink-0 w-10 h-10 rounded-lg border border-border bg-white flex items-center justify-center">
+                      <Icon size={18} className="text-muted" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <span className={`px-2 py-0.5 rounded text-2xs border ${toolkit.badgeColor}`} style={{ fontFamily: MONO }}>
+                          {toolkit.badge}
+                        </span>
+                        <span style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
+                          {toolkit.pages}p
+                        </span>
+                        <span className="ml-auto" style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, color: NAVY }}>
+                          {toolkit.price}
+                        </span>
+                      </div>
+                      <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 19 }}>
+                        {toolkit.title}
+                      </h3>
+                      <p style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
+                        {toolkit.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.8)', marginBottom: 16, flex: 1 }}>
+                    {toolkit.description}
+                  </p>
+                  <ul className="space-y-1 mb-5 border-t border-border/50 pt-4">
+                    {toolkit.tools.map(tool => (
+                      <li key={tool} className="flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: '#8A9BB5' }}>
+                        <span className="w-1 h-1 rounded-full bg-signal shrink-0" />
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ fontFamily: MONO, fontSize: 11, color: 'rgba(138,155,181,0.7)', marginBottom: 16 }}>
+                    {toolkit.audience}
+                  </div>
+                  <a href={LS_URLS[toolkit.id]} className="lemonsqueezy-button w-full flex items-center justify-center gap-2 py-2.5 rounded border border-signal/30 text-signal text-sm hover:bg-signal/10 hover:border-signal/50 transition-all" style={{ fontFamily: MONO }}><Download size={14} /> Get toolkit — {toolkit.price}</a>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* ── BUNDLE ── */}
+          <div className="p-6 sm:p-8 rounded-xl border border-yellow-400/40 bg-yellow-400/5 transition-all">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="shrink-0 w-12 h-12 rounded-lg border border-yellow-400/40 bg-yellow-400/10 flex items-center justify-center">
+                  <Package size={22} className="text-yellow-500" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 rounded text-2xs border text-yellow-600 border-yellow-400/40 bg-yellow-400/10 font-600" style={{ fontFamily: MONO }}>
+                      Bundle
+                    </span>
+                    <span style={{ fontFamily: MONO, fontSize: 11, color: '#8A9BB5' }}>
+                      All 8 toolkits
+                    </span>
+                  </div>
+                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 24, marginBottom: 4 }}>
+                    Full Toolkit Bundle
+                  </h3>
+                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.8)', maxWidth: 560 }}>
+                    HR, Finance, Communications, Legal & Compliance, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Designed for parallel activation at D0 across all organizational functions.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center gap-3 shrink-0">
+                <span style={{ fontFamily: SERIF, fontSize: 34, fontWeight: 700, color: NAVY }}>
+                  €249
+                </span>
+                <a href={LS_URLS.bundle} className="lemonsqueezy-button inline-flex items-center gap-2 px-6 py-3 rounded border border-yellow-400/50 bg-yellow-400/10 text-yellow-600 text-sm hover:bg-yellow-400/20 transition-all whitespace-nowrap" style={{ fontFamily: MONO, fontWeight: 700 }}><ArrowRight size={14} /> Get full bundle</a>
+                <span style={{ fontFamily: MONO, fontSize: 10, color: 'rgba(138,155,181,0.6)' }}>
+                  vs €392 individually
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
+    </>
   );
 }
