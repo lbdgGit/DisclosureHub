@@ -53,23 +53,9 @@ export default function SignalsPage() {
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '112px 24px 80px', fontFamily: 'DM Sans, sans-serif' }}>
-      {/* ── HEADER ── */}
-      <div style={{ marginBottom: '32px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#38BDF8', boxShadow: '0 0 0 3px rgba(56,189,248,0.2)' }} />
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: muted, letterSpacing: '0.15em' }}>
-            LBDG · DISCLOSURE VELOCITY · LAST UPDATED AUGUST 2026
-          </span>
-        </div>
-        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(34px,5vw,56px)', fontWeight: 700, color: navy, marginBottom: '8px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-          Disclosure Velocity
-        </h1>
-        <p style={{ fontSize: '15px', color: body, maxWidth: '640px', lineHeight: 1.7 }}>
-          How fast the disclosure process is moving. A single weighted index — the DVI — built from {SIGNALS.length} verified institutional signals across bureaucratic, legislative, and financial activity. Sources: DoD, NASA, CNES, Deloitte, Bank of England, Cboe, U.S. Congress, Japan Diet. No unverified speculation.
-        </p>
-        <a href="/maturity" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', color: navy, textDecoration: 'none', border: `1px solid ${border}`, borderRadius: '6px', padding: '8px 14px' }}>
-          Where each sector stands → <span style={{ color: gold, fontWeight: 600 }}>Disclosure Maturity</span>
-        </a>
+      <PageHeader eyebrow="LBDG · Disclosure Velocity · Last updated August 2026" title="Disclosure Velocity">
+        How fast the disclosure process is moving. A single weighted index — the DVI — built from {SIGNALS.length} verified institutional signals across bureaucratic, legislative, and financial activity. Sources: DoD, NASA, CNES, Deloitte, Bank of England, Cboe, U.S. Congress, Japan Diet. No unverified speculation.
+      </PageHeader>
       </div>
 
       {/* ── DVI BADGE — same component as homepage ── */}
