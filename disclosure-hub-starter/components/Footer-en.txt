@@ -1,23 +1,32 @@
 import Link from 'next/link';
 import { Radio, ExternalLink } from 'lucide-react';
 
+const SERIF = 'Playfair Display, serif';
+const MONO = 'DM Mono, monospace';
+
 const COLUMNS = [
   {
-    title: 'Learn',
+    title: 'Prepare',
     links: [
-      { href: '/lexique', label: 'UAP Glossary' },
-      { href: '/frise',   label: 'Timeline'     },
-      { href: '/faq',     label: 'FAQ'          },
-      { href: '/chatbot', label: 'Signal Q&A'   },
+      { href: '/toolkits',         label: 'Operational Toolkits' },
+      { href: '/rapports',         label: 'Reports & Analysis'   },
+      { href: '/rapports#starter', label: 'Free Starter Pack'    },
+    ],
+  },
+  {
+    title: 'Disclosure Status',
+    links: [
+      { href: '/signals',  label: 'Disclosure Velocity' },
+      { href: '/maturity', label: 'Disclosure Maturity' },
+      { href: '/framework', label: 'Scenarios & Impact' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { href: '/toolkits',         label: 'Operational Toolkits' },
-      { href: '/rapports',         label: 'Reports'              },
-      { href: '/rapports#starter', label: 'Free Starter Pack'    },
-      { href: '/signals',          label: 'Signal Monitor'       },
+      { href: '/lexique', label: 'Lexicon' },
+      { href: '/faq',     label: 'FAQ'     },
+      { href: '/about',   label: 'About'   },
     ],
   },
   {
@@ -35,31 +44,28 @@ export default function Footer() {
   return (
     <footer className="border-t border-border/50 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-10">
 
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-3">
               <Radio size={16} className="text-signal" />
-              <span className="font-display font-700 text-bright text-sm tracking-widest uppercase" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+              <span className="text-bright text-sm tracking-widest uppercase" style={{ fontFamily: SERIF, fontWeight: 700 }}>
                 LBDG
               </span>
             </Link>
-            <p className="text-muted text-xs leading-relaxed mb-4" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              Leadership Bureau for Disclosure Guidance. Operational toolkits and signal tracking for organizations preparing for a paradigm-shifting announcement.
+            <p className="text-muted text-xs leading-relaxed mb-4" style={{ fontFamily: MONO }}>
+              Leadership Bureau for Disclosure Guidance. An independent watch and preparedness initiative for organizations facing the risk of institutional disclosure.
             </p>
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-              <span className="text-2xs font-mono text-signal tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                SIGNAL ACTIVE — DVI 6.5
-              </span>
-            </div>
+            <a href="mailto:contact@readyfordisclosure.com" className="text-2xs text-muted hover:text-bright transition-colors" style={{ fontFamily: MONO }}>
+              contact@readyfordisclosure.com
+            </a>
           </div>
 
           {/* Nav columns */}
           {COLUMNS.map((col) => (
             <div key={col.title}>
-              <h3 className="text-2xs font-mono font-600 text-muted tracking-widest uppercase mb-4" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              <h3 className="text-2xs font-600 text-muted tracking-widest uppercase mb-4" style={{ fontFamily: MONO }}>
                 {col.title}
               </h3>
               <ul className="space-y-2">
@@ -68,7 +74,7 @@ export default function Footer() {
                     {'external' in link && link.external ? (
                       <a href={link.href} target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-1 text-xs text-muted hover:text-bright transition-colors"
-                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                        style={{ fontFamily: MONO }}
                       >
                         {link.label}
                         <ExternalLink size={9} className="opacity-50" />
@@ -76,7 +82,7 @@ export default function Footer() {
                     ) : (
                       <Link href={link.href}
                         className="text-xs text-muted hover:text-bright transition-colors"
-                        style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                        style={{ fontFamily: MONO }}
                       >
                         {link.label}
                       </Link>
@@ -90,16 +96,16 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/30">
-          <p className="text-2xs font-mono text-muted/50" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-            © 2026 LBDG — readyfordisclosure.com
+          <p className="text-2xs text-muted/50" style={{ fontFamily: MONO }}>
+            © 2026 LBDG · readyfordisclosure.com
           </p>
           <div className="flex gap-4">
-            <a href="/legal"   className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Legal</a>
-            <a href="/privacy" className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Privacy</a>
-            <a href="/terms"   className="text-2xs font-mono text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Terms</a>
+            <a href="/legal"   className="text-2xs text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: MONO }}>Legal</a>
+            <a href="/privacy" className="text-2xs text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: MONO }}>Privacy</a>
+            <a href="/terms"   className="text-2xs text-muted/40 hover:text-muted transition-colors" style={{ fontFamily: MONO }}>Terms</a>
           </div>
-          <p className="text-2xs font-mono text-muted/40 text-center sm:text-right max-w-sm" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-            Sources: DoD/AARO · NASA · CNES/GEIPAN · Deloitte AG 2026 · Bank of England · CBOE · U.S. Congress
+          <p className="text-2xs text-muted/40 text-center sm:text-right max-w-sm" style={{ fontFamily: MONO }}>
+            Independent analysis of public sources. Not affiliated with any government agency.
           </p>
         </div>
       </div>
