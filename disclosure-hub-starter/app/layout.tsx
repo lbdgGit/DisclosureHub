@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'LBDG — Leadership Bureau for Disclosure Guidance',
+    default: 'LBDG - Leadership Bureau for Disclosure Guidance',
     template: '%s | LBDG',
   },
   description: 'The reference portal to understand, anticipate and navigate the official announcement of non-human intelligence existence.',
@@ -16,8 +16,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'LBDG',
+    title: 'LBDG - Leadership Bureau for Disclosure Guidance',
+    description: 'The reference portal to understand, anticipate and navigate the official announcement of non-human intelligence existence.',
+    url: 'https://readyfordisclosure.com',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'LBDG - Leadership Bureau for Disclosure Guidance',
+      },
+    ],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LBDG - Leadership Bureau for Disclosure Guidance',
+    description: 'The reference portal to understand, anticipate and navigate the official announcement of non-human intelligence existence.',
+    images: ['/og-image.jpg'],
+  },
   robots: { index: true, follow: true },
 };
 
