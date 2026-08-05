@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Wrench, FileText, TrendingUp, Users, Crown, LineChart, BookOpen, HelpCircle, Compass } from 'lucide-react';
+import { ArrowRight, Wrench, FileText, TrendingUp, BookOpen, HelpCircle, Compass } from 'lucide-react';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 
@@ -15,7 +15,92 @@ const STATS = [
   { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
 ];
 
-{/* ── PANIC QUESTIONS (SEO cards, with relief) ── */}
+const PILLARS = [
+  {
+    icon: TrendingUp,
+    number: '01',
+    title: 'Disclosure Velocity',
+    badge: 'Live',
+    description: 'A single weighted index, the DVI, tracking how fast institutional disclosure is moving across 66 verified events. Government actions, financial instruments, legislative developments.',
+    links: [
+      { href: '/signals',  label: 'Open Velocity Index' },
+      { href: '/maturity', label: 'See Disclosure Maturity' },
+    ],
+    color: 'signal',
+    hoverBorder: 'hover:border-signal/50',
+  },
+  {
+    icon: Wrench,
+    number: '02',
+    title: 'Operational Toolkits',
+    badge: 'Action',
+    description: 'Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates, designed to be used, not read.',
+    links: [
+      { href: '/toolkits',         label: 'All Toolkits'           },
+      { href: '/toolkits#hr',      label: 'HR Toolkit'             },
+      { href: '/toolkits#finance', label: 'Finance Toolkit'        },
+      { href: '/toolkits#comms',   label: 'Communications Toolkit' },
+    ],
+    color: 'classified',
+    hoverBorder: 'hover:border-classified/50',
+  },
+  {
+    icon: FileText,
+    number: '03',
+    title: 'Reports & Analysis',
+    badge: 'Insight',
+    description: 'In-depth analytical reports on the geopolitical, financial, and organizational implications of disclosure. Nuclear technology analogy. Scenario A through C frameworks.',
+    links: [
+      { href: '/rapports',      label: 'View Reports'      },
+      { href: '/rapports#free', label: 'Free Intro Report' },
+    ],
+    color: 'cold',
+    hoverBorder: 'hover:border-cold/50',
+  },
+];
+
+const RESOURCES = [
+  { icon: Compass,    title: 'Scenarios & Impact', blurb: 'The disclosure impact matrix: preparedness by scenario.', href: '/framework' },
+  { icon: BookOpen,   title: 'Lexicon',            blurb: 'Institutional-grade glossary of agencies, cases, and terms.', href: '/lexique' },
+  { icon: HelpCircle, title: 'FAQ',                blurb: 'Answers grounded exclusively in verified institutional sources.', href: '/faq' },
+];
+
+const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
+
+const SERIF = 'Playfair Display, serif';
+const SANS = 'DM Sans, sans-serif';
+const MONO = 'DM Mono, monospace';
+const NAVY = '#1B2A4A';
+const GOLD = '#C9A84C';
+const CREAM = '#FAF8F4';
+
+export default function HomePage() {
+  return (
+    <>
+      {/* ── STANDARD HEADER ── */}
+      <PageHeader eyebrow="LBDG · Leadership Bureau for Disclosure Guidance" title="Institutional preparedness for a disclosure event.">
+        Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
+      </PageHeader>
+
+      {/* ── STATS ── */}
+      <section className="py-12 sm:py-16 border-y border-border/40" style={{ background: CREAM }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {STATS.map((stat, idx) => (
+              <div key={stat.value + idx} className="text-center">
+                <div style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3vw, 38px)', lineHeight: 1, marginBottom: 6 }}>
+                  {stat.value}
+                </div>
+                <div className="text-xs leading-snug" style={{ fontFamily: MONO, color: '#8A9BB5' }}>
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PANIC QUESTIONS (SEO cards, with relief) ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="mb-10 sm:mb-14">
@@ -27,7 +112,6 @@ const STATS = [
             </h2>
           </div>
 
-          {/* grid: big hero left (2fr) + two stacked small right (1fr) */}
           <div className="qgrid">
             {/* HERO — HR */}
             <Link href="/workforce-disclosure" className="qhero group" style={{ textDecoration: 'none' }}>
@@ -140,144 +224,6 @@ const STATS = [
             .qhero { grid-row: auto; min-height: 340px; }
           }
         `}</style>
-      </section>
-
-const PILLARS = [
-  {
-    icon: TrendingUp,
-    number: '01',
-    title: 'Disclosure Velocity',
-    badge: 'Live',
-    description: 'A single weighted index, the DVI, tracking how fast institutional disclosure is moving across 66 verified events. Government actions, financial instruments, legislative developments.',
-    links: [
-      { href: '/signals',  label: 'Open Velocity Index' },
-      { href: '/maturity', label: 'See Disclosure Maturity' },
-    ],
-    color: 'signal',
-    hoverBorder: 'hover:border-signal/50',
-  },
-  {
-    icon: Wrench,
-    number: '02',
-    title: 'Operational Toolkits',
-    badge: 'Action',
-    description: 'Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates, designed to be used, not read.',
-    links: [
-      { href: '/toolkits',         label: 'All Toolkits'           },
-      { href: '/toolkits#hr',      label: 'HR Toolkit'             },
-      { href: '/toolkits#finance', label: 'Finance Toolkit'        },
-      { href: '/toolkits#comms',   label: 'Communications Toolkit' },
-    ],
-    color: 'classified',
-    hoverBorder: 'hover:border-classified/50',
-  },
-  {
-    icon: FileText,
-    number: '03',
-    title: 'Reports & Analysis',
-    badge: 'Insight',
-    description: 'In-depth analytical reports on the geopolitical, financial, and organizational implications of disclosure. Nuclear technology analogy. Scenario A through C frameworks.',
-    links: [
-      { href: '/rapports',      label: 'View Reports'      },
-      { href: '/rapports#free', label: 'Free Intro Report' },
-    ],
-    color: 'cold',
-    hoverBorder: 'hover:border-cold/50',
-  },
-];
-
-// Secondary resources
-const RESOURCES = [
-  { icon: Compass,    title: 'Scenarios & Impact', blurb: 'The disclosure impact matrix: preparedness by scenario.', href: '/framework' },
-  { icon: BookOpen,   title: 'Lexicon',            blurb: 'Institutional-grade glossary of agencies, cases, and terms.', href: '/lexique' },
-  { icon: HelpCircle, title: 'FAQ',                blurb: 'Answers grounded exclusively in verified institutional sources.', href: '/faq' },
-];
-
-const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
-
-const SERIF = 'Playfair Display, serif';
-const SANS = 'DM Sans, sans-serif';
-const MONO = 'DM Mono, monospace';
-const NAVY = '#1B2A4A';
-const GOLD = '#C9A84C';
-const CREAM = '#FAF8F4';
-
-export default function HomePage() {
-  return (
-    <>
-      {/* ── STANDARD HEADER ── */}
-      <PageHeader eyebrow="LBDG · Leadership Bureau for Disclosure Guidance" title="Institutional preparedness for a disclosure event.">
-        Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
-      </PageHeader>
-
-      {/* ── HERO BUTTONS ── */}
-      <section style={{ background: CREAM, padding: '0 24px 40px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link href="/toolkits" className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all" style={{ background: NAVY, color: GOLD, fontFamily: MONO, fontWeight: 500, fontSize: 13, letterSpacing: '0.04em' }}>
-              Get the Toolkits
-              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link href="/signals" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all" style={{ border: `1px solid ${NAVY}`, color: NAVY, fontFamily: MONO, fontWeight: 500, fontSize: 13 }}>
-              Disclosure Velocity →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── STATS ── */}
-      <section className="py-12 sm:py-16 border-y border-border/40" style={{ background: CREAM }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {STATS.map((stat, idx) => (
-              <div key={stat.value + idx} className="text-center">
-                <div style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3vw, 38px)', lineHeight: 1, marginBottom: 6 }}>
-                  {stat.value}
-                </div>
-                <div className="text-xs leading-snug" style={{ fontFamily: MONO, color: '#8A9BB5' }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── PANIC QUESTIONS (SEO cards) ── */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div className="mb-10 sm:mb-14">
-            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
-              If disclosure happens
-            </span>
-            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}>
-              The questions you will be asking
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {QUESTIONS.map((q) => {
-              const Icon = q.icon;
-              return (
-                <Link key={q.href} href={q.href} className="group flex flex-col p-6 rounded-lg border border-border/60 bg-white hover:border-signal/50 hover:shadow-lg transition-all duration-300" style={{ textDecoration: 'none' }}>
-                  <Icon size={26} style={{ color: NAVY, marginBottom: 16 }} />
-                  <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>
-                    {q.eyebrow}
-                  </span>
-                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 20, lineHeight: 1.25, marginBottom: 10 }}>
-                    {q.question}
-                  </h3>
-                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 16, flex: 1 }}>
-                    {q.blurb}
-                  </p>
-                  <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: NAVY }}>
-                    Read the guide
-                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
       </section>
 
       {/* ── 3 PILLARS ── */}
