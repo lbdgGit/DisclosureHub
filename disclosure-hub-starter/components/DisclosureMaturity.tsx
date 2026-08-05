@@ -14,9 +14,8 @@
  * Each rung is a citable anchor: #<trackId>-rung-<n>.
  */
 "use client";
-
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useState, useEffect } from "react";
+import { PageHeader } from "@/components/PageHeader";
 /* ---------- types (mirror _schema.json) ---------- */
 type Status = "achieved" | "partial" | "notYet";
 type Tier = "primary" | "official-proceeding" | "secondary" | "none";
@@ -37,7 +36,6 @@ type Track = {
   crossTrackNotes?: string;
 };
 type IconKind = "chevrons" | "pediment" | "gavel" | "atom" | "candlesticks" | "broadcast" | "globe";
-
 /* ---------- tokens ---------- */
 const C = {
   navy: "#1B2A4A", gold: "#C9A84C", cream: "#FAF8F4",
@@ -57,7 +55,6 @@ const TIER: Record<Tier, { color: string; label: string }> = {
 };
 const mono = "ui-monospace, Menlo, monospace";
 const eyebrow: React.CSSProperties = { fontFamily: mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: C.gold, fontWeight: 700 };
-
 /* ---------- icons ---------- */
 function Icon({ kind, size = 30, color = C.gold }: { kind: IconKind; size?: number; color?: string }) {
   const s: React.CSSProperties = { width: size, height: size, stroke: color, fill: "none", strokeWidth: 2 };
@@ -72,7 +69,6 @@ function Icon({ kind, size = 30, color = C.gold }: { kind: IconKind; size?: numb
     default: return null;
   }
 }
-
 /* ---------- atoms ---------- */
 function Dot({ status, size = 13 }: { status: Status; size?: number }) {
   const c = STATUS[status].color;
@@ -107,7 +103,6 @@ function Flag({ text }: { text: string }) {
 function Detail({ label, children }: { label: string; children: React.ReactNode }) {
   return <div style={{ marginTop: 10 }}><div style={eyebrow}>{label}</div><div style={{ color: C.ink, fontSize: 13.5, lineHeight: 1.55, marginTop: 3 }}>{children}</div></div>;
 }
-
 function Collapsible({ label, children }: { label: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
@@ -120,7 +115,6 @@ function Collapsible({ label, children }: { label: string; children: React.React
     </div>
   );
 }
-
 /* ---------- fiche (right pane) ---------- */
 function Fiche({ track }: { track: Track }) {
   const [allOpen, setAllOpen] = useState(false);
@@ -134,28 +128,23 @@ function Fiche({ track }: { track: Track }) {
           <div style={{ marginTop: 10 }}><CountNumbers count={track.statusCount} /></div>
         </div>
       </div>
-
       <p style={{ color: C.ink, fontSize: 14.5, lineHeight: 1.6, marginTop: 16 }}>{track.summary}</p>
-
       {track.read && (
         <div style={{ marginTop: 14, background: C.white, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.gold}`, borderRadius: 6, padding: "12px 16px" }}>
           <div style={eyebrow}>The read</div>
           <div style={{ color: C.ink, fontSize: 13.5, lineHeight: 1.55, marginTop: 5 }}>{track.read}</div>
         </div>
       )}
-
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 22, marginBottom: 14 }}>
         <div style={eyebrow}>The ladder · {track.rungs.length} rungs</div>
         <button onClick={() => setAllOpen(!allOpen)} style={{ all: "unset", cursor: "pointer", fontFamily: mono, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: C.mute }}>
           {allOpen ? "collapse all" : "expand all"}
         </button>
       </div>
-
       {/* key prop forces remount when toggling all, so each rung honors the new default */}
       <div key={allOpen ? "open" : "closed"}>
         {track.rungs.map((r, i) => <RungRowControlled key={r.n} trackId={track.id} r={r} isLast={i === track.rungs.length - 1} defaultOpen={allOpen} />)}
       </div>
-
       {track.excludedClaims && track.excludedClaims.length > 0 && (
         <Collapsible label="Deliberately excluded">
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -176,7 +165,6 @@ function Fiche({ track }: { track: Track }) {
           </div>
         </Collapsible>
       )}
-
       <Collapsible label="Scope, method & sourcing">
         <div style={{ display: "flex", flexDirection: "column", gap: 9, fontSize: 13.5, lineHeight: 1.55, color: C.ink }}>
           <div><b style={{ color: C.navy }}>Scope.</b> {track.scope}</div>
@@ -190,7 +178,6 @@ function Fiche({ track }: { track: Track }) {
     </div>
   );
 }
-
 /* rung variant that takes a defaultOpen (for expand-all) */
 function RungRowControlled({ trackId, r, isLast, defaultOpen }: { trackId: string; r: Rung; isLast: boolean; defaultOpen: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -239,7 +226,6 @@ function RungRowControlled({ trackId, r, isLast, defaultOpen }: { trackId: strin
     </div>
   );
 }
-
 /* ---------- left-rail tile (compact — all 7 fit in the viewport) ---------- */
 function RailTile({ track, active, onClick }: { track: Track; active: boolean; onClick: () => void }) {
   const [hover, setHover] = useState(false);
@@ -266,13 +252,11 @@ function RailTile({ track, active, onClick }: { track: Track; active: boolean; o
     </button>
   );
 }
-
 /* ---------- section ---------- */
 export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
   const ordered = [...tracks].sort((a, b) => a.order - b.order);
   const [activeId, setActiveId] = useState(ordered[0]?.id ?? "");
   const active = ordered.find((t) => t.id === activeId);
-
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
     if (hash) {
@@ -281,63 +265,52 @@ export default function DisclosureMaturity({ tracks }: { tracks: Track[] }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const totals = ordered.reduce(
     (a, t) => ({ achieved: a.achieved + t.statusCount.achieved, partial: a.partial + t.statusCount.partial, notYet: a.notYet + t.statusCount.notYet }),
     { achieved: 0, partial: 0, notYet: 0 }
   );
-
   return (
-    <div style={{ background: C.cream, padding: "36px 24px 60px", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        {/* masthead */}
-        <div style={{ borderBottom: `2px solid ${C.navy}`, paddingBottom: 14, marginBottom: 16 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-            <div style={eyebrow}>Readyfordisclosure.com · LBDG</div>
-          </div>
-          <h1 style={{ margin: "8px 0 0", color: C.navy, fontSize: "clamp(34px, 5vw, 56px)", letterSpacing: "-0.02em", fontWeight: 700 }}>Disclosure Maturity</h1>
-          <p style={{ color: C.ink, fontSize: 15, lineHeight: 1.55, marginTop: 8, maxWidth: 760 }}>
-            Where institutional disclosure actually stands, one sector at a time. Seven tracks, each a first-principles ladder measured against the public record. Every status is sourced; the gaps are where the exposure lives.
-          </p>
-        </div>
-
-        {/* legend + aggregate on one line */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 28px", alignItems: "center", marginBottom: 18 }}>
-          {(Object.keys(STATUS) as Status[]).map((k) => (
-            <div key={k} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Dot status={k} size={12} />
-              <span style={{ fontWeight: 700, color: C.navy, fontSize: 13 }}>{STATUS[k].label}</span>
-              <span style={{ color: C.mute, fontSize: 12.5 }}>— {STATUS[k].def}</span>
+    <>
+      <PageHeader eyebrow="LBDG · Disclosure Maturity" title="Disclosure Maturity">
+        Where institutional disclosure actually stands, one sector at a time. Seven tracks, each a first-principles ladder measured against the public record. Every status is sourced; the gaps are where the exposure lives.
+      </PageHeader>
+      <div style={{ background: C.cream, padding: "0 24px 60px", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          {/* legend + aggregate on one line */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 28px", alignItems: "center", marginBottom: 18, paddingBottom: 16, borderBottom: `2px solid ${C.navy}` }}>
+            {(Object.keys(STATUS) as Status[]).map((k) => (
+              <div key={k} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <Dot status={k} size={12} />
+                <span style={{ fontWeight: 700, color: C.navy, fontSize: 13 }}>{STATUS[k].label}</span>
+                <span style={{ color: C.mute, fontSize: 12.5 }}>— {STATUS[k].def}</span>
+              </div>
+            ))}
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: "auto" }}>
+              <span style={{ ...eyebrow, color: C.mute }}>All seven</span>
+              <CountNumbers count={totals} size={12} />
             </div>
-          ))}
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: "auto" }}>
-            <span style={{ ...eyebrow, color: C.mute }}>All seven</span>
-            <CountNumbers count={totals} size={12} />
+          </div>
+          {/* master-detail — plain two-column flow, scrolls together (stable under an animated navbar) */}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start" }} className="lbdg-md-grid">
+            {/* left rail */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }} className="lbdg-rail">
+              {ordered.map((t) => <RailTile key={t.id} track={t} active={t.id === activeId} onClick={() => setActiveId(t.id)} />)}
+            </div>
+            {/* right pane */}
+            <div className="lbdg-pane">
+              {active && <Fiche key={active.id} track={active} />}
+            </div>
           </div>
         </div>
-
-        {/* master-detail — plain two-column flow, scrolls together (stable under an animated navbar) */}
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 250px) 1fr", gap: 20, alignItems: "start" }} className="lbdg-md-grid">
-          {/* left rail */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }} className="lbdg-rail">
-            {ordered.map((t) => <RailTile key={t.id} track={t} active={t.id === activeId} onClick={() => setActiveId(t.id)} />)}
-          </div>
-
-          {/* right pane */}
-          <div className="lbdg-pane">
-            {active && <Fiche key={active.id} track={active} />}
-          </div>
-        </div>
+        {/* stack the two columns on narrow screens */}
+        <style>{`
+          @media (max-width: 860px) {
+            .lbdg-md-grid { grid-template-columns: 1fr !important; }
+            .lbdg-rail { flex-direction: row !important; flex-wrap: wrap !important; }
+            .lbdg-rail > button { flex: 1 1 140px; }
+          }
+        `}</style>
       </div>
-
-      {/* stack the two columns on narrow screens */}
-      <style>{`
-        @media (max-width: 860px) {
-          .lbdg-md-grid { grid-template-columns: 1fr !important; }
-          .lbdg-rail { flex-direction: row !important; flex-wrap: wrap !important; }
-          .lbdg-rail > button { flex: 1 1 140px; }
-        }
-      `}</style>
-    </div>
+    </>
   );
 }
