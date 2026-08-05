@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { PageHeader } from '@/components/PageHeader';
 
 const SCENARIOS = [
   { id: 'A',  label: 'Scenario A',  desc: 'UAP origin officially attributed to NHI. No crafts, tech or biologics confirmed.', isEnd: false },
@@ -74,21 +75,9 @@ const MATRIX_MIN_WIDTH = COL_Y + COL_X * 4 + 6 * 5;
 export default function FrameworkPage() {
   return (
     <main style={{ backgroundColor: '#FAF8F4', minHeight: '100vh', fontFamily: 'DM Sans, sans-serif' }}>
-      {/* ── STANDARD HEADER (cream, serif) ── */}
-      <section style={{ backgroundColor: '#FAF8F4', padding: '128px 24px 40px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8A9BB5', marginBottom: 14 }}>
-            LBDG · Scenarios & Impact
-          </p>
-          <h1 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(34px, 5vw, 56px)', fontWeight: 700, color: '#1B2A4A', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 18 }}>
-            Disclosure Impact Matrix
-          </h1>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 17, color: '#4A5D78', lineHeight: 1.7, maxWidth: 640 }}>
-            The direction is settled; the velocity is not. Your preparedness level determines where your organization stands when each disclosure threshold is crossed.
-          </p>
-        </div>
-      </section>
-
+      <PageHeader eyebrow="LBDG · Scenarios & Impact" title="Disclosure Impact Matrix">
+        The direction is settled; the velocity is not. Your preparedness level determines where your organization stands when each disclosure threshold is crossed.
+      </PageHeader>
       {/* Matrix */}
       <section style={{ padding: '40px 24px 64px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
