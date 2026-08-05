@@ -2,18 +2,12 @@ import Link from 'next/link';
 import { ArrowRight, Wrench, FileText, TrendingUp, Compass, BookOpen, HelpCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
+import AnimatedStats from '@/components/AnimatedStats';
 
 export const metadata: Metadata = {
   title: 'LBDG - Leadership Bureau for Disclosure Guidance',
   description: 'Institutional preparedness for a disclosure event. Measured, sourced, and built for the people who carry the risk.',
 };
-
-const STATS = [
-  { value: '2,000+', label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
-  { value: '34',     label: 'Senior officials on record in The Age of Disclosure (Amazon Prime)' },
-  { value: '66',     label: 'Verified institutional events in the DVI dataset (40 since 2017)' },
-  { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
-];
 
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
 
@@ -32,28 +26,17 @@ export default function HomePage() {
         Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
       </PageHeader>
 
-      {/* ── STATS ── */}
-      <section className="py-12 sm:py-16 border-y border-border/40" style={{ background: CREAM }}>
+      {/* ── STATS (animated count-up) ── */}
+      <section className="py-8 sm:py-12 border-y border-border/40" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }} className="px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {STATS.map((stat, idx) => (
-              <div key={stat.value + idx} className="text-center">
-                <div style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3vw, 38px)', lineHeight: 1, marginBottom: 6 }}>
-                  {stat.value}
-                </div>
-                <div className="text-xs leading-snug" style={{ fontFamily: MONO, color: '#8A9BB5' }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+          <AnimatedStats />
         </div>
       </section>
 
       {/* ── PANIC QUESTIONS (the star: relief + photos) ── */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
+      <section className="py-10 sm:py-14 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div className="mb-10 sm:mb-14">
+          <div className="mb-8 sm:mb-10">
             <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
               If disclosure happens
             </span>
@@ -137,9 +120,9 @@ export default function HomePage() {
       </section>
 
       {/* ── PREPARE: Toolkits + Reports ── */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
+      <section className="py-10 sm:py-14 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div className="mb-10 sm:mb-14">
+          <div className="mb-8 sm:mb-10">
             <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
               Prepare
             </span>
@@ -195,9 +178,9 @@ export default function HomePage() {
       </section>
 
       {/* ── IS IT REALLY HAPPENING: Velocity + Maturity as proof ── */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
+      <section className="py-10 sm:py-14 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div className="mb-10 sm:mb-14">
+          <div className="mb-8 sm:mb-10">
             <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
               Is it really happening
             </span>
@@ -255,7 +238,7 @@ export default function HomePage() {
       </section>
 
       {/* ── RESOURCES: full-width card with photo band + 3 inner links ── */}
-      <section className="pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: CREAM }}>
+      <section className="pb-10 sm:pb-14 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="resshell">
             {/* photo side */}
@@ -310,7 +293,7 @@ export default function HomePage() {
       </section>
 
       {/* ── STARTER PACK CTA ── */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: NAVY }}>
+      <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: NAVY }}>
         <div className="max-w-3xl mx-auto text-center">
           <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.6)', display: 'block', marginBottom: 16 }}>
             Free · Start here
