@@ -15,30 +15,132 @@ const STATS = [
   { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
 ];
 
-// Panic-question cards -> the three SEO pages
-const QUESTIONS = [
-  {
-    icon: Users,
-    eyebrow: 'Workforce',
-    question: 'My employees are panicking. What do I do?',
-    blurb: 'Managing absenteeism, stress, and workplace stability if a disclosure announcement lands on your people.',
-    href: '/workforce-disclosure',
-  },
-  {
-    icon: Crown,
-    eyebrow: 'Leadership',
-    question: 'What should my company actually do?',
-    blurb: 'Governance, decision authority, and the first 72 hours for CEOs, boards, and executives.',
-    href: '/leadership-disclosure',
-  },
-  {
-    icon: LineChart,
-    eyebrow: 'Finance',
-    question: 'How exposed is my business financially?',
-    blurb: 'A defensive read on sector exposure, market volatility, and regulatory obligations. Not stock tips.',
-    href: '/finance-disclosure',
-  },
-];
+{/* ── PANIC QUESTIONS (SEO cards, with relief) ── */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="mb-10 sm:mb-14">
+            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
+              If disclosure happens
+            </span>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}>
+              The questions you will be asking
+            </h2>
+          </div>
+
+          {/* grid: big hero left (2fr) + two stacked small right (1fr) */}
+          <div className="qgrid">
+            {/* HERO — HR */}
+            <Link href="/workforce-disclosure" className="qhero group" style={{ textDecoration: 'none' }}>
+              <div className="qhero-media" style={{ backgroundImage: "url('/images/hr.jpg')" }} />
+              <div className="qhero-overlay" />
+              <div className="qhero-body">
+                <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 12, display: 'block' }}>
+                  Workforce
+                </span>
+                <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: '#FFFFFF', fontSize: 'clamp(24px, 3vw, 34px)', lineHeight: 1.15, marginBottom: 12, maxWidth: 460 }}>
+                  My employees are panicking. What do I do?
+                </h3>
+                <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.82)', marginBottom: 18, maxWidth: 420 }}>
+                  Managing absenteeism, stress, and workplace stability if a disclosure announcement lands on your people.
+                </p>
+                <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: '#FFFFFF' }}>
+                  Read the guide
+                  <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
+            </Link>
+
+            {/* SMALL — Leadership */}
+            <Link href="/leadership-disclosure" className="qsmall group" style={{ textDecoration: 'none' }}>
+              <div className="qsmall-media" style={{ backgroundImage: "url('/images/leadership.jpg')" }} />
+              <div className="qsmall-body">
+                <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 6, display: 'block' }}>
+                  Leadership
+                </span>
+                <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 19, lineHeight: 1.25, marginBottom: 8 }}>
+                  What should my company actually do?
+                </h3>
+                <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: NAVY }}>
+                  Read the guide
+                  <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
+            </Link>
+
+            {/* SMALL — Finance */}
+            <Link href="/finance-disclosure" className="qsmall group" style={{ textDecoration: 'none' }}>
+              <div className="qsmall-media" style={{ backgroundImage: "url('/images/finance.jpg')" }} />
+              <div className="qsmall-body">
+                <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 6, display: 'block' }}>
+                  Finance
+                </span>
+                <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 19, lineHeight: 1.25, marginBottom: 8 }}>
+                  How exposed is my business financially?
+                </h3>
+                <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: NAVY }}>
+                  Read the guide
+                  <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        <style>{`
+          .qgrid {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+          }
+          .qhero {
+            grid-row: 1 / 3;
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            min-height: 420px;
+            display: flex;
+            align-items: flex-end;
+            box-shadow: 0 18px 40px rgba(27,42,74,0.18);
+            transition: transform .28s ease, box-shadow .28s ease;
+          }
+          .qhero:hover { transform: translateY(-4px); box-shadow: 0 26px 56px rgba(27,42,74,0.26); }
+          .qhero-media {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            transition: transform .5s ease;
+          }
+          .qhero:hover .qhero-media { transform: scale(1.05); }
+          .qhero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(15,22,40,0.15) 0%, rgba(15,22,40,0.55) 55%, rgba(15,22,40,0.9) 100%);
+          }
+          .qhero-body { position: relative; padding: 32px; }
+
+          .qsmall {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #FFFFFF;
+            border: 1px solid #E3DCCE;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 26px rgba(27,42,74,0.10);
+            transition: transform .28s ease, box-shadow .28s ease;
+          }
+          .qsmall:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(27,42,74,0.18); }
+          .qsmall-media {
+            height: 120px;
+            background-size: cover; background-position: center;
+          }
+          .qsmall-body { padding: 18px 20px 20px; }
+
+          @media (max-width: 820px) {
+            .qgrid { grid-template-columns: 1fr; grid-template-rows: none; }
+            .qhero { grid-row: auto; min-height: 340px; }
+          }
+        `}</style>
+      </section>
 
 const PILLARS = [
   {
