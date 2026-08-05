@@ -1,19 +1,43 @@
 import Link from 'next/link';
-import { ArrowRight, Wrench, FileText, TrendingUp } from 'lucide-react';
+import { ArrowRight, Wrench, FileText, TrendingUp, Users, Crown, LineChart, BookOpen, HelpCircle, Compass } from 'lucide-react';
 import type { Metadata } from 'next';
-import { InstitutionalSignals } from '@/components/InstitutionalSignals';
 import { PageHeader } from '@/components/PageHeader';
 
 export const metadata: Metadata = {
-  title: 'LBDG — Leadership Bureau for Disclosure Guidance',
+  title: 'LBDG - Leadership Bureau for Disclosure Guidance',
   description: 'Institutional preparedness for a disclosure event. Measured, sourced, and built for the people who carry the risk.',
 };
 
 const STATS = [
   { value: '2,000+', label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
-  { value: '34',     label: 'Senior officials on record — The Age of Disclosure (Amazon Prime)' },
+  { value: '34',     label: 'Senior officials on record in The Age of Disclosure (Amazon Prime)' },
   { value: '66',     label: 'Verified institutional events in the DVI dataset (40 since 2017)' },
-  { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007–2012 (NYT, 2017)' },
+  { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
+];
+
+// Panic-question cards -> the three SEO pages
+const QUESTIONS = [
+  {
+    icon: Users,
+    eyebrow: 'Workforce',
+    question: 'My employees are panicking. What do I do?',
+    blurb: 'Managing absenteeism, stress, and workplace stability if a disclosure announcement lands on your people.',
+    href: '/workforce-disclosure',
+  },
+  {
+    icon: Crown,
+    eyebrow: 'Leadership',
+    question: 'What should my company actually do?',
+    blurb: 'Governance, decision authority, and the first 72 hours for CEOs, boards, and executives.',
+    href: '/leadership-disclosure',
+  },
+  {
+    icon: LineChart,
+    eyebrow: 'Finance',
+    question: 'How exposed is my business financially?',
+    blurb: 'A defensive read on sector exposure, market volatility, and regulatory obligations. Not stock tips.',
+    href: '/finance-disclosure',
+  },
 ];
 
 const PILLARS = [
@@ -22,7 +46,7 @@ const PILLARS = [
     number: '01',
     title: 'Disclosure Velocity',
     badge: 'Live',
-    description: 'A single weighted index — the DVI — tracking how fast institutional disclosure is moving across 66 verified events. Government actions, financial instruments, legislative developments.',
+    description: 'A single weighted index, the DVI, tracking how fast institutional disclosure is moving across 66 verified events. Government actions, financial instruments, legislative developments.',
     links: [
       { href: '/signals',  label: 'Open Velocity Index' },
       { href: '/maturity', label: 'See Disclosure Maturity' },
@@ -35,7 +59,7 @@ const PILLARS = [
     number: '02',
     title: 'Operational Toolkits',
     badge: 'Action',
-    description: 'Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates — designed to be used, not read.',
+    description: 'Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates, designed to be used, not read.',
     links: [
       { href: '/toolkits',         label: 'All Toolkits'           },
       { href: '/toolkits#hr',      label: 'HR Toolkit'             },
@@ -60,6 +84,13 @@ const PILLARS = [
   },
 ];
 
+// Secondary resources
+const RESOURCES = [
+  { icon: Compass,    title: 'Scenarios & Impact', blurb: 'The disclosure impact matrix: preparedness by scenario.', href: '/framework' },
+  { icon: BookOpen,   title: 'Lexicon',            blurb: 'Institutional-grade glossary of agencies, cases, and terms.', href: '/lexique' },
+  { icon: HelpCircle, title: 'FAQ',                blurb: 'Answers grounded exclusively in verified institutional sources.', href: '/faq' },
+];
+
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
 
 const SERIF = 'Playfair Display, serif';
@@ -81,19 +112,11 @@ export default function HomePage() {
       <section style={{ background: CREAM, padding: '0 24px 40px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/toolkits"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all"
-              style={{ background: NAVY, color: GOLD, fontFamily: MONO, fontWeight: 500, fontSize: 13, letterSpacing: '0.04em' }}
-            >
+            <Link href="/toolkits" className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all" style={{ background: NAVY, color: GOLD, fontFamily: MONO, fontWeight: 500, fontSize: 13, letterSpacing: '0.04em' }}>
               Get the Toolkits
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link
-              href="/signals"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all"
-              style={{ border: `1px solid ${NAVY}`, color: NAVY, fontFamily: MONO, fontWeight: 500, fontSize: 13 }}
-            >
+            <Link href="/signals" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded transition-all" style={{ border: `1px solid ${NAVY}`, color: NAVY, fontFamily: MONO, fontWeight: 500, fontSize: 13 }}>
               Disclosure Velocity →
             </Link>
           </div>
@@ -118,8 +141,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── INSTITUTIONAL SIGNALS teaser ── */}
-      <InstitutionalSignals hideDVIBadge />
+      {/* ── PANIC QUESTIONS (SEO cards) ── */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="mb-10 sm:mb-14">
+            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
+              If disclosure happens
+            </span>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}>
+              The questions you will be asking
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {QUESTIONS.map((q) => {
+              const Icon = q.icon;
+              return (
+                <Link key={q.href} href={q.href} className="group flex flex-col p-6 rounded-lg border border-border/60 bg-white hover:border-signal/50 hover:shadow-lg transition-all duration-300" style={{ textDecoration: 'none' }}>
+                  <Icon size={26} style={{ color: NAVY, marginBottom: 16 }} />
+                  <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>
+                    {q.eyebrow}
+                  </span>
+                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 20, lineHeight: 1.25, marginBottom: 10 }}>
+                    {q.question}
+                  </h3>
+                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 16, flex: 1 }}>
+                    {q.blurb}
+                  </p>
+                  <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: NAVY }}>
+                    Read the guide
+                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* ── 3 PILLARS ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
@@ -132,7 +189,6 @@ export default function HomePage() {
               Three ways to prepare your organization
             </h2>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {PILLARS.map((pillar) => {
               const Icon = pillar.icon;
@@ -145,10 +201,7 @@ export default function HomePage() {
                 signal: 'text-signal', classified: 'text-classified', cold: 'text-cold',
               };
               return (
-                <div
-                  key={pillar.number}
-                  className={`group p-6 rounded-lg border border-border/60 bg-white ${pillar.hoverBorder} hover:shadow-lg transition-all duration-300`}
-                >
+                <div key={pillar.number} className={`group p-6 rounded-lg border border-border/60 bg-white ${pillar.hoverBorder} hover:shadow-lg transition-all duration-300`}>
                   <div className="flex items-center justify-between mb-5">
                     <span style={{ fontFamily: MONO, fontSize: 12, color: 'rgba(138,155,181,0.5)', letterSpacing: '0.1em' }}>
                       {pillar.number}
@@ -167,11 +220,7 @@ export default function HomePage() {
                   <ul className="space-y-2 border-t border-border/50 pt-4">
                     {pillar.links.map((link) => (
                       <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="flex items-center justify-between text-xs text-muted hover:text-bright group/link transition-colors"
-                          style={{ fontFamily: MONO }}
-                        >
+                        <Link href={link.href} className="flex items-center justify-between text-xs text-muted hover:text-bright group/link transition-colors" style={{ fontFamily: MONO }}>
                           <span>{link.label}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
                         </Link>
@@ -185,11 +234,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── RESOURCES ── */}
+      <section className="pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: CREAM }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {RESOURCES.map((r) => {
+              const Icon = r.icon;
+              return (
+                <Link key={r.href} href={r.href} className="group flex items-start gap-4 p-5 rounded-lg border border-border/50 bg-white hover:border-border hover:shadow-md transition-all" style={{ textDecoration: 'none' }}>
+                  <Icon size={22} style={{ color: NAVY, flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <h4 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 16, marginBottom: 4 }}>
+                      {r.title}
+                    </h4>
+                    <p style={{ fontFamily: SANS, fontSize: 13, lineHeight: 1.5, color: 'rgba(74,93,120,0.8)' }}>
+                      {r.blurb}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ── STARTER PACK CTA ── */}
       <section className="py-16 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: NAVY }}>
         <div className="max-w-3xl mx-auto text-center">
           <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.6)', display: 'block', marginBottom: 16 }}>
-            Free — Start here
+            Free · Start here
           </span>
           <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: CREAM, fontSize: 'clamp(26px, 3.5vw, 40px)', marginBottom: 16 }}>
             Download the Executive Starter Pack
