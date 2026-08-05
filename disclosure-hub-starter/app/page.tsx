@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Wrench, FileText, TrendingUp, BookOpen, HelpCircle, Compass } from 'lucide-react';
+import { ArrowRight, Wrench, FileText, TrendingUp, Compass, BookOpen, HelpCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 
@@ -13,56 +13,6 @@ const STATS = [
   { value: '34',     label: 'Senior officials on record in The Age of Disclosure (Amazon Prime)' },
   { value: '66',     label: 'Verified institutional events in the DVI dataset (40 since 2017)' },
   { value: '$22M',   label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
-];
-
-const PILLARS = [
-  {
-    icon: TrendingUp,
-    number: '01',
-    title: 'Disclosure Velocity',
-    badge: 'Live',
-    description: 'A single weighted index, the DVI, tracking how fast institutional disclosure is moving across 66 verified events. Government actions, financial instruments, legislative developments.',
-    links: [
-      { href: '/signals',  label: 'Open Velocity Index' },
-      { href: '/maturity', label: 'See Disclosure Maturity' },
-    ],
-    color: 'signal',
-    hoverBorder: 'hover:border-signal/50',
-  },
-  {
-    icon: Wrench,
-    number: '02',
-    title: 'Operational Toolkits',
-    badge: 'Action',
-    description: 'Eight operational toolkits for HR, Finance, Communications, Legal, Leadership & Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and templates, designed to be used, not read.',
-    links: [
-      { href: '/toolkits',         label: 'All Toolkits'           },
-      { href: '/toolkits#hr',      label: 'HR Toolkit'             },
-      { href: '/toolkits#finance', label: 'Finance Toolkit'        },
-      { href: '/toolkits#comms',   label: 'Communications Toolkit' },
-    ],
-    color: 'classified',
-    hoverBorder: 'hover:border-classified/50',
-  },
-  {
-    icon: FileText,
-    number: '03',
-    title: 'Reports & Analysis',
-    badge: 'Insight',
-    description: 'In-depth analytical reports on the geopolitical, financial, and organizational implications of disclosure. Nuclear technology analogy. Scenario A through C frameworks.',
-    links: [
-      { href: '/rapports',      label: 'View Reports'      },
-      { href: '/rapports#free', label: 'Free Intro Report' },
-    ],
-    color: 'cold',
-    hoverBorder: 'hover:border-cold/50',
-  },
-];
-
-const RESOURCES = [
-  { icon: Compass,    title: 'Scenarios & Impact', blurb: 'The disclosure impact matrix: preparedness by scenario.', href: '/framework' },
-  { icon: BookOpen,   title: 'Lexicon',            blurb: 'Institutional-grade glossary of agencies, cases, and terms.', href: '/lexique' },
-  { icon: HelpCircle, title: 'FAQ',                blurb: 'Answers grounded exclusively in verified institutional sources.', href: '/faq' },
 ];
 
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
@@ -100,7 +50,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── PANIC QUESTIONS (SEO cards, with relief) ── */}
+      {/* ── PANIC QUESTIONS (the star: relief + photos) ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="mb-10 sm:mb-14">
@@ -113,7 +63,7 @@ export default function HomePage() {
           </div>
 
           <div className="qgrid">
-            {/* HERO — HR */}
+            {/* HERO - HR */}
             <Link href="/workforce-disclosure" className="qhero group" style={{ textDecoration: 'none' }}>
               <div className="qhero-media" style={{ backgroundImage: "url('/images/hr.jpg')" }} />
               <div className="qhero-overlay" />
@@ -134,7 +84,7 @@ export default function HomePage() {
               </div>
             </Link>
 
-            {/* SMALL — Leadership */}
+            {/* SMALL - Leadership */}
             <Link href="/leadership-disclosure" className="qsmall group" style={{ textDecoration: 'none' }}>
               <div className="qsmall-media" style={{ backgroundImage: "url('/images/leadership.jpg')" }} />
               <div className="qsmall-body">
@@ -151,7 +101,7 @@ export default function HomePage() {
               </div>
             </Link>
 
-            {/* SMALL — Finance */}
+            {/* SMALL - Finance */}
             <Link href="/finance-disclosure" className="qsmall group" style={{ textDecoration: 'none' }}>
               <div className="qsmall-media" style={{ backgroundImage: "url('/images/finance.jpg')" }} />
               <div className="qsmall-body">
@@ -171,155 +121,184 @@ export default function HomePage() {
         </div>
 
         <style>{`
-          .qgrid {
-            display: grid;
-            grid-template-columns: 1.7fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 20px;
-          }
-          .qhero {
-            grid-row: 1 / 3;
-            position: relative;
-            border-radius: 14px;
-            overflow: hidden;
-            min-height: 420px;
-            display: flex;
-            align-items: flex-end;
-            box-shadow: 0 18px 40px rgba(27,42,74,0.18);
-            transition: transform .28s ease, box-shadow .28s ease;
-          }
+          .qgrid { display: grid; grid-template-columns: 1.7fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; }
+          .qhero { grid-row: 1 / 3; position: relative; border-radius: 14px; overflow: hidden; min-height: 420px; display: flex; align-items: flex-end; box-shadow: 0 18px 40px rgba(27,42,74,0.18); transition: transform .28s ease, box-shadow .28s ease; }
           .qhero:hover { transform: translateY(-4px); box-shadow: 0 26px 56px rgba(27,42,74,0.26); }
-          .qhero-media {
-            position: absolute; inset: 0;
-            background-size: cover; background-position: center;
-            transition: transform .5s ease;
-          }
+          .qhero-media { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .5s ease; }
           .qhero:hover .qhero-media { transform: scale(1.05); }
-          .qhero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(15,22,40,0.15) 0%, rgba(15,22,40,0.55) 55%, rgba(15,22,40,0.9) 100%);
-          }
+          .qhero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,22,40,0.15) 0%, rgba(15,22,40,0.55) 55%, rgba(15,22,40,0.9) 100%); }
           .qhero-body { position: relative; padding: 32px; }
-
-          .qsmall {
-            position: relative;
-            border-radius: 14px;
-            overflow: hidden;
-            background: #FFFFFF;
-            border: 1px solid #E3DCCE;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 26px rgba(27,42,74,0.10);
-            transition: transform .28s ease, box-shadow .28s ease;
-          }
+          .qsmall { position: relative; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid #E3DCCE; display: flex; flex-direction: column; box-shadow: 0 10px 26px rgba(27,42,74,0.10); transition: transform .28s ease, box-shadow .28s ease; }
           .qsmall:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(27,42,74,0.18); }
-          .qsmall-media {
-            height: 120px;
-            background-size: cover; background-position: center;
-          }
+          .qsmall-media { height: 120px; background-size: cover; background-position: center; }
           .qsmall-body { padding: 18px 20px 20px; }
-
-          @media (max-width: 820px) {
-            .qgrid { grid-template-columns: 1fr; grid-template-rows: none; }
-            .qhero { grid-row: auto; min-height: 340px; }
-          }
+          @media (max-width: 820px) { .qgrid { grid-template-columns: 1fr; grid-template-rows: none; } .qhero { grid-row: auto; min-height: 340px; } }
         `}</style>
       </section>
 
-     {/* ── 4 PILLARS (relief, icons) ── */}
+      {/* ── PREPARE: Toolkits + Reports ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="mb-10 sm:mb-14">
             <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
-              What LBDG provides
+              Prepare
             </span>
             <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}>
-              Four ways to prepare your organization
+              Two ways to get your organization ready
             </h2>
           </div>
 
-          <div className="pgrid">
-            {[
-              { icon: TrendingUp, eyebrow: 'Live index',   title: 'Disclosure Velocity', blurb: 'A single weighted index tracking how fast institutional disclosure is moving across 66 verified events.', href: '/signals' },
-              { icon: Compass,    eyebrow: 'State of play', title: 'Disclosure Maturity', blurb: 'Where disclosure actually stands across seven institutional sectors, each a first-principles ladder, every status sourced.', href: '/maturity' },
-              { icon: Wrench,     eyebrow: 'Action',        title: 'Operational Toolkits', blurb: 'Eight toolkits for HR, Finance, Legal, Board and more. Scorecards, checklists, decision trees, designed to be used.', href: '/toolkits' },
-              { icon: FileText,   eyebrow: 'Analysis',      title: 'Reports & Analysis', blurb: 'In-depth analytical reports on the financial, geopolitical, and organizational implications of disclosure.', href: '/rapports' },
-            ].map((p) => {
-              const Icon = p.icon;
-              return (
-                <Link key={p.href} href={p.href} className="pcard group" style={{ textDecoration: 'none' }}>
-                  <div className="pcard-icon"><Icon size={24} style={{ color: NAVY }} /></div>
-                  <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 8, display: 'block' }}>
-                    {p.eyebrow}
-                  </span>
-                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 20, marginBottom: 10, lineHeight: 1.2 }}>
-                    {p.title}
-                  </h3>
-                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 16, flex: 1 }}>
-                    {p.blurb}
-                  </p>
-                  <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: NAVY }}>
-                    Explore
-                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              );
-            })}
+          <div className="prepgrid">
+            <Link href="/toolkits" className="prepcard group" style={{ textDecoration: 'none' }}>
+              <div className="prepcard-icon"><Wrench size={26} style={{ color: NAVY }} /></div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+                Practical
+              </span>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 24, marginBottom: 12, lineHeight: 1.2 }}>
+                Operational Toolkits
+              </h3>
+              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(74,93,120,0.85)', marginBottom: 20, flex: 1 }}>
+                Eight ready-to-use toolkits for HR, Finance, Communications, Legal, Leadership &amp; Board, Marketing, Supply Chain, and Investor Relations. Scorecards, checklists, decision trees, and word-for-word scripts. Built to be used in the moment, not read in advance.
+              </p>
+              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: NAVY }}>
+                Browse the toolkits
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+
+            <Link href="/rapports" className="prepcard group" style={{ textDecoration: 'none' }}>
+              <div className="prepcard-icon"><FileText size={26} style={{ color: NAVY }} /></div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+                In depth
+              </span>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 24, marginBottom: 12, lineHeight: 1.2 }}>
+                Reports &amp; Analysis
+              </h3>
+              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(74,93,120,0.85)', marginBottom: 20, flex: 1 }}>
+                Analytical reports on the financial, geopolitical, and organizational implications of disclosure. Built on documented precedents, every claim sourced, inferences explicitly labeled. For the leader who needs to understand the mechanisms, not just the checklist.
+              </p>
+              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: NAVY }}>
+                Read the reports
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           </div>
         </div>
 
         <style>{`
-          .pgrid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-          }
-          .pcard {
-            display: flex;
-            flex-direction: column;
-            background: #FFFFFF;
-            border: 1px solid #E3DCCE;
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 10px 26px rgba(27,42,74,0.09);
-            transition: transform .28s ease, box-shadow .28s ease;
-          }
-          .pcard:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(27,42,74,0.16); }
-          .pcard-icon {
-            width: 48px; height: 48px;
-            border-radius: 10px;
-            background: rgba(201,168,76,0.12);
-            border: 1px solid rgba(201,168,76,0.3);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 18px;
-          }
-          @media (max-width: 900px) { .pgrid { grid-template-columns: repeat(2, 1fr); } }
-          @media (max-width: 520px) { .pgrid { grid-template-columns: 1fr; } }
+          .prepgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+          .prepcard { display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E3DCCE; border-radius: 14px; padding: 32px; box-shadow: 0 10px 26px rgba(27,42,74,0.09); transition: transform .28s ease, box-shadow .28s ease; }
+          .prepcard:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(27,42,74,0.16); }
+          .prepcard-icon { width: 52px; height: 52px; border-radius: 11px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+          @media (max-width: 720px) { .prepgrid { grid-template-columns: 1fr; } }
         `}</style>
       </section>
 
-      {/* ── RESOURCES ── */}
-      <section className="pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: CREAM }}>
+      {/* ── IS IT REALLY HAPPENING: Velocity + Maturity as proof ── */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {RESOURCES.map((r) => {
-              const Icon = r.icon;
-              return (
-                <Link key={r.href} href={r.href} className="group flex items-start gap-4 p-5 rounded-lg border border-border/50 bg-white hover:border-border hover:shadow-md transition-all" style={{ textDecoration: 'none' }}>
-                  <Icon size={22} style={{ color: NAVY, flexShrink: 0, marginTop: 2 }} />
-                  <div>
-                    <h4 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 16, marginBottom: 4 }}>
-                      {r.title}
-                    </h4>
-                    <p style={{ fontFamily: SANS, fontSize: 13, lineHeight: 1.5, color: 'rgba(74,93,120,0.8)' }}>
-                      {r.blurb}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
+          <div className="mb-10 sm:mb-14">
+            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
+              Is it really happening
+            </span>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em', marginBottom: 12 }}>
+              Judge for yourself. Every signal is sourced.
+            </h2>
+            <p style={{ fontFamily: SANS, fontSize: 16, lineHeight: 1.7, color: 'rgba(74,93,120,0.85)', maxWidth: 640 }}>
+              We do not ask you to take our word for it. Two open instruments track the disclosure process from public, verifiable sources: how fast it is moving, and how far it has actually come.
+            </p>
+          </div>
+
+          <div className="proofgrid">
+            <Link href="/signals" className="proofcard group" style={{ textDecoration: 'none' }}>
+              <div className="prepcard-icon"><TrendingUp size={26} style={{ color: NAVY }} /></div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+                The speed
+              </span>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 22, marginBottom: 12, lineHeight: 1.2 }}>
+                Disclosure Velocity
+              </h3>
+              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(74,93,120,0.85)', marginBottom: 20, flex: 1 }}>
+                A single weighted index built from 66 verified institutional events, congressional hearings, official file releases, agency reports, financial instruments. It measures how fast the process is moving. Download the dataset and recompute it yourself.
+              </p>
+              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: NAVY }}>
+                See the index
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+
+            <Link href="/maturity" className="proofcard group" style={{ textDecoration: 'none' }}>
+              <div className="prepcard-icon"><Compass size={26} style={{ color: NAVY }} /></div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+                The state
+              </span>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 22, marginBottom: 12, lineHeight: 1.2 }}>
+                Disclosure Maturity
+              </h3>
+              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(74,93,120,0.85)', marginBottom: 20, flex: 1 }}>
+                Where disclosure actually stands across seven institutional sectors, from military and government to legislative, scientific, and financial. Each sector is a first-principles ladder, and every status is sourced against the public record.
+              </p>
+              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: NAVY }}>
+                See where it stands
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           </div>
         </div>
+
+        <style>{`
+          .proofgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+          .proofcard { display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E3DCCE; border-radius: 14px; padding: 32px; box-shadow: 0 10px 26px rgba(27,42,74,0.09); transition: transform .28s ease, box-shadow .28s ease; }
+          .proofcard:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(27,42,74,0.16); }
+          @media (max-width: 720px) { .proofgrid { grid-template-columns: 1fr; } }
+        `}</style>
+      </section>
+
+      {/* ── RESOURCES: full-width card with 3 inner links ── */}
+      <section className="pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: CREAM }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="resshell">
+            <div className="resintro">
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 8, display: 'block' }}>
+                Reference
+              </span>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 22, lineHeight: 1.2 }}>
+                Go deeper
+              </h3>
+            </div>
+            <div className="resinner">
+              <Link href="/framework" className="resitem group" style={{ textDecoration: 'none' }}>
+                <Compass size={20} style={{ color: NAVY, flexShrink: 0, marginTop: 2 }} />
+                <div>
+                  <h4 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 15, marginBottom: 3 }}>Scenarios &amp; Impact</h4>
+                  <p style={{ fontFamily: SANS, fontSize: 13, lineHeight: 1.5, color: 'rgba(74,93,120,0.8)' }}>The impact matrix: preparedness by scenario.</p>
+                </div>
+              </Link>
+              <Link href="/lexique" className="resitem group" style={{ textDecoration: 'none' }}>
+                <BookOpen size={20} style={{ color: NAVY, flexShrink: 0, marginTop: 2 }} />
+                <div>
+                  <h4 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 15, marginBottom: 3 }}>Lexicon</h4>
+                  <p style={{ fontFamily: SANS, fontSize: 13, lineHeight: 1.5, color: 'rgba(74,93,120,0.8)' }}>Glossary of agencies, cases, and terms.</p>
+                </div>
+              </Link>
+              <Link href="/faq" className="resitem group" style={{ textDecoration: 'none' }}>
+                <HelpCircle size={20} style={{ color: NAVY, flexShrink: 0, marginTop: 2 }} />
+                <div>
+                  <h4 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 15, marginBottom: 3 }}>FAQ</h4>
+                  <p style={{ fontFamily: SANS, fontSize: 13, lineHeight: 1.5, color: 'rgba(74,93,120,0.8)' }}>Answers from verified institutional sources.</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          .resshell { background: #FFFFFF; border: 1px solid #E3DCCE; border-radius: 16px; padding: 32px; box-shadow: 0 10px 26px rgba(27,42,74,0.08); display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center; }
+          .resinner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+          .resitem { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: 10px; border: 1px solid transparent; transition: background .2s ease, border-color .2s ease; }
+          .resitem:hover { background: #FAF8F4; border-color: #E3DCCE; }
+          @media (max-width: 820px) { .resshell { grid-template-columns: 1fr; gap: 20px; } .resinner { grid-template-columns: 1fr; } }
+        `}</style>
       </section>
 
       {/* ── STARTER PACK CTA ── */}
