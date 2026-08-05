@@ -89,6 +89,14 @@ export default function WorkforceDisclosurePage() {
             <strong style={{ color: NAVY }}>Within the first three days:</strong> a return to structured work with explicit permission to be affected. People perform better when they are told it is normal to be distracted and are also given a clear, achievable set of priorities to focus on.
           </P>
 
+           <H3>Work as an anchor, not a demand</H3>
+          <P>
+            One principle underlies all of the above, and it is easy to get backwards. In the immediate aftermath, the goal is not to restore productivity. It is to keep people steady. Letting employees process the news — talking it through, checking on family and friends, stepping away — is not lost time. It is the normal, healthy way a person absorbs a shock, and trying to suppress it does more harm than the distraction ever would.
+          </P>
+          <P>
+            At the same time, structure itself can be a genuine support. For those the event would otherwise leave frozen or adrift, a clear role, a routine, and a concrete task to hold onto can be steadying — a reason to stand up and stay grounded rather than sit still. The distinction that matters is how it is offered. Work that is extended as an anchor helps; the same work imposed as pressure breaks people. Give people permission to be affected, and offer structure as something to lean on, never as an obligation to perform.
+          </P>
+          
           <H2>What to prepare now, before anything happens</H2>
           <P>
             None of the above can be improvised well in the moment. The organizations that will manage a disclosure event calmly are the ones that prepared the machinery in advance — the same way they would for any other business-continuity scenario. Concretely, that means: a pre-drafted internal holding statement, a manager briefing guide with talking points, a mapped list of employee assistance resources, and a named owner for internal communications. These are ordinary crisis-management artifacts applied to an unusual trigger.
