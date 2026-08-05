@@ -226,7 +226,7 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ── 3 PILLARS ── */}
+     {/* ── 4 PILLARS (relief, icons) ── */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 border-t border-border/30" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="mb-10 sm:mb-14">
@@ -234,52 +234,68 @@ export default function HomePage() {
               What LBDG provides
             </span>
             <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}>
-              Three ways to prepare your organization
+              Four ways to prepare your organization
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PILLARS.map((pillar) => {
-              const Icon = pillar.icon;
-              const badgeColors: Record<string, string> = {
-                signal:     'text-signal border-signal/30 bg-signal/10',
-                classified: 'text-classified border-classified/30 bg-classified/10',
-                cold:       'text-cold border-cold/30 bg-cold/10',
-              };
-              const iconColors: Record<string, string> = {
-                signal: 'text-signal', classified: 'text-classified', cold: 'text-cold',
-              };
+
+          <div className="pgrid">
+            {[
+              { icon: TrendingUp, eyebrow: 'Live index',   title: 'Disclosure Velocity', blurb: 'A single weighted index tracking how fast institutional disclosure is moving across 66 verified events.', href: '/signals' },
+              { icon: Compass,    eyebrow: 'State of play', title: 'Disclosure Maturity', blurb: 'Where disclosure actually stands across seven institutional sectors, each a first-principles ladder, every status sourced.', href: '/maturity' },
+              { icon: Wrench,     eyebrow: 'Action',        title: 'Operational Toolkits', blurb: 'Eight toolkits for HR, Finance, Legal, Board and more. Scorecards, checklists, decision trees, designed to be used.', href: '/toolkits' },
+              { icon: FileText,   eyebrow: 'Analysis',      title: 'Reports & Analysis', blurb: 'In-depth analytical reports on the financial, geopolitical, and organizational implications of disclosure.', href: '/rapports' },
+            ].map((p) => {
+              const Icon = p.icon;
               return (
-                <div key={pillar.number} className={`group p-6 rounded-lg border border-border/60 bg-white ${pillar.hoverBorder} hover:shadow-lg transition-all duration-300`}>
-                  <div className="flex items-center justify-between mb-5">
-                    <span style={{ fontFamily: MONO, fontSize: 12, color: 'rgba(138,155,181,0.5)', letterSpacing: '0.1em' }}>
-                      {pillar.number}
-                    </span>
-                    <span className={`px-2.5 py-1 rounded-full text-2xs font-600 tracking-widest uppercase border ${badgeColors[pillar.color]}`} style={{ fontFamily: MONO }}>
-                      {pillar.badge}
-                    </span>
-                  </div>
-                  <Icon size={26} className={`mb-4 ${iconColors[pillar.color]}`} />
-                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 20, marginBottom: 12 }}>
-                    {pillar.title}
+                <Link key={p.href} href={p.href} className="pcard group" style={{ textDecoration: 'none' }}>
+                  <div className="pcard-icon"><Icon size={24} style={{ color: NAVY }} /></div>
+                  <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 8, display: 'block' }}>
+                    {p.eyebrow}
+                  </span>
+                  <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 20, marginBottom: 10, lineHeight: 1.2 }}>
+                    {p.title}
                   </h3>
-                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 24 }}>
-                    {pillar.description}
+                  <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.6, color: 'rgba(74,93,120,0.85)', marginBottom: 16, flex: 1 }}>
+                    {p.blurb}
                   </p>
-                  <ul className="space-y-2 border-t border-border/50 pt-4">
-                    {pillar.links.map((link) => (
-                      <li key={link.href}>
-                        <Link href={link.href} className="flex items-center justify-between text-xs text-muted hover:text-bright group/link transition-colors" style={{ fontFamily: MONO }}>
-                          <span>{link.label}</span>
-                          <ArrowRight size={12} className="opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 12, color: NAVY }}>
+                    Explore
+                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
               );
             })}
           </div>
         </div>
+
+        <style>{`
+          .pgrid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+          }
+          .pcard {
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            border: 1px solid #E3DCCE;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 10px 26px rgba(27,42,74,0.09);
+            transition: transform .28s ease, box-shadow .28s ease;
+          }
+          .pcard:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(27,42,74,0.16); }
+          .pcard-icon {
+            width: 48px; height: 48px;
+            border-radius: 10px;
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.3);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px;
+          }
+          @media (max-width: 900px) { .pgrid { grid-template-columns: repeat(2, 1fr); } }
+          @media (max-width: 520px) { .pgrid { grid-template-columns: 1fr; } }
+        `}</style>
       </section>
 
       {/* ── RESOURCES ── */}
