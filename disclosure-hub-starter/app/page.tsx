@@ -254,18 +254,23 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ── RESOURCES: full-width card with 3 inner links ── */}
+      {/* ── RESOURCES: full-width card with photo band + 3 inner links ── */}
       <section className="pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="resshell">
-            <div className="resintro">
-              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 8, display: 'block' }}>
-                Reference
-              </span>
-              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 22, lineHeight: 1.2 }}>
-                Go deeper
-              </h3>
+            {/* photo side */}
+            <div className="resphoto" style={{ backgroundImage: "url('/images/library.jpg')" }}>
+              <div className="resphoto-overlay" />
+              <div className="resphoto-text">
+                <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+                  Reference library
+                </span>
+                <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: '#FFFFFF', fontSize: 26, lineHeight: 1.15 }}>
+                  Go deeper
+                </h3>
+              </div>
             </div>
+            {/* links side */}
             <div className="resinner">
               <Link href="/framework" className="resitem group" style={{ textDecoration: 'none' }}>
                 <Compass size={20} style={{ color: NAVY, flexShrink: 0, marginTop: 2 }} />
@@ -293,11 +298,14 @@ export default function HomePage() {
         </div>
 
         <style>{`
-          .resshell { background: #FFFFFF; border: 1px solid #E3DCCE; border-radius: 16px; padding: 32px; box-shadow: 0 10px 26px rgba(27,42,74,0.08); display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center; }
-          .resinner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-          .resitem { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: 10px; border: 1px solid transparent; transition: background .2s ease, border-color .2s ease; }
+          .resshell { background: #FFFFFF; border: 1px solid #E3DCCE; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 26px rgba(27,42,74,0.08); display: grid; grid-template-columns: 300px 1fr; align-items: stretch; }
+          .resphoto { position: relative; background-size: cover; background-position: center; min-height: 220px; display: flex; align-items: flex-end; }
+          .resphoto-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,22,40,0.25) 0%, rgba(15,22,40,0.75) 100%); }
+          .resphoto-text { position: relative; padding: 28px; }
+          .resinner { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 24px; align-content: center; }
+          .resitem { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 10px; border: 1px solid transparent; transition: background .2s ease, border-color .2s ease; }
           .resitem:hover { background: #FAF8F4; border-color: #E3DCCE; }
-          @media (max-width: 820px) { .resshell { grid-template-columns: 1fr; gap: 20px; } .resinner { grid-template-columns: 1fr; } }
+          @media (max-width: 820px) { .resshell { grid-template-columns: 1fr; } .resphoto { min-height: 160px; } }
         `}</style>
       </section>
 
