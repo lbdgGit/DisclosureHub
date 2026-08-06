@@ -23,7 +23,7 @@ export default function HomePage() {
     <>
       {/* ── STANDARD HEADER ── */}
       <PageHeader eyebrow="LBDG · Leadership Bureau for Disclosure Guidance" title="Institutional preparedness for a disclosure event.">
-        Measured, sourced, and built for the people who carry the risk. The direction is settled; your position when the threshold is crossed is not. LBDG measures how close that moment is, and what it costs to be unprepared.
+        The evidence that unidentified anomalous phenomena are real and under official investigation is now part of the public record. A formal disclosure would be one of the most destabilizing events an organization can face. LBDG measures how close that moment is, and helps you be ready for it.
       </PageHeader>
 
       {/* ── STATS (animated count-up) ── */}
