@@ -185,7 +185,7 @@ export default function HomePage() {
               Is it really happening
             </span>
             <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: CREAM, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em', marginBottom: 12 }}>
-              Judge for yourself. Every signal is sourced.
+              Yes. The official record shows institutional acceleration.
             </h2>
             <p style={{ fontFamily: SANS, fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', maxWidth: 640 }}>
               We do not ask you to take our word for it. Two open instruments track the disclosure process from public, verifiable sources: how fast it is moving, and how far it has actually come.
