@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* ── RESOURCES: full-width card with photo band + 3 inner links ── */}
-      <section className="pb-10 sm:pb-14 px-4 sm:px-6" style={{ background: CREAM }}>
+      <section className="py-10 sm:py-14 px-4 sm:px-6" style={{ background: CREAM }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="resshell">
             {/* photo side */}
