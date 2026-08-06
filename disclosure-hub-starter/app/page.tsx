@@ -177,51 +177,51 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ── IS IT REALLY HAPPENING: Velocity + Maturity as proof ── */}
-      <section className="py-10 sm:py-14 px-4 sm:px-6" style={{ background: CREAM }}>
+      {/* ── IS IT REALLY HAPPENING: Velocity + Maturity as proof (navy contrast) ── */}
+      <section className="py-14 sm:py-20 px-4 sm:px-6" style={{ background: NAVY }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div className="mb-8 sm:mb-10">
-            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A9BB5', display: 'block', marginBottom: 12 }}>
+            <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.8)', display: 'block', marginBottom: 12 }}>
               Is it really happening
             </span>
-            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em', marginBottom: 12 }}>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: CREAM, fontSize: 'clamp(26px, 3.5vw, 40px)', letterSpacing: '-0.01em', marginBottom: 12 }}>
               Judge for yourself. Every signal is sourced.
             </h2>
-            <p style={{ fontFamily: SANS, fontSize: 16, lineHeight: 1.7, color: 'rgba(74,93,120,0.85)', maxWidth: 640 }}>
+            <p style={{ fontFamily: SANS, fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', maxWidth: 640 }}>
               We do not ask you to take our word for it. Two open instruments track the disclosure process from public, verifiable sources: how fast it is moving, and how far it has actually come.
             </p>
           </div>
 
           <div className="proofgrid">
             <Link href="/signals" className="proofcard group" style={{ textDecoration: 'none' }}>
-              <div className="prepcard-icon"><TrendingUp size={26} style={{ color: NAVY }} /></div>
-              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+              <div className="proofcard-icon"><TrendingUp size={26} style={{ color: GOLD }} /></div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.9)', marginBottom: 10, display: 'block' }}>
                 The speed
               </span>
-              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 22, marginBottom: 12, lineHeight: 1.2 }}>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: CREAM, fontSize: 22, marginBottom: 12, lineHeight: 1.2 }}>
                 Disclosure Velocity
               </h3>
-              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(74,93,120,0.85)', marginBottom: 20, flex: 1 }}>
+              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', marginBottom: 20, flex: 1 }}>
                 A single weighted index built from 66 verified institutional events, congressional hearings, official file releases, agency reports, financial instruments. It measures how fast the process is moving. Download the dataset and recompute it yourself.
               </p>
-              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: NAVY }}>
+              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: GOLD }}>
                 See the index
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
 
             <Link href="/maturity" className="proofcard group" style={{ textDecoration: 'none' }}>
-              <div className="prepcard-icon"><Compass size={26} style={{ color: NAVY }} /></div>
-              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10, display: 'block' }}>
+              <div className="proofcard-icon"><Compass size={26} style={{ color: GOLD }} /></div>
+              <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.9)', marginBottom: 10, display: 'block' }}>
                 The state
               </span>
-              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: NAVY, fontSize: 22, marginBottom: 12, lineHeight: 1.2 }}>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 700, color: CREAM, fontSize: 22, marginBottom: 12, lineHeight: 1.2 }}>
                 Disclosure Maturity
               </h3>
-              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(74,93,120,0.85)', marginBottom: 20, flex: 1 }}>
+              <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', marginBottom: 20, flex: 1 }}>
                 Where disclosure actually stands across seven institutional sectors, from military and government to legislative, scientific, and financial. Each sector is a first-principles ladder, and every status is sourced against the public record.
               </p>
-              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: NAVY }}>
+              <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: GOLD }}>
                 See where it stands
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </span>
@@ -231,8 +231,9 @@ export default function HomePage() {
 
         <style>{`
           .proofgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-          .proofcard { display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E3DCCE; border-radius: 14px; padding: 32px; box-shadow: 0 10px 26px rgba(27,42,74,0.09); transition: transform .28s ease, box-shadow .28s ease; }
-          .proofcard:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(27,42,74,0.16); }
+          .proofcard { display: flex; flex-direction: column; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.22); border-radius: 14px; padding: 32px; box-shadow: 0 14px 34px rgba(0,0,0,0.28); transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+          .proofcard:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(0,0,0,0.4); border-color: rgba(201,168,76,0.5); }
+          .proofcard-icon { width: 52px; height: 52px; border-radius: 11px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
           @media (max-width: 720px) { .proofgrid { grid-template-columns: 1fr; } }
         `}</style>
       </section>
