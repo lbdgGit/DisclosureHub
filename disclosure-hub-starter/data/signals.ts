@@ -753,7 +753,6 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'Loeb Medium post — Jun 12 2026',
     sourceUrl: 'https://medium.com/@aviloeb',
-    isNew: true,
   },
   {
     id: 'pursue-tranche3-2026',
@@ -766,7 +765,6 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'war.gov/ufo, June 12 2026',
     sourceUrl: 'https://www.war.gov/ufo',
-    isNew: true,
   },
   {
     id: 'burlison-uapda-2026',
@@ -779,7 +777,6 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'House Rules Committee — BURLIS_087, Jun 17 2026',
     sourceUrl: 'https://amendments-rules.house.gov/amendments/BURLIS_087_xml260618163721471.pdf',
-    isNew: true,
   },
   {
     id: 'aaro-fy2024-report',
@@ -804,7 +801,6 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'AP / The Hill / WBUR — Jul 1 2026',
     sourceUrl: 'https://thehill.com/homenews/administration/5949753-harvard-professor-leads-ufo-study/',
-    isNew: true,
   },
   {
     id: 'trump-nda-waiver-guidance-2026',
@@ -817,6 +813,59 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'Rep. Burlison / House.gov — Aug 1 2026',
     sourceUrl: 'https://burlison.house.gov/media/press-releases/rep-burlison-releases-administration-memorandum-president-trumps-uap-nda',
+  },
+
+  // ─── Q3 2026 (added October 2026) ───────────────────────
+  {
+    id: 'pursue-tranche4-2026',
+    date: '2026-07', year: 2026, mo: 7, w: 1.0,
+    institution: 'Department of War / AARO',
+    country: 'USA',
+    title: 'PURSUE Release 04 — 40 files including 1940s historical intelligence records',
+    description: 'Fourth PURSUE release: 40 files (14 documents, 19 videos, 4 audio, 3 images) from NASA, Pentagon, CIA, FBI, and DOE. Includes a 1948 Top Secret intelligence study — the oldest material in the program to date.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'war.gov/ufo — Jul 10 2026',
+    sourceUrl: 'https://www.war.gov/ufo',
+    isNew: true,
+  },
+  {
+    id: 'pursue-tranche5-2026',
+    date: '2026-08', year: 2026, mo: 8, w: 1.0,
+    institution: 'Department of War / AARO',
+    country: 'USA',
+    title: 'PURSUE Release 05 — 41 files',
+    description: 'Fifth PURSUE release: 41 files (22 PDFs, 3 images, 16 videos).',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'war.gov/ufo — Aug 7 2026',
+    sourceUrl: 'https://www.war.gov/ufo',
+    isNew: true,
+  },
+  {
+    id: 'dow-waiver-public-2026',
+    date: '2026-09', year: 2026, mo: 9, w: 1.0,
+    institution: 'Department of War',
+    country: 'USA',
+    title: 'DoW issues formal legal waiver superseding NDAs/SAPIAs for PURSUE disclosures',
+    description: 'Department of War announces a targeted legal waiver authorizing current and former personnel, civilian employees, and contractors to provide UAP-related National Defense Information directly to PURSUE representatives, superseding civil and administrative enforcement provisions in NDAs and SAPIAs. Does not constitute blanket declassification.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'Department of War — Sep 14 2026',
+    sourceUrl: 'https://www.globalsecurity.org/military/library/news/2026/09/mil-260914-dod01.htm',
+    isNew: true,
+  },
+  {
+    id: 'pursue-tranche6-2026',
+    date: '2026-09', year: 2026, mo: 9, w: 1.0,
+    institution: 'Department of War / AARO',
+    country: 'USA',
+    title: 'PURSUE Release 06 — 71 files, first release with local law enforcement',
+    description: 'Sixth PURSUE release: 71 files (55 documents, 15 videos, 1 audio recording). First release to include records from a local law enforcement agency (Colorado) alongside Department of War material. Records span 1952 to 2025, including AAWSAP documents.',
+    category: 'government',
+    strength: 'critical',
+    sourceLabel: 'war.gov/ufo — Sep 18 2026',
+    sourceUrl: 'https://www.war.gov/ufo',
     isNew: true,
   },
 ];
@@ -877,7 +926,7 @@ export const CAT_ORDER: Record<SignalCategory, number> = {
 export const DVI_CONFIG = {
   value:     6.9,
   level:     'READINESS' as const,
-  updatedAt: 'August 2026',
+  updatedAt: 'October 2026',
   baseline:  '28× the historical baseline',
 } as const;
 
