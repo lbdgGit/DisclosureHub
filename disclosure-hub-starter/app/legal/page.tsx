@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Legal Notice — LBDG',
   description: 'Legal notice and editorial responsibility for readyfordisclosure.com.',
+  alternates: { canonical: '/legal' },
 };
 
 export default function LegalPage() {

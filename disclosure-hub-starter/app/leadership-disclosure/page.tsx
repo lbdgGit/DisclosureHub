@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'What Should a Company Do After a Disclosure Event - LBDG',
   description: 'A practical guide for CEOs, boards, and executives on leading an organization through a government disclosure of non-human intelligence. Governance, decision authority, and the first 72 hours. Sourced, no speculation.',
   keywords: 'what should companies do disclosure, leadership disclosure event, CEO disclosure UAP, board governance disclosure, business continuity disclosure, executive crisis disclosure',
+  alternates: { canonical: '/leadership-disclosure' },
 };
 
 const SERIF = 'Playfair Display, serif';

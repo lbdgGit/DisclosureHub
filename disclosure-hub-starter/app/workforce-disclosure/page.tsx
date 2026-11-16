@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Managing Your Workforce After a Disclosure Event ,  LBDG',
   description: 'A practical guide for HR leaders and executives on managing employees, absenteeism, and workplace stability if a government disclosure of non-human intelligence occurs. Sourced, operational, no speculation.',
   keywords: 'workforce disclosure, managing employees after disclosure, UAP disclosure workplace, employee panic disclosure, HR crisis disclosure, business continuity disclosure',
+  alternates: { canonical: '/workforce-disclosure' },
 };
 
 const SERIF = 'Playfair Display, serif';

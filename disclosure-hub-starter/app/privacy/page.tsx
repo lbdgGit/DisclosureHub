@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Privacy Policy — LBDG',
   description: 'How LBDG collects, uses, and protects your personal data.',
+  alternates: { canonical: '/privacy' },
 };
 
 const SECTIONS = [

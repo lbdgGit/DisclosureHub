@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'How a Disclosure Event Could Affect Your Business Financially - LBDG',
   description: 'A defensive guide for CFOs and risk officers on financial exposure to a government disclosure of non-human intelligence. Sector exposure, market volatility, and a 72-hour response framework. Sourced, no speculation, no stock tips.',
   keywords: 'disclosure impact business, disclosure stock market, CFO disclosure risk, financial exposure disclosure, UAP disclosure economy, sector exposure disclosure, business risk disclosure',
+  alternates: { canonical: '/finance-disclosure' },
 };
 
 const SERIF = 'Playfair Display, serif';
