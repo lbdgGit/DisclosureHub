@@ -4,14 +4,16 @@ import { useState, useMemo } from 'react';
 import { ExternalLink, AlertTriangle } from 'lucide-react';
 import {
   SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, WEIGHT_CONFIG, getWeightTier,
-  DVI_CONFIG, getDVILevel,
+  DVI_CONFIG,
 } from '@/data/signals';
 import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 import { DVIBadge } from '@/components/DVIBadge';
 import { PageHeader } from '@/components/PageHeader';
 
 const DVI = DVI_CONFIG.value;
-const currentLevel = getDVILevel(DVI);
+// Editorial classification uses the unrounded score; DVI_CONFIG.level is the
+// approved quarterly level, whereas DVI_CONFIG.value is rounded for display.
+const currentLevel = DVI_CONFIG.level;
 
 const ACTIONS = [
   { role: 'All organizations',  action: 'Complete Executive Starter Pack readiness check',       toolkit: 'Starter Pack',    href: '/toolkits' },
@@ -54,7 +56,7 @@ export default function SignalsPage() {
 
   return (
     <>
-      <PageHeader eyebrow="LBDG · Disclosure Velocity · Last updated August 2026" title="Disclosure Velocity">
+      <PageHeader eyebrow={`LBDG · Disclosure Velocity · Last updated ${DVI_CONFIG.updatedAt}`} title="Disclosure Velocity">
         How fast the disclosure process is moving. A single weighted index — the DVI — built from {SIGNALS.length} verified institutional signals across bureaucratic, legislative, and financial activity. Sources: DoD, NASA, CNES, Deloitte, Bank of England, Cboe, U.S. Congress, Japan Diet. No unverified speculation.
       </PageHeader>
 

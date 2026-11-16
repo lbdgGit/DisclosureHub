@@ -41,7 +41,7 @@ const TRACKS: CategoryTrack[] = [
     milestones: [
       { label: 'Classified internal program exists', status: 'achieved', note: 'AATIP (2007), DIA-funded, $22M.', type: 'structural' },
       { label: 'Existence confirmed to oversight bodies', status: 'achieved', note: 'Confirmed via funding process and Senate records.', type: 'structural' },
-      { label: 'Public report describing scope and findings', status: 'achieved', note: 'ODNI (2021), AARO FY2024 Annual Report — 1,652 cases, 21 anomalous.', type: 'structural' },
+      { label: 'Public report describing scope and findings', status: 'achieved', note: 'ODNI (2021), AARO FY2024 Annual Report — 1,652 cumulative reports, 21 cases needing further analysis.', type: 'structural' },
       { label: 'Independent review body with binding presumptive-release authority', status: 'not-achieved', note: 'NARA holds an archival mandate, not independent declassification authority. This is the structural gap.', type: 'structural' },
       { label: 'Public directive mandating declassification', status: 'achieved', note: 'Trump Truth Social directive, Feb 2026 — a directive, not a formal executive order.', type: 'structural' },
       { label: 'Default-public records policy operational', status: 'not-achieved', note: 'PURSUE releases remain case-by-case reviewed tranches, not automatic.', type: 'structural' },

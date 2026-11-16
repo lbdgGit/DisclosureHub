@@ -1,0 +1,133 @@
+const repository = 'lbdgGit/DisclosureHub';
+const prefix = 'disclosure-hub-starter/';
+const candidatesPath = `${prefix}data/dvi-candidates.json`;
+const stagingBranch = 'dvi-editor-staging';
+
+export function githubConfigured() {
+  return Boolean(process.env.LBDG_GITHUB_TOKEN);
+}
+
+async function api(endpoint, options = {}) {
+  if (!githubConfigured()) throw new Error('GitHub editor token is not configured');
+  const response = await fetch(`https://api.github.com/repos/${repository}${endpoint}`, {
+    ...options,
+    cache: 'no-store',
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${process.env.LBDG_GITHUB_TOKEN}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+    },
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(`GitHub ${response.status}: ${body.message || 'request failed'}`);
+    error.status = response.status;
+    throw error;
+  }
+  return body;
+}
+
+async function getFile(filename, branch) {
+  const result = await api(`/contents/${filename}?ref=${encodeURIComponent(branch)}`);
+  if (result.type !== 'file' || result.encoding !== 'base64') throw new Error(`Unexpected GitHub content response: ${filename}`);
+  return { text: Buffer.from(result.content, 'base64').toString('utf8'), sha: result.sha };
+}
+
+async function ensureStaging() {
+  try { return await api(`/git/ref/heads/${stagingBranch}`); } catch (error) {
+    if (error.status !== 404) throw error;
+  }
+  const main = await api('/git/ref/heads/main');
+  try {
+    return await api('/git/refs', { method: 'POST', body: JSON.stringify({ ref: `refs/heads/${stagingBranch}`, sha: main.object.sha }) });
+  } catch (error) {
+    if (error.status !== 422) throw error; // concurrent creation
+    return api(`/git/ref/heads/${stagingBranch}`);
+  }
+}
+
+export async function readCandidateStore() {
+  if (!githubConfigured()) {
+    return { items: [], sha: null, writable: false };
+  }
+  let file;
+  try { file = await getFile(candidatesPath, stagingBranch); } catch (error) {
+    if (error.status !== 404) throw error;
+    file = await getFile(candidatesPath, 'main');
+  }
+  const items = JSON.parse(file.text);
+  if (!Array.isArray(items)) throw new Error('Candidate file is not an array');
+  return { items, sha: file.sha, writable: true };
+}
+
+export async function readPublishedSource() {
+  return (await getFile(`${prefix}data/signals.ts`, 'main')).text;
+}
+
+export async function saveCandidateToStaging(candidate, expectedSha) {
+  await ensureStaging();
+  const file = await getFile(candidatesPath, stagingBranch);
+  if (file.sha !== expectedSha) {
+    const error = new Error('The candidate list changed in GitHub. Refresh before saving.');
+    error.status = 409;
+    throw error;
+  }
+  const items = JSON.parse(file.text);
+  const index = items.findIndex(item => item.id === candidate.id);
+  if (index >= 0) items[index] = candidate;
+  else items.push(candidate);
+  await api(`/contents/${candidatesPath}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      message: `dvi: ${index >= 0 ? 'revise' : 'stage'} candidate ${candidate.id}`,
+      content: Buffer.from(`${JSON.stringify(items, null, 2)}\n`).toString('base64'),
+      sha: file.sha,
+      branch: stagingBranch,
+    }),
+  });
+  return { count: items.length };
+}
+
+export async function publishDraftPullRequest(files, edition) {
+  const mainRef = await api('/git/ref/heads/main');
+  const mainSha = mainRef.object.sha;
+  const baseCommit = await api(`/git/commits/${mainSha}`);
+
+  // Never calculate an edition from an out-of-date or preview deployment.
+  // Vercel supplies this SHA at runtime when system variables are exposed.
+  const deployedSha = process.env.VERCEL_GIT_COMMIT_SHA;
+  if (!deployedSha || deployedSha !== mainSha) {
+    const error = new Error('The editor is not running from the current production GitHub commit. Use the latest production deployment and enable Vercel system environment variables.');
+    error.status = 409;
+    throw error;
+  }
+
+  const tree = await api('/git/trees', {
+    method: 'POST',
+    body: JSON.stringify({
+      base_tree: baseCommit.tree.sha,
+      tree: Object.entries(files).map(([name, content]) => ({ path: `${prefix}${name}`, mode: '100644', type: 'blob', content })),
+    }),
+  });
+  const commit = await api('/git/commits', {
+    method: 'POST',
+    body: JSON.stringify({
+      message: `dvi: prepare ${edition} quarterly edition for editorial review`,
+      tree: tree.sha,
+      parents: [mainSha],
+    }),
+  });
+  const branch = `dvi/edition-${edition}-${Date.now()}`;
+  await api('/git/refs', { method: 'POST', body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: commit.sha }) });
+  return api('/pulls', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: `DVI ${edition} edition — editorial publication review`,
+      head: branch,
+      base: 'main',
+      draft: true,
+      body: 'Generated by the private LBDG DVI editor. Review every event, source, weight, CSV export, raw-score threshold and release narrative before merging. No change is published by creating this PR.',
+    }),
+  });
+}
