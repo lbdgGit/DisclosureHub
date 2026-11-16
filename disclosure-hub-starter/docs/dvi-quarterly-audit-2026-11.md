@@ -58,10 +58,12 @@ Assumes **no additional approved October–December 2026 event** beyond the cand
 
 ## Documentary quality gaps: next audit priority
 
-- **23/70** records now contain a direct `sourceUrl`; **47/70** lack one. Of **34 events from 2023 onward**, **16** still lack a direct link. The dataset is internally complete and its arithmetic reproducible; **its 70 individual historical claims are not yet fully source-certified**.
+- **38/70** records now contain a direct `sourceUrl`; **32/70** lack one. Of **34 events from 2023 onward**, **1** still lacks a direct link. The dataset is internally complete and its arithmetic reproducible; **its 70 individual historical claims are not yet fully source-certified**.
 - `sourceLabel` is a human-readable reference, not automatically a verified **primary source**. The legacy CSV field name `Primary Source` predates this audit; its contents should not be construed as independently authenticated. Source URLs should prioritize actual legal texts, original agency releases, official hearing records and scholarly papers.
 - Review the methodological eligibility and weight of **a former Bank of England analyst's personal letter**: it is not an official decision of the Bank of England. [Contemporaneous press report](https://www.thetimes.com/uk/scotland/article/bank-of-england-must-prepare-for-ufo-announcement-f3mh8l9vh).
-- Check the provenance and exact designation of the **February 2026 presidential UAP instruction** (`trump-eo-2026`): the event title calls it a directive, but its ID suggests an executive order; avoid claiming a formal executive order without one.
+- The **February 2026 presidential UAP instruction** (`trump-eo-2026`) is now sourced to the [Department of War's account of the original statement](https://www.war.gov/UFO/). Its original record ID is retained for dataset stability, but its title and wording explicitly avoid claiming that a formal numbered executive order was signed.
+- Find the original full-context **29 April 2026 public statement by Rep. Luna**. Currently sourced to a human-readable citation only, not a primary link; the statement is an allegation about private briefing material, not a verified finding.
+- Review the eligibility/weight of the **VASCO October 2025** papers in January: the research is peer-reviewed, but conclusions are contested by independent technical analyses. Count the publication as academic activity, not evidence of extraterrestrial technology.
 - Confirm the exact dates rather than the currently assumed January month for **CEFAA (Chile, 1997)**, **Project Condign (1997)**, **AATIP (2007)** and **CEFAe (Argentina, 2011)**. If only the year is supported, publish the year, not an invented month.
 - Audit **one text = one event** and ensure each counted act is distinct from republished commentary or unverified content. In particular, examine 2026 governance-board/advisory-council entries against the original agency records.
 - Audit the site and downloaded methodology PDF for references to old scores, old dates and qualitative overclaims. Other content tracks are **not** automatically recalculated by this script.
@@ -82,4 +84,24 @@ npm run dvi:quarter -- --edition 2027-01 --include-candidates --json
 
 ## Administrative interface (future development)
 
-Build a private reviewer interface with four separate concepts: **source record → review/approve event → preview quarterly snapshot → explicitly publish**. Each event should carry unique ID, factual event date (with precision indicator), original URL, separate source and claim summaries, institution/country/category, provisional weight, review status, editor and change history. Display the entrants, exits, reweights, new score and threshold *before* approval. Do not allow a draft event to alter the public score or downloads automatically.
+The first password-protected reviewer interface is implemented at `/admin`, with **source record → draft/ready candidate → selective preview → explicit publication PR**. It writes candidate changes to a separate GitHub branch, with version checks, and never changes the published score when a candidate is saved. A publication creates a **draft PR** requiring review; before January 2027 the release action is blocked.
+
+It does **not yet edit existing published signals**: those corrections still require editorial code review. The GitHub staging branch is not published on the live website, but its records may be visible in the repository if the repository is public. Do not store confidential information there. Full setup instructions: `docs/dvi-admin-setup.md`.
+
+### Additional direct-source links established (16 November 2026)
+
+- Senate testimony of AARO Director Kirkpatrick, **19 April 2023** — [official hearing transcript](https://www.armed-services.senate.gov/imo/media/doc/23-31_04-19-2023.pdf).
+- House Oversight testimony (Grusch, Graves, Fravor), **26 July 2023** — [official hearing page](https://oversight.house.gov/hearing/unidentified-anomalous-phenomena-implications-on-national-security-public-safety-and-government-transparency/). Corrected language to distinguish allegations from established findings.
+- Rep. Burchett's UAP caucus announcement, **22 August 2023** — [congressional office announcement](https://burchett.house.gov/media/press-releases/rep-burchett-launches-uap-caucus-leads-letter-intelligence-community-inspector).
+- FY2024 UAP record-handling legislation, **22 December 2023** — [enacted Public Law 118-31](https://www.govinfo.gov/content/pkg/PLAW-118publ31/pdf/PLAW-118publ31.pdf).
+- AARO Historical Record Report Vol. 1, **March 2024** — [DoD original explanation](https://www.defense.gov/News/News-Stories/Article/Article/3701297/dod-report-discounts-sightings-of-extraterrestrial-technology/).
+- House Oversight **13 November 2024** — [official hearing and witnesses](https://oversight.house.gov/hearing/unidentified-anomalous-phenomena-exposing-the-truth/). Corrected Tim Gallaudet's institutional affiliation (retired Navy Rear Admiral, **not** former NASA deputy).
+- Senate Armed Services Director Kosloski, **19 November 2024** — [original statement to the Senate](https://www.armed-services.senate.gov/imo/media/doc/aaro_statement.pdf).
+- Knuth and coauthors, **2025 peer-reviewed article** — [publisher DOI](https://doi.org/10.1016/j.paerosci.2025.101097).
+- House Oversight UAP transparency hearing, **9 September 2025** — [official task force hearing](https://oversight.house.gov/hearing/restoring-public-trust-through-uap-transparency-and-whistleblower-protection/).
+- Sol Foundation independent launch, **15 August 2023** — [founder's announcement](https://thesolfoundation.org/launch-announcement/). The foundation was **not established by Stanford University**.
+- Sol Foundation symposium, **17–18 November 2023** — [official program and confirmed speakers](https://thesolfoundation.org/events/the-inaugural-annual-conference-of-the-sol-foundation/). Removes unsupported David Grusch and Sean Kirkpatrick speaker claims.
+- Japanese parliamentary UAP caucus, **June 2024** — [official Japanese House security committee proceedings, 13 June 2024](https://www.shugiin.go.jp/Internet/itdb_kaigiroku.nsf/html/kaigiroku/001521320240613011.htm). Removes unsubstantiated exact member count.
+- FY2025 NDAA UAP provisions, **23 December 2024** — [enacted Public Law 118-159, Title LXVIII](https://www.govinfo.gov/content/pkg/PLAW-118publ159/html/PLAW-118publ159.htm). Specifies GAO's AARO review rather than an invented broader disclosure/amnesty clause.
+- VASCO work, **October 2025** — [PASP publisher DOI](https://doi.org/10.1088/1538-3873/ae0afe) and [Scientific Reports publisher DOI](https://doi.org/10.1038/s41598-025-21620-3). Scientific interpretation is qualified.
+- Presidential UAP release announcement, **19 February 2026** — [Department of War original statement and directive context](https://www.war.gov/UFO/). Neither the record nor the source establishes the existence of an executive order number.

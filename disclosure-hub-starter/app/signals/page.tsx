@@ -4,14 +4,16 @@ import { useState, useMemo } from 'react';
 import { ExternalLink, AlertTriangle } from 'lucide-react';
 import {
   SIGNALS, SIGNAL_CATEGORIES, CATEGORY_CONFIG, WEIGHT_CONFIG, getWeightTier,
-  DVI_CONFIG, getDVILevel,
+  DVI_CONFIG,
 } from '@/data/signals';
 import { InstitutionalAcceleration } from '@/components/InstitutionalAcceleration';
 import { DVIBadge } from '@/components/DVIBadge';
 import { PageHeader } from '@/components/PageHeader';
 
 const DVI = DVI_CONFIG.value;
-const currentLevel = getDVILevel(DVI);
+// Editorial classification uses the unrounded score; DVI_CONFIG.level is the
+// approved quarterly level, whereas DVI_CONFIG.value is rounded for display.
+const currentLevel = DVI_CONFIG.level;
 
 const ACTIONS = [
   { role: 'All organizations',  action: 'Complete Executive Starter Pack readiness check',       toolkit: 'Starter Pack',    href: '/toolkits' },
