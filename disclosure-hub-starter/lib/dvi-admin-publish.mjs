@@ -118,7 +118,9 @@ export function preparePublication(events, source, candidates, selectedIds, edit
     score,
     files: {
       'data/signals.ts': updateSource(source, selected, score, edition),
-      'data/dvi-candidates.json': `${JSON.stringify(candidates.filter(item => !selectedIds.includes(item.id)), null, 2)}\n`,
+      // The staging branch may lag behind main across releases. Never copy
+      // already-published records back into the next public candidate queue.
+      'data/dvi-candidates.json': `${JSON.stringify(candidates.filter(item => !selectedIds.includes(item.id) && !existingIds.has(item.id)), null, 2)}\n`,
       'public/downloads/LBDG-DVI-Dataset.csv': makeCsv(merged, false),
       'public/downloads/LBDG-DVI-Dataset(1).csv': makeCsv(merged, true),
     },

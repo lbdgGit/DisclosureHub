@@ -59,3 +59,9 @@ test('zero newly eligible events still permits a quarterly rollover in January',
   assert.equal(result.score.entered.length, 0);
   assert.equal(result.score.exited.length, 2);
 });
+
+test('publication does not resurrect candidates already published by an earlier edition', () => {
+  const stale = { ...candidates[0], id: events[0].id, status: 'ready' };
+  const result = preparePublication(events, source, [stale, ...candidates], [candidates[0].id], '2027-01', releaseTime);
+  assert.deepEqual(JSON.parse(result.files['data/dvi-candidates.json']), []);
+});
