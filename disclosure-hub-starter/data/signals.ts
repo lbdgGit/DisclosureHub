@@ -225,28 +225,30 @@ export const SIGNALS: Signal[] = [
 
   // ─── 1978 ──────────────────────────────────────────────
   {
-    id: 'institute-22-1978',
-    date: '1978-01', year: 1978, mo: 1, w: 1.0,
+    id: 'soviet-setka-1978',
+    date: '1978', year: 1978, mo: 1, w: 1.0,
     institution: 'Soviet Academy of Sciences / Ministry of Defence',
     country: 'USSR',
-    title: 'Institute 22 — Soviet Academy of Sciences + MoD UAP program',
-    description: 'Soviet Union establishes joint Academy of Sciences and Ministry of Defence UAP investigation program. One of the largest government-funded UAP research efforts in history.',
+    title: 'SETKA research programme — Soviet Academy of Sciences and Defence Ministry',
+    description: 'A Soviet state research plan launches coordinated study of anomalous atmospheric and space phenomena through Academy of Sciences and Ministry of Defence institutions. Month of formal programme start is not established here.',
     category: 'international',
     strength: 'medium',
-    sourceLabel: 'Wikipedia; Skeptical Inquirer; Moscow Times',
+    sourceLabel: 'Platov & Sokolov, Herald of the Russian Academy of Sciences (2000), pp. 244–251',
+    sourceUrl: 'https://noufors.com/Documents/Platov.pdf',
   },
 
   // ─── 1979 ──────────────────────────────────────────────
   {
     id: 'cridovni-1979',
-    date: '1979-01', year: 1979, mo: 1, w: 0.7,
+    date: '1979-08', year: 1979, mo: 8, w: 0.7,
     institution: 'Uruguay Air Force',
     country: 'Uruguay',
     title: 'CRIDOVNI — Uruguay Air Force official UAP commission',
-    description: 'Uruguay establishes CRIDOVNI by presidential decree — official UAP investigation commission under Air Force authority. Still active.',
+    description: 'Uruguayan Air Force established CRIDOVNI on 7 August 1979 to investigate reports of unidentified flying objects.',
     category: 'international',
     strength: 'low',
-    sourceLabel: 'Established by presidential decree 1979',
+    sourceLabel: 'Fuerza Aérea Uruguaya — institutional history (7 Aug 1979)',
+    sourceUrl: 'https://www.fau.mil.uy/noticias/242',
   },
 
   // ─── 1997 ──────────────────────────────────────────────
@@ -432,15 +434,16 @@ export const SIGNALS: Signal[] = [
     sourceLabel: 'Harvard Crimson Aug 2021; Space.com Jul 26 2021',
   },
   {
-    id: 'nasa-study-2021',
-    date: '2021-09', year: 2021, mo: 9, w: 1.0,
+    id: 'nasa-study-2022',
+    date: '2022-06', year: 2022, mo: 6, w: 1.0,
     institution: 'NASA',
     country: 'USA',
-    title: 'NASA establishes formal independent UAP study team',
-    description: 'NASA establishes formal independent UAP study team under Dr. David Spergel. First official NASA engagement with UAP as a scientific topic.',
+    title: 'NASA commissions an independent scientific UAP study',
+    description: 'NASA announces the commissioning of an independent UAP study under David Spergel, focusing on available data and scientific methods. The team itself was subsequently assembled.',
     category: 'scientific',
     strength: 'high',
-    sourceLabel: 'NASA official announcement Sep 2021',
+    sourceLabel: 'NASA — announcement of independent UAP study (9 Jun 2022)',
+    sourceUrl: 'https://www.nasa.gov/news-release/nasa-to-discuss-new-unidentified-aerial-phenomena-study-today/',
   },
 
   // ─── 2022 ──────────────────────────────────────────────
@@ -607,17 +610,6 @@ export const SIGNALS: Signal[] = [
 
   // ─── 2025 ──────────────────────────────────────────────
   {
-    id: 'deloitte-2025',
-    date: '2025-01', year: 2025, mo: 1, w: 0.8,
-    institution: 'Deloitte AG',
-    country: 'International',
-    title: 'Deloitte classifies NHI disclosure as credible Black Swan',
-    description: 'Deloitte AG 2026 Risk Intelligence Report (GPMESII analysis) includes NHI disclosure as credible Black Swan. Probability: 2/5 within 5 years. Impact: market disruption, institutional trust collapse, narrative polarization.',
-    category: 'financial',
-    strength: 'high',
-    sourceLabel: 'Deloitte AG GPMESII 2026 report',
-  },
-  {
     id: 'knuth-aerospace-2025',
     date: '2025-06', year: 2025, mo: 6, w: 0.8,
     institution: 'Progress in Aerospace Sciences',
@@ -687,6 +679,18 @@ export const SIGNALS: Signal[] = [
     strength: 'critical',
     sourceLabel: 'CBOE / Nasdaq',
     sourceUrl: 'https://finance.yahoo.com/quote/UFOD/',
+  },
+  {
+    id: 'deloitte-2026',
+    date: '2026-03', year: 2026, mo: 3, w: 0.8,
+    institution: 'Deloitte AG',
+    country: 'International',
+    title: 'Deloitte includes NHI disclosure in a hypothetical Black Swan scenario exercise',
+    description: 'Deloitte Switzerland publishes a strategic foresight report using the GPMESII/ASCOPE framework. One illustrative scenario considers non-human intelligence disclosure, assigning an ordinal likelihood rating of 2/5 over five years. This is a scenario rating, not an empirically measured probability or an assertion that NHI exists.',
+    category: 'financial',
+    strength: 'high',
+    sourceLabel: 'Deloitte Switzerland — How to foresee Black Swans (19 Mar 2026)',
+    sourceUrl: 'https://www.deloitte.com/ch/en/services/consulting/perspectives/how-to-foresee-black-swans.html',
   },
   {
     id: 'trump-eo-2026',
@@ -784,15 +788,15 @@ export const SIGNALS: Signal[] = [
   },
   {
     id: 'aaro-fy2024-report',
-    date: '2024-12', year: 2024, mo: 12, w: 1.0,
-    institution: 'AARO / DoD / NSA / CIA / FBI / NASA',
+    date: '2024-11', year: 2024, mo: 11, w: 1.0,
+    institution: 'U.S. Department of Defense / AARO',
     country: 'USA',
-    title: 'AARO FY2024 Annual Report — 1,652 cases, 21 anomalous, co-signed by 20+ agencies',
-    description: 'AARO publishes FY2024 Annual Report: 1,652 UAP reports processed, 21 categorized as anomalous with no prosaic explanation. Co-signed by NSA, CIA, FBI, NASA and 17 additional agencies — the broadest inter-agency UAP endorsement in US history.',
+    title: 'AARO FY2024 Annual Report — 1,652 cumulative reports; 21 warrant further analysis',
+    description: 'DoD publishes the FY2024 consolidated UAP report on 14 November 2024. It records 1,652 reports cumulatively and 757 received during the reporting period; 21 of the latter merit additional analysis. AARO drafted the report in coordination with multiple agencies, which does not imply their endorsement of any extraordinary explanation.',
     category: 'government',
     strength: 'critical',
-    sourceLabel: 'AARO / DoD FY2024 Annual Report',
-    sourceUrl: 'https://www.aaro.mil/Reports-Testimonies/Annual-Reports/',
+    sourceLabel: 'DoD / AARO — FY2024 Consolidated Annual Report (14 Nov 2024)',
+    sourceUrl: 'https://media.defense.gov/2024/Nov/14/2003583603/-1/-1/0/FY24-CONSOLIDATED-ANNUAL-REPORT-ON-UAP-508.PDF',
   },
   {
     id: 'uap-governance-board-2026',

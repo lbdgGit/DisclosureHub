@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "dvi:export": "node scripts/sync-dvi-csv.mjs --write",
-    "dvi:check": "node scripts/sync-dvi-csv.mjs --check"
+    "dvi:check": "node scripts/sync-dvi-csv.mjs --check",
+    "dvi:quarter": "node scripts/dvi-quarterly.mjs",
+    "dvi:test": "node --test scripts/dvi-quarterly.test.mjs"
   },
   "dependencies": {
     "next": "^15.0.0",

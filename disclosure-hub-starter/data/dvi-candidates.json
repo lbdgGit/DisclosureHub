@@ -1,0 +1,18 @@
+[
+  {
+    "id": "pursue-tranche7-2026",
+    "date": "2026-10",
+    "year": 2026,
+    "mo": 10,
+    "w": 1.0,
+    "institution": "U.S. Department of War / PURSUE",
+    "country": "USA",
+    "title": "PURSUE Release 07 — seventh publication of declassified UAP records",
+    "description": "On 23 October 2026, the Department of War announced its seventh PURSUE tranche of declassified and historical UAP files. The announcement documents publication of records, not a determination about the origin of any reported phenomenon.",
+    "category": "government",
+    "strength": "critical",
+    "sourceLabel": "Department of War press release — 23 Oct 2026",
+    "sourceUrl": "https://www.war.gov/News/Releases/Release/Article/4632058/department-of-war-publishes-seventh-release-of-unidentified-anomalous-phenomena/",
+    "status": "ready"
+  }
+]

@@ -54,13 +54,15 @@ function csvCell(value) {
 function makeCsv(includeStrength) {
   const header = ['#', 'Date', 'Year', 'Institution', 'Country', 'Category', 'Weight'];
   if (includeStrength) header.push('Strength');
-  header.push('Event', 'Primary Source');
+  // Append Source URL for independent verification; earlier column positions
+  // remain stable for consumers of the existing CSV files.
+  header.push('Event', 'Primary Source', 'Source URL');
 
   const rows = events.map((event, index) => {
     const fields = [index + 1, event.date, event.year, event.institution, event.country,
       event.category, event.w.toFixed(1)];
     if (includeStrength) fields.push(event.strength);
-    fields.push(event.title, event.sourceLabel || event.sourceUrl || '');
+    fields.push(event.title, event.sourceLabel || event.sourceUrl || '', event.sourceUrl || '');
     return fields.map(csvCell).join(',');
   });
   return '\uFEFF' + [header.join(','), ...rows].join('\n') + '\n';

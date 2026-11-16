@@ -54,7 +54,7 @@ export default function SignalsPage() {
 
   return (
     <>
-      <PageHeader eyebrow="LBDG · Disclosure Velocity · Last updated August 2026" title="Disclosure Velocity">
+      <PageHeader eyebrow={`LBDG · Disclosure Velocity · Last updated ${DVI_CONFIG.updatedAt}`} title="Disclosure Velocity">
         How fast the disclosure process is moving. A single weighted index — the DVI — built from {SIGNALS.length} verified institutional signals across bureaucratic, legislative, and financial activity. Sources: DoD, NASA, CNES, Deloitte, Bank of England, Cboe, U.S. Congress, Japan Diet. No unverified speculation.
       </PageHeader>
 
