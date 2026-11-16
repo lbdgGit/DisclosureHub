@@ -10,15 +10,15 @@ export const metadata: Metadata = {
     default: 'LBDG - Leadership Bureau for Disclosure Guidance',
     template: '%s | LBDG',
   },
-  description: 'The reference portal to understand, anticipate and navigate the official announcement of non-human intelligence existence.',
-  metadataBase: new URL('https://readyfordisclosure.com'),
+  description: 'Evidence-based monitoring of institutional UAP disclosure and operational preparedness tools for boards, risk officers, and business continuity teams.',
+  metadataBase: new URL('https://www.readyfordisclosure.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'LBDG',
     title: 'LBDG - Leadership Bureau for Disclosure Guidance',
-    description: 'The reference portal to understand, anticipate and navigate the official announcement of non-human intelligence existence.',
-    url: 'https://readyfordisclosure.com',
+    description: 'Evidence-based monitoring of institutional UAP disclosure and operational preparedness tools for boards, risk officers, and business continuity teams.',
+    url: 'https://www.readyfordisclosure.com',
     images: [
       {
         url: '/og-image.jpg',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'LBDG - Leadership Bureau for Disclosure Guidance',
-    description: 'The reference portal to understand, anticipate and navigate the official announcement of non-human intelligence existence.',
+    description: 'Evidence-based monitoring of institutional UAP disclosure and operational preparedness tools for boards, risk officers, and business continuity teams.',
     images: ['/og-image.jpg'],
   },
   robots: { index: true, follow: true },

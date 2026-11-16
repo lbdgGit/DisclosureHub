@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/PageHeader';
 export const metadata: Metadata = {
   title: 'About LBDG - Who we are',
   description: 'LBDG is an independent watch and preparedness initiative on institutional disclosure risk. Sourced, non-speculative, and built for the people who carry organizational risk.',
+  alternates: { canonical: '/about' },
 };
 
 const SERIF = 'Playfair Display, serif';

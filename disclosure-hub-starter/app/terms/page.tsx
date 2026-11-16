@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Terms of Use — LBDG',
   description: 'Terms and conditions for using readyfordisclosure.com and LBDG materials.',
+  alternates: { canonical: '/terms' },
 };
 
 const SECTIONS = [

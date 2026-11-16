@@ -3,8 +3,6 @@ import type { MetadataRoute } from 'next';
 const BASE = 'https://www.readyfordisclosure.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   // Priority guide:
   // 1.0  home
   // 0.9  money pages (toolkits, reports) + the 3 SEO panic pages
@@ -32,7 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return routes.map((r) => ({
     url: `${BASE}${r.path}`,
-    lastModified: now,
+    // Only supply lastModified when it reflects an actual content update.
+    // Using the build time for every page sends misleading freshness signals.
     changeFrequency: r.changeFreq,
     priority: r.priority,
   }));

@@ -7,6 +7,7 @@ import AnimatedStats from '@/components/AnimatedStats';
 export const metadata: Metadata = {
   title: 'LBDG - Leadership Bureau for Disclosure Guidance',
   description: 'Institutional preparedness for a disclosure event. Measured, sourced, and built for the people who carry the risk.',
+  alternates: { canonical: '/' },
 };
 
 const LS_STARTER_URL = 'https://lbdg.lemonsqueezy.com/checkout/buy/b8c638cd-b612-4acc-95ad-e6b7e9699634?embed=1';
