@@ -673,6 +673,8 @@ export const SIGNALS: Signal[] = [
     description: 'Helen McCaw, former senior Bank of England analyst, publicly warns UAP disclosure could cause ontological shock with significant market instability. Urges central banks to begin preparedness planning.',
     category: 'financial',
     strength: 'critical',
+    sourceLabel: 'The Times, 16 Jan 2026 — Helen McCaw letter to BoE governor (former analyst, not an official BoE position)',
+    sourceUrl: 'https://www.thetimes.com/uk/scotland/article/bank-of-england-must-prepare-for-ufo-announcement-f3mh8l9vh',
   },
   {
     id: 'ufod-etf-2026',
@@ -706,6 +708,8 @@ export const SIGNALS: Signal[] = [
     description: 'Japan\'s bipartisan UAP caucus formally proposes a dedicated UAP framework under the Deputy Chief Cabinet Secretary for Crisis Management.',
     category: 'international',
     strength: 'critical',
+    sourceLabel: 'Yoshiharu Asakawa / Japanese parliamentary UAP caucus, press statement, 24 Mar 2026',
+    sourceUrl: 'https://x.com/asakawayosiharu/status/2036503032423391415',
   },
   {
     id: 'luna-scif-2026',

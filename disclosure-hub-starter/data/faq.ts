@@ -66,7 +66,7 @@ export const FAQ: FAQItem[] = [
     id: 'how-to-prepare',
     question: 'How can an organization prepare?',
     reponse:
-      'LBDG recommends four steps: (1) Complete the Executive Starter Pack readiness check — 10 minutes, free. (2) Identify your weakest dimension (HR, Finance, Communications, or Board Governance) and download the corresponding operational toolkit. (3) Run a tabletop drill with your leadership team using the Leadership Workshop Guide. (4) Activate leading indicator monitoring via the LBDG Signal Monitor at readyfordisclosure.com/signals — DVI is currently at 7.0, pre-disclosure threshold.',
+      'LBDG recommends four steps: (1) Complete the Executive Starter Pack readiness check — 10 minutes, free. (2) Identify your weakest dimension (HR, Finance, Communications, or Board Governance) and download the corresponding operational toolkit. (3) Run a tabletop drill with your leadership team using the Leadership Workshop Guide. (4) Monitor the current DVI and its methodology at readyfordisclosure.com/signals. The index measures institutional activity, not the timing or certainty of disclosure.',
     categorie: 'pratique',
   },
   {

@@ -3,6 +3,7 @@ import { ArrowRight, Wrench, FileText, TrendingUp, Compass, BookOpen, HelpCircle
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import AnimatedStats from '@/components/AnimatedStats';
+import { SIGNALS } from '@/data/signals';
 
 export const metadata: Metadata = {
   title: 'LBDG - Leadership Bureau for Disclosure Guidance',
@@ -203,7 +204,7 @@ export default function HomePage() {
                 Disclosure Velocity
               </h3>
               <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', marginBottom: 20, flex: 1 }}>
-                A single weighted index built from 66 verified institutional events, congressional hearings, official file releases, agency reports, financial instruments. It measures how fast the process is moving. Download the dataset and recompute it yourself.
+                A single weighted index built from {SIGNALS.length} institutional events, including congressional hearings, official file releases, agency reports, and financial instruments. It measures how fast the process is moving. Download the dataset and recompute it yourself.
               </p>
               <span className="inline-flex items-center gap-2" style={{ fontFamily: MONO, fontSize: 13, color: GOLD }}>
                 See the index
