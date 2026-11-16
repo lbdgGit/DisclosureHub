@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { DVI_CONFIG } from '@/data/signals';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const TOOLKIT_NAMES: Record<string, { name: string; path: string }> = {
   hr:      { name: 'HR Operational Toolkit',             path: '/downloads/LBDG-HR-Toolkit-Operational-2025.pdf'             },
   finance: { name: 'Finance Operational Toolkit',        path: '/downloads/LBDG-Finance-Toolkit-Operational-2025.pdf'        },
@@ -18,6 +16,15 @@ export async function POST(req: NextRequest) {
     if (!email || !email.includes('@')) {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
+
+    // Initialize only when handling a request. Preview builds may not have
+    // production email credentials, and should still be able to compile.
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not configured');
+      return NextResponse.json({ error: 'Email service unavailable' }, { status: 503 });
+    }
+    const resend = new Resend(apiKey);
 
     // ─── Report waitlist ──────────────────────────────────
     if (kitId === 'report-waitlist') {
