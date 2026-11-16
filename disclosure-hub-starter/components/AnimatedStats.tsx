@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { SIGNALS } from '@/data/signals';
 
 const SERIF = 'Playfair Display, serif';
 const MONO = 'DM Mono, monospace';
@@ -20,7 +21,7 @@ type Stat = {
 const STATS: Stat[] = [
   { target: 2000, suffix: '+', thousands: true, label: 'UAP cases tracked by AARO (confirmed by Sec. Hegseth, 2026)' },
   { target: 34,   label: 'Senior officials on record in The Age of Disclosure (Amazon Prime)' },
-  { target: 66,   label: 'Verified institutional events in the DVI dataset (40 since 2017)' },
+  { target: SIGNALS.length, label: `Institutional events in the DVI dataset (${SIGNALS.filter(event => event.year >= 2017).length} since 2017)` },
   { target: 22,   prefix: '$', suffix: 'M', label: 'Pentagon secret UAP program AATIP 2007-2012 (NYT, 2017)' },
 ];
 

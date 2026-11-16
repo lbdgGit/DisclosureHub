@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run dvi:check",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dvi:export": "node scripts/sync-dvi-csv.mjs --write",
+    "dvi:check": "node scripts/sync-dvi-csv.mjs --check"
   },
   "dependencies": {
     "next": "^15.0.0",

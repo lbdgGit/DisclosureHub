@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { DVIBadge } from '@/components/DVIBadge';
-import { SIGNALS, CATEGORY_CONFIG, WEIGHT_CONFIG, getWeightTier} from '@/data/signals';
-const DVI_VALUE = 6.5;
-const DVI_LEVEL = 'READINESS';
+import { SIGNALS, CATEGORY_CONFIG, WEIGHT_CONFIG, DVI_CONFIG, getWeightTier} from '@/data/signals';
+const DVI_VALUE = DVI_CONFIG.value;
+const DVI_LEVEL = DVI_CONFIG.level;
 
 function formatDate(d: string): string {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -126,7 +126,7 @@ function DVIModal({ onClose }: { onClose: () => void }) {
             Signal Board →
           </Link>
           <p style={{ fontSize: 11, color: muted, lineHeight: 1.5, flex: 1 }}>
-            Based on 63 verified institutional events. Peer reviewed by ChatGPT, Gemini, Claude.
+            Based on {SIGNALS.length} institutional events. This index measures institutional activity, not the origin of UAP.
           </p>
         </div>
       </div>
