@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 export const dynamic = 'force-dynamic';
 
-export default async function AdminPage() {
+export default async function AdminPage({ searchParams }: { searchParams: Promise<{ 'session-verified'?: string }> }) {
   if (!isAdminConfigured()) {
     return (
       <main className="mx-auto max-w-xl px-6 py-24">
@@ -18,6 +18,9 @@ export default async function AdminPage() {
       </main>
     );
   }
-  if (!(await isAdminAuthenticated())) return <DVIAdminLogin />;
+  if (!(await isAdminAuthenticated())) {
+    const params = await searchParams;
+    return <DVIAdminLogin sessionLost={params['session-verified'] === '1'} />;
+  }
   return <DVIAdmin />;
 }
