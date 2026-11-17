@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
-import { assertSameOrigin, checkAdminPassword, COOKIE_NAME, isAdminConfigured, issueSession, sessionCookieOptions } from '@/lib/dvi-admin-auth';
+import { assertSameOrigin, checkAdminPassword, COOKIE_NAME, isAdminAuthenticated, isAdminConfigured, issueSession, sessionCookieOptions } from '@/lib/dvi-admin-auth';
 
 export const runtime = 'nodejs';
+
+export async function GET() {
+  return NextResponse.json({ authenticated: await isAdminAuthenticated() }, {
+    headers: { 'Cache-Control': 'no-store' },
+  });
+}
 
 export async function POST(request: Request) {
   try {

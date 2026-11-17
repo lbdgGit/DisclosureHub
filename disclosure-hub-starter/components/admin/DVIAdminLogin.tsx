@@ -2,19 +2,23 @@
 
 import { useState, type FormEvent } from 'react';
 
-export function DVIAdminLogin() {
+export function DVIAdminLogin({ sessionLost = false }: { sessionLost?: boolean }) {
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(sessionLost ? 'Le serveur a validé la session, mais elle a disparu lors de la navigation. Vérifiez les cookies de ce site ou essayez un autre navigateur.' : '');
   const [pending, setPending] = useState(false);
   async function submit(event: FormEvent) {
     event.preventDefault();
     setPending(true);
     setMessage('');
     try {
-      const response = await fetch('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password }) });
+      const response = await fetch('/api/admin/login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password }) });
       const body = await response.json();
       if (!response.ok) throw new Error(body.error || 'Connexion refusée');
-      window.location.reload();
+      const sessionResponse = await fetch('/api/admin/login', { credentials: 'same-origin', cache: 'no-store' });
+      if (!sessionResponse.ok) throw new Error('Impossible de vérifier la session après connexion.');
+      const session = await sessionResponse.json();
+      if (!session.authenticated) throw new Error('Mot de passe accepté, mais le cookie de session n’est pas conservé. Vérifiez que les cookies sont autorisés pour ce site.');
+      window.location.assign('/admin?session-verified=1');
     } catch (error) {
       setMessage(error instanceof Error ? error.message : 'Erreur de connexion');
       setPassword('');
